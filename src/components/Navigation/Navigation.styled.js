@@ -5,8 +5,7 @@ export const StyledNavLink = styled(NavLink)`
   display: flex;
   align-items: center;
   justify-content: center;
-  
-  
+
   font-family: 'Gotham Pro';
   font-style: normal;
   font-weight: 700;
@@ -19,7 +18,7 @@ export const StyledNavLink = styled(NavLink)`
   color: #9b9faa;
 
   text-decoration: none;
-  &.active{
+  &.active {
     color: #212121;
   }
 `;
@@ -41,5 +40,4 @@ export const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   gap: 20px;
-  
 `;
