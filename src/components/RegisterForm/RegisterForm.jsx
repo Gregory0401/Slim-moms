@@ -9,6 +9,7 @@ import {
   StyledNavLink,
   Wrapper,
 } from './RegisterForm.styled';
+
 export const RegisterForm = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
