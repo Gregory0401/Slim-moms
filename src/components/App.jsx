@@ -1,5 +1,3 @@
-// import { ButtonMain } from './Buttons/ButtonMain/ButtonMain';
-// import { DiaryAddProductForm } from './Forms/DiaryAddProductForm/DiaryAddProductForm';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import PrivateRoute from 'Routes/PrivateRoute';
 import RestrictedRoute from 'Routes/RestrictedRoute';
@@ -11,6 +9,7 @@ import RegisterPage from '../Pages/RegisterPage/RegisterPage';
 export const App = () => {
   return (
     <>
+   
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
@@ -51,6 +50,7 @@ export const App = () => {
 
         <Route path="*" element={<Navigate to="/login" replace />} />
       </Routes>
+     
     </>
   );
 };
