@@ -5,7 +5,6 @@ export const App = () => {
   return (
     <>
       <DiaryAddProductForm />
-      {/* <ButtonMain /> */}
     </>
   );
 };
