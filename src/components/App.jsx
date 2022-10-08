@@ -1,15 +1,23 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 import PrivateRoute from 'Routes/PrivateRoute';
 import RestrictedRoute from 'Routes/RestrictedRoute';
 import Layout from './Layout';
 import HomePage from 'Pages/HomePage/HomePage';
 import LoginPage from '../Pages/LoginPage/LoginPage';
 import RegisterPage from '../Pages/RegisterPage/RegisterPage';
+import { fetchCurrentUser } from 'Redux/Auth/authOperation';
 // =======
 import DiaryAddProductForm from './Forms/DiaryAddProductForm/DiaryAddProductForm';
 // =======
 
 export const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchCurrentUser());
+  }, [dispatch]);
   return (
     <>
       <Routes>
