@@ -1,4 +1,6 @@
+
 import { StyledNavLink, Wrapper } from './AuthNavigation.styled';
+
 export const AuthNavigation = () => {
   return (
     <Wrapper>

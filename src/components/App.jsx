@@ -1,5 +1,3 @@
-// import { ButtonMain } from './Buttons/ButtonMain/ButtonMain';
-// import { DiaryAddProductForm } from './Forms/DiaryAddProductForm/DiaryAddProductForm';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import PrivateRoute from 'Routes/PrivateRoute';
 import RestrictedRoute from 'Routes/RestrictedRoute';
@@ -7,6 +5,9 @@ import Layout from './Layout';
 import HomePage from 'Pages/HomePage/HomePage';
 import LoginPage from '../Pages/LoginPage/LoginPage';
 import RegisterPage from '../Pages/RegisterPage/RegisterPage';
+// =======
+import DiaryAddProductForm from './Forms/DiaryAddProductForm/DiaryAddProductForm';
+// =======
 
 export const App = () => {
   return (
@@ -29,15 +30,17 @@ export const App = () => {
               <RestrictedRoute redirectTo="/daily" component={<LoginPage />} />
             }
           />
+          {/*  Додав для тесту замість dailyPage*/}
           <Route
             path="/daily"
             element={
               <PrivateRoute
                 redirectTo="/login"
-                component={<div>daily page</div>}
+                component={<DiaryAddProductForm />}
               />
             }
           />
+          {/* Додав для тесту замість dailyPage */}
           <Route
             path="/calculator"
             element={
