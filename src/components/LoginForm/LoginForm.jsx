@@ -1,6 +1,13 @@
-import { Form, Input, Label, StyledNavLink, BtnL, Wrapper } from './LoginForm.styled';
+import {
+  Form,
+  Input,
+  Label,
+  StyledNavLink,
+  BtnL,
+  Wrapper,
+} from './LoginForm.styled';
 import { useDispatch } from 'react-redux';
-import { logIn } from 'redux/auth/authOperations';
+import { logIn } from '../../Redux/Auth/authOperation';
 export const LoginForm = () => {
   const dispatch = useDispatch();
 
@@ -28,9 +35,7 @@ export const LoginForm = () => {
       </Label>
       <Wrapper>
         <BtnL type="submit"> Вход </BtnL>
-        <StyledNavLink to="/register">
-        Register
-      </StyledNavLink>
+        <StyledNavLink to="/register">Register</StyledNavLink>
       </Wrapper>
     </Form>
   );
