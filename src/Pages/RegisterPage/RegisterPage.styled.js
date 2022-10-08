@@ -6,6 +6,7 @@ export const Wrapper = styled.div`
   align-items: 'center';
   justify-content: 'center';
   padding-top: 160px;
+  padding-bottom: 280px;
 `;
 export const Title = styled.h2`
   font-weight: 700;
