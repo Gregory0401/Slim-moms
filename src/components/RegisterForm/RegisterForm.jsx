@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { register } from 'redux/auth/authOperations';
+import { register } from '../../Redux/Auth/authOperation';
 import {
   Form,
   Input,
@@ -10,7 +10,7 @@ import {
   Wrapper,
 } from './RegisterForm.styled';
 export const RegisterForm = () => {
-  const [name, setName] = useState('');
+  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -18,8 +18,8 @@ export const RegisterForm = () => {
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
-      case 'name':
-        setName(value);
+      case 'username':
+        setUsername(value);
         break;
       case 'email':
         setEmail(value);
@@ -33,8 +33,8 @@ export const RegisterForm = () => {
   };
   const handleSubmit = event => {
     event.preventDefault();
-    dispatch(register({ name, email, password }));
-    setName('');
+    dispatch(register({ username, email, password }));
+    setUsername('');
     setEmail('');
     setPassword('');
   };
@@ -42,7 +42,12 @@ export const RegisterForm = () => {
     <Form onSubmit={handleSubmit}>
       <Label>
         Имя *
-        <Input type="text" name="name" value={name} onChange={handleChange} />
+        <Input
+          type="text"
+          name="username"
+          value={username}
+          onChange={handleChange}
+        />
       </Label>
       <Label>
         Логин *
