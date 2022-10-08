@@ -5,11 +5,13 @@ import Layout from './Layout';
 import HomePage from 'Pages/HomePage/HomePage';
 import LoginPage from '../Pages/LoginPage/LoginPage';
 import RegisterPage from '../Pages/RegisterPage/RegisterPage';
+// =======
+import DiaryAddProductForm from './Forms/DiaryAddProductForm/DiaryAddProductForm';
+// =======
 
 export const App = () => {
   return (
     <>
-   
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
@@ -28,15 +30,17 @@ export const App = () => {
               <RestrictedRoute redirectTo="/daily" component={<LoginPage />} />
             }
           />
+          {/*  Додав для тесту замість dailyPage*/}
           <Route
             path="/daily"
             element={
               <PrivateRoute
                 redirectTo="/login"
-                component={<div>daily page</div>}
+                component={<DiaryAddProductForm />}
               />
             }
           />
+          {/* Додав для тесту замість dailyPage */}
           <Route
             path="/calculator"
             element={
@@ -50,7 +54,6 @@ export const App = () => {
 
         <Route path="*" element={<Navigate to="/login" replace />} />
       </Routes>
-     
     </>
   );
 };
