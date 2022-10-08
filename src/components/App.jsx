@@ -7,6 +7,7 @@ import LoginPage from '../Pages/LoginPage/LoginPage';
 import RegisterPage from '../Pages/RegisterPage/RegisterPage';
 // =======
 import DiaryAddProductForm from './Forms/DiaryAddProductForm/DiaryAddProductForm';
+// import RightSideBar from './RightSideBar/RightSideBar';
 // =======
 
 export const App = () => {
