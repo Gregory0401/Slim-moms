@@ -1,14 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-// =====
-
-// import { selectAccessToken } from '../Auth/authSelectors';
-// import { useSelector } from 'react-redux';
-// =====
 
 axios.defaults.baseURL = 'https://slimmom-backend.goit.global';
-// axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-// const token = useSelector(selectAccessToken);
 
 // vova1@gmail.com
 
@@ -20,6 +13,25 @@ export const addProduct = createAsyncThunk(
         `/product/?search=${credentials.title}`,
         credentials
       );
+      console.log('id продукту, який шукаємо', data[0]._id);
+      // console.log(data);
+      // console.log({
+      //   id: data[0]._id,
+      //   title: data[0].title.ru,
+      //   weight: data[0].weight,
+      // });
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const eatenProduct = createAsyncThunk(
+  'product/eatenProduct',
+  async (credentials, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.post('/day', credentials);
       console.log(data);
       return data;
     } catch (error) {
