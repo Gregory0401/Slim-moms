@@ -1,11 +1,20 @@
 import styled from 'styled-components';
-
+import { breakpoints } from '../../Utils/size';
 export const Wrapper = styled.div`
+  background-color: #eff1f3;
+  
+  margin-left: auto;
+  width: 100%;
+
   display: flex;
   gap: 20px;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
+  padding-right: 20px;
   text-align: center;
+  @media ${breakpoints.minTablet} {
+    background-color: transparent;
+  }
 `;
 export const Name = styled.p`
   font-family: 'Gotham Pro';
@@ -26,7 +35,7 @@ export const Logout = styled.button`
   font-family: 'Gotham Pro';
   border: none;
   border-left: 2px solid #e0e0e0;
-  background-color: #fff;
+  background-color: transparent;
   font-weight: 700;
   font-size: 14px;
   line-height: 0.93;

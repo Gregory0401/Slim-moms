@@ -1,11 +1,10 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-
+import { breakpoints } from '../../Utils/size';
 export const StyledNavLink = styled(NavLink)`
   display: flex;
   align-items: center;
   justify-content: center;
-
   font-family: 'Gotham Pro';
   font-style: normal;
   font-weight: 700;
@@ -27,17 +26,20 @@ export const StyledLogo = styled(NavLink)`
 `;
 
 export const Menu = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-left: 2px solid #e0e0e0;
-  padding-left: 20px;
-  gap: 16px;
+  display: none;
+  @media ${breakpoints.desktop} {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-left: 2px solid #e0e0e0;
+    padding-left: 20px;
+    gap: 16px;
+  }
 `;
 
 export const Wrapper = styled.div`
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: center;
   gap: 20px;
 `;

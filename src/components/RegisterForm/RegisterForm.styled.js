@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-
+import { breakpoints } from '../../Utils/size';
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
@@ -11,7 +11,6 @@ export const Label = styled.label`
   display: flex;
   flex-direction: column;
   font-family: 'Verdana';
-  
 
   font-weight: 700;
   font-size: 14px;
@@ -23,7 +22,7 @@ export const Label = styled.label`
 
 export const Input = styled.input`
   display: block;
-  width: 240px;
+  width: 280px;
   height: 20px;
 
   font-family: inherit;
@@ -43,10 +42,15 @@ export const Input = styled.input`
 
 export const Wrapper = styled.div`
   display: flex;
-  gap: 32px;
-  margin-top: 20px;
-
+  flex-direction: column;
+  gap: 20px;
   align-items: center;
+  margin-top: 20px;
+  @media ${breakpoints.minTablet} {
+    flex-direction: row;
+    gap: 32px;
+    
+  }
 `;
 
 export const BtnR = styled.button`

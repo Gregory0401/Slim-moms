@@ -1,10 +1,15 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-
+import { breakpoints } from '../../Utils/size';
 export const Wrapper = styled.nav`
   display: flex;
-  border-left: 2px solid #e0e0e0;
-  margin-left: 20px;
+ 
+  
+  @media ${breakpoints.desktop}{
+     border-left: 2px solid #e0e0e0;
+
+
+  }
 `;
 
 export const StyledNavLink = styled(NavLink)`
