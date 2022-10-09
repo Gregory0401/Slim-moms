@@ -1,14 +1,9 @@
-import { DiaryAddProductForm } from 'components/Forms/DiaryAddProductForm/DiaryAddProductForm';
-import DiaryDateСalendar from 'components/Forms/DiaryDateСalendar';
+import React from 'react'
 
 const DailyPage = () => {
   return (
-    <>
-      <DiaryDateСalendar />
-      <DiaryAddProductForm />
-      {/* <DiaryProductsList /> */}
-    </>
-  );
-};
+    <div>DailyPage</div>
+  )
+}
 
-export default DailyPage;
+export default DailyPage

@@ -8,10 +8,8 @@ import HomePage from 'Pages/HomePage/HomePage';
 import LoginPage from '../Pages/LoginPage/LoginPage';
 import RegisterPage from '../Pages/RegisterPage/RegisterPage';
 import { fetchCurrentUser } from 'Redux/Auth/authOperation';
-// =======
-import DiaryAddProductForm from './Forms/DiaryAddProductForm/DiaryAddProductForm';
-// import RightSideBar from './RightSideBar/RightSideBar';
-// =======
+import DiaryPage from 'Pages/DiaryPage';
+
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -45,7 +43,7 @@ export const App = () => {
             element={
               <PrivateRoute
                 redirectTo="/login"
-                component={<DiaryAddProductForm />}
+                component={<DiaryPage/>}
               />
             }
           />
