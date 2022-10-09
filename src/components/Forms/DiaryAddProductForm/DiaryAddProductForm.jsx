@@ -11,6 +11,9 @@ import {
 } from '../../../Redux/ProductSearch/productsSearchSelector';
 // vova1@gmail.com
 
+import { ButtonSubmit } from '../../Buttons/ButtonSubmit/ButtonSubmit';
+import { FormDiary } from './DiaryAddProductForm.styled.js';
+
 const DiaryAddProductForm = () => {
   //
   // const daySummary = useSelector(getDaySummary);
@@ -55,12 +58,13 @@ const DiaryAddProductForm = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <FormDiary onSubmit={handleSubmit}>
         <label>
           <input
             type="text"
             name="title"
             value={title}
+            placeholder="Введите название продукта"
             onChange={handleChange}
           />
         </label>
@@ -69,11 +73,12 @@ const DiaryAddProductForm = () => {
             type="number"
             name="weight"
             value={weight}
+            placeholder="Граммы"
             onChange={handleChange}
           />
         </label>
-        <button type="submit">Add product</button>
-      </form>
+        <ButtonSubmit />
+      </FormDiary>
       {/* Добавив RightSideBar для теста, "НЕ ОБЕССУДЬТЕ"!!!!! */}
       {/* <div>
         <h2>Сводка на {date}</h2>
