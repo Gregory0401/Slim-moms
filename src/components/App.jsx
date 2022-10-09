@@ -13,6 +13,7 @@ import { fetchCurrentUser } from 'Redux/Auth/authOperation';
 // import DiaryAddProductForm from './Forms/DiaryAddProductForm/DiaryAddProductForm';
 // import RightSideBar from './RightSideBar/RightSideBar';
 // =======
+// import DiaryPage from 'Pages/DiaryPage';
 
 export const App = () => {
   const dispatch = useDispatch();
