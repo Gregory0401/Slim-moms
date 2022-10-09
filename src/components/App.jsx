@@ -9,6 +9,7 @@ import LoginPage from '../Pages/LoginPage/LoginPage';
 import RegisterPage from '../Pages/RegisterPage/RegisterPage';
 import DailyPage from '../Pages/DailyPage';
 import { fetchCurrentUser } from 'Redux/Auth/authOperation';
+import DiaryDateСalendar from './Forms/DiaryDateСalendar';
 // =======
 // import DiaryAddProductForm from './Forms/DiaryAddProductForm/DiaryAddProductForm';
 // import RightSideBar from './RightSideBar/RightSideBar';
@@ -48,6 +49,7 @@ export const App = () => {
               <PrivateRoute redirectTo="/login" component={<DailyPage />} />
             }
           />
+          <Route path="/daily/:calendar" element={<DiaryDateСalendar />} />
           {/* Додав для тесту замість dailyPage */}
           <Route
             path="/calculator"
