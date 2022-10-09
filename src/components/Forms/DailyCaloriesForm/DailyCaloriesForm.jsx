@@ -14,6 +14,7 @@ import {
 } from './DailyCaloriesForm.styled';
 import { dailyRate } from 'Redux/DailyRate/DailyRateOperations';
 import { ButtonMainActive } from 'components/Buttons/BattonMainActive/BattonMainActive';
+import ModalProducts from '../../Modal/ModalProducts/ModalProducts'
 
 const DailyCaloriesForm = () => {
   const [height, setHeight] = useState('');
@@ -46,6 +47,12 @@ const DailyCaloriesForm = () => {
     checked === true && setBloodType(value);
   };
 
+  const [showModal, setShowModal] = useState(false);
+  const onToggleModal = () => {
+    setShowModal((prevState) => !prevState);
+  };
+
+
   const handleSubmit = event => {
     event.preventDefault();
     dispatch(dailyRate({ height, weight, age, desiredWeight, bloodType }));
@@ -54,9 +61,11 @@ const DailyCaloriesForm = () => {
     setAge('');
     setDesiredWeight('');
     setBloodType('');
+    setShowModal(true)
   };
 
   return (
+    
     <Form onSubmit={handleSubmit}>
       <FormWrapper>
         <Wrapper>
@@ -143,6 +152,8 @@ const DailyCaloriesForm = () => {
       <ButtonMainActive styled={{ marginLeft: '339px' }} type="submit">
         Похудеть
       </ButtonMainActive>
+      {showModal && (
+      <ModalProducts onClick={onToggleModal} onClose={onToggleModal} /> )}
     </Form>
   );
 };
