@@ -7,9 +7,13 @@ import Layout from './Layout';
 import HomePage from 'Pages/HomePage/HomePage';
 import LoginPage from '../Pages/LoginPage/LoginPage';
 import RegisterPage from '../Pages/RegisterPage/RegisterPage';
+import DailyPage from '../Pages/DailyPage';
 import { fetchCurrentUser } from 'Redux/Auth/authOperation';
-import DiaryPage from 'Pages/DiaryPage';
-
+// =======
+// import DiaryAddProductForm from './Forms/DiaryAddProductForm/DiaryAddProductForm';
+// import RightSideBar from './RightSideBar/RightSideBar';
+// =======
+// import DiaryPage from 'Pages/DiaryPage';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -41,10 +45,7 @@ export const App = () => {
           <Route
             path="/daily"
             element={
-              <PrivateRoute
-                redirectTo="/login"
-                component={<DiaryPage/>}
-              />
+              <PrivateRoute redirectTo="/login" component={<DailyPage />} />
             }
           />
           {/* Додав для тесту замість dailyPage */}

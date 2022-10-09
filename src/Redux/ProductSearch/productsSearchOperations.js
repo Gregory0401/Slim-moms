@@ -42,10 +42,12 @@ export const eatenProduct = createAsyncThunk(
 
 export const deleteEatenProduct = createAsyncThunk(
   'day/deleteEatenProduct',
-  async (eatenProductId, { rejectWithValue }) => {
+  async (credentials, { rejectWithValue }) => {
     try {
-      await axios.delete(`/day/${eatenProductId}`);
-      return eatenProductId;
+      const { data } = await axios.delete('/day', credentials);
+      console.log(credentials);
+      console.log(data);
+      return data;
     } catch (error) {
       return rejectWithValue(error.message);
     }

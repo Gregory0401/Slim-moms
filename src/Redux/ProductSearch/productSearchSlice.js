@@ -1,5 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { addProduct, eatenProduct } from './productsSearchOperations';
+import {
+  addProduct,
+  eatenProduct,
+  deleteEatenProduct,
+} from './productsSearchOperations';
 
 const productSlice = createSlice({
   name: 'product',
@@ -10,16 +14,14 @@ const productSlice = createSlice({
     productId: null,
     isLoading: false,
     error: null,
+    dayId: null,
   },
   extraReducers: {
     [addProduct.pending]: state => {
       state.isLoading = true;
     },
     [addProduct.fulfilled]: (state, { payload }) => {
-      // state.title = payload.title;
-      // state.weight = payload.weight;
-      // state.eatenProduct = payload.day.eatenProducts;
-      state.id = payload[0]._id;
+      state.id = payload[0]._id; //змінив id на productId
       state.items.push(payload);
       state.isLoading = false;
     },
@@ -35,8 +37,21 @@ const productSlice = createSlice({
       state.eatenProduct = payload.day.eatenProducts;
       state.daySummary = payload.daySummary; //скільки ми захавали
       state.isLoading = false;
+      state.dayId = payload.day.id;
     },
     [eatenProduct.rejected]: (state, { payload }) => {
+      state.isLoading = false;
+      state.error = payload;
+    },
+    // =====deleteProduct=====
+    [deleteEatenProduct.pending]: state => {
+      state.isLoading = true;
+    },
+    [deleteEatenProduct.fulfilled]: (state, { payload }) => {
+      state.items = state.items.filter(item => item.id !== payload);
+      state.isLoading = false;
+    },
+    [deleteEatenProduct.rejected]: (state, { payload }) => {
       state.isLoading = false;
       state.error = payload;
     },
