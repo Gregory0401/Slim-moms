@@ -6,6 +6,7 @@ export const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   text-align: center;
+  margin-left: auto;
 `;
 export const Name = styled.p`
   font-family: 'Gotham Pro';
@@ -26,7 +27,7 @@ export const Logout = styled.button`
   font-family: 'Gotham Pro';
   border: none;
   border-left: 2px solid #e0e0e0;
-  background-color: #fff;
+  background-color: transparent;
   font-weight: 700;
   font-size: 14px;
   line-height: 0.93;
@@ -35,6 +36,5 @@ export const Logout = styled.button`
   padding-top: 4px;
   padding-bottom: 4px;
   height: 32px;
-
   color: #9b9faa;
 `;
