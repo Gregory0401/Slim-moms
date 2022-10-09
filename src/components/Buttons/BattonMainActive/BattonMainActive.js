@@ -1,8 +1,5 @@
-import {Button} from '../BattonMainActive/BattonMainActive.styled'
+import { Button } from '../BattonMainActive/BattonMainActive.styled';
 
-
-export const ButtonMainActive = () => {
-    return (
-        <Button></Button>
-    )
-}
+export const ButtonMainActive = ({ children }) => {
+  return <Button>{children}</Button>;
+};
