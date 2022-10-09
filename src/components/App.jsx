@@ -5,9 +5,8 @@ import Layout from './Layout';
 import HomePage from 'Pages/HomePage/HomePage';
 import LoginPage from '../Pages/LoginPage/LoginPage';
 import RegisterPage from '../Pages/RegisterPage/RegisterPage';
-// =======
-import DiaryAddProductForm from './Forms/DiaryAddProductForm/DiaryAddProductForm';
-// =======
+import DiaryPage from 'Pages/DiaryPage';
+
 
 export const App = () => {
   return (
@@ -36,7 +35,7 @@ export const App = () => {
             element={
               <PrivateRoute
                 redirectTo="/login"
-                component={<DiaryAddProductForm />}
+                component={<DiaryPage/>}
               />
             }
           />
