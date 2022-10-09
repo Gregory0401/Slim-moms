@@ -7,9 +7,10 @@ import Layout from './Layout';
 import HomePage from 'Pages/HomePage/HomePage';
 import LoginPage from '../Pages/LoginPage/LoginPage';
 import RegisterPage from '../Pages/RegisterPage/RegisterPage';
+import DailyPage from '../Pages/DailyPage';
 import { fetchCurrentUser } from 'Redux/Auth/authOperation';
 // =======
-import DiaryAddProductForm from './Forms/DiaryAddProductForm/DiaryAddProductForm';
+// import DiaryAddProductForm from './Forms/DiaryAddProductForm/DiaryAddProductForm';
 // import RightSideBar from './RightSideBar/RightSideBar';
 // =======
 
@@ -43,10 +44,7 @@ export const App = () => {
           <Route
             path="/daily"
             element={
-              <PrivateRoute
-                redirectTo="/login"
-                component={<DiaryAddProductForm />}
-              />
+              <PrivateRoute redirectTo="/login" component={<DailyPage />} />
             }
           />
           {/* Додав для тесту замість dailyPage */}

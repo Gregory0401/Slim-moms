@@ -6,15 +6,15 @@ import {
 } from '../../../Redux/ProductSearch/productsSearchOperations';
 import {
   getProductId,
-  getDaySummary,
-  getEatenProduct,
+  // getDaySummary,
+  // getEatenProduct,
 } from '../../../Redux/ProductSearch/productsSearchSelector';
 // vova1@gmail.com
 
 const DiaryAddProductForm = () => {
   //
-  const daySummary = useSelector(getDaySummary);
-  const qwe = useSelector(getEatenProduct);
+  // const daySummary = useSelector(getDaySummary);
+  // const qwe = useSelector(getEatenProduct);
   //
   const dispatch = useDispatch();
   const productId = useSelector(getProductId);
@@ -50,8 +50,8 @@ const DiaryAddProductForm = () => {
     setWeight('');
     console.log(productId);
   };
-  const { date, kcalLeft, kcalConsumed, dailyRate, percentsOfDailyRate } =
-    daySummary;
+  // const { date, kcalLeft, kcalConsumed, dailyRate, percentsOfDailyRate } =
+  //   daySummary;
 
   return (
     <>
@@ -75,7 +75,7 @@ const DiaryAddProductForm = () => {
         <button type="submit">Add product</button>
       </form>
       {/* Добавив RightSideBar для теста, "НЕ ОБЕССУДЬТЕ"!!!!! */}
-      <div>
+      {/* <div>
         <h2>Сводка на {date}</h2>
         <div>
           <p>Осталось {Math.round(kcalLeft)} ккал</p>
@@ -89,11 +89,11 @@ const DiaryAddProductForm = () => {
           <h2>Нерекомендуемые продукты</h2>
           <p>Здесь будет отображаться Ваш рацион</p>
         </div>
-      </div>
+      </div> */}
       {/* Добавив RightSideBar для теста, "НЕ ОБЕССУДЬТЕ"!!!!! */}
 
       {/* Добавив ProductList для теста, "НЕ ОБЕССУДЬТЕ"!!!!! */}
-      <ul style={{ marginTop: 35 }}>
+      {/* <ul style={{ marginTop: 35 }}>
         {qwe.map(({ id, title, weight, kcal }) => {
           return (
             <li key={id} style={{ display: 'flex' }}>
@@ -104,7 +104,7 @@ const DiaryAddProductForm = () => {
             </li>
           );
         })}
-      </ul>
+      </ul> */}
       {/* Добавив ProductList для теста, "НЕ ОБЕССУДЬТЕ"!!!!! */}
     </>
   );
