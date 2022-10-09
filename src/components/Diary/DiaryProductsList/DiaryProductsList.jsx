@@ -1,5 +1,5 @@
 import DiaryProductsListItem from '../DiaryProductsListItem';
-import { ListWrapper } from './DiaryProductsList.styled';
+import { ListWrapper } from './DiaryProductsList.styled.js';
 
 const products = [
   { title: 'bread', weight: 100, calories: 210, id: 1 },
@@ -18,19 +18,17 @@ const products = [
   },
 ];
 
-
 const DiaryProductsList = () => {
-const { title, weight, calories, id } = products[0] 
+  const { title, weight, calories, id } = products[0];
   return (
     <ListWrapper>
       <DiaryProductsListItem
         id={id}
         weight={weight}
         calories={calories}
-        
         title={title}
-        />    
-        </ListWrapper>
+      />
+    </ListWrapper>
   );
 };
 
