@@ -59,7 +59,7 @@ export const refresh = createAsyncThunk(
     }
     token.set(persistedToken);
     const persistedSid = state.auth.sid;
-    
+
     try {
       const { data } = await axios.post('auth/refresh', persistedSid);
       token.set(data.newAccessToken);
@@ -72,7 +72,14 @@ export const refresh = createAsyncThunk(
 
 export const fetchCurrentUser = createAsyncThunk(
   'auth/fetchCurrentUser',
-  async (_, { rejectWithValue }) => {
+  async (_, { getState, rejectWithValue }) => {
+    const state = getState();
+    const persistedToken = state.auth.accessToken;
+
+    if (persistedToken === null) {
+      return rejectWithValue();
+    }
+    token.set(persistedToken);
     try {
       const { data } = await axios.get('user');
       return data;

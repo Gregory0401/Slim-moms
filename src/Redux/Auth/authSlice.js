@@ -96,7 +96,7 @@ const authSlice = createSlice({
       state.isRefreshing = true;
     },
     [fetchCurrentUser.fulfilled]: (state, { payload: { email, username } }) => {
-      state.user.name = username;
+      state.user.username = username;
       state.user.email = email;
       state.isLoggedIn = true;
       state.error = null;
