@@ -15,6 +15,7 @@ const productSlice = createSlice({
     isLoading: false,
     error: null,
     dayId: null,
+    eatenProductId: null,
   },
   extraReducers: {
     [addProduct.pending]: state => {
@@ -38,6 +39,7 @@ const productSlice = createSlice({
       state.daySummary = payload.daySummary; //скільки ми захавали
       state.isLoading = false;
       state.dayId = payload.day.id;
+      state.eatenProductId = payload.eatenProduct.id;
     },
     [eatenProduct.rejected]: (state, { payload }) => {
       state.isLoading = false;
@@ -48,7 +50,11 @@ const productSlice = createSlice({
       state.isLoading = true;
     },
     [deleteEatenProduct.fulfilled]: (state, { payload }) => {
-      state.items = state.items.filter(item => item.id !== payload);
+      console.log(state.eatenProduct);
+      console.log(payload);
+      state.eatenProduct = state.eatenProduct.filter(
+        item => item.id !== payload
+      );
       state.isLoading = false;
     },
     [deleteEatenProduct.rejected]: (state, { payload }) => {

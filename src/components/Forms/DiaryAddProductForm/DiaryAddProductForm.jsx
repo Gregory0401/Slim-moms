@@ -34,21 +34,21 @@ const DiaryAddProductForm = () => {
       weight,
       productId,
     };
-    console.log(newProduct);
+    // console.log(newProduct);
 
     const eatenProd = {
       date: '2022-10-09',
       productId,
       weight,
     };
-    console.log(eatenProd);
+    // console.log(eatenProd);
 
     dispatch(addProduct(newProduct));
     dispatch(eatenProduct(eatenProd));
 
     setTitle('');
     setWeight('');
-    console.log(productId);
+    // console.log(productId);
   };
   // const { date, kcalLeft, kcalConsumed, dailyRate, percentsOfDailyRate } =
   //   daySummary;
