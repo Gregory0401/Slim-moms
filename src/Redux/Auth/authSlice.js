@@ -8,7 +8,7 @@ import {
 } from './authOperation';
 
 const initialState = {
-  user: { username: null, email: null },
+  user: { username: null, email: null, id: null },
   accessToken: null,
   refreshToken: null,
   sid: null,
@@ -96,7 +96,7 @@ const authSlice = createSlice({
       state.isRefreshing = true;
     },
     [fetchCurrentUser.fulfilled]: (state, { payload: { email, username } }) => {
-      state.user.name = username;
+      state.user.username = username;
       state.user.email = email;
       state.isLoggedIn = true;
       state.error = null;

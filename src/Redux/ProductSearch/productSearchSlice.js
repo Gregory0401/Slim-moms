@@ -1,38 +1,43 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { addProduct } from './productsSearchOperations';
-
-// const initialState = {
-//   product: { title: '', weight: '' },
-//   // parameters: {
-//   //   weight: 100,
-//   //   height: 170,
-//   //   age: 30,
-//   //   desiredWeight: 60,
-//   //   bloodType: 1,
-//   // },
-//   token: null,
-//   isLoading: false,
-//   isLoggedIn: true,
-// };
+import { addProduct, eatenProduct } from './productsSearchOperations';
 
 const productSlice = createSlice({
   name: 'product',
-  initialState: { items: [] },
+  initialState: {
+    eatenProduct: null,
+    daySummary: null,
+    items: [],
+    productId: null,
+    isLoading: false,
+    error: null,
+  },
   extraReducers: {
     [addProduct.pending]: state => {
       state.isLoading = true;
     },
     [addProduct.fulfilled]: (state, { payload }) => {
-      state.title = payload.title;
-      state.weight = payload.weight;
+      // state.title = payload.title;
+      // state.weight = payload.weight;
+      // state.eatenProduct = payload.day.eatenProducts;
+      state.id = payload[0]._id;
       state.items.push(payload);
-
-      // state.token = payload.token;
-      // state.isLoggedIn = true;
-      // state.isLoading = false;
+      state.isLoading = false;
     },
     [addProduct.rejected]: (state, { payload }) => {
-      // state.isLoading = false;
+      state.isLoading = false;
+      state.error = payload;
+    },
+    // =====eatenProduct=====
+    [eatenProduct.pending]: state => {
+      state.isLoading = true;
+    },
+    [eatenProduct.fulfilled]: (state, { payload }) => {
+      state.eatenProduct = payload.day.eatenProducts;
+      state.daySummary = payload.daySummary; //скільки ми захавали
+      state.isLoading = false;
+    },
+    [eatenProduct.rejected]: (state, { payload }) => {
+      state.isLoading = false;
       state.error = payload;
     },
   },
