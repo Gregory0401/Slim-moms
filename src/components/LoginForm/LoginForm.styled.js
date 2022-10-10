@@ -34,7 +34,7 @@ export const Input = styled.input`
   background-color: #fff;
   background-clip: padding-box;
   border: none;
-  border-bottom: 1px solid #bdbdbd;
+  border-bottom: 1px solid var(--border-color);
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -45,8 +45,8 @@ export const Wrapper = styled.div`
   display: flex;
   gap: 32px;
   margin-top: 20px;
-
   align-items: center;
+  
 `;
 
 export const BtnL = styled.button`
