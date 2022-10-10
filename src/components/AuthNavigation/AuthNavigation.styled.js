@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.nav`
   display: flex;
-  border-left: 2px solid #e0e0e0;
+  border-left: 2px solid var(--border-color);
   margin-left: 20px;
 `;
 
@@ -18,8 +18,8 @@ export const StyledNavLink = styled(NavLink)`
   letter-spacing: 0.04em;
   text-transform: uppercase;
 
-  color: #9b9faa;
+  color: var(--secondary-text-color);
   &.active {
-    color: #212121;
+    color: var(--primary-text-color);
   }
 `;

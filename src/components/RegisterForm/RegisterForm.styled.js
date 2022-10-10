@@ -18,7 +18,7 @@ export const Label = styled.label`
   line-height: 17px;
   letter-spacing: 0.04em;
 
-  color: #9b9faa;
+  color: var(--secondary-text-color);
 `;
 
 export const Input = styled.input`
@@ -34,7 +34,7 @@ export const Input = styled.input`
   background-color: #fff;
   background-clip: padding-box;
   border: none;
-  border-bottom: 1px solid #bdbdbd;
+  border-bottom: 1px solid var(--border-color);
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   -webkit-appearance: none;
   -moz-appearance: none;
