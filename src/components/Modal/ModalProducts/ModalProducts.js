@@ -3,7 +3,7 @@ import {Backdrop, Modal, Header, Сalories, Line, Title, Products, ButtonMain, B
 import { useEffect } from "react";
 import {Button} from '../../Buttons/BattonMainActive/BattonMainActive.styled'
 import {ButtonClose} from '../../Buttons/ButtonClose/ButtonClose'
-
+import {StyledNavLink} from '../../RegisterForm/RegisterForm.styled'
 
 const ModalProducts = (onClose) => {
   useEffect(() => {
@@ -51,7 +51,8 @@ const ModalProducts = (onClose) => {
 <Products>
   <ol></ol>
 </Products>
-<ButtonMain><Button>Начать худеть</Button></ButtonMain>
+<ButtonMain><Button><StyledNavLink to="/daily/">Начать худеть</StyledNavLink></Button></ButtonMain>
+
 <BtnClose><ButtonClose onClick={handleButtonClick}/></BtnClose>
 
     </Modal>
