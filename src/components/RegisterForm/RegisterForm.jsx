@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { register } from '../../Redux/Auth/authOperation';
+import { useNavigate } from "react-router-dom";
 import {
   Form,
   Input,
@@ -16,6 +17,7 @@ export const RegisterForm = () => {
   const [password, setPassword] = useState('');
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
@@ -38,6 +40,7 @@ export const RegisterForm = () => {
     setUsername('');
     setEmail('');
     setPassword('');
+    navigate("/login");
   };
   return (
     <Form onSubmit={handleSubmit}>

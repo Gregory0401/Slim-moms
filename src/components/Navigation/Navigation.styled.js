@@ -15,11 +15,11 @@ export const StyledNavLink = styled(NavLink)`
   text-transform: uppercase;
   height: 32px;
 
-  color: #9b9faa;
+  color: var(--secondary-text-color);
 
   text-decoration: none;
   &.active {
-    color: #212121;
+    color: var(--primary-text-color);
   }
 `;
 export const StyledLogo = styled(NavLink)`
@@ -34,7 +34,7 @@ export const Menu = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  border-left: 2px solid #e0e0e0;
+  border-left: 2px solid var(--border-color);
   padding-left: 20px;
   gap: 16px;}
 `;
