@@ -37,7 +37,7 @@ const DiaryAddProductForm = () => {
       weight,
       productId,
     };
-    // console.log(newProduct);
+    console.log(newProduct);
 
     const eatenProd = {
       date: '2022-10-09',
@@ -79,38 +79,6 @@ const DiaryAddProductForm = () => {
         </label>
         <ButtonSubmit />
       </FormDiary>
-      {/* Добавив RightSideBar для теста, "НЕ ОБЕССУДЬТЕ"!!!!! */}
-      {/* <div>
-        <h2>Сводка на {date}</h2>
-        <div>
-          <p>Осталось {Math.round(kcalLeft)} ккал</p>
-          <p>Употреблено {Math.round(kcalConsumed)} ккал</p>
-          <p>Дневная норма {Math.round(dailyRate)} ккал</p>
-          <p>Процент от нормы {Math.round(percentsOfDailyRate)} %</p>
-        </div>
-        <br />
-        <br />
-        <div>
-          <h2>Нерекомендуемые продукты</h2>
-          <p>Здесь будет отображаться Ваш рацион</p>
-        </div>
-      </div> */}
-      {/* Добавив RightSideBar для теста, "НЕ ОБЕССУДЬТЕ"!!!!! */}
-
-      {/* Добавив ProductList для теста, "НЕ ОБЕССУДЬТЕ"!!!!! */}
-      {/* <ul style={{ marginTop: 35 }}>
-        {qwe.map(({ id, title, weight, kcal }) => {
-          return (
-            <li key={id} style={{ display: 'flex' }}>
-              <p style={{ marginRight: 35 }}>{title}</p>
-              <p style={{ marginRight: 35 }}>{Math.round(weight)}</p>
-              <p style={{ marginRight: 35 }}>{Math.round(kcal)}</p>
-              <button>Удалить</button>
-            </li>
-          );
-        })}
-      </ul> */}
-      {/* Добавив ProductList для теста, "НЕ ОБЕССУДЬТЕ"!!!!! */}
     </>
   );
 };
