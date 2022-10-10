@@ -9,6 +9,7 @@ const ProductsList = () => {
   const eatenProduct = useSelector(getEatenProduct);
   const dayId = useSelector(getDayId);
   const dispatch = useDispatch();
+
   //   =====
 
   const deleteProduct = id => {
@@ -28,7 +29,6 @@ const ProductsList = () => {
           eatenProduct.map(({ id, title, weight, kcal }) => {
             return (
               <li key={id} style={{ display: 'flex' }}>
-                <p style={{ marginRight: 35 }}>{id}</p>
                 <p style={{ marginRight: 35 }}>{title}</p>
                 <p style={{ marginRight: 35 }}>{Math.round(weight)}</p>
                 <p style={{ marginRight: 35 }}>{Math.round(kcal)}</p>
