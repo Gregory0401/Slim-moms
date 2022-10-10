@@ -1,5 +1,5 @@
 // import DiaryProductsList from 'components/Diary/DiaryProductsList/DiaryProductsList';
-// import DiaryAddProductForm  from 'components/Forms/DiaryAddProductForm/DiaryAddProductForm';
+// import DiaryAddProductForm from 'components/Forms/DiaryAddProductForm/DiaryAddProductForm';
 // import DiaryDateСalendar from 'components/Forms/DiaryDateСalendar';
 
 // const DairyPage = () => {
@@ -7,7 +7,7 @@
 //     <>
 //       <DiaryDateСalendar />
 //       <DiaryAddProductForm />
-//       <DiaryProductsList/>
+//       <DiaryProductsList />
 //     </>
 //   );
 // };

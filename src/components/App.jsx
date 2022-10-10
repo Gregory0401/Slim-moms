@@ -10,7 +10,7 @@ import DiaryDateСalendar from './Forms/DiaryDateСalendar';
 const HomePage = lazy(() => import('../Pages/HomePage/HomePage'));
 const LoginPage = lazy(() => import('../Pages/LoginPage/LoginPage'));
 const RegisterPage = lazy(() => import('../Pages/RegisterPage/RegisterPage'));
-const DiaryPage = lazy(() => import('../Pages/DiaryPage/DiaryPage'));
+const DailyPage = lazy(() => import('../Pages/DailyPage/DailyPage'));
 // =======
 // import DiaryAddProductForm from './Forms/DiaryAddProductForm/DiaryAddProductForm';
 // import RightSideBar from './RightSideBar/RightSideBar';
@@ -46,7 +46,7 @@ export const App = () => {
           <Route
             path="/diary"
             element={
-              <PrivateRoute redirectTo="/login" component={<DiaryPage />} />
+              <PrivateRoute redirectTo="/login" component={<DailyPage />} />
             }
           />
           <Route path="/diary/:calendar" element={<DiaryDateСalendar />} />
