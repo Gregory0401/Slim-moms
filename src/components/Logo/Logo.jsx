@@ -7,7 +7,7 @@ import { Image, Text, LogoStyled } from './Logo.styled';
 
 export const Logo = () => {
   return (
-    <Link to="/">
+    <Link to="/diary">
       <LogoStyled>
         <Image src={LogoImage} alt="Logo" />
         <Text src={LogoText} alt="Logo" />
