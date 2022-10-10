@@ -152,9 +152,13 @@ const DailyCaloriesForm = () => {
       <ButtonMainActive styled={{ marginLeft: '339px' }} type="submit">
         Похудеть
       </ButtonMainActive>
+
       {showModal && (
-      <ModalProducts onClick={onToggleModal} onClose={onToggleModal} /> )}
+      <ModalProducts onClick={onToggleModal} onClose={onToggleModal}>
+        <dailyRate/>
+      </ModalProducts> )}
+      
     </Form>
-  );
+  ); 
 };
 export default DailyCaloriesForm;
