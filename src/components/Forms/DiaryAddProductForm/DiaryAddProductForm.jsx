@@ -10,12 +10,12 @@ import {
   // getEatenProduct,
 } from '../../../Redux/ProductSearch/productsSearchSelector';
 // vova1@gmail.com
-console.log('asdasd');
 
 import { ButtonSubmit } from '../../Buttons/ButtonSubmit/ButtonSubmit';
 import { FormDiary } from './DiaryAddProductForm.styled.js';
 
 const DiaryAddProductForm = () => {
+  console.log('sadasdas');
   //
   // const daySummary = useSelector(getDaySummary);
   // const qwe = useSelector(getEatenProduct);
