@@ -13,9 +13,7 @@ const HomePage = () => {
 
   return (
     <Wrapper>
-      <Title>
-        Просчитай свою суточную <br /> норму калорий прямо сейчас
-      </Title>
+      <Title>Просчитай свою суточную норму калорий прямо сейчас</Title>
       <DailyCaloriesForm />
       {isLoading && !error && <div>Loading...</div>}
     </Wrapper>

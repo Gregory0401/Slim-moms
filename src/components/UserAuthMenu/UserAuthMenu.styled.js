@@ -17,7 +17,7 @@ export const Name = styled.p`
   text-align: right;
   letter-spacing: 0.04em;
 
-  color: #212121;
+  color: var(--primary-text-color);
 `;
 export const Logout = styled.button`
   display: flex;
@@ -26,7 +26,7 @@ export const Logout = styled.button`
   text-align: center;
   font-family: 'Gotham Pro';
   border: none;
-  border-left: 2px solid #e0e0e0;
+  border-left: 2px solid var(--border-color);
   background-color: transparent;
   font-weight: 700;
   font-size: 14px;
@@ -36,5 +36,5 @@ export const Logout = styled.button`
   padding-top: 4px;
   padding-bottom: 4px;
   height: 32px;
-  color: #9b9faa;
+  color: var(--secondary-text-color);
 `;
