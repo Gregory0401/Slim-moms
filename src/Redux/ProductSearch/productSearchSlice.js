@@ -50,10 +50,8 @@ const productSlice = createSlice({
       state.isLoading = true;
     },
     [deleteEatenProduct.fulfilled]: (state, { payload }) => {
-      console.log(state.eatenProduct);
-      console.log(payload);
       state.eatenProduct = state.eatenProduct.filter(
-        item => item.id !== payload
+        item => item.id !== payload.eatenProductId
       );
       state.isLoading = false;
     },

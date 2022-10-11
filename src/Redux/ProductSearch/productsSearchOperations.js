@@ -13,13 +13,6 @@ export const addProduct = createAsyncThunk(
         `/product/?search=${credentials.title}`,
         credentials
       );
-      // console.log('id продукту, який шукаємо', data[0]._id);
-      // console.log(data);
-      // console.log({
-      //   id: data[0]._id,
-      //   title: data[0].title.ru,
-      //   weight: data[0].weight,
-      // });
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -42,15 +35,14 @@ export const eatenProduct = createAsyncThunk(
 
 export const deleteEatenProduct = createAsyncThunk(
   'day/deleteEatenProduct',
-  async (deleteProduct, { rejectWithValue }) => {
-    // console.log(2222, deleteData.dayId);
-    // console.log(deleteData);
+  async (data, { rejectWithValue }) => {
     try {
-      const { data } = await axios.delete('/day', deleteProduct);
-      // dietaries/?productId=${productId}&date=${date},
+      await axios.delete('/day', {
+        data,
+      });
       return data;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return rejectWithValue('error');
     }
   }
 );

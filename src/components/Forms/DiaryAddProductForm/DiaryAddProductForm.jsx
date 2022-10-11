@@ -66,6 +66,7 @@ const DiaryAddProductForm = () => {
             value={title}
             placeholder="Введите название продукта"
             onChange={handleChange}
+            // onInput={handleChange}
           />
         </label>
         <label>
