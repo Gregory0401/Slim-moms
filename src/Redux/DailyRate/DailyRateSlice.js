@@ -15,7 +15,7 @@ const dailyRateSlice = createSlice({
   initialState,
   extraReducers: {
     [dailyRate.pending]: state => {
-      console.log('pendong');
+      
       state.isLoading = true;
       state.notAllowedProducts = []
     },
@@ -29,13 +29,14 @@ const dailyRateSlice = createSlice({
       state.error = null;
     },
     [dailyRate.rejected]: (state, { payload }) => {
-      console.log('ghjk')
+      
       state.isLoading = false;
       state.error = payload;
       
     },
     [dailyRateWithUserId.pending]: state => {
       state.isLoading = true;
+      state.error = null;
     },
     [dailyRateWithUserId.fulfilled]: (
       state,

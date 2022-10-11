@@ -1,14 +1,24 @@
 import styled from 'styled-components';
-
+import { breakpoints } from 'Utils/size';
 export const Wrapper = styled.div`
   display: 'flex';
   flex-direction: column;
   align-items: 'center';
   justify-content: 'center';
-  padding-top: 160px;
-  padding-bottom: 355px;
+  padding-top: 40px;
+  padding-bottom: 99px;
+  @media ${breakpoints.minTablet} {
+    padding-top: 160px;
+  padding-bottom: 419px;
+  }
+  @media ${breakpoints.desktop} {
+    padding-top: 163px;
+  padding-bottom: 179px;
+  }
+ 
 `;
 export const Title = styled.h2`
+  
   font-weight: 700;
   font-family: 'Gotham Pro';
   font-size: 14px;
@@ -17,4 +27,7 @@ export const Title = styled.h2`
   text-transform: uppercase;
   color: #fc842d;
   margin-bottom: 60px;
+  @media ${breakpoints.maxMobile} {
+    text-align: center;
+  }
 `;

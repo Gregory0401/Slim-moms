@@ -1,21 +1,24 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
+import { lazy } from 'react';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import PrivateRoute from 'Routes/PrivateRoute';
 import RestrictedRoute from 'Routes/RestrictedRoute';
 import Layout from './Layout';
-import HomePage from 'Pages/HomePage/HomePage';
-import LoginPage from '../Pages/LoginPage/LoginPage';
-import RegisterPage from '../Pages/RegisterPage/RegisterPage';
-import DailyPage from '../Pages/DailyPage';
 import { fetchCurrentUser } from 'Redux/Auth/authOperation';
 import DiaryDateСalendar from './Forms/DiaryDateСalendar';
+const HomePage = lazy(() => import('../Pages/HomePage/HomePage'));
+const LoginPage = lazy(() => import('../Pages/LoginPage/LoginPage'));
+const RegisterPage = lazy(() => import('../Pages/RegisterPage/RegisterPage'));
+const DailyPage = lazy(() => import('../Pages/DailyPage/DailyPage'));
 // =======
 // import DiaryAddProductForm from './Forms/DiaryAddProductForm/DiaryAddProductForm';
 // import RightSideBar from './RightSideBar/RightSideBar';
 // =======
+<
 // import DiaryPage from 'Pages/DiaryPage';
 // import BurgerMenu from '../components/Modal/BurgerMenu/BurgerMenu'
+
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -33,7 +36,7 @@ export const App = () => {
             path="/register"
             element={
               <RestrictedRoute
-                redirectTo="/daily"
+                redirectTo="/diary"
                 component={<RegisterPage />}
               />
             }
@@ -41,17 +44,17 @@ export const App = () => {
           <Route
             path="/login"
             element={
-              <RestrictedRoute redirectTo="/daily" component={<LoginPage />} />
+              <RestrictedRoute redirectTo="/diary" component={<LoginPage />} />
             }
           />
-          {/*  Додав для тесту замість dailyPage*/}
+
           <Route
-            path="/daily"
+            path="/diary"
             element={
               <PrivateRoute redirectTo="/login" component={<DailyPage />} />
             }
           />
-          <Route path="/daily/:calendar" element={<DiaryDateСalendar />} />
+          <Route path="/diary/:calendar" element={<DiaryDateСalendar />} />
           {/* Додав для тесту замість dailyPage */}
           <Route
             path="/calculator"

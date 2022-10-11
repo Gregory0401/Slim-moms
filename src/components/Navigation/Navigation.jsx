@@ -12,7 +12,7 @@ export const Navigation = () => {
       {<Logo />}
       {isLoggedIn && (
         <Menu>
-          <StyledNavLink to="/daily">Дневник</StyledNavLink>
+          <StyledNavLink to="/diary">Дневник</StyledNavLink>
           <StyledNavLink to="/calculator">Калькулятор</StyledNavLink>
         </Menu>
       )}

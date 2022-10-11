@@ -40,17 +40,30 @@ export const eatenProduct = createAsyncThunk(
   }
 );
 
+// export const deleteEatenProduct = createAsyncThunk(
+//   'day/deleteEatenProduct',
+//   async (deleteProduct, { rejectWithValue }) => {
+//     // console.log(2222, deleteData.dayId);
+//     // console.log(deleteData);
+//     try {
+//       const data = await axios.delete('/day', { deleteProduct });
+//       return data;
+//     } catch (error) {
+//       return rejectWithValue(error.message);
+//     }
+//   }
+// );
+
 export const deleteEatenProduct = createAsyncThunk(
   'day/deleteEatenProduct',
-  async (deleteProduct, { rejectWithValue }) => {
-    // console.log(2222, deleteData.dayId);
-    // console.log(deleteData);
+  async (data, thunkAPI) => {
     try {
-      const { data } = await axios.delete('/day', deleteProduct);
-      // dietaries/?productId=${productId}&date=${date},
+      await axios.delete(`/day`, {
+        data,
+      });
       return data;
-    } catch (error) {
-      return rejectWithValue(error.message);
+    } catch (err) {
+      return thunkAPI.rejectWithValue('error');
     }
   }
 );

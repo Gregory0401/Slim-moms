@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   Form,
   Input,
@@ -14,6 +14,10 @@ import {
 } from './DailyCaloriesForm.styled';
 import { dailyRate, dailyRateWithUserId } from 'Redux/DailyRate/DailyRateOperations';
 import ModalProducts from '../../Modal/ModalProducts/ModalProducts';
+import {
+  selectError,
+  selectIsLoading,
+} from 'Redux/DailyRate/DailyRateSelectors';
 
 const DailyCaloriesForm = () => {
   const [height, setHeight] = useState('');
@@ -22,6 +26,8 @@ const DailyCaloriesForm = () => {
   const [desiredWeight, setDesiredWeight] = useState('');
   const [bloodType, setBloodType] = useState('');
   const dispatch = useDispatch();
+  const error = useSelector(selectError);
+  const isLoading = useSelector(selectIsLoading);
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
@@ -42,8 +48,8 @@ const DailyCaloriesForm = () => {
     }
   };
 
-  const handleRadio = ({ target: { value, checked } }) => {
-    checked === true && setBloodType(value);
+  const handleRadio = event => {
+    setBloodType(event.target.value);
   };
 
   const [showModal, setShowModal] = useState(false);
@@ -146,17 +152,15 @@ const DailyCaloriesForm = () => {
           </div>
         </Wrapper>
       </FormWrapper>
-      <Button  type="submit">
-        Похудеть
 
-      </Button>
+      <Button type="submit">Похудеть</Button>
 
-      {showModal && (
-      <ModalProducts onClick={onToggleModal} onClose={onToggleModal}>
-        <dailyRate/>
-      </ModalProducts> )}
-      
+      {showModal && !error && !isLoading && (
+        <ModalProducts onClick={onToggleModal} onClose={onToggleModal}>
+          <dailyRate />
+        </ModalProducts>
+      )}
     </Form>
-  ); 
+  );
 };
 export default DailyCaloriesForm;
