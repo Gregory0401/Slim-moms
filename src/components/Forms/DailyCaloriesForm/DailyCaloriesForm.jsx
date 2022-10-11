@@ -56,7 +56,6 @@ const DailyCaloriesForm = () => {
   const isLoading = useSelector(selectIsLoading);
   const userId = useSelector(selectUserId);
   const isLoggedIn = useSelector(selectIsLoggedIn);
-
   const initialValues = {
     height: '',
     weight: '',
@@ -64,7 +63,6 @@ const DailyCaloriesForm = () => {
     desiredWeight: '',
     bloodType: '',
   };
-
   const FormError = ({ name }) => {
     return (
       <ErrorMessage
@@ -73,7 +71,6 @@ const DailyCaloriesForm = () => {
       />
     );
   };
-
   const validationSchema = Yup.object({
     height: Yup.number().min(100).max(250).required('Обязательное поле'),
     weight: Yup.number().min(20).max(500).required('Обязательное поле'),
@@ -81,29 +78,28 @@ const DailyCaloriesForm = () => {
     desiredWeight: Yup.number().min(20).max(500).required('Обязательное поле'),
     bloodType: Yup.number().required('Обязательное поле'),
   });
-
   const [showModal, setShowModal] = useState(false);
   const onToggleModal = () => {
     setShowModal(prevState => !prevState);
   };
 
-
-  const handleSubmit = event => {
-    event.preventDefault();
-    dispatch(
-      dailyRate({
-        height: Number(height),
-        weight: Number(weight),
-        age: Number(age),
-        desiredWeight: Number(desiredWeight),
-        bloodType: Number(bloodType),
-      })
-    );
-    setHeight('');
-    setWeight('');
-    setAge('');
-    setDesiredWeight('');
-    setBloodType('');
+  // const handleSubmit = event => {
+  //   event.preventDefault();
+  //   dispatch(
+  //     dailyRate({
+  //       height: Number(height),
+  //       weight: Number(weight),
+  //       age: Number(age),
+  //       desiredWeight: Number(desiredWeight),
+  //       bloodType: Number(bloodType),
+  //     })
+  //   );
+  //   setHeight('');
+  //   setWeight('');
+  //   setAge('');
+  //   setDesiredWeight('');
+  //   setBloodType('');
+  // };
 
   const handleSubmit = (values, { resetForm }) => {
     const params = changeTypeToNumber(values);
@@ -141,7 +137,6 @@ const DailyCaloriesForm = () => {
                   <Input type="text" name="desiredWeight" />
                   <FormError name="desiredWeight" />
                 </div>
-
                 <div role="group" aria-labelledby="my-radio-group">
                   <RadioTitle>Группа крови *</RadioTitle>
                   <RadioWrapper>
@@ -156,7 +151,6 @@ const DailyCaloriesForm = () => {
                       </RadioLabel>
                     ))}
                   </RadioWrapper>
-
                   <FormError name="bloodType" />
                 </div>
               </Wrapper>
@@ -165,7 +159,6 @@ const DailyCaloriesForm = () => {
           </StyledForm>
         </Form>
       </Formik>
-
       {showModal && !error && !isLoading && (
         <ModalProducts onClick={onToggleModal} onClose={onToggleModal}>
           <dailyRate />

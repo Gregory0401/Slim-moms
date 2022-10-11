@@ -112,8 +112,7 @@ export const RadioLabel = styled.label`
   accent-color: var(--orange-color);
 `;
 
-
-export const RadioInput = styled.input`
+export const RadioInput = styled(Field)`
   -webkit-appearance: none;
   appearance: none;
   border-radius: 50%;
