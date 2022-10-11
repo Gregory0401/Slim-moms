@@ -1,86 +1,64 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { productSearch } from 'Redux/ProductSearch/productsSearchOperations';
+import { getProduct } from 'Redux/ProductSearch/productsSearchSelector';
+import { ButtonSubmit } from '../../Buttons/ButtonSubmit/ButtonSubmit';
 import {
-  addProduct,
-  eatenProduct,
-} from '../../../Redux/ProductSearch/productsSearchOperations';
-import {
-  getProductId,
-  // getDaySummary,
-  // getEatenProduct,
-} from '../../../Redux/ProductSearch/productsSearchSelector';
+  StyledForm,
+  StyledLabel,
+  StyledInput,
+} from './DiaryAddProductForm.styled';
+
 // vova1@gmail.com
 
-import { ButtonSubmit } from '../../Buttons/ButtonSubmit/ButtonSubmit';
-import { FormDiary } from './DiaryAddProductForm.styled.js';
-
 const DiaryAddProductForm = () => {
-  console.log('sadasdas');
-  //
-  // const daySummary = useSelector(getDaySummary);
-  // const qwe = useSelector(getEatenProduct);
-  //
+  const [searchProductRes, setSearchProductRes] = useState('');
+  const product = useSelector(getProduct);
   const dispatch = useDispatch();
-  const productId = useSelector(getProductId);
 
-  const [title, setTitle] = useState('');
-  const [weight, setWeight] = useState('');
-
-  const handleChange = ({ target: { name, value } }) => {
-    name === 'title' ? setTitle(value) : setWeight(value);
+  const handleChange = e => {
+    setSearchProductRes(e.currentTarget.elements.title.value);
+    if (searchProductRes.trim().length > 1) {
+      dispatch(productSearch(searchProductRes));
+    }
   };
-
-  const handleSubmit = event => {
-    event.preventDefault();
-
-    const newProduct = {
-      title,
-      weight,
-      productId,
-    };
-    console.log(newProduct);
-
-    const eatenProd = {
-      date: '2022-10-09',
-      productId,
-      weight,
-    };
-    // console.log(eatenProd);
-
-    dispatch(addProduct(newProduct));
-    dispatch(eatenProduct(eatenProd));
-
-    setTitle('');
-    setWeight('');
-    // console.log(productId);
-  };
-  // const { date, kcalLeft, kcalConsumed, dailyRate, percentsOfDailyRate } =
-  //   daySummary;
 
   return (
     <>
-      <FormDiary onSubmit={handleSubmit}>
-        <label>
-          <input
+      <StyledForm onChange={handleChange} autoComplete="off">
+        <div>
+          <StyledLabel htmlFor="title">Введите название продукта</StyledLabel>
+          <StyledInput
+            id="title"
             type="text"
             name="title"
-            value={title}
-            placeholder="Введите название продукта"
-            onChange={handleChange}
-            // onInput={handleChange}
+            autoComplete="off"
+            placeholder="выберите ваш продукт"
           />
-        </label>
-        <label>
-          <input
+        </div>
+
+        <div>
+          <StyledLabel htmlFor="weight">Граммы</StyledLabel>
+          <StyledInput
+            id="weight"
             type="number"
             name="weight"
-            value={weight}
-            placeholder="Граммы"
-            onChange={handleChange}
+            autoComplete="off"
+            placeholder="введите вес"
           />
-        </label>
+        </div>
         <ButtonSubmit />
-      </FormDiary>
+      </StyledForm>
+      {product.length > 0 && (
+        <select>
+          <option disabled>Пожалуйста выберите продукт</option>
+          {product.map(({ title, id }) => (
+            <option title={title.ru} key={id} value={id}>
+              {title.ru}
+            </option>
+          ))}
+        </select>
+      )}
     </>
   );
 };

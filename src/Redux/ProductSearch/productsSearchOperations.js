@@ -25,7 +25,6 @@ export const eatenProduct = createAsyncThunk(
   async (credentials, { rejectWithValue }) => {
     try {
       const { data } = await axios.post('/day', credentials);
-      // console.log(data);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -43,6 +42,23 @@ export const deleteEatenProduct = createAsyncThunk(
       return data;
     } catch (error) {
       return rejectWithValue('error');
+    }
+  }
+);
+
+export const productSearch = createAsyncThunk(
+  'product/get',
+  async (search, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.get('/product', {
+        params: {
+          search,
+        },
+      });
+
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
     }
   }
 );
