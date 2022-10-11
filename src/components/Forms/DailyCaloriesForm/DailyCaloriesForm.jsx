@@ -87,6 +87,24 @@ const DailyCaloriesForm = () => {
     setShowModal(prevState => !prevState);
   };
 
+
+  const handleSubmit = event => {
+    event.preventDefault();
+    dispatch(
+      dailyRate({
+        height: Number(height),
+        weight: Number(weight),
+        age: Number(age),
+        desiredWeight: Number(desiredWeight),
+        bloodType: Number(bloodType),
+      })
+    );
+    setHeight('');
+    setWeight('');
+    setAge('');
+    setDesiredWeight('');
+    setBloodType('');
+
   const handleSubmit = (values, { resetForm }) => {
     const params = changeTypeToNumber(values);
 
@@ -94,6 +112,7 @@ const DailyCaloriesForm = () => {
       ? dispatch(dailyRateWithUserId({ userId, ...params }))
       : dispatch(dailyRate(params));
     resetForm();
+
     setShowModal(true);
   };
 
