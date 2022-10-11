@@ -15,7 +15,7 @@ const DailyPage = lazy(() => import('../Pages/DailyPage/DailyPage'));
 // import DiaryAddProductForm from './Forms/DiaryAddProductForm/DiaryAddProductForm';
 // import RightSideBar from './RightSideBar/RightSideBar';
 // =======
-<
+
 // import DiaryPage from 'Pages/DiaryPage';
 // import BurgerMenu from '../components/Modal/BurgerMenu/BurgerMenu'
 
