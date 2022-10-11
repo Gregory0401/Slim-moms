@@ -1,11 +1,13 @@
 import React from "react";
-import {Backdrop, Modal, Header, Сalories, Line, Title, Products, ButtonMain, BtnClose} from './ModalProducts.styled'
+import {Backdrop, Modal, Header, Сalories, Line, Title, Products, ButtonMain, BtnClose, Cal} from './ModalProducts.styled'
 import { useEffect } from "react";
 import {Button} from '../../Buttons/BattonMainActive/BattonMainActive.styled'
 import {ButtonClose} from '../../Buttons/ButtonClose/ButtonClose'
 import {StyledNavLink} from '../../RegisterForm/RegisterForm.styled'
+import {useSelector} from 'react-redux'
+import {selectDailyRate, selectNotAllowedProducts} from '../../../Redux/DailyRate/DailyRateSelectors'
 
-const ModalProducts = (onClose) => {
+const ModalProducts = ({onClose}) => {
   useEffect(() => {
     window.addEventListener("keydown", handleEscape);
     const body = document.querySelector("body");
@@ -38,18 +40,25 @@ const ModalProducts = (onClose) => {
     }
   };
 
+const raite = useSelector(selectDailyRate);
+const productNo = useSelector(selectNotAllowedProducts)
+
   return (
     <>
     <Backdrop onClick={handleBackdropClick}>
     <Modal>
 <Header>Ваша рекомендуемая суточная
 норма калорий составляет</Header>
-<Сalories></Сalories>
+<Сalories>{raite} <Cal>ккал</Cal></Сalories>
 <Line></Line>
 <Title>Продукты, которые вам <br />
 не рекомендуется употреблять</Title>
 <Products>
-  <ol></ol>
+{productNo.map((product, id) => (
+            <li key={id}>
+              {product}
+            </li>
+          ))}
 </Products>
 <ButtonMain><Button><StyledNavLink to="/daily/">Начать худеть</StyledNavLink></Button></ButtonMain>
 
