@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const Backdrop = styled.div`
 @media screen and (min-width: 320px){
   overflow: auto;
+  position: absolute;
   left: 0;
   top: 0;
   width: 100%;
@@ -14,6 +15,8 @@ export const Backdrop = styled.div`
 
 export const Modal = styled.div`
   background-color: #ffffff;
+  max-height: 573px;
+  overflow-y: auto;
   @media screen and (min-width: 320px){
       width: 320px;
       padding: 40px 20px 80px 20px;
@@ -64,8 +67,13 @@ export const Сalories = styled.div`
   @media screen and (min-width: 768px) {
     margin-bottom: 32px;
   }
-  
 `;
+export const Cal = styled.p`
+font-weight: 700;
+font-size: 18px;
+line-height: 1.2;
+`
+
 export const Line = styled.div`
 border: 1px solid #e0e0e0;
     height: 0;
@@ -96,14 +104,16 @@ export const Title = styled.h2`
     margin-left: 90px;
     margin-right: 90px;
   }
-  
 `;
-export const Products = styled.ul`
+
+
+export const Products = styled.ol`
   font-family: 'Verdana';
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 1.2;
+  overflow-y: auto;
   @media screen and (min-width: 320px){
       margin-bottom: 40px;
   }

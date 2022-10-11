@@ -13,11 +13,9 @@ const RegisterPage = lazy(() => import('../Pages/RegisterPage/RegisterPage'));
 const DailyPage = lazy(() => import('../Pages/DailyPage/DailyPage'));
 const CalculatorPage = lazy(() => import('../Pages/CalculatorPage'));
 
-// CalculatorPage;
-// =======
-// import DiaryAddProductForm from './Forms/DiaryAddProductForm/DiaryAddProductForm';
 // import RightSideBar from './RightSideBar/RightSideBar';
-// =======
+
+// import BurgerMenu from '../components/Modal/BurgerMenu/BurgerMenu'
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -27,9 +25,15 @@ export const App = () => {
   }, [dispatch]);
   return (
     <>
+      {/* <BurgerMenu /> */}
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<HomePage />} />
+          <Route
+            index
+            element={
+              <RestrictedRoute redirectTo="/diary" component={<HomePage />} />
+            }
+          />
           <Route
             path="/register"
             element={
@@ -45,7 +49,6 @@ export const App = () => {
               <RestrictedRoute redirectTo="/diary" component={<LoginPage />} />
             }
           />
-
           <Route
             path="/diary"
             element={
@@ -53,7 +56,6 @@ export const App = () => {
             }
           />
           <Route path="/diary/:calendar" element={<DiaryDateСalendar />} />
-          {/* Додав для тесту замість dailyPage */}
           <Route
             path="/calculator"
             element={

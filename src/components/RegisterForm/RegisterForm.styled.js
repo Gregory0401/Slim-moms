@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-
+import { breakpoints } from 'Utils/size';
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
@@ -43,10 +43,15 @@ export const Input = styled.input`
 
 export const Wrapper = styled.div`
   display: flex;
-  gap: 32px;
+  flex-direction: column;
+  gap: 20px;
   margin-top: 20px;
-
   align-items: center;
+  @media ${breakpoints.minTablet}{
+    flex-direction: row;
+    gap: 32px;
+  }
+  
 `;
 
 export const BtnR = styled.button`
