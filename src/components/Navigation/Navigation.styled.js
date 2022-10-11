@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { breakpoints } from '../../Utils/size';
+
 export const StyledNavLink = styled(NavLink)`
   display: flex;
   align-items: center;
@@ -46,5 +47,6 @@ export const Wrapper = styled.div`
     align-items: baseline;
     justify-content: center;
     gap: 20px;
+    
   
 `;

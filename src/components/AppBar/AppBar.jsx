@@ -7,15 +7,18 @@ import {
   selectIsLoggedIn,
   selectAccessToken,
 } from '../../Redux/Auth/authSelectors';
-import { Header } from './AppBar.styled';
+import { Header, Wrapper } from './AppBar.styled';
 
 export const AppBar = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const token = useSelector(selectAccessToken);
   return (
     <Header>
-      <Navigation />
-      {isLoggedIn && token ? <UserAuthMenu /> : <AuthNavigation />}
+      <Wrapper>
+        <Navigation />
+        {!isLoggedIn && !token && <AuthNavigation />}
+      </Wrapper>
+      {isLoggedIn && token && <UserAuthMenu />}
     </Header>
   );
 };
