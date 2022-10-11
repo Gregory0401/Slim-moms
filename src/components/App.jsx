@@ -11,6 +11,9 @@ const HomePage = lazy(() => import('../Pages/HomePage/HomePage'));
 const LoginPage = lazy(() => import('../Pages/LoginPage/LoginPage'));
 const RegisterPage = lazy(() => import('../Pages/RegisterPage/RegisterPage'));
 const DailyPage = lazy(() => import('../Pages/DailyPage/DailyPage'));
+const CalculatorPage = lazy(() => import('../Pages/CalculatorPage'));
+
+// CalculatorPage;
 // =======
 // import DiaryAddProductForm from './Forms/DiaryAddProductForm/DiaryAddProductForm';
 // import RightSideBar from './RightSideBar/RightSideBar';
@@ -56,7 +59,7 @@ export const App = () => {
             element={
               <PrivateRoute
                 redirectTo="/login"
-                component={<div>calculator page</div>}
+                component={<CalculatorPage />}
               />
             }
           />
