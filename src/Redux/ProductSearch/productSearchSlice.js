@@ -51,7 +51,7 @@ const productSlice = createSlice({
     },
     [deleteEatenProduct.fulfilled]: (state, { payload }) => {
       state.eatenProduct = state.eatenProduct.filter(
-        item => item.id !== payload
+        item => item.id !== payload.eatenProductId
       );
       state.isLoading = false;
     },

@@ -9,19 +9,15 @@ const ProductsList = () => {
   const eatenProduct = useSelector(getEatenProduct);
   const dayId = useSelector(getDayId);
   const dispatch = useDispatch();
-
-  //   =====
-
+  
   const deleteProduct = id => {
     const deleteData = {
       dayId,
       eatenProductId: id,
     };
-    console.log(deleteData);
-
     dispatch(deleteEatenProduct(deleteData));
   };
-  // =====
+
   return (
     <>
       <ul>
