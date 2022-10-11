@@ -12,7 +12,10 @@ import {
   RadioInput,
   Button,
 } from './DailyCaloriesForm.styled';
-import { dailyRate, dailyRateWithUserId } from 'Redux/DailyRate/DailyRateOperations';
+import {
+  dailyRate,
+  dailyRateWithUserId,
+} from 'Redux/DailyRate/DailyRateOperations';
 import ModalProducts from '../../Modal/ModalProducts/ModalProducts';
 import {
   selectError,
@@ -59,7 +62,15 @@ const DailyCaloriesForm = () => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    dispatch(dailyRate({ height: Number(height), weight: Number(weight), age: Number(age), desiredWeight: Number(desiredWeight), bloodType: Number(bloodType) }));
+    dispatch(
+      dailyRate({
+        height: Number(height),
+        weight: Number(weight),
+        age: Number(age),
+        desiredWeight: Number(desiredWeight),
+        bloodType: Number(bloodType),
+      })
+    );
     setHeight('');
     setWeight('');
     setAge('');

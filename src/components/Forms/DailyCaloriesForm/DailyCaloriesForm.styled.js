@@ -111,10 +111,20 @@ export const RadioLabel = styled.label`
 `;
 
 export const RadioInput = styled.input`
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--secondary-text-color);
+  transition: 0.3s all linear;
+
   color: var(--secondary-text-color);
 
   &:checked {
-    border: 6px solid var(--orange-color);
-    color: var(--orange-color);
+    border: 10px solid var(--orange-color);
+  }
+  :hover {
+    cursor: pointer;
   }
 `;
