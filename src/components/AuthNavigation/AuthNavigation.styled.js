@@ -1,10 +1,13 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-
+import { breakpoints } from 'Utils/size';
 export const Wrapper = styled.nav`
   display: flex;
-  border-left: 2px solid #e0e0e0;
-  margin-left: 20px;
+  @media ${breakpoints.desktop} {
+    border-left: 2px solid var(--border-color);
+  }
+  
+  
 `;
 
 export const StyledNavLink = styled(NavLink)`
@@ -18,8 +21,8 @@ export const StyledNavLink = styled(NavLink)`
   letter-spacing: 0.04em;
   text-transform: uppercase;
 
-  color: #9b9faa;
+  color: var(--secondary-text-color);
   &.active {
-    color: #212121;
+    color: var(--primary-text-color);
   }
 `;

@@ -3,16 +3,19 @@ import { Suspense } from 'react';
 import { AppBar } from 'components/AppBar/AppBar';
 import { Main } from './Main/Main';
 import { Background } from '../Background/Background';
+import Loader from 'components/Loader';
 
 const Layout = () => {
   return (
     <Background>
       <AppBar />
-      <Main>
-        <Suspense fallback={<div>lLoading...</div>}>
-          <Outlet />
-        </Suspense>
-      </Main>
+      <main>
+        <Main>
+          <Suspense fallback={<Loader />}>
+            <Outlet />
+          </Suspense>
+        </Main>
+      </main>
     </Background>
   );
 };

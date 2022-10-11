@@ -116,7 +116,9 @@ const CalendarApp = () => {
                         !isToday(day) &&
                         !isSameMonth(day, firstDayCurrentMonth) &&
                         'text-gray-400',
-                      isEqual(day, selectedDay) && isToday(day) && 'bg-[#FC842D]',
+                      isEqual(day, selectedDay) &&
+                        isToday(day) &&
+                        'bg-[#FC842D]',
                       isEqual(day, selectedDay) &&
                         !isToday(day) &&
                         'bg-gray-900',
@@ -195,7 +197,7 @@ function Product({ product }) {
         <div>
           <Menu.Button className="-m-2 flex items-center rounded-full p-1.5 text-gray-500 hover:text-gray-600">
             <span className="sr-only">Open options</span>
-            <CalendarIcon className="w-6 h-6" aria-hidden="true" />
+            <CalendarIcon className="w-6 h-6 " aria-hidden="true" />
           </Menu.Button>
         </div>
 

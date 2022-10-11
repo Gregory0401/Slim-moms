@@ -9,8 +9,7 @@ const ProductsList = () => {
   const eatenProduct = useSelector(getEatenProduct);
   const dayId = useSelector(getDayId);
   const dispatch = useDispatch();
-
-  //   =====
+  
   const deleteProduct = id => {
     const deleteData = {
       dayId,
@@ -18,7 +17,7 @@ const ProductsList = () => {
     };
     dispatch(deleteEatenProduct(deleteData));
   };
-  // =====
+
   return (
     <>
       <ul>

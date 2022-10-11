@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   Form,
   Input,
@@ -10,10 +10,14 @@ import {
   RadioWrapper,
   RadioLabel,
   RadioInput,
-  // StyledButton,
+  Button,
 } from './DailyCaloriesForm.styled';
-import { dailyRate } from 'Redux/DailyRate/DailyRateOperations';
-import { ButtonMainActive } from 'components/Buttons/BattonMainActive/BattonMainActive';
+import { dailyRate, dailyRateWithUserId } from 'Redux/DailyRate/DailyRateOperations';
+import ModalProducts from '../../Modal/ModalProducts/ModalProducts';
+import {
+  selectError,
+  selectIsLoading,
+} from 'Redux/DailyRate/DailyRateSelectors';
 
 const DailyCaloriesForm = () => {
   const [height, setHeight] = useState('');
@@ -22,6 +26,8 @@ const DailyCaloriesForm = () => {
   const [desiredWeight, setDesiredWeight] = useState('');
   const [bloodType, setBloodType] = useState('');
   const dispatch = useDispatch();
+  const error = useSelector(selectError);
+  const isLoading = useSelector(selectIsLoading);
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
@@ -42,18 +48,24 @@ const DailyCaloriesForm = () => {
     }
   };
 
-  const handleRadio = ({ target: { value, checked } }) => {
-    checked === true && setBloodType(value);
+  const handleRadio = event => {
+    setBloodType(event.target.value);
+  };
+
+  const [showModal, setShowModal] = useState(false);
+  const onToggleModal = () => {
+    setShowModal(prevState => !prevState);
   };
 
   const handleSubmit = event => {
     event.preventDefault();
-    dispatch(dailyRate({ height, weight, age, desiredWeight, bloodType }));
+    dispatch(dailyRate({ height: Number(height), weight: Number(weight), age: Number(age), desiredWeight: Number(desiredWeight), bloodType: Number(bloodType) }));
     setHeight('');
     setWeight('');
     setAge('');
     setDesiredWeight('');
     setBloodType('');
+    setShowModal(true);
   };
 
   return (
@@ -140,9 +152,14 @@ const DailyCaloriesForm = () => {
           </div>
         </Wrapper>
       </FormWrapper>
-      <ButtonMainActive styled={{ marginLeft: '339px' }} type="submit">
-        Похудеть
-      </ButtonMainActive>
+
+      <Button type="submit">Похудеть</Button>
+
+      {showModal && !error && !isLoading && (
+        <ModalProducts onClick={onToggleModal} onClose={onToggleModal}>
+          <dailyRate />
+        </ModalProducts>
+      )}
     </Form>
   );
 };

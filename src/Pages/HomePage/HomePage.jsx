@@ -5,19 +5,19 @@ import {
   selectIsLoading,
   selectError,
 } from 'Redux/DailyRate/DailyRateSelectors';
+import Loader from 'components/Loader';
+import Notification from 'components/Notification';
 
 const HomePage = () => {
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
-  error && alert(error);
 
   return (
     <Wrapper>
-      <Title>
-        Просчитай свою суточную <br /> норму калорий прямо сейчас
-      </Title>
+      <Title>Просчитай свою суточную норму калорий прямо сейчас</Title>
       <DailyCaloriesForm />
-      {isLoading && !error && <div>Loading...</div>}
+      {isLoading && <Loader />}
+      {error && <Notification message={error} />}
     </Wrapper>
   );
 };
