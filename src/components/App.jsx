@@ -15,6 +15,7 @@ import DiaryDateСalendar from './Forms/DiaryDateСalendar';
 // import RightSideBar from './RightSideBar/RightSideBar';
 // =======
 // import DiaryPage from 'Pages/DiaryPage';
+// import BurgerMenu from '../components/Modal/BurgerMenu/BurgerMenu'
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -24,6 +25,7 @@ export const App = () => {
   }, [dispatch]);
   return (
     <>
+    {/* <BurgerMenu /> */}
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />

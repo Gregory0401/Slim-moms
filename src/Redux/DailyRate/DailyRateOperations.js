@@ -2,7 +2,7 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 export const dailyRate = createAsyncThunk(
-  'dailyRate/calculator',
+  'dailyRate/dailyRate',
   async (params, { rejectWithValue }) => {
     try {
       const { data } = await axios.post('daily-rate', params);
@@ -14,7 +14,7 @@ export const dailyRate = createAsyncThunk(
 );
 
 export const dailyRateWithUserId = createAsyncThunk(
-  'dailyRate/calculator',
+  'dailyRate/dailyRateWithUserId',
   async ({ params, userId }, { rejectWithValue }) => {
     try {
       const { data } = await axios.post(`daily-rate/${userId}`, params);
