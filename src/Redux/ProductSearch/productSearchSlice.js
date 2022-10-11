@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
-  addProduct,
+  productSearch,
   eatenProduct,
   deleteEatenProduct,
 } from './productsSearchOperations';
@@ -16,17 +16,19 @@ const productSlice = createSlice({
     error: null,
     dayId: null,
     eatenProductId: null,
+    product: [],
   },
   extraReducers: {
-    [addProduct.pending]: state => {
+    [productSearch.pending]: state => {
       state.isLoading = true;
     },
-    [addProduct.fulfilled]: (state, { payload }) => {
+    [productSearch.fulfilled]: (state, { payload }) => {
       state.id = payload[0]._id; //змінив id на productId
       state.items.push(payload);
       state.isLoading = false;
+      state.product = payload;
     },
-    [addProduct.rejected]: (state, { payload }) => {
+    [productSearch.rejected]: (state, { payload }) => {
       state.isLoading = false;
       state.error = payload;
     },
