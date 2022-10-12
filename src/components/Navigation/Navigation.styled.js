@@ -7,7 +7,7 @@ export const StyledNavLink = styled(NavLink)`
   align-items: center;
   justify-content: center;
 
-  font-family: 'Gotham Pro';
+  font-family: 'GothamPro';
   font-style: normal;
   font-weight: 700;
   font-size: 14px;
