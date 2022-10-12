@@ -64,5 +64,8 @@ export const List = styled.ul`
 `;
 
 export const Text = styled.p`
+  display: flex;
+  justify-content: space-between;
+
   color: var(--secondary-text-color);
 `;

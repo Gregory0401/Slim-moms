@@ -7,7 +7,7 @@ export const StyledNavLink = styled(NavLink)`
   align-items: center;
   justify-content: center;
 
-  font-family: 'Gotham Pro';
+  font-family: 'GothamPro';
   font-style: normal;
   font-weight: 700;
   font-size: 14px;
@@ -40,9 +40,13 @@ export const Menu = styled.div`
   gap: 16px;}
 `;
 
-export const Wrapper = styled.div`
+export const Burger = styled.div`
+@media ${breakpoints.desktop} {
   
-   
+}
+`
+
+export const Wrapper = styled.div`
     display: flex;
     align-items: baseline;
     justify-content: center;

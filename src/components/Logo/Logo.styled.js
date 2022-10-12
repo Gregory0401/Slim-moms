@@ -10,9 +10,9 @@ export const LogoStyled = styled.div`
 `;
 
 export const Image = styled.img`
-  width: 46px;
-  height: 44px;
+  display: none;
   @media ${breakpoints.minTablet} {
+    display: inline;
     width: 44px;
     height: 44px;
   }
@@ -33,6 +33,6 @@ export const Text = styled.img`
     /* height: 16px; */
   }
   @media ${breakpoints.desktop} {
-    margin-left: -10px;
+    margin-left: 2px;
   }
 `;

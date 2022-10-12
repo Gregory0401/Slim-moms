@@ -12,7 +12,7 @@ export const Wrapper = styled.nav`
 
 export const StyledNavLink = styled(NavLink)`
   text-decoration: none;
-  font-family: 'Gotham Pro';
+  font-family: 'GothamPro';
   padding-left: 20px;
 
   font-weight: 700;

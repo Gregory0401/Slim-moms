@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { ContainerStyled } from '../Layout/Main/Main.styled';
 import { breakpoints } from '../../Utils/size';
+
 export const Wrapper = styled.div`
   z-index: 1;
   display: flex;
@@ -8,7 +9,8 @@ export const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   text-align: center;
-  margin-left: auto;
+  /* margin-left: auto; */
+  margin-right: 60px;
   ${ContainerStyled};
   @media ${breakpoints.maxMobile} {
     background-color: var(--secondary-background-color);
@@ -19,7 +21,7 @@ export const Wrapper = styled.div`
   }
 `;
 export const Name = styled.p`
-  font-family: 'Gotham Pro';
+  font-family: 'GothamPro';
   font-style: normal;
   font-weight: 700;
   font-size: 14px;
@@ -34,7 +36,7 @@ export const Logout = styled.button`
   align-items: center;
   justify-content: center;
   text-align: center;
-  font-family: 'Gotham Pro';
+  font-family: 'GothamPro';
   border: none;
   border-left: 2px solid var(--border-color);
   background-color: transparent;
@@ -48,3 +50,6 @@ export const Logout = styled.button`
   height: 32px;
   color: var(--secondary-text-color);
 `;
+export const Burger = styled.div`
+
+`
