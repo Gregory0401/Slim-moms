@@ -1,8 +1,12 @@
 import {Button} from '..//ButtonBurger/ButtonBurger.styled'
 
 
-export const ButtonBurger = () => {
+
+export const ButtonBurger = ({onClick}) => {
+
+    
+    
     return (
-        <Button></Button>
+        <Button onClick={onClick}></Button>
     )
 }

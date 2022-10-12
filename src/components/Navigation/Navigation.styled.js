@@ -40,9 +40,13 @@ export const Menu = styled.div`
   gap: 16px;}
 `;
 
-export const Wrapper = styled.div`
+export const Burger = styled.div`
+@media ${breakpoints.desktop} {
   
-   
+}
+`
+
+export const Wrapper = styled.div`
     display: flex;
     align-items: baseline;
     justify-content: center;

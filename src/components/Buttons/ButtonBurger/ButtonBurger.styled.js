@@ -7,4 +7,7 @@ height: 12px;
 background-image: url(${bgimg});
 cursor: pointer;
 border: none;
+@media screen and (min-width: 1280px) {
+    display: none;
+}
 `

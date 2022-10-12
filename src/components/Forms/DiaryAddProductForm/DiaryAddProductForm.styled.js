@@ -1,10 +1,12 @@
 import styled from 'styled-components';
 
 export const StyledForm = styled.form`
+
   display: flex;
   justify-content: flex-start;
   align-items: center;
   width: 100%;
+
 `;
 
 export const StyledLabel = styled.label`

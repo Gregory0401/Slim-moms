@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { ContainerStyled } from '../Layout/Main/Main.styled';
 import { breakpoints } from '../../Utils/size';
+
 export const Wrapper = styled.div`
   z-index: 1;
   display: flex;
@@ -8,7 +9,8 @@ export const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   text-align: center;
-  margin-left: auto;
+  /* margin-left: auto; */
+  margin-right: 60px;
   ${ContainerStyled};
   @media ${breakpoints.maxMobile} {
     background-color: var(--secondary-background-color);
@@ -48,3 +50,6 @@ export const Logout = styled.button`
   height: 32px;
   color: var(--secondary-text-color);
 `;
+export const Burger = styled.div`
+
+`

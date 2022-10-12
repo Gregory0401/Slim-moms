@@ -2,10 +2,25 @@ import styled from 'styled-components';
 import { ContainerStyled } from '../Layout/Main/Main.styled';
 import { breakpoints } from '../../Utils/size';
 
+export const Menu = styled.div`
+position: absolute;
+width: 40vw;
+height: 30vh;
+transition: 1000ms;
+@media screen and (min-width: 320px)
+{top: 114px;
+left: 0px;}
+@media screen and (min-width: 768px){
+top: 80px;
+left: 0px;
+}
+
+
+
+
+`
 
 export const Header = styled.header`
-  
-  
   display: flex;
   justify-content: space-between;
   align-items: center;
