@@ -30,7 +30,15 @@ export const Wrrapen = styled.div`
   position: relative;
 `;
 
-export const LabelSearch = styled.label``;
+export const LabelSearch = styled.label`
+  display: block;
+  width: 240px;
+  margin-right: 50px;
+
+  &::placeholder {
+    font-size: 14px;
+  }
+`;
 
 export const WrrapenSearch = styled.div`
   display: flex;

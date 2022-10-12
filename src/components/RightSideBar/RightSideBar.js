@@ -1,25 +1,29 @@
 import { useSelector } from 'react-redux';
 import { getDaySummary } from '../../Redux/ProductSearch/productsSearchSelector';
+import { format, startOfToday } from 'date-fns';
 import { RightBar, ProdThumb, Title, Text } from './RightSideBar.styled';
 
 const RightSideBar = () => {
   const daySummary = useSelector(getDaySummary);
-  // const { date, kcalConsumed, dailyRate, percentsOfDailyRate } = daySummary;
+  let today = startOfToday();
+  let date = format(today, 'dd MM yyyy');
+  const {
+    kcalConsumed = 0,
+    dailyRate = 0,
+    percentsOfDailyRate = 0,
+  } = daySummary || {};
+
   return (
     <RightBar>
       {daySummary && (
         <ProdThumb>
-          <Title>Сводка на {daySummary.date}</Title>
+          <Title>Сводка на {date}</Title>
           <div>
-            {Number(daySummary.dailyRate) > Number(daySummary.kcalConsumed) ? (
+            {Number(dailyRate) > Number(kcalConsumed) ? (
               <Text>
                 <span>Осталось</span>{' '}
                 <span>
-                  {Math.round(
-                    Number(daySummary.dailyRate) -
-                      Number(daySummary.kcalConsumed)
-                  )}{' '}
-                  ккал
+                  {Math.round(Number(dailyRate) - Number(kcalConsumed))} ккал
                 </span>
               </Text>
             ) : (
@@ -29,15 +33,15 @@ const RightSideBar = () => {
             )}
             <Text>
               <span>Употреблено </span>{' '}
-              <span>{Math.round(daySummary.kcalConsumed)} ккал</span>
+              <span>{Math.round(kcalConsumed)} ккал</span>
             </Text>
             <Text>
               <span>Дневная норма</span>{' '}
-              <span>{Math.round(daySummary.dailyRate)} ккал</span>
+              <span>{Math.round(dailyRate)} ккал</span>
             </Text>
             <Text>
               <span>Процент от нормы</span>{' '}
-              <span>{Math.round(daySummary.percentsOfDailyRate)} %</span>
+              <span>{Math.round(percentsOfDailyRate)} %</span>
             </Text>
           </div>
 

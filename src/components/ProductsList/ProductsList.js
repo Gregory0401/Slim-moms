@@ -8,8 +8,9 @@ import {
   dayInfo,
 } from '../../Redux/ProductSearch/productsSearchOperations';
 import { ButtonClose } from '../Buttons/ButtonClose/ButtonClose';
+import { Text, TextDiscription, List, Item } from './ProductList.styled.js';
 
-const ProductsList = () => {
+const ProductsList = ({ date }) => {
   const eatenProd = useSelector(getEatenProduct);
   const dayId = useSelector(getDayId);
   const dispatch = useDispatch();
@@ -21,7 +22,7 @@ const ProductsList = () => {
     };
 
     const dateInfo = {
-      date: '2022-10-09',
+      date,
     };
 
     dispatch(deleteEatenProduct(deleteData));
@@ -30,23 +31,29 @@ const ProductsList = () => {
 
   return (
     <>
-      <ul>
+      <List>
         {eatenProd &&
           eatenProd.map(({ id, title, weight, kcal }) => {
             return (
-              <li
+              <Item
                 onClick={() => deleteProduct(id)}
                 key={id}
                 style={{ display: 'flex' }}
               >
-                <p style={{ marginRight: 35 }}>{title}</p>
-                <p style={{ marginRight: 35 }}>{Math.round(weight)}</p>
-                <p style={{ marginRight: 35 }}>{Math.round(kcal)}</p>
+                <Text>{title}</Text>
+                <TextDiscription>
+                  {Math.round(weight)}
+                  {' г'}
+                </TextDiscription>
+                <TextDiscription>
+                  {Math.round(kcal)}
+                  {' ккал'}
+                </TextDiscription>
                 <ButtonClose />
-              </li>
+              </Item>
             );
           })}
-      </ul>
+      </List>
     </>
   );
 };
