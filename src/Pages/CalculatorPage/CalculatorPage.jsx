@@ -7,18 +7,25 @@ import {
 } from 'Redux/DailyRate/DailyRateSelectors';
 import Loader from 'components/Loader';
 import Notification from 'components/Notification';
+import RightSideBar from '../../components/RightSideBar/RightSideBar';
+import { SidebarWrap, Thumb } from '../DailyPage/DailyPage.styled';
 
 const CalculatorPage = () => {
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
 
   return (
-    <Wrapper>
-      <Title>Узнай свою суточную норму калорий</Title>
-      <DailyCaloriesForm />
-      {isLoading && <Loader />}
-      {error && <Notification message={error} />}
-    </Wrapper>
+    <Thumb>
+      <Wrapper>
+        <Title>Узнай свою суточную норму калорий</Title>
+        <DailyCaloriesForm />
+        {isLoading && <Loader />}
+        {error && <Notification message={error} />}
+      </Wrapper>
+      <SidebarWrap>
+        <RightSideBar />
+      </SidebarWrap>
+    </Thumb>
   );
 };
 
