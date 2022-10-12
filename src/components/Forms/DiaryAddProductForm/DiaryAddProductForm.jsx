@@ -4,29 +4,18 @@ import {
   addProduct,
   eatenProduct,
 } from '../../../Redux/ProductSearch/productsSearchOperations';
-import {
-  // getProductId,
-  // getDaySummary,
-  // getEatenProduct,
-  // getProductsList,
-  getSearchItems,
-} from '../../../Redux/ProductSearch/productsSearchSelector';
+import { getSearchItems } from '../../../Redux/ProductSearch/productsSearchSelector';
 // vova1@gmail.com
 
 import { ButtonSubmit } from '../../Buttons/ButtonSubmit/ButtonSubmit';
 import {
-  // FormDiary,
-  // WrrapenSearch,
   LabelSearch,
   Wrrapen,
+  StyledForm,
 } from './DiaryAddProductForm.styled.js';
+import DebounceInput from 'react-debounce-input';
 
-const DiaryAddProductForm = () => {
-  //
-  // const daySummary = useSelector(getDaySummary);
-  // const eatenProd = useSelector(getEatenProduct);
-  // const eatenProd = useSelector(getEatenProduct);
-  //
+const DiaryAddProductForm = ({ date }) => {
   const dispatch = useDispatch();
 
   const items = useSelector(getSearchItems);
@@ -72,11 +61,11 @@ const DiaryAddProductForm = () => {
     };
 
     const eatenDate = {
-      date: '2022-10-09',
+      date,
       productId,
       weight,
     };
-    // console.log(eatenProd);
+
     dispatch(eatenProduct(eatenDate));
     dispatch(addProduct(newProduct));
     setTitle('');
@@ -85,26 +74,34 @@ const DiaryAddProductForm = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <StyledForm onSubmit={handleSubmit}>
         <Wrrapen>
           <LabelSearch>
-            <input
+            <DebounceInput
               type="text"
               name="title"
               value={title}
               placeholder="Введите название продукта"
-              onInput={handleChange}
+              debounceTimeout={300}
+              onChange={handleChange}
+              style={{
+                width: 240,
+                outline: 'none',
+                paddingBottom: 20,
+                borderBottom: '1px solid #E0E0E0',
+              }}
             />
           </LabelSearch>
           <div>
-            {items.length > 1 &&
-              items.map(item => {
-                return (
-                  <div key={item._id}>
-                    <p onClick={handleClick}>{item.title?.ru}</p>
-                  </div>
-                );
-              })}
+            {items.length > 1 && title.length > 2
+              ? items.map(item => {
+                  return (
+                    <div key={item._id}>
+                      <p onClick={handleClick}>{item.title?.ru}</p>
+                    </div>
+                  );
+                })
+              : null}
           </div>
         </Wrrapen>
         <label>
@@ -114,52 +111,18 @@ const DiaryAddProductForm = () => {
             value={weight}
             placeholder="Граммы"
             onChange={handleChange}
+            style={{
+              width: 105,
+              outline: 'none',
+              paddingBottom: 20,
+              borderBottom: '1px solid #E0E0E0',
+              marginRight: 60,
+              textAlign: 'right',
+            }}
           />
         </label>
         <ButtonSubmit />
-      </form>
-      {/* <ul style={{ marginTop: 35 }}>
-        {eatenProd?.map(({ id, title, weight, kcal }) => {
-          return (
-            <li key={id} style={{ display: 'flex' }}>
-              <p style={{ marginRight: 35 }}>{title}</p>
-              <p style={{ marginRight: 35 }}>{Math.round(weight)}</p>
-              <p style={{ marginRight: 35 }}>{Math.round(kcal)}</p>
-              <button>Удалить</button>
-            </li>
-          );
-        })}
-      </ul> */}
-
-      {/* {daySummary && (
-        <div>
-          <h2>Сводка на {daySummary.date}</h2>
-          <div>
-            {Number(daySummary.dailyRate) > Number(daySummary.kcalConsumed) ? (
-              <p>
-                Осталось
-                {Math.round(
-                  Number(daySummary.dailyRate) - Number(daySummary.kcalConsumed)
-                )}
-                ккал
-              </p>
-            ) : (
-              <p>Осталось 0 ккал</p>
-            )}
-            <p>Употреблено {Math.round(daySummary.kcalConsumed)} ккал</p>
-            <p>Дневная норма {Math.round(daySummary.dailyRate)} ккал</p>
-            <p>
-              Процент от нормы {Math.round(daySummary.percentsOfDailyRate)} %
-            </p>
-          </div>
-          <br />
-          <br />
-          <div>
-            <h2>Нерекомендуемые продукты</h2>
-            <p>Здесь будет отображаться Ваш рацион</p>
-          </div>
-        </div>
-      )} */}
+      </StyledForm>
     </>
   );
 };

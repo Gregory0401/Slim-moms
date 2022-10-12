@@ -1,12 +1,17 @@
 import { useSelector } from 'react-redux';
 import { getDaySummary } from '../../Redux/ProductSearch/productsSearchSelector';
 import { RightBar } from './RightSideBar.styled';
+import { format, startOfToday } from 'date-fns';
 
 const RightSideBar = () => {
   const daySummary = useSelector(getDaySummary);
-  console.log(daySummary);
-
-  const { date, kcalConsumed, dailyRate, percentsOfDailyRate } = daySummary;
+  let today = startOfToday();
+  let date = format(today, 'dd MM yyyy');
+  const {
+    kcalConsumed = 0,
+    dailyRate = 0,
+    percentsOfDailyRate = 0,
+  } = daySummary || {};
   return (
     <RightBar>
       {daySummary && (

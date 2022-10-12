@@ -23,3 +23,7 @@ export const SidebarWrap = styled.div`
     background-color: var(--secondary-background-color);
   }
 `;
+
+export const Wrapper = styled.div`
+  margin-top: 60px;
+`;
