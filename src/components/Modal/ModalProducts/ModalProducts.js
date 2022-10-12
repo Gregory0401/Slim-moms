@@ -8,6 +8,9 @@ import {useSelector} from 'react-redux'
 import {selectDailyRate, selectNotAllowedProducts} from '../../../Redux/DailyRate/DailyRateSelectors'
 
 const ModalProducts = ({onClose}) => {
+
+
+
   useEffect(() => {
     window.addEventListener("keydown", handleEscape);
     const body = document.querySelector("body");
@@ -35,13 +38,18 @@ const ModalProducts = ({onClose}) => {
 
   const handleButtonClick = (e) => {
     if (e.target.tagName === "BUTTON") {
-      console.log(e.target.tagName);
       onClose();
     }
   };
 
 const raite = useSelector(selectDailyRate);
-const productNo = useSelector(selectNotAllowedProducts)
+const productsNo = useSelector(selectNotAllowedProducts)
+
+const randomProducts = () => {
+  const elemProductsNum = 5
+  const newProductsArr = new Array(elemProductsNum ).fill(0).map(() => productsNo[Math.floor(Math.random() * productsNo.length)])
+  return newProductsArr
+}
 
   return (
     <>
@@ -54,7 +62,7 @@ const productNo = useSelector(selectNotAllowedProducts)
 <Title>Продукты, которые вам <br />
 не рекомендуется употреблять</Title>
 <Products>
-{productNo.map((product, id) => (
+{randomProducts().map((product, id) => (
             <li key={id}>
               {product}
             </li>

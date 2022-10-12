@@ -18,3 +18,7 @@ export const Header = styled.header`
     max-width: 100%;
   }
 `;
+export const Burger = styled.div`
+margin-top: 80px;
+margin-left: 0;
+`

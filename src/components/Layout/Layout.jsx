@@ -5,7 +5,13 @@ import { Main } from './Main/Main';
 import { Background } from '../Background/Background';
 import Loader from 'components/Loader';
 
+
 const Layout = () => {
+
+  
+  
+
+  
   return (
     <Background>
       <AppBar />

@@ -9,13 +9,18 @@ import {
 } from '../../Redux/Auth/authSelectors';
 import { Header } from './AppBar.styled';
 
+
 export const AppBar = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const token = useSelector(selectAccessToken);
   return (
     <Header>
       <Navigation />
-      {isLoggedIn && token ? <UserAuthMenu /> : <AuthNavigation />}
+      {isLoggedIn && token ? <UserAuthMenu />: <AuthNavigation />}
     </Header>
+    
+    
+    
+     
   );
 };

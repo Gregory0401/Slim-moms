@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { breakpoints } from '../../Utils/size';
+
 export const StyledNavLink = styled(NavLink)`
   display: flex;
   align-items: center;
@@ -39,9 +40,13 @@ export const Menu = styled.div`
   gap: 16px;}
 `;
 
-export const Wrapper = styled.div`
+export const Burger = styled.div`
+@media ${breakpoints.desktop} {
   
-   
+}
+`
+
+export const Wrapper = styled.div`
     display: flex;
     align-items: baseline;
     justify-content: center;
