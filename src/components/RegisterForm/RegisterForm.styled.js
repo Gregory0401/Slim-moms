@@ -1,7 +1,8 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { breakpoints } from 'Utils/size';
-export const Form = styled.form`
+import { Field } from 'formik';
+export const StyledForm = styled.div`
   display: flex;
   flex-direction: column;
   gap: 40px;
@@ -31,7 +32,7 @@ export const Label = styled.label`
   color: var(--secondary-text-color);
 `;
 
-export const Input = styled.input`
+export const Input = styled(Field)`
   display: block;
   width: 280px;
   height: 20px;
@@ -51,7 +52,7 @@ export const Input = styled.input`
   appearance: none;
 `;
 
-export const Wrapper = styled.div`
+export const BtnWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -104,4 +105,16 @@ export const StyledNavLink = styled(NavLink)`
   letter-spacing: 0.04em;
 
   color: #ffffff;
+`;
+export const ErrorText = styled.p`
+  position: absolute;
+  color: var(--orange-color);
+  font-size: 12px;
+  margin-top: 40px;
+  
+`;
+export const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  
 `;
