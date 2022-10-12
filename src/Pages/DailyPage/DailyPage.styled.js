@@ -8,14 +8,11 @@ export const Thumb = styled.div`
   justify-content: space-between;
 
   @media ${breakpoints.mobile} {
-    padding: 0 20px;
   }
 
   @media ${breakpoints.minTablet} {
-    padding: 0 32px;
   }
   @media ${breakpoints.desktop} {
-    padding: 0 16px;
     flex-direction: row;
   }
 `;
