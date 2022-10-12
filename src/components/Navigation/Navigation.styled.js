@@ -51,5 +51,6 @@ export const Wrapper = styled.div`
     align-items: baseline;
     justify-content: center;
     gap: 20px;
+    
   
 `;

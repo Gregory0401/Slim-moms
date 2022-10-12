@@ -6,11 +6,9 @@ export const Backdrop = styled.div`
   @media screen and (max-width: 1279px) {
     @media ${breakpoints.mobile} {
       height: 100vh;
+      width: 100vw;
       margin: 0 auto;
     }
-
-    /* width: 100%;
-    height: 100hv; */
     background-color: rgba(38, 64, 97, 1);
     z-index: 100;
   }
@@ -23,8 +21,8 @@ export const Main = styled.div`
   }
   @media screen and (min-width: 768px) {
     padding-top: 100px;
-    padding-left: 216px;
-    padding-right: 216px;
+    padding-left: 40px;
+    padding-right: 40px;
   }
   @media screen and (min-width: 1280px) {
     display: none;

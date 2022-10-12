@@ -23,7 +23,7 @@ export const Label = styled.label`
 
 export const Input = styled.input`
   display: block;
-  width: 240px;
+  width: 280px;
   height: 20px;
 
   font-family: inherit;

@@ -2,10 +2,16 @@ import React from "react";
 import { Backdrop, Main, StyledNavLink } from "./BurgerMenu.styled";
 
 
-const BurgerMenu = () => {
+const BurgerMenu = ({onToggleModal}) => {
+
+    const handleBackdropClick = (e) => {
+        if (e.target === e.currentTarget) {
+            onToggleModal();
+        }
+      };
 
     return (
-<Backdrop>
+<Backdrop onClick={handleBackdropClick}>
     <Main>
         <ul>
         <StyledNavLink to="/diary">Дневник</StyledNavLink>

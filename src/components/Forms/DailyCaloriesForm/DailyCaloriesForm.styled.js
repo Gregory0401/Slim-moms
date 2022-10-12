@@ -1,7 +1,9 @@
 import styled from 'styled-components';
+import { Field } from 'formik';
+
 import { breakpoints } from 'Utils/size';
 
-export const Form = styled.form`
+export const StyledForm = styled.div`
   font-family: Verdana;
   line-height: 1.21;
   letter-spacing: 0.04em;
@@ -33,14 +35,21 @@ export const FormWrapper = styled.div`
     margin-bottom: 60px;
   }
 `;
+export const ErrorText = styled.p`
+  position: absolute;
+  color: var(--orange-color);
+  font-size: 12px;
+`;
 
 export const Label = styled.label`
+  /* width: 240px; */
+  display: block;
   font-weight: 700;
   font-size: 14px;
   color: var(--secondary-text-color);
 `;
 
-export const Input = styled.input`
+export const Input = styled(Field)`
   display: block;
   width: 240px;
   height: 20px;
@@ -52,10 +61,6 @@ export const Input = styled.input`
   background-color: transparent;
   background-clip: padding-box;
   border-bottom: 1px solid var(--border-color);
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
 `;
 
 export const Button = styled.button`
@@ -102,19 +107,26 @@ export const RadioWrapper = styled.div`
 export const RadioLabel = styled.label`
   color: var(--secondary-text-color);
   display: flex;
-  flex-direction: row-reverse;
   gap: 4px;
 
-  &:checked {
-    color: var(--orange-color);
-  }
+  accent-color: var(--orange-color);
 `;
 
-export const RadioInput = styled.input`
+export const RadioInput = styled(Field)`
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--secondary-text-color);
+  transition: 0.3s all linear;
+
   color: var(--secondary-text-color);
 
   &:checked {
-    border: 6px solid var(--orange-color);
-    color: var(--orange-color);
+    border: 10px solid var(--orange-color);
+  }
+  :hover {
+    cursor: pointer;
   }
 `;

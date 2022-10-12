@@ -8,6 +8,7 @@ const DailyPage = () => {
       <DiaryDateCalendarDate />
       <DiaryAddProductForm />
       <ProductsList />
+     
     </>
   );
 };

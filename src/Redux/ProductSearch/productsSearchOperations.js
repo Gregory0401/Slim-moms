@@ -13,13 +13,6 @@ export const addProduct = createAsyncThunk(
         `/product/?search=${credentials.title}`,
         credentials
       );
-      // console.log('id продукту, який шукаємо', data[0]._id);
-      // console.log(data);
-      // console.log({
-      //   id: data[0]._id,
-      //   title: data[0].title.ru,
-      //   weight: data[0].weight,
-      // });
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -32,7 +25,6 @@ export const eatenProduct = createAsyncThunk(
   async (credentials, { rejectWithValue }) => {
     try {
       const { data } = await axios.post('/day', credentials);
-      // console.log(data);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -40,30 +32,33 @@ export const eatenProduct = createAsyncThunk(
   }
 );
 
-// export const deleteEatenProduct = createAsyncThunk(
-//   'day/deleteEatenProduct',
-//   async (deleteProduct, { rejectWithValue }) => {
-//     // console.log(2222, deleteData.dayId);
-//     // console.log(deleteData);
-//     try {
-//       const data = await axios.delete('/day', { deleteProduct });
-//       return data;
-//     } catch (error) {
-//       return rejectWithValue(error.message);
-//     }
-//   }
-// );
-
 export const deleteEatenProduct = createAsyncThunk(
   'day/deleteEatenProduct',
-  async (data, thunkAPI) => {
+  async (data, { rejectWithValue }) => {
     try {
-      await axios.delete(`/day`, {
+      await axios.delete('/day', {
         data,
       });
       return data;
-    } catch (err) {
-      return thunkAPI.rejectWithValue('error');
+    } catch (error) {
+      return rejectWithValue('error');
+    }
+  }
+);
+
+export const productSearch = createAsyncThunk(
+  'product/get',
+  async (search, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.get('/product', {
+        params: {
+          search,
+        },
+      });
+
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
     }
   }
 );
