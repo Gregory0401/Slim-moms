@@ -7,6 +7,7 @@ import {
   deleteEatenProduct,
   dayInfo,
 } from '../../Redux/ProductSearch/productsSearchOperations';
+import { ButtonClose } from '../Buttons/ButtonClose/ButtonClose';
 
 const ProductsList = () => {
   const eatenProd = useSelector(getEatenProduct);
@@ -33,13 +34,15 @@ const ProductsList = () => {
         {eatenProd &&
           eatenProd.map(({ id, title, weight, kcal }) => {
             return (
-              <li key={id} style={{ display: 'flex' }}>
+              <li
+                onClick={() => deleteProduct(id)}
+                key={id}
+                style={{ display: 'flex' }}
+              >
                 <p style={{ marginRight: 35 }}>{title}</p>
                 <p style={{ marginRight: 35 }}>{Math.round(weight)}</p>
                 <p style={{ marginRight: 35 }}>{Math.round(kcal)}</p>
-                <button type="button" onClick={() => deleteProduct(id)}>
-                  Удалить
-                </button>
+                <ButtonClose />
               </li>
             );
           })}
