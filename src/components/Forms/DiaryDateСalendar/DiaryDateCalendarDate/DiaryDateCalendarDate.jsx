@@ -7,10 +7,13 @@ import { DateTitle } from './DiaryDateCalendarDate.styled';
 const DiaryDateCalendarDate = () => {
   let today = startOfToday();
 
+  let todayFormated = format(today, 'dd MM yyyy');
+  console.log(todayFormated);
+
   return (
     <Wrapper>
       <StyledLink to="calendar">
-        <DateTitle>{format(today, 'dd MM yyyy')}</DateTitle>
+        <DateTitle>{format(today, 'dd-MM-yyyy')}</DateTitle>
         <CalendarIcon className=" w-6 h-6 " aria-hidden="true" />
       </StyledLink>
     </Wrapper>
