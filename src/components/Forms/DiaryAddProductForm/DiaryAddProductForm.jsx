@@ -6,7 +6,7 @@ import {
 } from '../../../Redux/ProductSearch/productsSearchOperations';
 import {
   // getProductId,
-  getDaySummary,
+  // getDaySummary,
   // getEatenProduct,
   // getProductsList,
   getSearchItems,
@@ -23,7 +23,7 @@ import {
 
 const DiaryAddProductForm = () => {
   //
-  const daySummary = useSelector(getDaySummary);
+  // const daySummary = useSelector(getDaySummary);
   // const eatenProd = useSelector(getEatenProduct);
   // const eatenProd = useSelector(getEatenProduct);
   //
@@ -131,7 +131,7 @@ const DiaryAddProductForm = () => {
         })}
       </ul> */}
 
-      {daySummary && (
+      {/* {daySummary && (
         <div>
           <h2>Сводка на {daySummary.date}</h2>
           <div>
@@ -159,7 +159,7 @@ const DiaryAddProductForm = () => {
             <p>Здесь будет отображаться Ваш рацион</p>
           </div>
         </div>
-      )}
+      )} */}
     </>
   );
 };
