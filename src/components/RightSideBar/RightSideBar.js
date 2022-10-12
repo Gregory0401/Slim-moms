@@ -1,27 +1,53 @@
 import { useSelector } from 'react-redux';
 import { getDaySummary } from '../../Redux/ProductSearch/productsSearchSelector';
+import { RightBar, ProdThumb, Title, Text } from './RightSideBar.styled';
 
 const RightSideBar = () => {
   const daySummary = useSelector(getDaySummary);
-
-  const { date, kcalLeft, kcalConsumed, dailyRate, percentsOfDailyRate } =
-    daySummary;
+  // const { date, kcalConsumed, dailyRate, percentsOfDailyRate } = daySummary;
   return (
-    <div>
-      <h2>Сводка на {date}</h2>
-      <div>
-        <p>Осталось {Math.round(kcalLeft)} ккал</p>
-        <p>Употреблено {Math.round(kcalConsumed)} ккал</p>
-        <p>Дневная норма {Math.round(dailyRate)} ккал</p>
-        <p>Процент от нормы {Math.round(percentsOfDailyRate)} %</p>
-      </div>
-      <br />
-      <br />
-      <div>
-        <h2>Нерекомендуемые продукты</h2>
-        <p>Здесь будет отображаться Ваш рацион</p>
-      </div>
-    </div>
+    <RightBar>
+      {daySummary && (
+        <ProdThumb>
+          <Title>Сводка на {daySummary.date}</Title>
+          <div>
+            {Number(daySummary.dailyRate) > Number(daySummary.kcalConsumed) ? (
+              <Text>
+                <span>Осталось</span>{' '}
+                <span>
+                  {Math.round(
+                    Number(daySummary.dailyRate) -
+                      Number(daySummary.kcalConsumed)
+                  )}{' '}
+                  ккал
+                </span>
+              </Text>
+            ) : (
+              <Text>
+                <span>Осталось</span> <span>0 ккал</span>
+              </Text>
+            )}
+            <Text>
+              <span>Употреблено </span>{' '}
+              <span>{Math.round(daySummary.kcalConsumed)} ккал</span>
+            </Text>
+            <Text>
+              <span>Дневная норма</span>{' '}
+              <span>{Math.round(daySummary.dailyRate)} ккал</span>
+            </Text>
+            <Text>
+              <span>Процент от нормы</span>{' '}
+              <span>{Math.round(daySummary.percentsOfDailyRate)} %</span>
+            </Text>
+          </div>
+
+          <ProdThumb>
+            <Title>Нерекомендуемые продукты</Title>
+            <Text>Здесь будет отображаться Ваш рацион</Text>
+          </ProdThumb>
+        </ProdThumb>
+      )}
+    </RightBar>
   );
 };
 

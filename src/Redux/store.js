@@ -20,11 +20,24 @@ const authPersistConfig = {
   whitelist: ['accessToken', 'refreshToken', 'sid'],
 };
 const authPersistedReducer = persistReducer(authPersistConfig, authReducer);
+// =====
+
+const productPersistConfig = {
+  key: 'product',
+  storage,
+  whitelist: ['daySummary'],
+};
+
+const productPersistedReducer = persistReducer(
+  productPersistConfig,
+  productReducer
+);
+// =====
 
 export const store = configureStore({
   reducer: {
     auth: authPersistedReducer,
-    product: productReducer,
+    product: productPersistedReducer,
     dailyRate: dailyRateReducer,
   },
   middleware: getDefaultMiddleware =>

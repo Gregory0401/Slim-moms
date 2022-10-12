@@ -1,8 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
-  productSearch,
+  addProduct,
   eatenProduct,
   deleteEatenProduct,
+  dayInfo,
 } from './productsSearchOperations';
 
 const productSlice = createSlice({
@@ -12,6 +13,8 @@ const productSlice = createSlice({
     daySummary: null,
     items: [],
     productId: null,
+    weight: null,
+    date: null,
     isLoading: false,
     error: null,
     dayId: null,
@@ -19,16 +22,16 @@ const productSlice = createSlice({
     product: [],
   },
   extraReducers: {
-    [productSearch.pending]: state => {
+    [addProduct.pending]: state => {
       state.isLoading = true;
     },
-    [productSearch.fulfilled]: (state, { payload }) => {
+    [addProduct.fulfilled]: (state, { payload }) => {
       state.id = payload[0]._id; //змінив id на productId
-      state.items.push(payload);
+      state.items = payload;
       state.isLoading = false;
       state.product = payload;
     },
-    [productSearch.rejected]: (state, { payload }) => {
+    [addProduct.rejected]: (state, { payload }) => {
       state.isLoading = false;
       state.error = payload;
     },
@@ -37,6 +40,7 @@ const productSlice = createSlice({
       state.isLoading = true;
     },
     [eatenProduct.fulfilled]: (state, { payload }) => {
+      state.weight = payload.eatenProduct.weight;
       state.eatenProduct = payload.day.eatenProducts;
       state.daySummary = payload.daySummary; //скільки ми захавали
       state.isLoading = false;
@@ -47,10 +51,25 @@ const productSlice = createSlice({
       state.isLoading = false;
       state.error = payload;
     },
-    // =====deleteProduct=====
-    [deleteEatenProduct.pending]: state => {
+
+    // =====dayInfo=====
+    [dayInfo.pending]: state => {
       state.isLoading = true;
     },
+    [dayInfo.fulfilled]: (state, { payload }) => {
+      state.isLoading = false;
+      // state.date = payload.day.date;//???????????????????????
+      state.daySummary = payload.daySummary;
+    },
+    [dayInfo.rejected]: (state, { payload }) => {
+      state.isLoading = false;
+      state.error = payload;
+    },
+    // =====deleteProduct=====
+    [deleteEatenProduct.pending]: state => ({
+      ...state,
+      isLoading: true,
+    }),
     [deleteEatenProduct.fulfilled]: (state, { payload }) => {
       state.eatenProduct = state.eatenProduct.filter(
         item => item.id !== payload.eatenProductId
