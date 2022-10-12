@@ -72,34 +72,39 @@ const DailyCaloriesForm = () => {
     );
   };
   const validationSchema = Yup.object({
-    height: Yup.number().min(100).max(250).required('Обязательное поле'),
-    weight: Yup.number().min(20).max(500).required('Обязательное поле'),
-    age: Yup.number().min(18).max(100).required('Обязательное поле'),
-    desiredWeight: Yup.number().min(20).max(500).required('Обязательное поле'),
-    bloodType: Yup.number().required('Обязательное поле'),
+    height: Yup.number('Должно быть число')
+      .min(100, 'Минимум 100 см')
+      .max(250, 'Максимум 250 см')
+      .required('Обязательное поле'),
+    weight: Yup.number('Должно быть число')
+      .min(20, 'Минимум 20 кг')
+      .max(500, 'Максимум 500 кг')
+      .required('Обязательное поле'),
+    age: Yup.number('Должно быть число')
+      .min(18, 'Возраст должен быть больше 18')
+      .max(100, 'Возраст должен быть меньше 100')
+      .required('Обязательное поле'),
+    desiredWeight: Yup.number()
+      .min(20, 'Минимум 20 кг')
+      .max(500, 'Максимум 500 кг')
+      .required('Обязательное поле')
+      .test(
+        'checkLessWeight',
+        'Должно быть меньше текущего веса',
+        function (value) {
+          if (this?.options?.parent?.weight <= value) {
+            return false;
+          }
+          return true;
+        }
+      ),
+
+    bloodType: Yup.number('Должно быть число').required('Обязательное поле'),
   });
   const [showModal, setShowModal] = useState(false);
   const onToggleModal = () => {
     setShowModal(prevState => !prevState);
   };
-
-  // const handleSubmit = event => {
-  //   event.preventDefault();
-  //   dispatch(
-  //     dailyRate({
-  //       height: Number(height),
-  //       weight: Number(weight),
-  //       age: Number(age),
-  //       desiredWeight: Number(desiredWeight),
-  //       bloodType: Number(bloodType),
-  //     })
-  //   );
-  //   setHeight('');
-  //   setWeight('');
-  //   setAge('');
-  //   setDesiredWeight('');
-  //   setBloodType('');
-  // };
 
   const handleSubmit = (values, { resetForm }) => {
     const params = changeTypeToNumber(values);

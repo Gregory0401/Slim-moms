@@ -6,8 +6,16 @@ export const Wrapper = styled.div`
     padding-bottom: 77px;
   }
 
+  @media ${breakpoints.mobile} {
+    padding: 0 20px;
+  }
+
   @media ${breakpoints.minTablet} {
+    padding: 0 32px;
     padding-bottom: 111px;
+  }
+  @media ${breakpoints.desktop} {
+    padding: 0 16px;
   }
 `;
 

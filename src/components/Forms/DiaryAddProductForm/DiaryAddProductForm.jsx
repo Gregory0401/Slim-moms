@@ -1,64 +1,165 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { productSearch } from 'Redux/ProductSearch/productsSearchOperations';
-import { getProduct } from 'Redux/ProductSearch/productsSearchSelector';
-import { ButtonSubmit } from '../../Buttons/ButtonSubmit/ButtonSubmit';
 import {
-  StyledForm,
-  StyledLabel,
-  StyledInput,
-} from './DiaryAddProductForm.styled';
-
+  addProduct,
+  eatenProduct,
+} from '../../../Redux/ProductSearch/productsSearchOperations';
+import {
+  // getProductId,
+  // getDaySummary,
+  // getEatenProduct,
+  // getProductsList,
+  getSearchItems,
+} from '../../../Redux/ProductSearch/productsSearchSelector';
 // vova1@gmail.com
 
+import { ButtonSubmit } from '../../Buttons/ButtonSubmit/ButtonSubmit';
+import {
+  // FormDiary,
+  // WrrapenSearch,
+  LabelSearch,
+  Wrrapen,
+} from './DiaryAddProductForm.styled.js';
+
 const DiaryAddProductForm = () => {
-  const [searchProductRes, setSearchProductRes] = useState('');
-  const product = useSelector(getProduct);
+  //
+  // const daySummary = useSelector(getDaySummary);
+  // const eatenProd = useSelector(getEatenProduct);
+  // const eatenProd = useSelector(getEatenProduct);
+  //
   const dispatch = useDispatch();
 
-  const handleChange = e => {
-    setSearchProductRes(e.currentTarget.elements.title.value);
-    if (searchProductRes.trim().length > 1) {
-      dispatch(productSearch(searchProductRes));
+  const items = useSelector(getSearchItems);
+  const productId = items[0]?._id;
+
+  const [title, setTitle] = useState('');
+  const [weight, setWeight] = useState('');
+
+  useEffect(() => {
+    if (title.length > 2) {
+      dispatch(
+        addProduct({
+          title,
+        })
+      );
     }
+  }, [dispatch, title]);
+
+  function handleChange({ target: { name, value } }) {
+    switch (name) {
+      case 'title':
+        setTitle(value);
+        break;
+      case 'weight':
+        setWeight(value);
+        break;
+
+      default:
+        break;
+    }
+  }
+
+  const handleClick = ({ target: { textContent } }) => {
+    setTitle(textContent);
+  };
+
+  const handleSubmit = event => {
+    event.preventDefault();
+
+    const newProduct = {
+      title,
+      weight,
+    };
+
+    const eatenDate = {
+      date: '2022-10-09',
+      productId,
+      weight,
+    };
+    // console.log(eatenProd);
+    dispatch(eatenProduct(eatenDate));
+    dispatch(addProduct(newProduct));
+    setTitle('');
+    setWeight('');
   };
 
   return (
     <>
-      <StyledForm onChange={handleChange} autoComplete="off">
-        <div>
-          <StyledLabel htmlFor="title">Введите название продукта</StyledLabel>
-          <StyledInput
-            id="title"
-            type="text"
-            name="title"
-            autoComplete="off"
-            placeholder="выберите ваш продукт"
-          />
-        </div>
-        
-        <div>
-          <StyledLabel htmlFor="weight">Граммы</StyledLabel>
-          <StyledInput
-            id="weight"
+      <form onSubmit={handleSubmit}>
+        <Wrrapen>
+          <LabelSearch>
+            <input
+              type="text"
+              name="title"
+              value={title}
+              placeholder="Введите название продукта"
+              onInput={handleChange}
+            />
+          </LabelSearch>
+          <div>
+            {items.length > 1 &&
+              items.map(item => {
+                return (
+                  <div key={item._id}>
+                    <p onClick={handleClick}>{item.title?.ru}</p>
+                  </div>
+                );
+              })}
+          </div>
+        </Wrrapen>
+        <label>
+          <input
             type="number"
             name="weight"
-            autoComplete="off"
-            placeholder="введите вес"
+            value={weight}
+            placeholder="Граммы"
+            onChange={handleChange}
           />
-        </div>
+        </label>
         <ButtonSubmit />
-      </StyledForm>
-      {product.length > 0 && (
-        <select>
-          <option disabled>Пожалуйста выберите продукт</option>
-          {product.map(({ title, id }) => (
-            <option title={title.ru} key={id} value={id}>
-              {title.ru}
-            </option>
-          ))}
-        </select>
-      )}
+      </form>
+      {/* <ul style={{ marginTop: 35 }}>
+        {eatenProd?.map(({ id, title, weight, kcal }) => {
+          return (
+            <li key={id} style={{ display: 'flex' }}>
+              <p style={{ marginRight: 35 }}>{title}</p>
+              <p style={{ marginRight: 35 }}>{Math.round(weight)}</p>
+              <p style={{ marginRight: 35 }}>{Math.round(kcal)}</p>
+              <button>Удалить</button>
+            </li>
+          );
+        })}
+      </ul> */}
+
+      {/* {daySummary && (
+        <div>
+          <h2>Сводка на {daySummary.date}</h2>
+          <div>
+            {Number(daySummary.dailyRate) > Number(daySummary.kcalConsumed) ? (
+              <p>
+                Осталось
+                {Math.round(
+                  Number(daySummary.dailyRate) - Number(daySummary.kcalConsumed)
+                )}
+                ккал
+              </p>
+            ) : (
+              <p>Осталось 0 ккал</p>
+            )}
+            <p>Употреблено {Math.round(daySummary.kcalConsumed)} ккал</p>
+            <p>Дневная норма {Math.round(daySummary.dailyRate)} ккал</p>
+            <p>
+              Процент от нормы {Math.round(daySummary.percentsOfDailyRate)} %
+            </p>
+          </div>
+          <br />
+          <br />
+          <div>
+            <h2>Нерекомендуемые продукты</h2>
+            <p>Здесь будет отображаться Ваш рацион</p>
+          </div>
+        </div>
+      )} */}
     </>
   );
 };

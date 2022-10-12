@@ -13,7 +13,7 @@ export const BackgroundStyled = styled.div`
   position: relative;
   flex-grow: 2;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   @media ${breakpoints.minTablet} {
     background-image: url(${ban}), url(${straw}), url(${leaves}), url(${vector});
     background-repeat: no-repeat;

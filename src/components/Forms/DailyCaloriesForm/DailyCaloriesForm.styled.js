@@ -104,14 +104,6 @@ export const RadioWrapper = styled.div`
   justify-content: space-between;
 `;
 
-export const RadioLabel = styled.label`
-  color: var(--secondary-text-color);
-  display: flex;
-  gap: 4px;
-
-  accent-color: var(--orange-color);
-`;
-
 export const RadioInput = styled(Field)`
   -webkit-appearance: none;
   appearance: none;
@@ -128,5 +120,15 @@ export const RadioInput = styled(Field)`
   }
   :hover {
     cursor: pointer;
+  }
+`;
+
+export const RadioLabel = styled.label`
+  color: var(--secondary-text-color);
+  display: flex;
+  gap: 4px;
+
+  ${RadioInput}:checked & {
+    color: var(--orange-color);
   }
 `;

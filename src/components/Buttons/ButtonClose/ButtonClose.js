@@ -1,8 +1,5 @@
-import {Button} from '../ButtonClose/ButtonClose.styled'
-
+import { Button } from '../ButtonClose/ButtonClose.styled';
 
 export const ButtonClose = () => {
-    return (
-        <Button></Button>
-    )
-}
+  return <Button></Button>;
+};
