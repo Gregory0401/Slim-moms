@@ -18,7 +18,7 @@ export const Wrapper = styled.div`
 `;
 export const Title = styled.h2`
   font-weight: 700;
-  font-family: 'Gotham Pro';
+  font-family: 'GothamPro';
   font-size: 14px;
   line-height: 13px;
   letter-spacing: 0.04em;

@@ -21,7 +21,7 @@ export const Wrapper = styled.div`
   }
 `;
 export const Name = styled.p`
-  font-family: 'Gotham Pro';
+  font-family: 'GothamPro';
   font-style: normal;
   font-weight: 700;
   font-size: 14px;
@@ -36,7 +36,7 @@ export const Logout = styled.button`
   align-items: center;
   justify-content: center;
   text-align: center;
-  font-family: 'Gotham Pro';
+  font-family: 'GothamPro';
   border: none;
   border-left: 2px solid var(--border-color);
   background-color: transparent;
