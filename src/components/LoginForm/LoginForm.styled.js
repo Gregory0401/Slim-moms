@@ -65,26 +65,6 @@ export const BtnWrapper = styled.div`
 `;
 
 export const BtnL = styled.button`
-  background: #ffffff;
-  border: 2px solid #fc842d;
-  border-radius: 30px;
-  width: 182px;
-  height: 44px;
-
-  font-family: 'Verdana';
-
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 1.21;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  letter-spacing: 0.04em;
-  justify-content: center;
-
-  color: #fc842d;
-`;
-export const StyledNavLink = styled(NavLink)`
   width: 181px;
   height: 44px;
   border: 2px solid #fc842d;
@@ -105,6 +85,30 @@ export const StyledNavLink = styled(NavLink)`
   letter-spacing: 0.04em;
 
   color: #ffffff;
+`;
+export const StyledNavLink = styled(NavLink)`
+  
+
+
+
+  background: #ffffff;
+  border: 2px solid #fc842d;
+  border-radius: 30px;
+  width: 182px;
+  height: 44px;
+
+  font-family: 'Verdana';
+
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.21;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.04em;
+  justify-content: center;
+
+  color: #fc842d;
 `;
 export const ErrorText = styled.p`
   position: absolute;

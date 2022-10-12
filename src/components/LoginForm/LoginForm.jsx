@@ -76,7 +76,7 @@ export const LoginForm = () => {
           </Wrapper>
           <BtnWrapper>
             <BtnL type="submit"> Вход </BtnL>
-            <StyledNavLink to="/register">Register</StyledNavLink>
+            <StyledNavLink to="/register">Регистрация</StyledNavLink>
           </BtnWrapper>
         </StyledForm>
       </Form>
