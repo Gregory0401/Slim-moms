@@ -1,14 +1,15 @@
-import { useSelector } from 'react-redux';
-import { getDaySummary } from '../../Redux/ProductSearch/productsSearchSelector';
+// import { useSelector } from 'react-redux';
+// import { getDaySummary } from '../../Redux/ProductSearch/productsSearchSelector';
+import { RightBar } from './RightSideBar.styled';
 
 const RightSideBar = () => {
-  const daySummary = useSelector(getDaySummary);
+  // const daySummary = useSelector(getDaySummary);
 
-  const { date, kcalLeft, kcalConsumed, dailyRate, percentsOfDailyRate } =
-    daySummary;
+  // const { date, kcalLeft, kcalConsumed, dailyRate, percentsOfDailyRate } =
+  //   daySummary;
   return (
-    <div>
-      <h2>Сводка на {date}</h2>
+    <RightBar>
+      {/* <h2>Сводка на {date}</h2>
       <div>
         <p>Осталось {Math.round(kcalLeft)} ккал</p>
         <p>Употреблено {Math.round(kcalConsumed)} ккал</p>
@@ -20,8 +21,8 @@ const RightSideBar = () => {
       <div>
         <h2>Нерекомендуемые продукты</h2>
         <p>Здесь будет отображаться Ваш рацион</p>
-      </div>
-    </div>
+      </div> */}
+    </RightBar>
   );
 };
 

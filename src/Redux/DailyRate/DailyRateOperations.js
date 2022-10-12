@@ -15,7 +15,7 @@ export const dailyRate = createAsyncThunk(
 
 export const dailyRateWithUserId = createAsyncThunk(
   'dailyRate/dailyRateWithUserId',
-  async ({ params, userId }, { rejectWithValue }) => {
+  async ({ userId, ...params }, { rejectWithValue }) => {
     try {
       const { data } = await axios.post(`daily-rate/${userId}`, params);
       return data;

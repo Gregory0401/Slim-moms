@@ -1,17 +1,28 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { breakpoints } from 'Utils/size';
-export const Form = styled.form`
+import { Field } from 'formik';
+export const StyledForm = styled.div`
   display: flex;
   flex-direction: column;
   gap: 40px;
+
+  @media ${breakpoints.mobile} {
+    padding: 0 20px;
+  }
+
+  @media ${breakpoints.minTablet} {
+    padding: 0 32px;
+  }
+  @media ${breakpoints.desktop} {
+    padding: 0 16px;
+  }
 `;
 
 export const Label = styled.label`
   display: flex;
   flex-direction: column;
   font-family: 'Verdana';
-  
 
   font-weight: 700;
   font-size: 14px;
@@ -21,9 +32,9 @@ export const Label = styled.label`
   color: var(--secondary-text-color);
 `;
 
-export const Input = styled.input`
+export const Input = styled(Field)`
   display: block;
-  width: 240px;
+  width: 280px;
   height: 20px;
 
   font-family: inherit;
@@ -41,17 +52,16 @@ export const Input = styled.input`
   appearance: none;
 `;
 
-export const Wrapper = styled.div`
+export const BtnWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
   margin-top: 20px;
   align-items: center;
-  @media ${breakpoints.minTablet}{
+  @media ${breakpoints.minTablet} {
     flex-direction: row;
     gap: 32px;
   }
-  
 `;
 
 export const BtnR = styled.button`
@@ -95,4 +105,16 @@ export const StyledNavLink = styled(NavLink)`
   letter-spacing: 0.04em;
 
   color: #ffffff;
+`;
+export const ErrorText = styled.p`
+  position: absolute;
+  color: var(--orange-color);
+  font-size: 12px;
+  margin-top: 40px;
+  
+`;
+export const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  
 `;

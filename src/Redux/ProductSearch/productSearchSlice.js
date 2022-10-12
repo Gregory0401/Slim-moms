@@ -19,6 +19,7 @@ const productSlice = createSlice({
     error: null,
     dayId: null,
     eatenProductId: null,
+    product: [],
   },
   extraReducers: {
     [addProduct.pending]: state => {
@@ -28,6 +29,7 @@ const productSlice = createSlice({
       state.id = payload[0]._id; //змінив id на productId
       state.items = payload;
       state.isLoading = false;
+      state.product = payload;
     },
     [addProduct.rejected]: (state, { payload }) => {
       state.isLoading = false;

@@ -57,3 +57,20 @@ export const deleteEatenProduct = createAsyncThunk(
     }
   }
 );
+
+// export const productSearch = createAsyncThunk(
+//   'product/get',
+//   async (search, { rejectWithValue }) => {
+//     try {
+//       const { data } = await axios.get('/product', {
+//         params: {
+//           search,
+//         },
+//       });
+
+//       return data;
+//     } catch (error) {
+//       return rejectWithValue(error.message);
+//     }
+//   }
+// );

@@ -5,16 +5,18 @@ import {
   eatenProduct,
 } from '../../../Redux/ProductSearch/productsSearchOperations';
 import {
+  // getProductId,
   getDaySummary,
   // getEatenProduct,
+  // getProductsList,
   getSearchItems,
 } from '../../../Redux/ProductSearch/productsSearchSelector';
 // vova1@gmail.com
 
 import { ButtonSubmit } from '../../Buttons/ButtonSubmit/ButtonSubmit';
 import {
-  FormDiary,
-  WrrapenSearch,
+  // FormDiary,
+  // WrrapenSearch,
   LabelSearch,
   Wrrapen,
 } from './DiaryAddProductForm.styled.js';
@@ -22,6 +24,7 @@ import {
 const DiaryAddProductForm = () => {
   //
   const daySummary = useSelector(getDaySummary);
+  // const eatenProd = useSelector(getEatenProduct);
   // const eatenProd = useSelector(getEatenProduct);
   //
   const dispatch = useDispatch();
@@ -82,7 +85,7 @@ const DiaryAddProductForm = () => {
 
   return (
     <>
-      <FormDiary onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <Wrrapen>
           <LabelSearch>
             <input
@@ -93,7 +96,7 @@ const DiaryAddProductForm = () => {
               onInput={handleChange}
             />
           </LabelSearch>
-          <WrrapenSearch>
+          <div>
             {items.length > 1 &&
               items.map(item => {
                 return (
@@ -102,7 +105,7 @@ const DiaryAddProductForm = () => {
                   </div>
                 );
               })}
-          </WrrapenSearch>
+          </div>
         </Wrrapen>
         <label>
           <input
@@ -114,9 +117,20 @@ const DiaryAddProductForm = () => {
           />
         </label>
         <ButtonSubmit />
-      </FormDiary>
+      </form>
+      {/* <ul style={{ marginTop: 35 }}>
+        {eatenProd?.map(({ id, title, weight, kcal }) => {
+          return (
+            <li key={id} style={{ display: 'flex' }}>
+              <p style={{ marginRight: 35 }}>{title}</p>
+              <p style={{ marginRight: 35 }}>{Math.round(weight)}</p>
+              <p style={{ marginRight: 35 }}>{Math.round(kcal)}</p>
+              <button>Удалить</button>
+            </li>
+          );
+        })}
+      </ul> */}
 
-      {/* Добавив RightSideBar для теста, "НЕ ОБЕССУДЬТЕ"!!!!! */}
       {daySummary && (
         <div>
           <h2>Сводка на {daySummary.date}</h2>
@@ -146,22 +160,6 @@ const DiaryAddProductForm = () => {
           </div>
         </div>
       )}
-      {/* Добавив RightSideBar для теста, "НЕ ОБЕССУДЬТЕ"!!!!! */}
-
-      {/* Добавив ProductList для теста, "НЕ ОБЕССУДЬТЕ"!!!!! */}
-      {/* <ul style={{ marginTop: 35 }}>
-        {eatenProd?.map(({ id, title, weight, kcal }) => {
-          return (
-            <li key={id} style={{ display: 'flex' }}>
-              <p style={{ marginRight: 35 }}>{title}</p>
-              <p style={{ marginRight: 35 }}>{Math.round(weight)}</p>
-              <p style={{ marginRight: 35 }}>{Math.round(kcal)}</p>
-              <button>Удалить</button>
-            </li>
-          );
-        })}
-      </ul> */}
-      {/* Добавив ProductList для теста, "НЕ ОБЕССУДЬТЕ"!!!!! */}
     </>
   );
 };
