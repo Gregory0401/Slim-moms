@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { ContainerStyled } from '../Layout/Main/Main.styled';
 import { breakpoints } from '../../Utils/size';
 export const Wrapper = styled.div`
+  z-index: 1;
   display: flex;
   gap: 20px;
   align-items: center;
@@ -9,13 +10,12 @@ export const Wrapper = styled.div`
   text-align: center;
   margin-left: auto;
   ${ContainerStyled};
-   @media ${breakpoints.maxMobile} {
+  @media ${breakpoints.maxMobile} {
     background-color: var(--secondary-background-color);
     width: 100%;
     height: 100%;
     justify-content: flex-end;
     border-top: 2px solid var(--border-color);
-    
   }
 `;
 export const Name = styled.p`

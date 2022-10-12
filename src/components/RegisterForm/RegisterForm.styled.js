@@ -5,13 +5,23 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
   gap: 40px;
+
+  @media ${breakpoints.mobile} {
+    padding: 0 20px;
+  }
+
+  @media ${breakpoints.minTablet} {
+    padding: 0 32px;
+  }
+  @media ${breakpoints.desktop} {
+    padding: 0 16px;
+  }
 `;
 
 export const Label = styled.label`
   display: flex;
   flex-direction: column;
   font-family: 'Verdana';
-  
 
   font-weight: 700;
   font-size: 14px;
@@ -47,11 +57,10 @@ export const Wrapper = styled.div`
   gap: 20px;
   margin-top: 20px;
   align-items: center;
-  @media ${breakpoints.minTablet}{
+  @media ${breakpoints.minTablet} {
     flex-direction: row;
     gap: 32px;
   }
-  
 `;
 
 export const BtnR = styled.button`
