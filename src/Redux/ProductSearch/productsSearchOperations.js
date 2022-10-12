@@ -7,12 +7,9 @@ axios.defaults.baseURL = 'https://slimmom-backend.goit.global';
 
 export const addProduct = createAsyncThunk(
   'product/addProduct',
-  async (credentials, { rejectWithValue }) => {
+  async ({ title }, { rejectWithValue }) => {
     try {
-      const { data } = await axios.get(
-        `/product/?search=${credentials.title}`,
-        credentials
-      );
+      const { data } = await axios.get(`/product/?search=${title}`);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -25,7 +22,21 @@ export const eatenProduct = createAsyncThunk(
   async (credentials, { rejectWithValue }) => {
     try {
       const { data } = await axios.post('/day', credentials);
-      // console.log(data);
+      console.log('eatenProduct', data);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const dayInfo = createAsyncThunk(
+  'product/dayInfo',
+  async (credentials, { rejectWithValue }) => {
+    console.log(credentials);
+    try {
+      const { data } = await axios.post('/day/info', credentials);
+      console.log('dayInfo', data);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
