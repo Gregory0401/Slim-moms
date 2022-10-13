@@ -19,6 +19,17 @@ export const Wrapper = styled.div`
     justify-content: flex-end;
     /* border-top: 2px solid var(--border-color); */
   }
+
+  @media ${breakpoints.mobile} {
+    padding: 0 20px;
+  }
+
+  @media ${breakpoints.minTablet} {
+    padding: 0 32px;
+  }
+  @media ${breakpoints.desktop} {
+    padding: 0 16px;
+  }
 `;
 export const Name = styled.p`
   font-family: 'GothamPro';
@@ -50,6 +61,4 @@ export const Logout = styled.button`
   height: 32px;
   color: var(--secondary-text-color);
 `;
-export const Burger = styled.div`
-
-`
+export const Burger = styled.div``;
