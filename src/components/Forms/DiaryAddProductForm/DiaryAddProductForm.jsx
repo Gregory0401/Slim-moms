@@ -14,6 +14,7 @@ import {
   StyledForm,
 } from './DiaryAddProductForm.styled.js';
 import DebounceInput from 'react-debounce-input';
+import Popup from 'components/Popup/Popup';
 
 const DiaryAddProductForm = ({ date }) => {
   const dispatch = useDispatch();
@@ -23,6 +24,7 @@ const DiaryAddProductForm = ({ date }) => {
 
   const [title, setTitle] = useState('');
   const [weight, setWeight] = useState('');
+  const [showPopup, setShowPopup] = useState(true);
 
   useEffect(() => {
     if (title.length > 2) {
@@ -50,6 +52,7 @@ const DiaryAddProductForm = ({ date }) => {
 
   const handleClick = ({ target: { textContent } }) => {
     setTitle(textContent);
+    setShowPopup(false);
   };
 
   const handleSubmit = event => {
@@ -71,7 +74,9 @@ const DiaryAddProductForm = ({ date }) => {
     setTitle('');
     setWeight('');
   };
-
+  console.log(showPopup);
+  console.log(items.length > 1);
+  console.log(title.length > 1);
   return (
     <>
       <StyledForm onSubmit={handleSubmit}>
@@ -92,17 +97,9 @@ const DiaryAddProductForm = ({ date }) => {
               }}
             />
           </LabelSearch>
-          <div>
-            {items.length > 1 && title.length > 2
-              ? items.map(item => {
-                  return (
-                    <div key={item._id}>
-                      <p onClick={handleClick}>{item.title?.ru}</p>
-                    </div>
-                  );
-                })
-              : null}
-          </div>
+          {showPopup && items.length > 1 && title.length > 1 && (
+            <Popup data={items} onClick={handleClick} />
+          )}
         </Wrrapen>
         <label>
           <input
