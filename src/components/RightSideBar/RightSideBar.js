@@ -51,35 +51,37 @@ const RightSideBar = () => {
     <RightBar>
       {daySummary && (
         <ProdThumb>
-          <Title>Сводка на {date}</Title>
           <div>
-            {Number(dailyRate) > Number(kcalConsumed) ? (
+            <Title>Сводка на {date}</Title>
+            <div>
+              {Number(dailyRate) > Number(kcalConsumed) ? (
+                <Text>
+                  <span>Осталось</span>{' '}
+                  <span>
+                    {Math.round(Number(dailyRate) - Number(kcalConsumed))} ккал
+                  </span>
+                </Text>
+              ) : (
+                <Text>
+                  <span>Осталось</span> <span>0 ккал</span>
+                </Text>
+              )}
               <Text>
-                <span>Осталось</span>{' '}
-                <span>
-                  {Math.round(Number(dailyRate) - Number(kcalConsumed))} ккал
-                </span>
+                <span>Употреблено </span>{' '}
+                <span>{Math.round(kcalConsumed)} ккал</span>
               </Text>
-            ) : (
               <Text>
-                <span>Осталось</span> <span>0 ккал</span>
+                <span>Дневная норма</span>{' '}
+                <span>{Math.round(dailyRate)} ккал</span>
               </Text>
-            )}
-            <Text>
-              <span>Употреблено </span>{' '}
-              <span>{Math.round(kcalConsumed)} ккал</span>
-            </Text>
-            <Text>
-              <span>Дневная норма</span>{' '}
-              <span>{Math.round(dailyRate)} ккал</span>
-            </Text>
-            <Text>
-              <span>Процент от нормы</span>{' '}
-              <span>{Math.round(percentsOfDailyRate)} %</span>
-            </Text>
+              <Text>
+                <span>Процент от нормы</span>{' '}
+                <span>{Math.round(percentsOfDailyRate)} %</span>
+              </Text>
+            </div>
           </div>
 
-          <ProdThumb>
+          <div>
             <Title>Нерекомендуемые продукты</Title>
             {notAllowedProducts.length > 0 ? (
               <ul>
@@ -92,7 +94,7 @@ const RightSideBar = () => {
             ) : (
               <Text>Здесь будет отображаться Ваш рацион</Text>
             )}
-          </ProdThumb>
+          </div>
         </ProdThumb>
       )}
     </RightBar>

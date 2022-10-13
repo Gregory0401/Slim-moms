@@ -4,10 +4,7 @@ import { AuthNavigation } from '../AuthNavigation/AuthNavigation';
 import { useMedia } from 'react-use';
 
 import { useSelector } from 'react-redux';
-import {
-  selectIsLoggedIn,
-  selectAccessToken,
-} from '../../Redux/Auth/authSelectors';
+import { selectIsLoggedIn } from '../../Redux/Auth/authSelectors';
 import { Header, Wrapper, Menu } from './AppBar.styled';
 import { ButtonBurger } from '../Buttons/ButtonBurger/ButtonBurger';
 import { useState } from 'react';
@@ -23,28 +20,27 @@ export const AppBar = () => {
   };
 
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  const token = useSelector(selectAccessToken);
   return (
     <Header>
       {isWide ? (
         <>
           <Wrapper>
             <Navigation />
-            {!isLoggedIn && !token && <AuthNavigation />}
+            {!isLoggedIn && <AuthNavigation />}
             {isLoggedIn && (
               <Burger>
                 <ButtonBurger onClick={onToggleModal} />
               </Burger>
             )}
           </Wrapper>
-          {isLoggedIn && token && <UserAuthMenu />}
+          {isLoggedIn && <UserAuthMenu />}
         </>
       ) : (
         <>
           <Wrapper>
             <Navigation />
-            {!isLoggedIn && !token && <AuthNavigation />}
-            {isLoggedIn && token && <UserAuthMenu />}
+            {!isLoggedIn && <AuthNavigation />}
+            {isLoggedIn && <UserAuthMenu />}
             {isLoggedIn && (
               <Burger>
                 <ButtonBurger onClick={onToggleModal} />

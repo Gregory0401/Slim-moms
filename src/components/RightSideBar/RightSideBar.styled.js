@@ -17,8 +17,9 @@ export const RightBar = styled.div`
   background: var(--secondary-background-color);
   @media ${breakpoints.minTablet} {
     flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
+    justify-content: center;
+    /* justify-content: space-between; */
+    /* align-items: flex-start; */
     gap: 80px;
     padding-top: 80px;
     padding-bottom: 80px;
@@ -34,7 +35,7 @@ export const RightBar = styled.div`
     justify-content: flex-start;
     gap: 60px;
     padding: 280px 95px 92px 95px;
-    height: calc(100vh - 150px);
+    height: calc(100% - 150px);
     background-image: url(${bgDesk});
   }
 `;
@@ -42,12 +43,16 @@ export const ProdThumb = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
-  width: 100%;
-  max-width: 280px;
+  /* max-width: 280px; */
   @media ${breakpoints.minTablet} {
-    gap: 40px;
+    gap: 60px;
+    flex-direction: row;
+    justify-content: center;
+    /* width: 100%; */
   }
   @media ${breakpoints.desktop} {
+    flex-direction: column;
+    max-width: 280px;
   }
 `;
 
