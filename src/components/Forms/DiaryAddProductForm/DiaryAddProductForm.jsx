@@ -21,13 +21,17 @@ const DiaryAddProductForm = ({ date }) => {
   const dispatch = useDispatch();
 
   const items = useSelector(getSearchItems);
-  const productId = items[0]?._id;
+  const [productId, setProductId] = useState('');
 
   const [title, setTitle] = useState('');
   const [weight, setWeight] = useState('');
-  const [showPopup, setShowPopup] = useState(true);
+
+  const [click, setClick] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
+
 
   useEffect(() => {
+    !click && setShowPopup(true);
     if (title.length > 2) {
       dispatch(
         addProduct({
@@ -35,11 +39,12 @@ const DiaryAddProductForm = ({ date }) => {
         })
       );
     }
-  }, [dispatch, title]);
+  }, [click, dispatch, title]);
 
   function handleChange({ target: { name, value } }) {
     switch (name) {
       case 'title':
+        setClick(false);
         setTitle(value);
         break;
       case 'weight':
@@ -51,9 +56,13 @@ const DiaryAddProductForm = ({ date }) => {
     }
   }
 
-  const handleClick = ({ target: { textContent } }) => {
+  const handleClick = ({ target: { textContent } }, id) => {
     setTitle(textContent);
+
+    setProductId(id);
     setShowPopup(false);
+    setClick(true);
+
   };
 
   const handleSubmit = event => {
