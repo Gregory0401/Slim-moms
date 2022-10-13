@@ -4,24 +4,27 @@ import DiaryDateCalendarDate from 'components/Forms/DiaryDateСalendar/DiaryDate
 import RightSideBar from '../../components/RightSideBar/RightSideBar';
 import { SidebarWrap, Thumb, Wrapper } from './DailyPage.styled';
 import { format, startOfToday } from 'date-fns';
+import { Container } from 'components/Layout/Main/Main.styled';
 
 const DailyPage = () => {
   let today = startOfToday();
   let date = format(today, 'yyyy-MM-dd');
 
   return (
-    <Thumb>
-      <div>
-        <DiaryDateCalendarDate />
-        <Wrapper>
-          <DiaryAddProductForm date={date} />
-          <ProductsList date={date} />
-        </Wrapper>
-      </div>
-      <SidebarWrap>
-        <RightSideBar />
-      </SidebarWrap>
-    </Thumb>
+    <Container>
+      <Thumb>
+        <div>
+          <DiaryDateCalendarDate />
+          <Wrapper>
+            <DiaryAddProductForm date={date} />
+            <ProductsList date={date} />
+          </Wrapper>
+        </div>
+        <SidebarWrap>
+          <RightSideBar />
+        </SidebarWrap>
+      </Thumb>
+    </Container>
   );
 };
 
