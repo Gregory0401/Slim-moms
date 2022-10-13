@@ -15,12 +15,14 @@ export const BackgroundStyled = styled.div`
   width: 100%;
   height: 100vh;
   @media ${breakpoints.minTablet} {
+    height: 100%;
     background-image: url(${ban}), url(${straw}), url(${leaves}), url(${vector});
     background-repeat: no-repeat;
     background-position: right 0px bottom 0px, right -50px bottom 279px,
       right 12px bottom 279px;
   }
   @media ${breakpoints.desktop} {
+    height: 100vh;
     background-image: url(${frame}), url(${vector_d});
     background-position: bottom right, bottom right;
     background-repeat: no-repeat;
