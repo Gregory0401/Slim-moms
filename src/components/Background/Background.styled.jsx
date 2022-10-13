@@ -13,7 +13,7 @@ export const BackgroundStyled = styled.div`
   position: relative;
   flex-grow: 2;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   @media ${breakpoints.minTablet} {
     height: 100%;
     background-image: url(${ban}), url(${straw}), url(${leaves}), url(${vector});
@@ -22,7 +22,7 @@ export const BackgroundStyled = styled.div`
       right 12px bottom 279px;
   }
   @media ${breakpoints.desktop} {
-    height: 100vh;
+    height: 100%;
     background-image: url(${frame}), url(${vector_d});
     background-position: bottom right, bottom right;
     background-repeat: no-repeat;

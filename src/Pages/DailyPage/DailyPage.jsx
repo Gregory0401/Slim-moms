@@ -2,29 +2,29 @@ import DiaryAddProductForm from 'components/Forms/DiaryAddProductForm/DiaryAddPr
 import ProductsList from '../../components/ProductsList/ProductsList';
 import DiaryDateCalendarDate from 'components/Forms/DiaryDateСalendar/DiaryDateCalendarDate/DiaryDateCalendarDate';
 import RightSideBar from '../../components/RightSideBar/RightSideBar';
-import { SidebarWrap, Thumb, Wrapper } from './DailyPage.styled';
+import { SidebarWrap, Thumb, Wrapper, Div } from './DailyPage.styled';
 import { format, startOfToday } from 'date-fns';
-import { Container } from 'components/Layout/Main/Main.styled';
+// import { Container } from 'components/Layout/Main/Main.styled';
 
 const DailyPage = () => {
   let today = startOfToday();
   let date = format(today, 'yyyy-MM-dd');
 
   return (
-    <Container>
-      <Thumb>
-        <div>
-          <DiaryDateCalendarDate />
-          <Wrapper>
-            <DiaryAddProductForm date={date} />
-            <ProductsList date={date} />
-          </Wrapper>
-        </div>
-        <SidebarWrap>
-          <RightSideBar />
-        </SidebarWrap>
-      </Thumb>
-    </Container>
+    // <Container>
+    <Thumb>
+      <Div>
+        <DiaryDateCalendarDate />
+        <Wrapper>
+          <DiaryAddProductForm date={date} />
+          <ProductsList date={date} />
+        </Wrapper>
+      </Div>
+      <SidebarWrap>
+        <RightSideBar />
+      </SidebarWrap>
+    </Thumb>
+    // </Container>
   );
 };
 
