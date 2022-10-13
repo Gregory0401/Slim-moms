@@ -25,6 +25,7 @@ import {
   selectIsLoading,
 } from 'Redux/DailyRate/DailyRateSelectors';
 import { selectIsLoggedIn, selectUserId } from 'Redux/Auth/authSelectors';
+import { motion } from 'framer-motion';
 
 const changeTypeToNumber = obj => {
   var new_obj = {};
@@ -106,24 +107,6 @@ const DailyCaloriesForm = () => {
     setShowModal(prevState => !prevState);
   };
 
-  // const handleSubmit = event => {
-  //   event.preventDefault();
-  //   dispatch(
-  //     dailyRate({
-  //       height: Number(height),
-  //       weight: Number(weight),
-  //       age: Number(age),
-  //       desiredWeight: Number(desiredWeight),
-  //       bloodType: Number(bloodType),
-  //     })
-  //   );
-  //   setHeight('');
-  //   setWeight('');
-  //   setAge('');
-  //   setDesiredWeight('');
-  //   setBloodType('');
-  // };
-
   const handleSubmit = (values, { resetForm }) => {
     const params = changeTypeToNumber(values);
 
@@ -137,56 +120,62 @@ const DailyCaloriesForm = () => {
 
   return (
     <>
-      <Formik
-        initialValues={initialValues}
-        validationSchema={validationSchema}
-        onSubmit={handleSubmit}
+      <motion.div
+        initial={{ scale: 0, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 1, delay: 0.3 }}
       >
-        <Form autoComplete="off">
-          <StyledForm>
-            <FormWrapper>
-              <Wrapper>
-                {userParams.map(({ value, text }) => (
-                  <div key={value}>
-                    <Label htmlFor={value}>{text}</Label>
-                    <Input name={value} type="text" />
-                    <FormError name={value} />
+        <Formik
+          initialValues={initialValues}
+          validationSchema={validationSchema}
+          onSubmit={handleSubmit}
+        >
+          <Form autoComplete="off">
+            <StyledForm>
+              <FormWrapper>
+                <Wrapper>
+                  {userParams.map(({ value, text }) => (
+                    <div key={value}>
+                      <Label htmlFor={value}>{text}</Label>
+                      <Input name={value} type="text" />
+                      <FormError name={value} />
+                    </div>
+                  ))}
+                </Wrapper>
+                <Wrapper>
+                  <div>
+                    <Label htmlFor="desiredWeight">Желаемый вес *</Label>
+                    <Input type="text" name="desiredWeight" />
+                    <FormError name="desiredWeight" />
                   </div>
-                ))}
-              </Wrapper>
-              <Wrapper>
-                <div>
-                  <Label htmlFor="desiredWeight">Желаемый вес *</Label>
-                  <Input type="text" name="desiredWeight" />
-                  <FormError name="desiredWeight" />
-                </div>
-                <div role="group" aria-labelledby="my-radio-group">
-                  <RadioTitle>Группа крови *</RadioTitle>
-                  <RadioWrapper>
-                    {bloodTypes.map(item => (
-                      <RadioLabel key={item}>
-                        <RadioInput
-                          type="radio"
-                          name="bloodType"
-                          value={item}
-                        />
-                        {item}
-                      </RadioLabel>
-                    ))}
-                  </RadioWrapper>
-                  <FormError name="bloodType" />
-                </div>
-              </Wrapper>
-            </FormWrapper>
-            <Button type="submit">Похудеть</Button>
-          </StyledForm>
-        </Form>
-      </Formik>
-      {showModal && !error && !isLoading && (
-        <ModalProducts onClick={onToggleModal} onClose={onToggleModal}>
-          <dailyRate />
-        </ModalProducts>
-      )}
+                  <div role="group" aria-labelledby="my-radio-group">
+                    <RadioTitle>Группа крови *</RadioTitle>
+                    <RadioWrapper>
+                      {bloodTypes.map(item => (
+                        <RadioLabel key={item}>
+                          <RadioInput
+                            type="radio"
+                            name="bloodType"
+                            value={item}
+                          />
+                          {item}
+                        </RadioLabel>
+                      ))}
+                    </RadioWrapper>
+                    <FormError name="bloodType" />
+                  </div>
+                </Wrapper>
+              </FormWrapper>
+              <Button type="submit">Похудеть</Button>
+            </StyledForm>
+          </Form>
+        </Formik>
+        {showModal && !error && !isLoading && (
+          <ModalProducts onClick={onToggleModal} onClose={onToggleModal}>
+            <dailyRate />
+          </ModalProducts>
+        )}
+      </motion.div>
     </>
   );
 };
