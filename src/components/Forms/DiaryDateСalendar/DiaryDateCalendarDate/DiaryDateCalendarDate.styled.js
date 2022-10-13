@@ -2,7 +2,8 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const Wrapper = styled.div`
-  padding-top: 293px;
+  padding-top: 150px;
+
   display: flex;
   flex-direction: column;
 `;
