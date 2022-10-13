@@ -37,6 +37,7 @@ export const Menu = styled.div`
   justify-content: center;
   border-left: 2px solid var(--border-color);
   padding-left: 20px;
+  margin-left: 20px;
   gap: 16px;}
 `;
 
@@ -50,7 +51,7 @@ export const Wrapper = styled.div`
     display: flex;
     align-items: baseline;
     justify-content: center;
-    gap: 20px;
+    /* gap: 20px; */
     
   
 `;
