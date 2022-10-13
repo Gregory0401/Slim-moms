@@ -14,9 +14,12 @@ export const Wrapper = styled.nav`
 `;
 
 export const StyledNavLink = styled(NavLink)`
+  display: flex;
+  align-items: center;
   text-decoration: none;
   font-family: 'GothamPro';
   padding-left: 20px;
+  height: 32px;
 
   font-weight: 700;
   font-size: 14px;

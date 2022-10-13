@@ -34,6 +34,7 @@ export const Header = styled.header`
     justify-content: flex-start;
     min-height: 150px;
     max-width: 100%;
+    
   }
 `;
 
@@ -53,6 +54,8 @@ export const Wrapper = styled.div`
     justify-content: flex-start;
     min-height: 150px;
     max-width: 100%;
+    
+
   }
 `;
 export const SecondWrapper = styled.div`
@@ -73,10 +76,11 @@ export const SecondWrapper = styled.div`
   
 
   @media ${breakpoints.desktop} {
-    align-items: flex-end;
+    align-items: baseline;
     justify-content: flex-start;
     min-height: 150px;
     max-width: 100%;
+    padding-top: 80px;
   }
 `;
 
