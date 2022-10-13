@@ -18,11 +18,10 @@ export const register = createAsyncThunk(
       const { data } = await axios.post('auth/register', credentials);
       return data;
     } catch (e) {
-      
       if (e.response.status === 409) {
-        return rejectWithValue("Такой пользователь уже зарегистрирован");
+        return rejectWithValue('Такой пользователь уже зарегистрирован');
       } else {
-        return rejectWithValue("Что-то пошло не так");
+        return rejectWithValue('Что-то пошло не так...');
       }
     }
   }
@@ -36,7 +35,9 @@ export const logIn = createAsyncThunk(
       token.set(data.accessToken);
       return data;
     } catch (e) {
-      return rejectWithValue(e.message);
+      return e.response.status === 403
+        ? rejectWithValue('Некорректная электронная почта или пароль')
+        : rejectWithValue('Что-то пошло не так...');
     }
   }
 );
@@ -48,29 +49,7 @@ export const logOut = createAsyncThunk(
       await axios.post('auth/logout');
       token.unset();
     } catch (e) {
-      return rejectWithValue(e.message);
-    }
-  }
-);
-
-export const refresh = createAsyncThunk(
-  '/auth/refresh',
-  async (_, { getState, rejectWithValue }) => {
-    const state = getState();
-    const persistedToken = state.auth.refreshToken;
-
-    if (persistedToken === null) {
-      return rejectWithValue();
-    }
-    token.set(persistedToken);
-    const persistedSid = state.auth.sid;
-
-    try {
-      const { data } = await axios.post('auth/refresh', persistedSid);
-      token.set(data.newAccessToken);
-      return data;
-    } catch (e) {
-      return rejectWithValue(e.message);
+      return rejectWithValue('Что-то пошло не так...');
     }
   }
 );
@@ -89,7 +68,7 @@ export const fetchCurrentUser = createAsyncThunk(
       const { data } = await axios.get('user');
       return data;
     } catch (e) {
-      return rejectWithValue(e.message);
+      return rejectWithValue('Что-то пошло не так...');
     }
   }
 );
