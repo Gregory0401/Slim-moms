@@ -1,17 +1,51 @@
-import { useSelector } from 'react-redux';
-import { getDaySummary } from '../../Redux/ProductSearch/productsSearchSelector';
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import {
+  getDaySummary,
+  getNotAllowedProducts,
+} from '../../Redux/ProductSearch/productsSearchSelector';
+import { userInfo } from '../../Redux/ProductSearch/productsSearchOperations';
 import { format, startOfToday } from 'date-fns';
 import { RightBar, ProdThumb, Title, Text } from './RightSideBar.styled';
 
 const RightSideBar = () => {
+  // =====
+  const dispatch = useDispatch();
+  const notAllowedProducts = useSelector(getNotAllowedProducts);
   const daySummary = useSelector(getDaySummary);
+
+  useEffect(() => {
+    dispatch(userInfo());
+  }, [dispatch]);
+
+  const randomProducts = () => {
+    const elemProductsNum = 5;
+    const newProductsArr = new Array(elemProductsNum)
+      .fill(0)
+      .map(
+        () =>
+          notAllowedProducts[
+            Math.floor(Math.random() * notAllowedProducts.length)
+          ]
+      );
+    return newProductsArr;
+  };
+
+  // =====
+
   let today = startOfToday();
   let date = format(today, 'dd MM yyyy');
+  // const {
+  //   daySummary: { kcalConsumed = 0, dailyRate = 0, percentsOfDailyRate = 0 },
+  // } = daySummary[0] || {};
   const {
     kcalConsumed = 0,
     dailyRate = 0,
     percentsOfDailyRate = 0,
   } = daySummary || {};
+  // console.log(daySummary[0].daySummary.kcalLeft);
+  // console.log(daySummary[0].daySummary.kcalConsumed);
+  // console.log(daySummary[0].daySummary.percentsOfDailyRate);
 
   return (
     <RightBar>
@@ -47,7 +81,17 @@ const RightSideBar = () => {
 
           <ProdThumb>
             <Title>Нерекомендуемые продукты</Title>
-            <Text>Здесь будет отображаться Ваш рацион</Text>
+            {notAllowedProducts.length > 0 ? (
+              <ul>
+                {randomProducts().map((item, index) => (
+                  <li key={index}>
+                    <Text>{item}</Text>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <Text>Здесь будет отображаться Ваш рацион</Text>
+            )}
           </ProdThumb>
         </ProdThumb>
       )}
