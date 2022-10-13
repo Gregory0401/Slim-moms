@@ -4,6 +4,7 @@ import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { register } from '../../Redux/Auth/authOperation';
 import { useNavigate } from 'react-router-dom';
+
 import {
   StyledForm,
   Input,
@@ -17,7 +18,7 @@ import {
 
 export const RegisterForm = () => {
   
-
+  
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const initialValues = {
@@ -46,26 +47,13 @@ export const RegisterForm = () => {
       .required('Обязательное поле'),
   });
 
-  // const handleChange = ({ target: { name, value } }) => {
-  //   switch (name) {
-  //     case 'username':
-  //       setUsername(value);
-  //       break;
-  //     case 'email':
-  //       setEmail(value);
-  //       break;
-  //     case 'password':
-  //       setPassword(value);
-  //       break;
-  //     default:
-  //       break;
-  //   }
-  // };
+  
   const handleSubmit = (values, { resetForm }) => {
     
     dispatch(register(values));
     resetForm();
     navigate('/login');
+    
   };
   return (
     <Formik
@@ -80,8 +68,7 @@ export const RegisterForm = () => {
             <Input
               type="text"
               name="username"
-              // value={username}
-              // onChange={handleChange}
+              
             />
             <FormError name="username" />
           </Wrapper>
@@ -90,8 +77,7 @@ export const RegisterForm = () => {
             <Input
               type="email"
               name="email"
-              // value={email}
-              // onChange={handleChange}
+              
             />
             <FormError name="email" />
           </Wrapper>
@@ -100,8 +86,7 @@ export const RegisterForm = () => {
             <Input
               type="password"
               name="password"
-              // value={password}
-              // onChange={handleChange}
+              
             />
             <FormError name="password" />
           </Wrapper>

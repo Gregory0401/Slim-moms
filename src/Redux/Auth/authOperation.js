@@ -18,7 +18,12 @@ export const register = createAsyncThunk(
       const { data } = await axios.post('auth/register', credentials);
       return data;
     } catch (e) {
-      return rejectWithValue(e.message);
+      
+      if (e.response.status === 409) {
+        return rejectWithValue("Такой пользователь уже зарегистрирован");
+      } else {
+        return rejectWithValue("Что-то пошло не так");
+      }
     }
   }
 );
