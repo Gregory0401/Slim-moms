@@ -3,14 +3,14 @@ import {
   register,
   logIn,
   logOut,
-  refresh,
+  // refresh,
   fetchCurrentUser,
 } from './authOperation';
 
 const initialState = {
   user: { username: null, email: null, id: null },
   accessToken: null,
-  refreshToken: null,
+  // refreshToken: null,
   sid: null,
   isLoggedIn: false,
   isLoading: false,
@@ -43,7 +43,7 @@ const authSlice = createSlice({
     ) => {
       state.user = user;
       state.accessToken = accessToken;
-      state.refreshToken = refreshToken;
+      // state.refreshToken = refreshToken;
       state.sid = sid;
       state.isLoggedIn = true;
       state.error = null;
@@ -59,7 +59,7 @@ const authSlice = createSlice({
     [logOut.fulfilled]: state => {
       state.user = { username: null, email: null };
       state.accessToken = null;
-      state.refreshToken = null;
+      // state.refreshToken = null;
       state.sid = null;
       state.isLoggedIn = false;
       state.error = null;
@@ -70,27 +70,6 @@ const authSlice = createSlice({
       state.error = payload;
     },
 
-    [refresh.pending]: state => {
-      state.isLoading = true;
-      state.isRefreshing = true;
-    },
-    [refresh.fulfilled]: (
-      state,
-      { payload: { user, newAccessToken, newRefreshToken, sid } }
-    ) => {
-      state.user = user;
-      state.accessToken = newAccessToken;
-      state.refreshToken = newRefreshToken;
-      state.sid = sid;
-      state.error = null;
-      state.isLoading = false;
-      state.isRefreshing = false;
-    },
-    [refresh.rejected]: (state, { payload }) => {
-      state.isLoading = false;
-      state.isRefreshing = false;
-      state.error = payload;
-    },
     [fetchCurrentUser.pending]: state => {
       state.isLoading = true;
       state.isRefreshing = true;

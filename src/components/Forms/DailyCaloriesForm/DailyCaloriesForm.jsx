@@ -94,12 +94,16 @@ const DailyCaloriesForm = () => {
       .max(500, 'Максимальное значение : 500кг')
       .required('Обязательное поле')
       .typeError('Значение должно быть цифрой')
-      .when('weight', (weight, schema) => {
-        return schema.test({
-          test: desiredWeight => desiredWeight < weight,
-          message: 'Желаемый вес должен быть меньше текущего',
-        });
-      }),
+      .test(
+        'checkLessWeight',
+        'Должно быть меньше текущего веса',
+        function (value) {
+          if (this?.options?.parent?.weight <= value) {
+            return false;
+          }
+          return true;
+        }
+      ),
     bloodType: Yup.number().required('Обязательное поле'),
   });
   const [showModal, setShowModal] = useState(false);
