@@ -12,6 +12,7 @@ import {
   LabelSearch,
   Wrrapen,
   StyledForm,
+  StyledInput2,
 } from './DiaryAddProductForm.styled.js';
 import DebounceInput from 'react-debounce-input';
 import Popup from 'components/Popup/Popup';
@@ -102,7 +103,7 @@ const DiaryAddProductForm = ({ date }) => {
           )}
         </Wrrapen>
         <label>
-          <input
+          <StyledInput2
             type="number"
             name="weight"
             value={weight}
