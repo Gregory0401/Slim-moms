@@ -55,3 +55,36 @@ export const Wrapper = styled.div`
     max-width: 100%;
   }
 `;
+export const SecondWrapper = styled.div`
+  ${ContainerStyled};
+  /* @media ${breakpoints.maxMobile} {
+  border-bottom: 2px solid var(--border-color);} */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+  min-height: 80px;
+  width: 100%;
+  
+  @media ${breakpoints.onlyTablet} {
+  border-bottom: 2px solid var(--border-color);}
+  
+
+  
+
+  @media ${breakpoints.desktop} {
+    align-items: flex-end;
+    justify-content: flex-start;
+    min-height: 150px;
+    max-width: 100%;
+  }
+`;
+
+export const WrapperBurger = styled.div`
+display: flex;
+align-items: center;
+justify-content: center;
+
+margin-left: auto;
+
+`
