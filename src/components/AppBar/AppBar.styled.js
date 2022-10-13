@@ -26,13 +26,15 @@ export const Header = styled.header`
   align-items: center;
   /* gap: 30px; */
   min-height: 80px;
-  border-bottom: 2px solid var(--border-color);
+  
   @media ${breakpoints.maxMobile} {
     flex-direction: column;
     
     
   }
-  
+  @media ${breakpoints.minTablet} {
+    border-bottom: 2px solid var(--border-color);
+  }
   @media ${breakpoints.desktop} {
     border-bottom: none;
     align-items: flex-end;
@@ -45,6 +47,8 @@ export const Header = styled.header`
 export const Wrapper = styled.div`
   
   ${ContainerStyled};
+  @media ${breakpoints.maxMobile} {
+  border-bottom: 2px solid var(--border-color);}
   display: flex;
   justify-content: space-between;
   align-items: center;
