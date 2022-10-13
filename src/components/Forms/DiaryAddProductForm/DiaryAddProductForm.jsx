@@ -12,6 +12,7 @@ import {
   LabelSearch,
   Wrrapen,
   StyledForm,
+  StyledInput2,
 } from './DiaryAddProductForm.styled.js';
 import DebounceInput from 'react-debounce-input';
 import Popup from 'components/Popup/Popup';
@@ -24,8 +25,10 @@ const DiaryAddProductForm = ({ date }) => {
 
   const [title, setTitle] = useState('');
   const [weight, setWeight] = useState('');
+
   const [click, setClick] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
+
 
   useEffect(() => {
     !click && setShowPopup(true);
@@ -55,9 +58,11 @@ const DiaryAddProductForm = ({ date }) => {
 
   const handleClick = ({ target: { textContent } }, id) => {
     setTitle(textContent);
+
     setProductId(id);
     setShowPopup(false);
     setClick(true);
+
   };
 
   const handleSubmit = event => {
@@ -79,7 +84,9 @@ const DiaryAddProductForm = ({ date }) => {
     setTitle('');
     setWeight('');
   };
-
+  console.log(showPopup);
+  console.log(items.length > 1);
+  console.log(title.length > 1);
   return (
     <>
       <StyledForm onSubmit={handleSubmit}>
@@ -105,7 +112,7 @@ const DiaryAddProductForm = ({ date }) => {
           )}
         </Wrrapen>
         <label>
-          <input
+          <StyledInput2
             type="number"
             name="weight"
             value={weight}
