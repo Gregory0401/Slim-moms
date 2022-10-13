@@ -21,7 +21,9 @@ export const register = createAsyncThunk(
       if (e.response.status === 409) {
         return rejectWithValue('Такой пользователь уже зарегистрирован');
       } else {
+
         return rejectWithValue('Что-то пошло не так...');
+
       }
     }
   }
