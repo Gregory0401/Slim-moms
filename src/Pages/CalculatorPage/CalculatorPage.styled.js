@@ -16,7 +16,7 @@ export const Wrapper = styled.div`
   }
   @media ${breakpoints.desktop} {
     padding: 0 16px;
-    padding-bottom: 111px;
+    padding-bottom: 141px;
   }
 `;
 
