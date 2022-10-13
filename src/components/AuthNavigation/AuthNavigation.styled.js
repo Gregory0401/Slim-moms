@@ -3,6 +3,9 @@ import styled from 'styled-components';
 import { breakpoints } from 'Utils/size';
 export const Wrapper = styled.nav`
   display: flex;
+  @media ${breakpoints.onlyTablet} {
+    margin-left: auto;
+  }
   @media ${breakpoints.desktop} {
     border-left: 2px solid var(--border-color);
   }

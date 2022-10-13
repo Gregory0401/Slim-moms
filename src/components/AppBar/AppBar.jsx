@@ -5,7 +5,13 @@ import { useMedia } from 'react-use';
 
 import { useSelector } from 'react-redux';
 import { selectIsLoggedIn } from '../../Redux/Auth/authSelectors';
-import { Header, Wrapper, Menu } from './AppBar.styled';
+import {
+  Header,
+  Wrapper,
+  Menu,
+  WrapperBurger,
+  SecondWrapper,
+} from './AppBar.styled';
 import { ButtonBurger } from '../Buttons/ButtonBurger/ButtonBurger';
 import { useState } from 'react';
 import BurgerMenu from 'components/Modal/BurgerMenu/BurgerMenu';
@@ -37,16 +43,22 @@ export const AppBar = () => {
         </>
       ) : (
         <>
-          <Wrapper>
+          <SecondWrapper>
             <Navigation />
+
             {!isLoggedIn && <AuthNavigation />}
-            {isLoggedIn && <UserAuthMenu />}
+
+
             {isLoggedIn && (
-              <Burger>
-                <ButtonBurger onClick={onToggleModal} />
-              </Burger>
+              <WrapperBurger>
+                <UserAuthMenu />
+
+                <Burger>
+                  <ButtonBurger onClick={onToggleModal} />
+                </Burger>
+              </WrapperBurger>
             )}
-          </Wrapper>
+          </SecondWrapper>
         </>
       )}
 

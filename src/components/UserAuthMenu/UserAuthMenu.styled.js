@@ -10,9 +10,10 @@ export const Wrapper = styled.div`
   justify-content: center;
   text-align: center;
   /* margin-left: auto; */
-  margin-right: 60px;
-  ${ContainerStyled};
+  margin-right: 45px;
+  
   @media ${breakpoints.maxMobile} {
+    ${ContainerStyled};
     background-color: var(--secondary-background-color);
     width: 100%;
     height: 40px;
@@ -25,10 +26,12 @@ export const Wrapper = styled.div`
   }
 
   @media ${breakpoints.minTablet} {
-    padding: 0 32px;
+    padding: 0 ;
   }
   @media ${breakpoints.desktop} {
-    padding: 0 16px;
+    /* padding: 0 16px; */
+     margin-right: 0;
+    
   }
 `;
 export const Name = styled.p`
