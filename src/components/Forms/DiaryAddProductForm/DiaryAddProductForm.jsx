@@ -26,12 +26,6 @@ import Popup from 'components/Popup/Popup';
 
 const DiaryAddProductForm = ({ date, onClose }) => {
   const dispatch = useDispatch();
-  // =====
-  useEffect(() => {
-    dispatch(eatenProduct());
-    dispatch(userInfo());
-  }, [dispatch]);
-  // =====
 
   const items = useSelector(getSearchItems);
   const [productId, setProductId] = useState('');
@@ -79,27 +73,19 @@ const DiaryAddProductForm = ({ date, onClose }) => {
   const handleSubmit = event => {
     event.preventDefault();
 
-    const newProduct = {
-      title,
-      weight,
-    };
 
     const eatenDate = {
       date,
       productId,
       weight,
     };
-    console.log(eatenDate.date);
 
     dispatch(eatenProduct(eatenDate));
-    dispatch(addProduct(newProduct));
     dispatch(userInfo());
     setTitle('');
     setWeight('');
   };
-  // console.log(showPopup);
-  // console.log(items.length > 1);
-  // console.log(title.length > 1);
+  
   return (
     <>
       <StyledForm onSubmit={handleSubmit}>

@@ -59,9 +59,8 @@ const ProductsList = ({ date, eatenProducts }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(addProduct());
     dispatch(userInfo());
-  }, [dispatch, date]);
+  }, [dispatch]);
 
   const deleteProduct = id => {
     const deleteData = {
@@ -69,14 +68,9 @@ const ProductsList = ({ date, eatenProducts }) => {
       eatenProductId: id,
     };
 
-    const dateInfo = {
-      date,
-    };
 
     dispatch(userInfo());
     dispatch(deleteEatenProduct(deleteData));
-    dispatch(dayInfo(dateInfo));
-    dispatch(addProduct());
     // dispatch(eatenProduct());
   };
 
