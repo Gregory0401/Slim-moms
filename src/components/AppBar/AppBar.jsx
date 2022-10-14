@@ -63,7 +63,7 @@ export const AppBar = () => {
 
       {showModal && (
         <Menu>
-          <BurgerMenu />
+          <BurgerMenu onToggleModal={onToggleModal} />
         </Menu>
       )}
     </Header>

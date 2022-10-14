@@ -13,24 +13,12 @@ const BurgerMenu = ({ onToggleModal }) => {
       <Main>
         <ul>
           <li>
-            <StyledNavLink
-              to="/diary"
-              //   onClick={() => {
-              //     onToggleModal();
-              //   }}
-              end
-            >
+            <StyledNavLink to="/diary" onClick={onToggleModal} end>
               Дневник
             </StyledNavLink>
           </li>
           <li>
-            <StyledNavLink
-              to="/calculator"
-              //   onClick={() => {
-              //     onToggleModal();
-              //   }}
-              end
-            >
+            <StyledNavLink to="/calculator" onClick={onToggleModal} end>
               Калькулятор
             </StyledNavLink>
           </li>
