@@ -1,5 +1,5 @@
 import { Button } from '../ButtonSubmit/ButtonSubmit.styled';
 
-export const ButtonSubmit = () => {
-  return <Button type="submit"></Button>;
+export const ButtonSubmit = ({onClick}) => {
+  return <Button type="submit" onClick={onClick}></Button>;
 };

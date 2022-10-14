@@ -70,7 +70,7 @@ const randomProducts = () => {
 </Products>
 <ButtonMain><Button><StyledNavLink to="/daily/">Начать худеть</StyledNavLink></Button></ButtonMain>
 
-<BtnClose><ButtonClose onClick={handleButtonClick}/></BtnClose>
+<BtnClose><ButtonClose onClick={handleButtonClick} onClose={onClose}/></BtnClose>
 
     </Modal>
     </Backdrop>

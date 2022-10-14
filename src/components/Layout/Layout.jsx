@@ -12,15 +12,15 @@ const Layout = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   return isLoggedIn ? (
     <>
-      <AppBar />
+      <AppBar />                        
       <main>
         {/* <Main> */}
         <Suspense fallback={<Loader />}>
           <Outlet />
         </Suspense>
         {/* </Main> */}
-      </main>
-    </>
+      </main>                     
+    </>            
   ) : (
     <Background>
       <AppBar />

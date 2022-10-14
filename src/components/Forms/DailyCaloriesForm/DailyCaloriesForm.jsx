@@ -105,7 +105,6 @@ const DailyCaloriesForm = () => {
   const onToggleModal = () => {
     setShowModal(prevState => !prevState);
   };
-
   // const handleSubmit = event => {
   //   event.preventDefault();
   //   dispatch(

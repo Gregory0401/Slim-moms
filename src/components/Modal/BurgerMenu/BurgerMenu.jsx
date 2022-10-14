@@ -9,13 +9,16 @@ const BurgerMenu = ({onToggleModal}) => {
             onToggleModal();
         }
       };
+const onClose = (e) => {
+    onToggleModal();
+}
 
     return (
 <Backdrop onClick={handleBackdropClick}>
     <Main>
         <ul>
-        <StyledNavLink to="/diary">Дневник</StyledNavLink>
-        <StyledNavLink to="/calculator">Калькулятор</StyledNavLink>
+        <StyledNavLink to="/diary" onClick={() =>{onToggleModal()}}>Дневник</StyledNavLink>
+        <StyledNavLink to="/calculator" onClick={onToggleModal}>Калькулятор</StyledNavLink>
         </ul>
     </Main>
 </Backdrop>
