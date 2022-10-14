@@ -2,8 +2,15 @@ import DiaryAddProductForm from 'components/Forms/DiaryAddProductForm/DiaryAddPr
 import ProductsList from '../../components/ProductsList/ProductsList';
 import DiaryDateCalendarDate from 'components/Forms/DiaryDateСalendar/DiaryDateCalendarDate/DiaryDateCalendarDate';
 import RightSideBar from '../../components/RightSideBar/RightSideBar';
-import { SidebarWrap, Thumb, Wrapper, Div } from './DailyPage.styled';
+import {
+  SidebarWrap,
+  Thumb,
+  Wrapper,
+  Container,
+  Div,
+} from './DailyPage.styled';
 import { format, startOfToday } from 'date-fns';
+
 // =====
 import { eatenProduct } from '../../Redux/ProductSearch/productsSearchOperations';
 import {
@@ -15,7 +22,11 @@ import { useEffect } from 'react';
 import { getEatenProducts } from '../../Redux/ProductSearch/productsSearchSelector';
 // =====
 
-import { Container } from 'components/Layout/Main/Main.styled';
+import { Mobile } from '../../components/Forms/DiaryAddProductForm/DiaryAddProductForm.styled';
+import { useState } from 'react';
+import { ButtonOpen } from '../../components/Buttons/ButtonOpen/ButtonOpen';
+import { Form } from '../../components/Forms/DiaryAddProductForm/MobileForm';
+import { motion } from 'framer-motion';
 
 const DailyPage = () => {
   const dispatch = useDispatch();
@@ -28,6 +39,7 @@ const DailyPage = () => {
     dispatch(eatenProduct());
     dispatch(dayInfo(date));
   }, [dispatch, date]);
+
   // =====
   const eatenProducts = useSelector(getEatenProducts);
   console.log('eatenProducts!!!!!!! ', eatenProducts);
@@ -41,24 +53,44 @@ const DailyPage = () => {
       : [];
   console.log('findDayByDate', findDayByDate);
 
-  // =====
+  const [showModal, setShowModal] = useState(false);
+  const onToggleModal = () => {
+    setShowModal(prevState => !prevState);
+  };
 
   return (
-    <Container>
-      <Thumb>
-        <div>
+    <Thumb>
+      <Div>
+        <motion.div
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 1, delay: 0.3 }}
+        >
           <DiaryDateCalendarDate />
           <Wrapper>
-            <DiaryAddProductForm date={date} />
+            <Container>
+              <DiaryAddProductForm date={date} onClose={onToggleModal} />
+            </Container>
+
+            <Mobile>
+              <ButtonOpen onClick={onToggleModal} />
+            </Mobile>
+            {showModal && <Form onClose={onToggleModal} />}
             <ProductsList date={date} eatenProducts={findDayByDate} />
           </Wrapper>
-        </div>
+        </motion.div>
+      </Div>
+      <motion.div
+        as={motion.h2}
+        initial={{ x: 100, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ duration: 1.5, delay: 0 }}
+      >
         <SidebarWrap>
           <RightSideBar />
         </SidebarWrap>
-      </Thumb>
-    </Container>
+      </motion.div>
+    </Thumb>
   );
 };
-
 export default DailyPage;

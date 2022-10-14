@@ -17,22 +17,35 @@ const CalculatorPage = () => {
 
   return (
     <Thumb>
-      <Wrapper>
-        <Title
-          as={motion.h2}
-          initial={{ y: -50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 1.5, delay: 0 }}
-        >
-          Узнай свою суточную норму калорий
-        </Title>
-        <DailyCaloriesForm />
-        {isLoading && <Loader />}
-        {error && <Notification message={error} />}
-      </Wrapper>
-      <SidebarWrap>
-        <RightSideBar />
-      </SidebarWrap>
+      <motion.div
+        initial={{ scale: 0, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 1, delay: 0.3 }}
+      >
+        <Wrapper>
+          <Title
+            as={motion.h2}
+            initial={{ y: -50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 1.5, delay: 0 }}
+          >
+            Узнай свою суточную норму калорий
+          </Title>
+          <DailyCaloriesForm />
+          {isLoading && <Loader />}
+          {error && <Notification message={error} />}
+        </Wrapper>
+      </motion.div>
+      <motion.div
+        as={motion.h2}
+        initial={{ x: 100, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ duration: 1.5, delay: 0 }}
+      >
+        <SidebarWrap>
+          <RightSideBar />
+        </SidebarWrap>
+      </motion.div>
     </Thumb>
   );
 };

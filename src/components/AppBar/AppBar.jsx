@@ -1,8 +1,9 @@
+import BurgerMenu from '../../components/Modal/BurgerMenu/BurgerMenu';
 import { Navigation } from '../Navigation/Navigation';
 import { UserAuthMenu } from '../UserAuthMenu/UserAuthMenu';
 import { AuthNavigation } from '../AuthNavigation/AuthNavigation';
 import { useMedia } from 'react-use';
-
+import { Burger } from '../UserAuthMenu/UserAuthMenu.styled';
 import { useSelector } from 'react-redux';
 import { selectIsLoggedIn } from '../../Redux/Auth/authSelectors';
 import {
@@ -14,8 +15,6 @@ import {
 } from './AppBar.styled';
 import { ButtonBurger } from '../Buttons/ButtonBurger/ButtonBurger';
 import { useState } from 'react';
-import BurgerMenu from 'components/Modal/BurgerMenu/BurgerMenu';
-import { Burger } from '../UserAuthMenu/UserAuthMenu.styled';
 
 export const AppBar = () => {
   const [showModal, setShowModal] = useState(false);
@@ -48,7 +47,6 @@ export const AppBar = () => {
 
             {!isLoggedIn && <AuthNavigation />}
 
-
             {isLoggedIn && (
               <WrapperBurger>
                 <UserAuthMenu />
@@ -64,7 +62,7 @@ export const AppBar = () => {
 
       {showModal && (
         <Menu>
-          <BurgerMenu />
+          <BurgerMenu onToggleModal={onToggleModal} />
         </Menu>
       )}
     </Header>

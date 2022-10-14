@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { lazy } from 'react';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
@@ -11,6 +11,8 @@ import {
   // addProduct,
 } from '../Redux/ProductSearch/productsSearchOperations';
 import DiaryDateСalendar from './Forms/DiaryDateСalendar';
+// const PageNotFound = lazy(() => import('../Pages/PageNotFound/PageNotFound'));
+import { PageNotFound } from 'Pages/PageNotFound/PageNotFound';
 const HomePage = lazy(() => import('../Pages/HomePage/HomePage'));
 const LoginPage = lazy(() => import('../Pages/LoginPage/LoginPage'));
 const RegisterPage = lazy(() => import('../Pages/RegisterPage/RegisterPage'));
@@ -78,8 +80,7 @@ export const App = () => {
             }
           />
         </Route>
-
-        <Route path="*" element={<Navigate to="/login" replace />} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </>
   );

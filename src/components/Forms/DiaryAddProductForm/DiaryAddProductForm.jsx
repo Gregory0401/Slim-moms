@@ -6,6 +6,7 @@ import {
   userInfo,
 } from '../../../Redux/ProductSearch/productsSearchOperations';
 import { getSearchItems } from '../../../Redux/ProductSearch/productsSearchSelector';
+
 // vova1@gmail.com
 // qweqwe123@gmail.com
 // petro-poroshenko@gmail.com
@@ -17,11 +18,13 @@ import {
   Wrrapen,
   StyledForm,
   StyledInput2,
+  Button,
+  ButtonMod,
 } from './DiaryAddProductForm.styled.js';
 import DebounceInput from 'react-debounce-input';
 import Popup from 'components/Popup/Popup';
 
-const DiaryAddProductForm = ({ date }) => {
+const DiaryAddProductForm = ({ date, onClose }) => {
   const dispatch = useDispatch();
   // =====
   useEffect(() => {
@@ -134,11 +137,15 @@ const DiaryAddProductForm = ({ date }) => {
               paddingBottom: 20,
               borderBottom: '1px solid #E0E0E0',
               marginRight: 60,
-              textAlign: 'right',
             }}
           />
         </label>
-        <ButtonSubmit />
+        <Button>
+          <ButtonSubmit />
+        </Button>
+        <ButtonMod type="submit" onClick={onClose}>
+          Добавить
+        </ButtonMod>
       </StyledForm>
     </>
   );
