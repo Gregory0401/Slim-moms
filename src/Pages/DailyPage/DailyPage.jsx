@@ -26,12 +26,13 @@ const DailyPage = () => {
 
   return (
 
-    
+    <>
+
       <Thumb>
         <div>
           <DiaryDateCalendarDate />
           <Wrapper>
-            {/* <DiaryAddProductForm date={date} /> */}
+
             <Container><DiaryAddProductForm date={date} onClose={onToggleModal}/></Container> 
           
           <Mobile><ButtonOpen onClick={onToggleModal}/></Mobile>
@@ -39,11 +40,13 @@ const DailyPage = () => {
             <ProductsList date={date} />
           </Wrapper>
         </div> 
+
         <SidebarWrap>
           <RightSideBar />
         </SidebarWrap>
       </Thumb>
-     
+
+    </>
 
   );
 };

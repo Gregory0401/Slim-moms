@@ -30,3 +30,13 @@ export const DateTitle = styled.p`
 
   color: #212121;
 `;
+
+export const BackLink = styled(Link)`
+  color: #fc842d;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  margin: 0 auto;
+  ml &:hover,
+  &:focus {
+    color: #bf5a36;
+  }
+`;

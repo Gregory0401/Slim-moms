@@ -16,6 +16,7 @@ const HomePage = () => {
     <Wrapper>
       <Title>Просчитай свою суточную норму калорий прямо сейчас</Title>
       <DailyCaloriesForm />
+
       {isLoading && <Loader />}
       {error && <Notification message={error} />}
     </Wrapper>
