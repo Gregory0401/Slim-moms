@@ -6,6 +6,10 @@ import PrivateRoute from 'Routes/PrivateRoute';
 import RestrictedRoute from 'Routes/RestrictedRoute';
 import Layout from './Layout';
 import { fetchCurrentUser } from 'Redux/Auth/authOperation';
+import {
+  userInfo,
+  // addProduct,
+} from '../Redux/ProductSearch/productsSearchOperations';
 import DiaryDateСalendar from './Forms/DiaryDateСalendar';
 const HomePage = lazy(() => import('../Pages/HomePage/HomePage'));
 const LoginPage = lazy(() => import('../Pages/LoginPage/LoginPage'));
@@ -22,7 +26,15 @@ export const App = () => {
 
   useEffect(() => {
     dispatch(fetchCurrentUser());
+    dispatch(userInfo());
   }, [dispatch]);
+  // dispatch(addProduct());
+
+  // =====
+  // useEffect(() => {
+  // }, [dispatch]);
+  // =====
+
   return (
     <>
       {/* <BurgerMenu /> */}

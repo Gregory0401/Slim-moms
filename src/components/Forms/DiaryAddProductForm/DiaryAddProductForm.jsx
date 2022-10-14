@@ -3,9 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   addProduct,
   eatenProduct,
+  userInfo,
 } from '../../../Redux/ProductSearch/productsSearchOperations';
 import { getSearchItems } from '../../../Redux/ProductSearch/productsSearchSelector';
 // vova1@gmail.com
+// qweqwe123@gmail.com
+// petro-poroshenko@gmail.com
+// vasylqwe@gmail.com
 
 import { ButtonSubmit } from '../../Buttons/ButtonSubmit/ButtonSubmit';
 import {
@@ -19,6 +23,12 @@ import Popup from 'components/Popup/Popup';
 
 const DiaryAddProductForm = ({ date }) => {
   const dispatch = useDispatch();
+  // =====
+  useEffect(() => {
+    dispatch(eatenProduct());
+    dispatch(userInfo());
+  }, [dispatch]);
+  // =====
 
   const items = useSelector(getSearchItems);
   const [productId, setProductId] = useState('');
@@ -28,7 +38,6 @@ const DiaryAddProductForm = ({ date }) => {
 
   const [click, setClick] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
-
 
   useEffect(() => {
     !click && setShowPopup(true);
@@ -62,7 +71,6 @@ const DiaryAddProductForm = ({ date }) => {
     setProductId(id);
     setShowPopup(false);
     setClick(true);
-
   };
 
   const handleSubmit = event => {
@@ -81,12 +89,13 @@ const DiaryAddProductForm = ({ date }) => {
 
     dispatch(eatenProduct(eatenDate));
     dispatch(addProduct(newProduct));
+    // dispatch(userInfo());
     setTitle('');
     setWeight('');
   };
-  console.log(showPopup);
-  console.log(items.length > 1);
-  console.log(title.length > 1);
+  // console.log(showPopup);
+  // console.log(items.length > 1);
+  // console.log(title.length > 1);
   return (
     <>
       <StyledForm onSubmit={handleSubmit}>

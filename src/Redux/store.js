@@ -25,7 +25,7 @@ const authPersistedReducer = persistReducer(authPersistConfig, authReducer);
 const productPersistConfig = {
   key: 'product',
   storage,
-  whitelist: ['daySummary', 'eatenProduct', 'dayId'],
+  whitelist: ['daySummary', 'eatenProducts', 'dayId'],
 };
 
 const productPersistedReducer = persistReducer(
