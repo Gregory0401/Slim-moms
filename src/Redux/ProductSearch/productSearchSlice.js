@@ -23,7 +23,10 @@ const productSlice = createSlice({
     product: [],
     notAllowedProducts: [],
     userId: null,
+<<<<<<< HEAD
+=======
     // =====
+>>>>>>> dev
     userDaySummary: null,
   },
   extraReducers: {
@@ -63,7 +66,6 @@ const productSlice = createSlice({
     },
     [dayInfo.fulfilled]: (state, { payload }) => {
       state.isLoading = false;
-      // state.date = payload.day.date;//???????????????????????
       state.daySummary = payload.daySummary;
     },
     [dayInfo.rejected]: (state, { payload }) => {
@@ -80,6 +82,11 @@ const productSlice = createSlice({
       state.isLoading = false;
       state.notAllowedProducts = payload.userData.notAllowedProducts;
       state.userId = payload.id;
+<<<<<<< HEAD
+      state.eatenProduct = payload.days.filter(
+        item => item._id === state.dayId
+      );
+=======
       console.log(22222222);
       // =====
       // state.eatenProduct = payload.days.daySummary;
@@ -90,6 +97,7 @@ const productSlice = createSlice({
       // );
 
       // =====
+>>>>>>> dev
       // state.daySummary = payload.days.daySummary;
       // state.daySummary = payload.days.filter(item => item._id === state.dayId);
       // console.log(state.dayId);

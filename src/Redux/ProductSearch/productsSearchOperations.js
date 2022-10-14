@@ -3,8 +3,6 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 axios.defaults.baseURL = 'https://slimmom-backend.goit.global';
 
-// vova1@gmail.com
-
 export const addProduct = createAsyncThunk(
   'product/addProduct',
   async ({ title }, { rejectWithValue }) => {
@@ -22,7 +20,6 @@ export const eatenProduct = createAsyncThunk(
   async (credentials, { rejectWithValue }) => {
     try {
       const { data } = await axios.post('/day', credentials);
-      // console.log('eatenProduct', data);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -46,7 +43,6 @@ export const dayInfo = createAsyncThunk(
 export const userInfo = createAsyncThunk(
   'product/userInfo',
   async (_, { rejectWithValue }) => {
-    // console.log(credentials);
     try {
       const { data } = await axios.get('/user');
       return data;
@@ -69,20 +65,3 @@ export const deleteEatenProduct = createAsyncThunk(
     }
   }
 );
-
-// export const productSearch = createAsyncThunk(
-//   'product/get',
-//   async (search, { rejectWithValue }) => {
-//     try {
-//       const { data } = await axios.get('/product', {
-//         params: {
-//           search,
-//         },
-//       });
-
-//       return data;
-//     } catch (error) {
-//       return rejectWithValue(error.message);
-//     }
-//   }
-// );

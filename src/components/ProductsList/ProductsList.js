@@ -11,10 +11,7 @@ import {
 // =====
 import {
   deleteEatenProduct,
-  dayInfo,
   userInfo,
-  addProduct,
-  // eatenProduct,
 } from '../../Redux/ProductSearch/productsSearchOperations';
 import { ButtonClose } from '../Buttons/ButtonClose/ButtonClose';
 import { Text, TextDiscription, List, Item } from './ProductList.styled.js';
@@ -67,7 +64,6 @@ const ProductsList = ({ date, eatenProducts }) => {
       dayId,
       eatenProductId: id,
     };
-
 
     dispatch(userInfo());
     dispatch(deleteEatenProduct(deleteData));
