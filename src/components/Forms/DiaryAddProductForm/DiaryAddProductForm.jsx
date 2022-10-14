@@ -7,15 +7,22 @@ import {
   eatenProduct,
 } from '../../../Redux/ProductSearch/productsSearchOperations';
 import { getSearchItems } from '../../../Redux/ProductSearch/productsSearchSelector';
+// vova1@gmail.com
+// qweqwe123@gmail.com
+// petro-poroshenko@gmail.com
+// vasylqwe@gmail.com
+
 import { ButtonSubmit } from '../../Buttons/ButtonSubmit/ButtonSubmit';
 import {
   LabelSearch,
   Wrrapen,
   StyledForm,
+  Button,
+  ButtonMod,
 } from './DiaryAddProductForm.styled.js';
 import Popup from 'components/Popup/Popup';
 
-const DiaryAddProductForm = ({ date }) => {
+const DiaryAddProductForm = ({ date, onClose }) => {
   const dispatch = useDispatch();
   const items = useSelector(getSearchItems);
   const [productId, setProductId] = useState('');
@@ -102,6 +109,7 @@ const DiaryAddProductForm = ({ date }) => {
             <Popup data={items} onClick={handleClick} />
           )}
         </Wrrapen>
+
         <input
           type="number"
           name="weight"
@@ -120,6 +128,13 @@ const DiaryAddProductForm = ({ date }) => {
         />
         {formik.errors.weight && formik.touched.weight && formik.errors.weight}
         <ButtonSubmit disabled={formik.isSubmitting} />
+
+        <Button>
+          <ButtonSubmit />
+        </Button>
+        <ButtonMod type="submit" onClick={onClose}>
+          Добавить
+        </ButtonMod>
       </StyledForm>
     </>
   );

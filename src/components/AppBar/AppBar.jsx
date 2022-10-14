@@ -1,18 +1,20 @@
+import BurgerMenu from '../../components/Modal/BurgerMenu/BurgerMenu';
 import { Navigation } from '../Navigation/Navigation';
 import { UserAuthMenu } from '../UserAuthMenu/UserAuthMenu';
 import { AuthNavigation } from '../AuthNavigation/AuthNavigation';
 import { useMedia } from 'react-use';
-
+import { Burger } from '../UserAuthMenu/UserAuthMenu.styled';
 import { useSelector } from 'react-redux';
+import { selectIsLoggedIn } from '../../Redux/Auth/authSelectors';
 import {
-  selectIsLoggedIn,
-  selectAccessToken,
-} from '../../Redux/Auth/authSelectors';
-import { Header, Wrapper, Menu } from './AppBar.styled';
+  Header,
+  Wrapper,
+  Menu,
+  WrapperBurger,
+  SecondWrapper,
+} from './AppBar.styled';
 import { ButtonBurger } from '../Buttons/ButtonBurger/ButtonBurger';
 import { useState } from 'react';
-import BurgerMenu from 'components/Modal/BurgerMenu/BurgerMenu';
-import { Burger } from '../UserAuthMenu/UserAuthMenu.styled';
 
 export const AppBar = () => {
   const [showModal, setShowModal] = useState(false);
@@ -23,40 +25,44 @@ export const AppBar = () => {
   };
 
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  const token = useSelector(selectAccessToken);
   return (
     <Header>
       {isWide ? (
         <>
           <Wrapper>
             <Navigation />
-            {!isLoggedIn && !token && <AuthNavigation />}
+            {!isLoggedIn && <AuthNavigation />}
             {isLoggedIn && (
               <Burger>
                 <ButtonBurger onClick={onToggleModal} />
               </Burger>
             )}
           </Wrapper>
-          {isLoggedIn && token && <UserAuthMenu />}
+          {isLoggedIn && <UserAuthMenu />}
         </>
       ) : (
         <>
-          <Wrapper>
+          <SecondWrapper>
             <Navigation />
-            {!isLoggedIn && !token && <AuthNavigation />}
-            {isLoggedIn && token && <UserAuthMenu />}
+
+            {!isLoggedIn && <AuthNavigation />}
+
             {isLoggedIn && (
-              <Burger>
-                <ButtonBurger onClick={onToggleModal} />
-              </Burger>
+              <WrapperBurger>
+                <UserAuthMenu />
+
+                <Burger>
+                  <ButtonBurger onClick={onToggleModal} />
+                </Burger>
+              </WrapperBurger>
             )}
-          </Wrapper>
+          </SecondWrapper>
         </>
       )}
 
       {showModal && (
         <Menu>
-          <BurgerMenu />
+          <BurgerMenu onToggleModal={onToggleModal} />
         </Menu>
       )}
     </Header>

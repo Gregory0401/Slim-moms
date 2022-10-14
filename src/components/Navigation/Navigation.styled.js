@@ -28,29 +28,27 @@ export const StyledLogo = styled(NavLink)`
 `;
 
 export const Menu = styled.div`
-  display:none;
-  
-  @media ${breakpoints.desktop}{
-  
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-left: 2px solid var(--border-color);
-  padding-left: 20px;
-  gap: 16px;}
+  display: none;
+
+  @media ${breakpoints.desktop} {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-left: 2px solid var(--border-color);
+    padding-left: 20px;
+    margin-left: 20px;
+    gap: 16px;
+  }
 `;
 
 export const Burger = styled.div`
-@media ${breakpoints.desktop} {
-  
-}
-`
+  @media ${breakpoints.desktop} {
+  }
+`;
 
 export const Wrapper = styled.div`
-    display: flex;
-    align-items: baseline;
-    justify-content: center;
-    gap: 20px;
-    
-  
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  /* gap: 20px; */
 `;

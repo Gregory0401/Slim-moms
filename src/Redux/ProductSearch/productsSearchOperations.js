@@ -30,7 +30,7 @@ export const eatenProduct = createAsyncThunk(
 export const dayInfo = createAsyncThunk(
   'product/dayInfo',
   async (credentials, { rejectWithValue }) => {
-    console.log(credentials);
+    // console.log(credentials);
     try {
       const { data } = await axios.post('/day/info', credentials);
       return data;

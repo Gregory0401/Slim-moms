@@ -7,9 +7,11 @@ function Popup({ data, onClick }) {
       {data.map(item => {
         return (
           <div key={item._id}>
+
             <PopupText onClick={e => onClick(e, item._id)}>
               {item.title?.ru}
             </PopupText>
+
           </div>
         );
       })}

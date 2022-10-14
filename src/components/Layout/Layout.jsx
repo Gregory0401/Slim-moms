@@ -6,12 +6,15 @@ import { Background } from '../Background/Background';
 import Loader from 'components/Loader';
 import { useSelector } from 'react-redux';
 import { selectIsLoggedIn } from 'Redux/Auth/authSelectors';
+
 import { motion } from 'framer-motion';
+
 
 const Layout = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   return isLoggedIn ? (
     <>
+
       <motion.div
         initial={{ y: -70, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -26,6 +29,7 @@ const Layout = () => {
           {/* </Main> */}
         </main>
       </motion.div>
+
     </>
   ) : (
     <Background>

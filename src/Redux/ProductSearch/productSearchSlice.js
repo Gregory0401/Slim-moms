@@ -10,7 +10,7 @@ import {
 const productSlice = createSlice({
   name: 'product',
   initialState: {
-    eatenProduct: null,
+    eatenProducts: [],
     daySummary: null,
     items: [],
     productId: null,
@@ -23,6 +23,10 @@ const productSlice = createSlice({
     product: [],
     notAllowedProducts: [],
     userId: null,
+<<<<<<< HEAD
+=======
+    // =====
+>>>>>>> dev
     userDaySummary: null,
   },
   extraReducers: {
@@ -45,8 +49,8 @@ const productSlice = createSlice({
     },
     [eatenProduct.fulfilled]: (state, { payload }) => {
       state.weight = payload.eatenProduct.weight;
-      state.eatenProduct = payload.day.eatenProducts;
-      state.daySummary = payload.daySummary; //скільки ми захавали
+      state.eatenProducts = [payload.day];
+      state.daySummary = payload.daySummary;
       state.isLoading = false;
       state.dayId = payload.day.id;
       state.eatenProductId = payload.eatenProduct.id;
@@ -78,9 +82,22 @@ const productSlice = createSlice({
       state.isLoading = false;
       state.notAllowedProducts = payload.userData.notAllowedProducts;
       state.userId = payload.id;
+<<<<<<< HEAD
       state.eatenProduct = payload.days.filter(
         item => item._id === state.dayId
       );
+=======
+      console.log(22222222);
+      // =====
+      // state.eatenProduct = payload.days.daySummary;
+      state.eatenProducts = payload.days;
+      // state.eatenProducts = payload.days.filter(
+      //   item => item._id === state.dayId
+      //   // console.log(item._id);
+      // );
+
+      // =====
+>>>>>>> dev
       // state.daySummary = payload.days.daySummary;
       // state.daySummary = payload.days.filter(item => item._id === state.dayId);
       // console.log(state.dayId);
