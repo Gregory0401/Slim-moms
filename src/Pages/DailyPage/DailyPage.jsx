@@ -4,13 +4,14 @@ import DiaryDateCalendarDate from 'components/Forms/DiaryDateСalendar/DiaryDate
 import RightSideBar from '../../components/RightSideBar/RightSideBar';
 import { SidebarWrap, Thumb, Wrapper, Container} from './DailyPage.styled';
 import { format, startOfToday } from 'date-fns';
+
+import { motion } from 'framer-motion';
+
 import {Mobile  } from '../../components/Forms/DiaryAddProductForm/DiaryAddProductForm.styled'
 import { useState } from 'react';
 import  {ButtonOpen}  from '../../components/Buttons/ButtonOpen/ButtonOpen';
 import {Form} from '../../components/Forms/DiaryAddProductForm/MobileForm'
 
-
-// import { Container } from 'components/Layout/Main/Main.styled';
 
 
 const DailyPage = () => {
@@ -26,10 +27,20 @@ const DailyPage = () => {
 
   return (
 
+    <Thumb>
+      <motion.div
+        initial={{ scale: 0, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 1, delay: 0.3 }}
+      >
+        <Div>
+
+
     <>
 
       <Thumb>
         <div>
+
           <DiaryDateCalendarDate />
           <Wrapper>
 
@@ -39,6 +50,21 @@ const DailyPage = () => {
           {showModal && <Form onClose={onToggleModal}/>}
             <ProductsList date={date} />
           </Wrapper>
+
+        </Div>
+      </motion.div>
+      <motion.div
+        as={motion.h2}
+        initial={{ x: 100, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ duration: 1.5, delay: 0 }}
+      >
+        <SidebarWrap>
+          <RightSideBar />
+        </SidebarWrap>
+      </motion.div>
+    </Thumb>
+
         </div> 
 
         <SidebarWrap>
@@ -47,6 +73,7 @@ const DailyPage = () => {
       </Thumb>
 
     </>
+
 
   );
 };

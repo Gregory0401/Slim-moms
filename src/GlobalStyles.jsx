@@ -48,6 +48,7 @@ html {
     width: 100vw;
     overflow-x: hidden;
     scroll-behavior: smooth;
+    
   }
   *,
   *::before,
@@ -59,11 +60,12 @@ html {
   font-family: 'Verdana', 'Gotham Pro, sans-serif';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
   }
   img {
   width: 100%;
   display: block;
-  height: auto;
+  height: auto; 
   }
   ul {
     padding: 0;
