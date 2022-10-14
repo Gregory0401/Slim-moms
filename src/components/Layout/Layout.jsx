@@ -7,7 +7,6 @@ import Loader from 'components/Loader';
 import { useSelector } from 'react-redux';
 import { selectIsLoggedIn } from 'Redux/Auth/authSelectors';
 
-
 const Layout = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   return isLoggedIn ? (
@@ -18,6 +17,7 @@ const Layout = () => {
         <Suspense fallback={<Loader />}>
           <Outlet />
         </Suspense>
+
         {/* </Main> */}
       </main>
     </>

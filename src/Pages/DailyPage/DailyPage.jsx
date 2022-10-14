@@ -10,18 +10,20 @@ const DailyPage = () => {
   let date = format(today, 'yyyy-MM-dd');
 
   return (
-    <Thumb>
-      <div>
-        <DiaryDateCalendarDate />
-        <Wrapper>
-          <DiaryAddProductForm date={date} />
-          <ProductsList date={date} />
-        </Wrapper>
-      </div>
-      <SidebarWrap>
-        <RightSideBar />
-      </SidebarWrap>
-    </Thumb>
+    <>
+      <Thumb>
+        <div>
+          <DiaryDateCalendarDate />
+          <Wrapper>
+            <DiaryAddProductForm date={date} />
+            <ProductsList date={date} />
+          </Wrapper>
+        </div>
+        <SidebarWrap>
+          <RightSideBar />
+        </SidebarWrap>
+      </Thumb>
+    </>
   );
 };
 
