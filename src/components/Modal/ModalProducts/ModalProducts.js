@@ -83,13 +83,13 @@ const ModalProducts = ({ onClose }) => {
             ))}
           </Products>
           <ButtonMain>
-            <Button>
+            
               <StyledNavLink to="/daily/">Начать худеть</StyledNavLink>
-            </Button>
+            
           </ButtonMain>
 
           <BtnClose>
-            <ButtonClose onClick={handleButtonClick} />
+            <ButtonClose onClose={handleButtonClick} />
           </BtnClose>
         </Modal>
       </Backdrop>

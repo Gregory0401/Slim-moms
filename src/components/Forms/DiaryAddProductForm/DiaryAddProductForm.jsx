@@ -5,7 +5,7 @@ import {
   eatenProduct,
 } from '../../../Redux/ProductSearch/productsSearchOperations';
 import { getSearchItems } from '../../../Redux/ProductSearch/productsSearchSelector';
-// vova1@gmail.com
+
 
 import { ButtonSubmit } from '../../Buttons/ButtonSubmit/ButtonSubmit';
 import {
@@ -13,11 +13,16 @@ import {
   Wrrapen,
   StyledForm,
   StyledInput2,
+  Button,
+  ButtonMod,
 } from './DiaryAddProductForm.styled.js';
 import DebounceInput from 'react-debounce-input';
 import Popup from 'components/Popup/Popup';
 
-const DiaryAddProductForm = ({ date }) => {
+
+
+
+const DiaryAddProductForm = ({ date, onClose }) => {
   const dispatch = useDispatch();
 
   const items = useSelector(getSearchItems);
@@ -65,9 +70,11 @@ const DiaryAddProductForm = ({ date }) => {
 
   };
 
+
+
   const handleSubmit = event => {
     event.preventDefault();
-
+   
     const newProduct = {
       title,
       weight,
@@ -89,7 +96,8 @@ const DiaryAddProductForm = ({ date }) => {
   console.log(title.length > 1);
   return (
     <>
-      <StyledForm onSubmit={handleSubmit}>
+   
+      <StyledForm onSubmit={handleSubmit} >
         <Wrrapen>
           <LabelSearch>
             <DebounceInput
@@ -124,12 +132,16 @@ const DiaryAddProductForm = ({ date }) => {
               paddingBottom: 20,
               borderBottom: '1px solid #E0E0E0',
               marginRight: 60,
-              textAlign: 'right',
+              
             }}
           />
         </label>
-        <ButtonSubmit />
+        <Button><ButtonSubmit /></Button>
+        <ButtonMod type="submit" onClick={onClose}>Добавить</ButtonMod>  
       </StyledForm>
+      
+     
+      
     </>
   );
 };
