@@ -48,7 +48,6 @@ export const AppBar = () => {
 
             {!isLoggedIn && <AuthNavigation />}
 
-
             {isLoggedIn && (
               <WrapperBurger>
                 <UserAuthMenu />
@@ -64,7 +63,7 @@ export const AppBar = () => {
 
       {showModal && (
         <Menu>
-          <BurgerMenu />
+          <BurgerMenu onToggleModal={onToggleModal} />
         </Menu>
       )}
     </Header>
