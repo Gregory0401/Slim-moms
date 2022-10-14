@@ -34,7 +34,7 @@ export const Set = styled.div`
   }
 `;
 
-export const Img1 = styled.img`
+export const Img1 = styled.div`
   background: url(${leaf6}) no-repeat;
   width: 35px;
   height: 45px;
@@ -43,7 +43,7 @@ export const Img1 = styled.img`
   animation: ${animation} 65s infinite alternate ease-in-out;
 `;
 
-export const Img2 = styled.img`
+export const Img2 = styled.div`
   background: url(${leaf6}) no-repeat;
   width: 35px;
   height: 45px;
@@ -55,7 +55,7 @@ export const Img2 = styled.img`
   animation: ${animation} 95s infinite alternate ease-in-out;
 `;
 
-export const Img3 = styled.img`
+export const Img3 = styled.div`
   background: url(${leaf3}) no-repeat;
   width: 40px;
   height: 55px;
@@ -65,7 +65,7 @@ export const Img3 = styled.img`
   animation: ${animation} 105s infinite alternate ease-in-out;
 `;
 
-export const Img4 = styled.img`
+export const Img4 = styled.div`
   background: url(${leaf3}) no-repeat;
   width: 55px;
   height: 40px;
@@ -76,7 +76,7 @@ export const Img4 = styled.img`
   animation: ${animation} 90s infinite alternate ease-in-out;
 `;
 
-export const Img5 = styled.img`
+export const Img5 = styled.div`
   background: url(${leaf5}) no-repeat;
   top: 535px;
   right: 88vw;
@@ -88,7 +88,7 @@ export const Img5 = styled.img`
   animation: ${animation} 75s infinite alternate ease-in-out;
 `;
 
-export const Img6 = styled.img`
+export const Img6 = styled.div`
   background: url(${leaf6}) no-repeat;
   width: 30px;
   height: 40px;
