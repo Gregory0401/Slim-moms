@@ -48,7 +48,6 @@ export const AppBar = () => {
 
             {!isLoggedIn && <AuthNavigation />}
 
-
             {isLoggedIn && (
               <WrapperBurger>
                 <UserAuthMenu />

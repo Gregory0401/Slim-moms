@@ -1,25 +1,43 @@
-import React from "react";
-import { Backdrop, Main, StyledNavLink } from "./BurgerMenu.styled";
+import React from 'react';
+import { Backdrop, Main, StyledNavLink } from './BurgerMenu.styled';
 
+const BurgerMenu = ({ onToggleModal }) => {
+  const handleBackdropClick = e => {
+    if (e.target === e.currentTarget) {
+      onToggleModal();
+    }
+  };
 
-const BurgerMenu = ({onToggleModal}) => {
-
-    const handleBackdropClick = (e) => {
-        if (e.target === e.currentTarget) {
-            onToggleModal();
-        }
-      };
-
-    return (
-<Backdrop onClick={handleBackdropClick}>
-    <Main>
+  return (
+    <Backdrop onClick={handleBackdropClick}>
+      <Main>
         <ul>
-        <StyledNavLink to="/diary">Дневник</StyledNavLink>
-        <StyledNavLink to="/calculator">Калькулятор</StyledNavLink>
+          <li>
+            <StyledNavLink
+              to="/diary"
+              //   onClick={() => {
+              //     onToggleModal();
+              //   }}
+              end
+            >
+              Дневник
+            </StyledNavLink>
+          </li>
+          <li>
+            <StyledNavLink
+              to="/calculator"
+              //   onClick={() => {
+              //     onToggleModal();
+              //   }}
+              end
+            >
+              Калькулятор
+            </StyledNavLink>
+          </li>
         </ul>
-    </Main>
-</Backdrop>
-    )
-}
+      </Main>
+    </Backdrop>
+  );
+};
 
 export default BurgerMenu;
