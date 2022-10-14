@@ -8,20 +8,22 @@ const BurgerMenu = ({ onToggleModal }) => {
     }
   };
 
-  return (
-    <Backdrop onClick={handleBackdropClick}>
-      <Main>
+
+const BurgerMenu = ({onToggleModal}) => {
+
+    const handleBackdropClick = (e) => {
+        if (e.target === e.currentTarget) {
+            onToggleModal();
+        }
+      };
+
+    return (
+<Backdrop onClick={handleBackdropClick}>
+    <Main>
         <ul>
-          <li>
-            <StyledNavLink to="/diary" onClick={onToggleModal} end>
-              Дневник
-            </StyledNavLink>
-          </li>
-          <li>
-            <StyledNavLink to="/calculator" onClick={onToggleModal} end>
-              Калькулятор
-            </StyledNavLink>
-          </li>
+        <StyledNavLink to="/diary" onClick={() =>{onToggleModal()}}>Дневник</StyledNavLink>
+        <StyledNavLink to="/calculator" onClick={onToggleModal}>Калькулятор</StyledNavLink>
+
         </ul>
       </Main>
     </Backdrop>
