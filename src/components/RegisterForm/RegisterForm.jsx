@@ -4,6 +4,7 @@ import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { register } from '../../Redux/Auth/authOperation';
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 import {
   StyledForm,
@@ -17,8 +18,6 @@ import {
 } from './RegisterForm.styled';
 
 export const RegisterForm = () => {
-  
-  
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const initialValues = {
@@ -47,56 +46,47 @@ export const RegisterForm = () => {
       .required('Обязательное поле'),
   });
 
-  
   const handleSubmit = (values, { resetForm }) => {
-    
     dispatch(register(values));
     resetForm();
     navigate('/login');
-    
   };
   return (
-    <Formik
-      onSubmit={handleSubmit}
-      initialValues={initialValues}
-      validationSchema={validationSchema}
+    <motion.div
+      initial={{ y: -50, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 1.5, delay: 0 }}
     >
-      <Form>
-        <StyledForm>
-          <Wrapper>
-            <Label htmlFor="username">Имя *</Label>
-            <Input
-              type="text"
-              name="username"
-              
-            />
-            <FormError name="username" />
-          </Wrapper>
-          <Wrapper>
-            <Label htmlFor="email">Логин *</Label>
-            <Input
-              type="email"
-              name="email"
-              
-            />
-            <FormError name="email" />
-          </Wrapper>
-          <Wrapper>
-            <Label htmlFor="password">Пароль *</Label>
-            <Input
-              type="password"
-              name="password"
-              
-            />
-            <FormError name="password" />
-          </Wrapper>
-          
-          <BtnWrapper>
-            <BtnR type="submit"> Регистрация </BtnR>
-            <StyledNavLink to="/login">Вход</StyledNavLink>
-          </BtnWrapper>
-        </StyledForm>
-      </Form>
-    </Formik>
+      <Formik
+        onSubmit={handleSubmit}
+        initialValues={initialValues}
+        validationSchema={validationSchema}
+      >
+        <Form>
+          <StyledForm>
+            <Wrapper>
+              <Label htmlFor="username">Имя *</Label>
+              <Input type="text" name="username" />
+              <FormError name="username" />
+            </Wrapper>
+            <Wrapper>
+              <Label htmlFor="email">Логин *</Label>
+              <Input type="email" name="email" />
+              <FormError name="email" />
+            </Wrapper>
+            <Wrapper>
+              <Label htmlFor="password">Пароль *</Label>
+              <Input type="password" name="password" />
+              <FormError name="password" />
+            </Wrapper>
+
+            <BtnWrapper>
+              <BtnR type="submit"> Регистрация </BtnR>
+              <StyledNavLink to="/login">Вход</StyledNavLink>
+            </BtnWrapper>
+          </StyledForm>
+        </Form>
+      </Formik>
+    </motion.div>
   );
 };

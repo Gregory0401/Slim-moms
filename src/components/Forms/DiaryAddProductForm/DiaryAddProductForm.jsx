@@ -5,26 +5,38 @@ import {
   eatenProduct,
 } from '../../../Redux/ProductSearch/productsSearchOperations';
 import { getSearchItems } from '../../../Redux/ProductSearch/productsSearchSelector';
-// vova1@gmail.com
+
 
 import { ButtonSubmit } from '../../Buttons/ButtonSubmit/ButtonSubmit';
 import {
   LabelSearch,
   Wrrapen,
   StyledForm,
+  StyledInput2,
+  Button,
+  ButtonMod,
 } from './DiaryAddProductForm.styled.js';
 import DebounceInput from 'react-debounce-input';
+import Popup from 'components/Popup/Popup';
 
-const DiaryAddProductForm = ({ date }) => {
+
+
+
+const DiaryAddProductForm = ({ date, onClose }) => {
   const dispatch = useDispatch();
 
   const items = useSelector(getSearchItems);
-  const productId = items[0]?._id;
+  const [productId, setProductId] = useState('');
 
   const [title, setTitle] = useState('');
   const [weight, setWeight] = useState('');
 
+  const [click, setClick] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
+
+
   useEffect(() => {
+    !click && setShowPopup(true);
     if (title.length > 2) {
       dispatch(
         addProduct({
@@ -32,11 +44,12 @@ const DiaryAddProductForm = ({ date }) => {
         })
       );
     }
-  }, [dispatch, title]);
+  }, [click, dispatch, title]);
 
   function handleChange({ target: { name, value } }) {
     switch (name) {
       case 'title':
+        setClick(false);
         setTitle(value);
         break;
       case 'weight':
@@ -48,13 +61,20 @@ const DiaryAddProductForm = ({ date }) => {
     }
   }
 
-  const handleClick = ({ target: { textContent } }) => {
+  const handleClick = ({ target: { textContent } }, id) => {
     setTitle(textContent);
+
+    setProductId(id);
+    setShowPopup(false);
+    setClick(true);
+
   };
+
+
 
   const handleSubmit = event => {
     event.preventDefault();
-
+   
     const newProduct = {
       title,
       weight,
@@ -71,10 +91,13 @@ const DiaryAddProductForm = ({ date }) => {
     setTitle('');
     setWeight('');
   };
-
+  console.log(showPopup);
+  console.log(items.length > 1);
+  console.log(title.length > 1);
   return (
     <>
-      <StyledForm onSubmit={handleSubmit}>
+   
+      <StyledForm onSubmit={handleSubmit} >
         <Wrrapen>
           <LabelSearch>
             <DebounceInput
@@ -92,20 +115,12 @@ const DiaryAddProductForm = ({ date }) => {
               }}
             />
           </LabelSearch>
-          <div>
-            {items.length > 1 && title.length > 2
-              ? items.map(item => {
-                  return (
-                    <div key={item._id}>
-                      <p onClick={handleClick}>{item.title?.ru}</p>
-                    </div>
-                  );
-                })
-              : null}
-          </div>
+          {showPopup && items.length > 1 && title.length > 1 && (
+            <Popup data={items} onClick={handleClick} />
+          )}
         </Wrrapen>
         <label>
-          <input
+          <StyledInput2
             type="number"
             name="weight"
             value={weight}
@@ -117,12 +132,16 @@ const DiaryAddProductForm = ({ date }) => {
               paddingBottom: 20,
               borderBottom: '1px solid #E0E0E0',
               marginRight: 60,
-              textAlign: 'right',
+              
             }}
           />
         </label>
-        <ButtonSubmit />
+        <Button><ButtonSubmit /></Button>
+        <ButtonMod type="submit" onClick={onClose}>Добавить</ButtonMod>  
       </StyledForm>
+      
+     
+      
     </>
   );
 };

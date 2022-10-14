@@ -36,6 +36,7 @@ export const Input = styled(Field)`
   display: block;
   width: 280px;
   height: 20px;
+  outline: none;
 
   font-family: inherit;
   font-size: 1rem;
@@ -87,10 +88,6 @@ export const BtnR = styled.button`
   color: #ffffff;
 `;
 export const StyledNavLink = styled(NavLink)`
-  
-
-
-
   background: #ffffff;
   border: 2px solid #fc842d;
   border-radius: 30px;
@@ -115,10 +112,8 @@ export const ErrorText = styled.p`
   color: var(--orange-color);
   font-size: 12px;
   margin-top: 40px;
-  
 `;
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  
 `;

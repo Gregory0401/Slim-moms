@@ -1,8 +1,7 @@
-import s from '../ButtonMain/buttonMain.module.css'
+import {Button} from '../ButtonMain/ButtonMain.styled'
 
 
-export const ButtonMain = () => {
-    return (
-        <button className={s.button}></button>
-    )
+export const ButtonMain = ({onClick}) => {
+    return  <Button type="submit" onClick={onClick}>Добавить</Button>
+
 }

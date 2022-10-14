@@ -7,19 +7,29 @@ import Loader from 'components/Loader';
 import { useSelector } from 'react-redux';
 import { selectIsLoggedIn } from 'Redux/Auth/authSelectors';
 
+import { motion } from 'framer-motion';
+
+
 const Layout = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   return isLoggedIn ? (
     <>
-      <AppBar />
-      <main>
-        {/* <Main> */}
-        <Suspense fallback={<Loader />}>
-          <Outlet />
-        </Suspense>
 
-        {/* </Main> */}
-      </main>
+      <motion.div
+        initial={{ y: -70, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 1.7, delay: 0 }}
+      >
+        <AppBar />
+        <main>
+          {/* <Main> */}
+          <Suspense fallback={<Loader />}>
+            <Outlet />
+          </Suspense>
+          {/* </Main> */}
+        </main>
+      </motion.div>
+
     </>
   ) : (
     <Background>
