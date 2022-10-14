@@ -10,14 +10,28 @@ export const Wrapper = styled.div`
   justify-content: center;
   text-align: center;
   /* margin-left: auto; */
-  margin-right: 60px;
-  ${ContainerStyled};
+  margin-right: 45px;
+  
   @media ${breakpoints.maxMobile} {
+    ${ContainerStyled};
     background-color: var(--secondary-background-color);
     width: 100%;
-    height: 100%;
+    height: 40px;
     justify-content: flex-end;
-    border-top: 2px solid var(--border-color);
+    /* border-top: 2px solid var(--border-color); */
+  }
+
+  @media ${breakpoints.mobile} {
+    padding: 0 20px;
+  }
+
+  @media ${breakpoints.minTablet} {
+    padding: 0 ;
+  }
+  @media ${breakpoints.desktop} {
+    /* padding: 0 16px; */
+     margin-right: 0;
+    
   }
 `;
 export const Name = styled.p`
@@ -50,6 +64,4 @@ export const Logout = styled.button`
   height: 32px;
   color: var(--secondary-text-color);
 `;
-export const Burger = styled.div`
-
-`
+export const Burger = styled.div``;

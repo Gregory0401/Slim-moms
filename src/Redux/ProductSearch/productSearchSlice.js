@@ -4,6 +4,7 @@ import {
   eatenProduct,
   deleteEatenProduct,
   dayInfo,
+  userInfo,
 } from './productsSearchOperations';
 
 const productSlice = createSlice({
@@ -20,6 +21,7 @@ const productSlice = createSlice({
     dayId: null,
     eatenProductId: null,
     product: [],
+    notAllowedProducts: [],
   },
   extraReducers: {
     [addProduct.pending]: state => {
@@ -65,6 +67,25 @@ const productSlice = createSlice({
       state.isLoading = false;
       state.error = payload;
     },
+
+    // ===== userInfo =====
+
+    [userInfo.pending]: state => {
+      state.isLoading = true;
+    },
+    [userInfo.fulfilled]: (state, { payload }) => {
+      state.isLoading = false;
+      state.notAllowedProducts = payload.userData.notAllowedProducts;
+      // state.daySummary = payload.days.daySummary;
+      state.daySummary = payload.days.filter(item => item._id === state.dayId);
+      console.log(state.dayId);
+      console.log(state.daySummary[0]);
+    },
+    [userInfo.rejected]: (state, { payload }) => {
+      state.isLoading = false;
+      state.error = payload;
+    },
+
     // =====deleteProduct=====
     [deleteEatenProduct.pending]: state => ({
       ...state,

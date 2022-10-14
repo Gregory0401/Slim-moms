@@ -8,14 +8,18 @@ export const Wrapper = styled.div`
 
   @media ${breakpoints.mobile} {
     padding: 0 20px;
+    padding-bottom: 47px;
   }
 
   @media ${breakpoints.minTablet} {
-    padding: 0 32px;
-    padding-bottom: 111px;
+    padding-bottom: 48px;
+    padding-right: 32px;
+    padding-left: 32px;
   }
   @media ${breakpoints.desktop} {
-    padding: 0 16px;
+    padding-bottom: 111px;
+    padding-right: 16px;
+    padding-left: 16px;
   }
 `;
 

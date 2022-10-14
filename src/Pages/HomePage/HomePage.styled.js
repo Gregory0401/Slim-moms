@@ -8,14 +8,16 @@ export const Wrapper = styled.div`
 
   @media ${breakpoints.mobile} {
     padding: 0 20px;
+    padding-bottom: 47px;
   }
 
   @media ${breakpoints.minTablet} {
     padding: 0 32px;
-    padding-bottom: 111px;
+    padding-bottom: 397px;
   }
   @media ${breakpoints.desktop} {
     padding: 0 16px;
+    padding-bottom: 111px;
   }
 `;
 
@@ -36,14 +38,10 @@ export const Title = styled.h2`
     line-height: 1.2;
     margin-top: 100px;
     margin-bottom: 68px;
-    padding-left: 16px;
-    padding-right: 16px;
   }
   @media ${breakpoints.desktop} {
     width: 608px;
     margin-top: 150px;
-    padding-left: 16px;
-    padding-right: 16px;
   }
 
   color: var(--primary-text-color);

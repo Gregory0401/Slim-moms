@@ -40,3 +40,16 @@ export const SidebarWrap = styled.div`
 export const Wrapper = styled.div`
   margin-top: 60px;
 `;
+
+export const Div = styled.div`
+  @media ${breakpoints.mobile} {
+    padding: 0 20px;
+  }
+
+  @media ${breakpoints.minTablet} {
+    padding: 0 32px;
+  }
+  @media ${breakpoints.desktop} {
+    padding: 0 16px;
+  }
+`;

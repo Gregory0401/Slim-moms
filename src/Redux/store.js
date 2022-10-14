@@ -17,7 +17,7 @@ import storage from 'redux-persist/lib/storage';
 const authPersistConfig = {
   key: 'auth',
   storage,
-  whitelist: ['accessToken', 'refreshToken', 'sid'],
+  whitelist: ['accessToken', 'sid'],
 };
 const authPersistedReducer = persistReducer(authPersistConfig, authReducer);
 // =====
@@ -25,7 +25,7 @@ const authPersistedReducer = persistReducer(authPersistConfig, authReducer);
 const productPersistConfig = {
   key: 'product',
   storage,
-  whitelist: ['daySummary'],
+  whitelist: ['daySummary', 'eatenProduct', 'dayId'],
 };
 
 const productPersistedReducer = persistReducer(

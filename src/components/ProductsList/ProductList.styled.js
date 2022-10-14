@@ -27,8 +27,7 @@ export const List = styled.ul`
   margin-top: 60px;
   height: 271px;
   padding-right: 40px;
-  overflow-y: scroll;
-  scroll-behavior: smooth;
+  overflow: auto;
 `;
 
 export const Item = styled.li`
