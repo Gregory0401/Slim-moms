@@ -3,9 +3,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   addProduct,
   eatenProduct,
+  userInfo,
 } from '../../../Redux/ProductSearch/productsSearchOperations';
 import { getSearchItems } from '../../../Redux/ProductSearch/productsSearchSelector';
 
+// vova1@gmail.com
+// qweqwe123@gmail.com
+// petro-poroshenko@gmail.com
+// vasylqwe@gmail.com
 
 import { ButtonSubmit } from '../../Buttons/ButtonSubmit/ButtonSubmit';
 import {
@@ -19,11 +24,14 @@ import {
 import DebounceInput from 'react-debounce-input';
 import Popup from 'components/Popup/Popup';
 
-
-
-
 const DiaryAddProductForm = ({ date, onClose }) => {
   const dispatch = useDispatch();
+  // =====
+  useEffect(() => {
+    dispatch(eatenProduct());
+    dispatch(userInfo());
+  }, [dispatch]);
+  // =====
 
   const items = useSelector(getSearchItems);
   const [productId, setProductId] = useState('');
@@ -33,7 +41,6 @@ const DiaryAddProductForm = ({ date, onClose }) => {
 
   const [click, setClick] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
-
 
   useEffect(() => {
     !click && setShowPopup(true);
@@ -67,14 +74,11 @@ const DiaryAddProductForm = ({ date, onClose }) => {
     setProductId(id);
     setShowPopup(false);
     setClick(true);
-
   };
-
-
 
   const handleSubmit = event => {
     event.preventDefault();
-   
+
     const newProduct = {
       title,
       weight,
@@ -85,19 +89,20 @@ const DiaryAddProductForm = ({ date, onClose }) => {
       productId,
       weight,
     };
+    console.log(eatenDate.date);
 
     dispatch(eatenProduct(eatenDate));
     dispatch(addProduct(newProduct));
+    dispatch(userInfo());
     setTitle('');
     setWeight('');
   };
-  console.log(showPopup);
-  console.log(items.length > 1);
-  console.log(title.length > 1);
+  // console.log(showPopup);
+  // console.log(items.length > 1);
+  // console.log(title.length > 1);
   return (
     <>
-   
-      <StyledForm onSubmit={handleSubmit} >
+      <StyledForm onSubmit={handleSubmit}>
         <Wrrapen>
           <LabelSearch>
             <DebounceInput
@@ -132,16 +137,16 @@ const DiaryAddProductForm = ({ date, onClose }) => {
               paddingBottom: 20,
               borderBottom: '1px solid #E0E0E0',
               marginRight: 60,
-              
             }}
           />
         </label>
-        <Button><ButtonSubmit /></Button>
-        <ButtonMod type="submit" onClick={onClose}>Добавить</ButtonMod>  
+        <Button>
+          <ButtonSubmit />
+        </Button>
+        <ButtonMod type="submit" onClick={onClose}>
+          Добавить
+        </ButtonMod>
       </StyledForm>
-      
-     
-      
     </>
   );
 };

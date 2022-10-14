@@ -10,7 +10,7 @@ import {
 const productSlice = createSlice({
   name: 'product',
   initialState: {
-    eatenProduct: null,
+    eatenProducts: [],
     daySummary: null,
     items: [],
     productId: null,
@@ -22,6 +22,10 @@ const productSlice = createSlice({
     eatenProductId: null,
     product: [],
     notAllowedProducts: [],
+    userId: null,
+    // =====
+    userDaySummary: null,
+    // =====
   },
   extraReducers: {
     [addProduct.pending]: state => {
@@ -29,6 +33,7 @@ const productSlice = createSlice({
     },
     [addProduct.fulfilled]: (state, { payload }) => {
       state.id = payload[0]._id; //змінив id на productId
+      // state.eatenProducts = state.eatenProducts[0].eatenProducts.push(payload.eatenProduct);
       state.items = payload;
       state.isLoading = false;
       state.product = payload;
@@ -43,7 +48,7 @@ const productSlice = createSlice({
     },
     [eatenProduct.fulfilled]: (state, { payload }) => {
       state.weight = payload.eatenProduct.weight;
-      state.eatenProduct = payload.day.eatenProducts;
+      state.eatenProducts = payload.day.eatenProducts;
       state.daySummary = payload.daySummary; //скільки ми захавали
       state.isLoading = false;
       state.dayId = payload.day.id;
@@ -76,10 +81,21 @@ const productSlice = createSlice({
     [userInfo.fulfilled]: (state, { payload }) => {
       state.isLoading = false;
       state.notAllowedProducts = payload.userData.notAllowedProducts;
+      state.userId = payload.id;
+      console.log(22222222);
+      // =====
+      // state.eatenProduct = payload.days.daySummary;
+      state.eatenProducts = payload.days;
+      // state.eatenProducts = payload.days.filter(
+      //   item => item._id === state.dayId
+      //   // console.log(item._id);
+      // );
+
+      // =====
       // state.daySummary = payload.days.daySummary;
-      state.daySummary = payload.days.filter(item => item._id === state.dayId);
-      console.log(state.dayId);
-      console.log(state.daySummary[0]);
+      // state.daySummary = payload.days.filter(item => item._id === state.dayId);
+      // console.log(state.dayId);
+      // console.log(state.daySummary[0]);
     },
     [userInfo.rejected]: (state, { payload }) => {
       state.isLoading = false;

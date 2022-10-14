@@ -10,6 +10,18 @@ import {
   Div,
 } from './DailyPage.styled';
 import { format, startOfToday } from 'date-fns';
+
+// =====
+import { eatenProduct } from '../../Redux/ProductSearch/productsSearchOperations';
+import {
+  userInfo,
+  dayInfo,
+} from '../../Redux/ProductSearch/productsSearchOperations';
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { getEatenProducts } from '../../Redux/ProductSearch/productsSearchSelector';
+// =====
+
 import { Mobile } from '../../components/Forms/DiaryAddProductForm/DiaryAddProductForm.styled';
 import { useState } from 'react';
 import { ButtonOpen } from '../../components/Buttons/ButtonOpen/ButtonOpen';
@@ -17,8 +29,29 @@ import { Form } from '../../components/Forms/DiaryAddProductForm/MobileForm';
 import { motion } from 'framer-motion';
 
 const DailyPage = () => {
+  const dispatch = useDispatch();
+
   let today = startOfToday();
   let date = format(today, 'yyyy-MM-dd');
+
+  useEffect(() => {
+    dispatch(userInfo());
+    dispatch(eatenProduct());
+    dispatch(dayInfo(date));
+  }, [dispatch, date]);
+
+  // =====
+  const eatenProducts = useSelector(getEatenProducts);
+  console.log('eatenProducts!!!!!!! ', eatenProducts);
+  // console.log(
+  //   5555555,
+  //   eatenProducts?.find(item => item.date === date)
+  // );
+  const findDayByDate =
+    eatenProducts?.length > 0
+      ? eatenProducts?.find(item => item.date === date).eatenProducts
+      : [];
+  console.log('findDayByDate', findDayByDate);
 
   const [showModal, setShowModal] = useState(false);
   const onToggleModal = () => {
@@ -43,7 +76,7 @@ const DailyPage = () => {
               <ButtonOpen onClick={onToggleModal} />
             </Mobile>
             {showModal && <Form onClose={onToggleModal} />}
-            <ProductsList date={date} />
+            <ProductsList date={date} eatenProducts={findDayByDate} />
           </Wrapper>
         </motion.div>
       </Div>

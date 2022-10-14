@@ -6,6 +6,10 @@ import PrivateRoute from 'Routes/PrivateRoute';
 import RestrictedRoute from 'Routes/RestrictedRoute';
 import Layout from './Layout';
 import { fetchCurrentUser } from 'Redux/Auth/authOperation';
+import {
+  userInfo,
+  // addProduct,
+} from '../Redux/ProductSearch/productsSearchOperations';
 import DiaryDateСalendar from './Forms/DiaryDateСalendar';
 // const PageNotFound = lazy(() => import('../Pages/PageNotFound/PageNotFound'));
 import { PageNotFound } from 'Pages/PageNotFound/PageNotFound';
@@ -24,7 +28,15 @@ export const App = () => {
 
   useEffect(() => {
     dispatch(fetchCurrentUser());
+    dispatch(userInfo());
   }, [dispatch]);
+  // dispatch(addProduct());
+
+  // =====
+  // useEffect(() => {
+  // }, [dispatch]);
+  // =====
+
   return (
     <>
       {/* <BurgerMenu /> */}
