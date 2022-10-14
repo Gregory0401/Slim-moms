@@ -1,51 +1,55 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import DebounceInput from 'react-debounce-input';
+import { useFormik } from 'formik';
 import {
   addProduct,
   eatenProduct,
 } from '../../../Redux/ProductSearch/productsSearchOperations';
 import { getSearchItems } from '../../../Redux/ProductSearch/productsSearchSelector';
-// vova1@gmail.com
-
 import { ButtonSubmit } from '../../Buttons/ButtonSubmit/ButtonSubmit';
 import {
   LabelSearch,
   Wrrapen,
   StyledForm,
 } from './DiaryAddProductForm.styled.js';
-import DebounceInput from 'react-debounce-input';
 import Popup from 'components/Popup/Popup';
 
 const DiaryAddProductForm = ({ date }) => {
   const dispatch = useDispatch();
-
   const items = useSelector(getSearchItems);
   const [productId, setProductId] = useState('');
-
-  const [title, setTitle] = useState('');
-  const [weight, setWeight] = useState('');
   const [click, setClick] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
 
+  const formik = useFormik({
+    initialValues: {
+      title: '',
+      weight: '',
+    },
+    // validationSchema: validationSchema,
+    onSubmit: handleSubmit,
+  });
+
   useEffect(() => {
     !click && setShowPopup(true);
-    if (title.length > 2) {
+    if (formik.values.title.length > 2) {
       dispatch(
         addProduct({
-          title,
+          title: formik.values.title,
         })
       );
     }
-  }, [click, dispatch, title]);
+  }, [click, dispatch, formik.values.title]);
 
   function handleChange({ target: { name, value } }) {
     switch (name) {
       case 'title':
         setClick(false);
-        setTitle(value);
+        formik.setFieldValue(name, value);
         break;
       case 'weight':
-        setWeight(value);
+        formik.setFieldValue(name, value);
         break;
 
       default:
@@ -54,44 +58,37 @@ const DiaryAddProductForm = ({ date }) => {
   }
 
   const handleClick = ({ target: { textContent } }, id) => {
-    setTitle(textContent);
+    formik.setFieldValue('title', textContent);
     setProductId(id);
     setShowPopup(false);
     setClick(true);
   };
 
-  const handleSubmit = event => {
-    event.preventDefault();
-
-    const newProduct = {
-      title,
-      weight,
-    };
-
+  function handleSubmit(values) {
     const eatenDate = {
       date,
       productId,
-      weight,
+      weight: values.weight,
     };
 
     dispatch(eatenProduct(eatenDate));
-    dispatch(addProduct(newProduct));
-    setTitle('');
-    setWeight('');
-  };
+
+    formik.resetForm();
+  }
 
   return (
     <>
-      <StyledForm onSubmit={handleSubmit}>
+      <StyledForm onSubmit={formik.handleSubmit}>
         <Wrrapen>
           <LabelSearch>
             <DebounceInput
               type="text"
               name="title"
-              value={title}
               placeholder="Введите название продукта"
               debounceTimeout={300}
-              onChange={handleChange}
+              onChange={e => handleChange(e)}
+              onBlur={formik.handleBlur}
+              value={formik.values.title}
               style={{
                 width: 240,
                 outline: 'none',
@@ -100,28 +97,29 @@ const DiaryAddProductForm = ({ date }) => {
               }}
             />
           </LabelSearch>
-          {showPopup && items.length > 1 && title.length > 1 && (
+          {formik.errors.title && formik.touched.title && formik.errors.title}
+          {showPopup && items.length > 1 && formik.values.title.length > 1 && (
             <Popup data={items} onClick={handleClick} />
           )}
         </Wrrapen>
-        <label>
-          <input
-            type="number"
-            name="weight"
-            value={weight}
-            placeholder="Граммы"
-            onChange={handleChange}
-            style={{
-              width: 105,
-              outline: 'none',
-              paddingBottom: 20,
-              borderBottom: '1px solid #E0E0E0',
-              marginRight: 60,
-              textAlign: 'right',
-            }}
-          />
-        </label>
-        <ButtonSubmit />
+        <input
+          type="number"
+          name="weight"
+          placeholder="Граммы"
+          onChange={e => handleChange(e, formik.setFieldValue)}
+          onBlur={formik.handleBlur}
+          value={formik.values.weight}
+          style={{
+            width: 105,
+            outline: 'none',
+            paddingBottom: 20,
+            borderBottom: '1px solid #E0E0E0',
+            marginRight: 60,
+            textAlign: 'right',
+          }}
+        />
+        {formik.errors.weight && formik.touched.weight && formik.errors.weight}
+        <ButtonSubmit disabled={formik.isSubmitting} />
       </StyledForm>
     </>
   );

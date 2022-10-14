@@ -7,3 +7,5 @@ export const getEatenProductId = state => state.product.eatenProductId;
 export const getSearchItems = state => state.product.items;
 export const getDate = state => state.product.date;
 export const getNotAllowedProducts = state => state.product.notAllowedProducts;
+export const getUserId = state => state.product.userId;
+export const getUserDaySummary = state => state.product.userDaySummary;

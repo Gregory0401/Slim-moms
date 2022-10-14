@@ -22,6 +22,8 @@ const productSlice = createSlice({
     eatenProductId: null,
     product: [],
     notAllowedProducts: [],
+    userId: null,
+    userDaySummary: null,
   },
   extraReducers: {
     [addProduct.pending]: state => {
@@ -60,7 +62,6 @@ const productSlice = createSlice({
     },
     [dayInfo.fulfilled]: (state, { payload }) => {
       state.isLoading = false;
-      // state.date = payload.day.date;//???????????????????????
       state.daySummary = payload.daySummary;
     },
     [dayInfo.rejected]: (state, { payload }) => {
@@ -76,10 +77,14 @@ const productSlice = createSlice({
     [userInfo.fulfilled]: (state, { payload }) => {
       state.isLoading = false;
       state.notAllowedProducts = payload.userData.notAllowedProducts;
+      state.userId = payload.id;
+      state.eatenProduct = payload.days.filter(
+        item => item._id === state.dayId
+      );
       // state.daySummary = payload.days.daySummary;
-      state.daySummary = payload.days.filter(item => item._id === state.dayId);
-      console.log(state.dayId);
-      console.log(state.daySummary[0]);
+      // state.daySummary = payload.days.filter(item => item._id === state.dayId);
+      // console.log(state.dayId);
+      // console.log(state.daySummary[0]);
     },
     [userInfo.rejected]: (state, { payload }) => {
       state.isLoading = false;
