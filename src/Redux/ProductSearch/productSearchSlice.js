@@ -25,7 +25,6 @@ const productSlice = createSlice({
     userId: null,
     // =====
     userDaySummary: null,
-    // =====
   },
   extraReducers: {
     [addProduct.pending]: state => {
@@ -33,7 +32,6 @@ const productSlice = createSlice({
     },
     [addProduct.fulfilled]: (state, { payload }) => {
       state.id = payload[0]._id; //змінив id на productId
-      // state.eatenProducts = state.eatenProducts[0].eatenProducts.push(payload.eatenProduct);
       state.items = payload;
       state.isLoading = false;
       state.product = payload;
@@ -48,8 +46,8 @@ const productSlice = createSlice({
     },
     [eatenProduct.fulfilled]: (state, { payload }) => {
       state.weight = payload.eatenProduct.weight;
-      state.eatenProducts = payload.day.eatenProducts;
-      state.daySummary = payload.daySummary; //скільки ми захавали
+      state.eatenProducts = [payload.day];
+      state.daySummary = payload.daySummary;
       state.isLoading = false;
       state.dayId = payload.day.id;
       state.eatenProductId = payload.eatenProduct.id;

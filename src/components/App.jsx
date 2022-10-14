@@ -30,12 +30,7 @@ export const App = () => {
     dispatch(fetchCurrentUser());
     dispatch(userInfo());
   }, [dispatch]);
-  // dispatch(addProduct());
 
-  // =====
-  // useEffect(() => {
-  // }, [dispatch]);
-  // =====
 
   return (
     <>
