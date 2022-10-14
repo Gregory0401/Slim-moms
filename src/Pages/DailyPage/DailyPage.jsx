@@ -31,10 +31,10 @@ const DailyPage = () => {
   // =====
   const eatenProducts = useSelector(getEatenProducts);
   console.log('eatenProducts!!!!!!! ', eatenProducts);
-  console.log(
-    5555555,
-    eatenProducts?.find(item => item.date === date)
-  );
+  // console.log(
+  //   5555555,
+  //   eatenProducts?.find(item => item.date === date)
+  // );
   const findDayByDate =
     eatenProducts?.length > 0
       ? eatenProducts?.find(item => item.date === date).eatenProducts

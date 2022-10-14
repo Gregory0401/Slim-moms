@@ -86,10 +86,11 @@ const DiaryAddProductForm = ({ date }) => {
       productId,
       weight,
     };
+    console.log(eatenDate.date);
 
     dispatch(eatenProduct(eatenDate));
     dispatch(addProduct(newProduct));
-    // dispatch(userInfo());
+    dispatch(userInfo());
     setTitle('');
     setWeight('');
   };

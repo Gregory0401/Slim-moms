@@ -48,7 +48,7 @@ const productSlice = createSlice({
     },
     [eatenProduct.fulfilled]: (state, { payload }) => {
       state.weight = payload.eatenProduct.weight;
-      state.eatenProducts = payload.day;
+      state.eatenProducts = payload.day.eatenProducts;
       state.daySummary = payload.daySummary; //скільки ми захавали
       state.isLoading = false;
       state.dayId = payload.day.id;
