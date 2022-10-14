@@ -2,56 +2,41 @@ import DiaryAddProductForm from 'components/Forms/DiaryAddProductForm/DiaryAddPr
 import ProductsList from '../../components/ProductsList/ProductsList';
 import DiaryDateCalendarDate from 'components/Forms/DiaryDateСalendar/DiaryDateCalendarDate/DiaryDateCalendarDate';
 import RightSideBar from '../../components/RightSideBar/RightSideBar';
-import { SidebarWrap, Thumb, Wrapper, Container} from './DailyPage.styled';
+import { SidebarWrap, Thumb, Wrapper, Container } from './DailyPage.styled';
 import { format, startOfToday } from 'date-fns';
-
-import { motion } from 'framer-motion';
-
-import {Mobile  } from '../../components/Forms/DiaryAddProductForm/DiaryAddProductForm.styled'
+import { Mobile } from '../../components/Forms/DiaryAddProductForm/DiaryAddProductForm.styled';
 import { useState } from 'react';
-import  {ButtonOpen}  from '../../components/Buttons/ButtonOpen/ButtonOpen';
-import {Form} from '../../components/Forms/DiaryAddProductForm/MobileForm'
-
-
+import { ButtonOpen } from '../../components/Buttons/ButtonOpen/ButtonOpen';
+import { Form } from '../../components/Forms/DiaryAddProductForm/MobileForm';
+import { motion } from 'framer-motion';
 
 const DailyPage = () => {
   let today = startOfToday();
   let date = format(today, 'yyyy-MM-dd');
 
-  
-  
-    const [showModal, setShowModal] = useState(false);
-    const onToggleModal = () => {
-      setShowModal(prevState => !prevState);
+  const [showModal, setShowModal] = useState(false);
+  const onToggleModal = () => {
+    setShowModal(prevState => !prevState);
   };
 
   return (
-
     <Thumb>
       <motion.div
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 1, delay: 0.3 }}
       >
-        <Div>
-
-
-    <>
-
-      <Thumb>
-        <div>
-
-          <DiaryDateCalendarDate />
-          <Wrapper>
-
-            <Container><DiaryAddProductForm date={date} onClose={onToggleModal}/></Container> 
-          
-          <Mobile><ButtonOpen onClick={onToggleModal}/></Mobile>
-          {showModal && <Form onClose={onToggleModal}/>}
-            <ProductsList date={date} />
-          </Wrapper>
-
-        </Div>
+        <DiaryDateCalendarDate />
+        <Wrapper>
+          <Container>
+            <DiaryAddProductForm date={date} onClose={onToggleModal} />
+          </Container>
+          <Mobile>
+            <ButtonOpen onClick={onToggleModal} />
+          </Mobile>
+          {showModal && <Form onClose={onToggleModal} />}
+          <ProductsList date={date} />
+        </Wrapper>
       </motion.div>
       <motion.div
         as={motion.h2}
@@ -64,18 +49,6 @@ const DailyPage = () => {
         </SidebarWrap>
       </motion.div>
     </Thumb>
-
-        </div> 
-
-        <SidebarWrap>
-          <RightSideBar />
-        </SidebarWrap>
-      </Thumb>
-
-    </>
-
-
   );
 };
-
 export default DailyPage;
