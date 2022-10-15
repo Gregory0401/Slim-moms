@@ -17,6 +17,9 @@ export const StyledForm = styled.div`
   @media ${breakpoints.desktop} {
     padding: 0 16px;
   }
+  @media ${breakpoints.maxMobile} {
+    align-items: center;
+  }
 `;
 
 export const Label = styled.label`
