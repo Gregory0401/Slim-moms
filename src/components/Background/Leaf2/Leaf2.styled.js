@@ -1,10 +1,9 @@
-// import { breakpoints } from '../../../Utils/size';
 import styled, { keyframes } from 'styled-components';
 
-// import leaf1 from '../../../img/leaf-1.png';
-// import leaf2 from '../../../img/leaf-2.png';
+import leaf1 from '../../../img/leaf-1.png';
+import leaf2 from '../../../img/leaf-2.png';
 import leaf3 from '../../../img/leaf-3.png';
-// import leaf4 from '../../../img/leaf-4.png';
+import leaf4 from '../../../img/leaf-3.png';
 import leaf5 from '../../../img/leaf-1.png';
 import leaf6 from '../../../img/leaf-1.png';
 
@@ -56,7 +55,7 @@ export const Set = styled.div`
 `;
 
 export const Img1 = styled.div`
-  background: url(${leaf6}) no-repeat;
+  background: url(${leaf1}) no-repeat;
   width: 35px;
   height: 45px;
   offset-path: path('M50,0 C90,200 50,200 600,0');
@@ -65,7 +64,7 @@ export const Img1 = styled.div`
 `;
 
 export const Img2 = styled.div`
-  background: url(${leaf6}) no-repeat;
+  background: url(${leaf2}) no-repeat;
   width: 35px;
   height: 45px;
 
@@ -73,7 +72,7 @@ export const Img2 = styled.div`
   left: 90vw;
   offset-path: path('M1510,0 C900,120 50,100 200,0');
   offset-rotate: 0deg;
-  animation: ${animation} 95s infinite alternate ease-in-out;
+  animation: ${animation} 125s infinite alternate ease-in-out;
 `;
 
 export const Img3 = styled.div`
@@ -87,13 +86,13 @@ export const Img3 = styled.div`
 `;
 
 export const Img4 = styled.div`
-  background: url(${leaf3}) no-repeat;
+  background: url(${leaf4}) no-repeat;
   width: 55px;
   height: 40px;
   top: 650px;
   right: 30vw;
   offset-path: path('M850,0 C700,600 960,160 300,0');
-  offset-rotate: 248deg;
+  offset-rotate: 20deg;
   animation: ${animation} 90s infinite alternate ease-in-out;
 `;
 
