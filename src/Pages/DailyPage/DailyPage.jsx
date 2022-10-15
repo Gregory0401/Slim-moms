@@ -1,3 +1,8 @@
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { useState } from 'react';
+import { motion } from 'framer-motion';
+import { ToastContainer } from 'react-toastify';
 import DiaryAddProductForm from 'components/Forms/DiaryAddProductForm/DiaryAddProductForm';
 import ProductsList from '../../components/ProductsList/ProductsList';
 import DiaryDateCalendarDate from 'components/Forms/DiaryDateСalendar/DiaryDateCalendarDate/DiaryDateCalendarDate';
@@ -10,23 +15,11 @@ import {
   Div,
 } from './DailyPage.styled';
 import { format, startOfToday } from 'date-fns';
-
-// =====
-import { eatenProduct } from '../../Redux/ProductSearch/productsSearchOperations';
-import {
-  userInfo,
-  dayInfo,
-} from '../../Redux/ProductSearch/productsSearchOperations';
-import { useSelector, useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+import { dayInfo } from '../../Redux/ProductSearch/productsSearchOperations';
 import { getEatenProducts } from '../../Redux/ProductSearch/productsSearchSelector';
-// =====
-
 import { Mobile } from '../../components/Forms/DiaryAddProductForm/DiaryAddProductForm.styled';
-import { useState } from 'react';
 import { ButtonOpen } from '../../components/Buttons/ButtonOpen/ButtonOpen';
 import { Form } from '../../components/Forms/DiaryAddProductForm/MobileForm';
-import { motion } from 'framer-motion';
 
 const DailyPage = () => {
   const dispatch = useDispatch();
@@ -35,14 +28,14 @@ const DailyPage = () => {
   let date = format(today, 'yyyy-MM-dd');
 
   useEffect(() => {
-    dispatch(dayInfo({date}));
+    dispatch(dayInfo({ date }));
   }, [dispatch, date]);
 
   const eatenProducts = useSelector(getEatenProducts);
 
   const findDayByDate =
     eatenProducts?.length > 0
-      ? eatenProducts?.find(item => item.date === date).eatenProducts
+      ? eatenProducts?.filter(item => item.date === date)
       : [];
 
   const [showModal, setShowModal] = useState(false);
@@ -53,6 +46,7 @@ const DailyPage = () => {
   return (
     <Thumb>
       <Div>
+        <ToastContainer autoClose={3000} />
         <motion.div
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
@@ -68,7 +62,7 @@ const DailyPage = () => {
               <ButtonOpen onClick={onToggleModal} />
             </Mobile>
             {showModal && <Form onClose={onToggleModal} />}
-            <ProductsList date={date} eatenProducts={findDayByDate} />
+            <ProductsList eatenProducts={findDayByDate} />
           </Wrapper>
         </motion.div>
       </Div>

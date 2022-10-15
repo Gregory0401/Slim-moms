@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import DebounceInput from 'react-debounce-input';
 import { useFormik } from 'formik';
+import { toast } from 'react-toastify';
 import {
   addProduct,
   eatenProduct,
@@ -40,6 +41,10 @@ const DiaryAddProductForm = ({ date, onClose }) => {
 
   useEffect(() => {
     !click && setShowPopup(true);
+    if (formik.values.title.trim() === '') {
+      toast.error('Пожалуйста введите данные!');
+      return;
+    }
     if (formik.values.title.length > 2) {
       dispatch(
         addProduct({
@@ -77,7 +82,10 @@ const DiaryAddProductForm = ({ date, onClose }) => {
       productId,
       weight: values.weight,
     };
-
+    if (formik.values.weight.trim() === '') {
+      toast.error('Пожалуйста введите данные!!');
+      return;
+    }
     dispatch(eatenProduct(eatenDate));
 
     formik.resetForm();
