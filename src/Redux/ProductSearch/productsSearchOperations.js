@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 
 axios.defaults.baseURL = 'https://slimmom-backend.goit.global';
 
@@ -10,7 +11,12 @@ export const addProduct = createAsyncThunk(
       const { data } = await axios.get(`/product/?search=${title}`);
       return data;
     } catch (error) {
-      return rejectWithValue(error.message);
+      if (error.response.status === 403) {
+        return rejectWithValue(
+          toast.error('Для начала узнай свою суточную норму калорий')
+        );
+      }
+      return rejectWithValue(toast.error('Произошла ошибка'));
     }
   }
 );
@@ -22,7 +28,7 @@ export const eatenProduct = createAsyncThunk(
       const { data } = await axios.post('/day', credentials);
       return data;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return rejectWithValue(toast.error('Произошла ошибка'));
     }
   }
 );
@@ -30,12 +36,11 @@ export const eatenProduct = createAsyncThunk(
 export const dayInfo = createAsyncThunk(
   'product/dayInfo',
   async (credentials, { rejectWithValue }) => {
-    // console.log(credentials);
     try {
       const { data } = await axios.post('/day/info', credentials);
       return data;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return rejectWithValue(toast.error('Произошла ошибка'));
     }
   }
 );
@@ -47,7 +52,7 @@ export const userInfo = createAsyncThunk(
       const { data } = await axios.get('/user');
       return data;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return rejectWithValue(toast.error('Произошла ошибка'));
     }
   }
 );
@@ -61,7 +66,7 @@ export const deleteEatenProduct = createAsyncThunk(
       });
       return data;
     } catch (error) {
-      return rejectWithValue('error');
+      return rejectWithValue(toast.error('Произошла ошибка'));
     }
   }
 );
