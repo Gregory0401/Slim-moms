@@ -35,16 +35,12 @@ const DiaryAddProductForm = ({ date, onClose }) => {
       title: '',
       weight: '',
     },
-    // validationSchema: validationSchema,
+
     onSubmit: handleSubmit,
   });
 
   useEffect(() => {
     !click && setShowPopup(true);
-    if (formik.values.title.trim() === '') {
-      toast.error('Пожалуйста введите данные!');
-      return;
-    }
     if (formik.values.title.length > 2) {
       dispatch(
         addProduct({
@@ -82,7 +78,10 @@ const DiaryAddProductForm = ({ date, onClose }) => {
       productId,
       weight: values.weight,
     };
-    if (formik.values.weight.trim() === '') {
+    if (
+      formik.values.weight.trim() === '' ||
+      formik.values.title.trim() === ''
+    ) {
       toast.error('Пожалуйста введите данные!!');
       return;
     }
@@ -112,8 +111,9 @@ const DiaryAddProductForm = ({ date, onClose }) => {
               }}
             />
           </LabelSearch>
-          {formik.errors.title && formik.touched.title && formik.errors.title}
-          {showPopup && items.length > 1 && formik.values.title.length > 1 && (
+          {}
+          {formik.errors.title && formik.touched.title}
+          {showPopup && items.length > 1 && formik.values.title.length > 2 && (
             <Popup data={items} onClick={handleClick} />
           )}
         </Wrrapen>
