@@ -8,7 +8,7 @@ import { userInfo } from '../../Redux/ProductSearch/productsSearchOperations';
 import { format, startOfToday } from 'date-fns';
 import { RightBar, ProdThumb, Title, Text } from './RightSideBar.styled';
 
-const RightSideBar = () => {
+const RightSideBar = ({ date }) => {
   // =====
   const dispatch = useDispatch();
   const notAllowedProducts = useSelector(getNotAllowedProducts);
@@ -33,8 +33,6 @@ const RightSideBar = () => {
 
   // =====
 
-  let today = startOfToday();
-  let date = format(today, 'dd MM yyyy');
   // const {
   //   daySummary: { kcalConsumed = 0, dailyRate = 0, percentsOfDailyRate = 0 },
   // } = daySummary[0] || {};

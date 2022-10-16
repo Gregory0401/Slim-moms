@@ -5,6 +5,7 @@ import {
   deleteEatenProduct,
   dayInfo,
   userInfo,
+  dateSetAction,
 } from './productsSearchOperations';
 
 const productSlice = createSlice({
@@ -24,6 +25,7 @@ const productSlice = createSlice({
     notAllowedProducts: [],
     userId: null,
     userDaySummary: null,
+    calendarDate: null,
   },
   extraReducers: {
     [addProduct.pending]: state => {
@@ -103,6 +105,10 @@ const productSlice = createSlice({
     [deleteEatenProduct.rejected]: (state, { payload }) => {
       state.isLoading = false;
       state.error = payload;
+    },
+    [dateSetAction]: (state, { payload }) => {
+      state.date = payload;
+      return state;
     },
   },
 });

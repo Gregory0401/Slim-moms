@@ -5,14 +5,12 @@ import { StyledLink } from './DiaryDateCalendarDate.styled';
 import { DateTitle } from './DiaryDateCalendarDate.styled';
 
 
-const DiaryDateCalendarDate = () => {
-  let today = startOfToday();
-  
+const DiaryDateCalendarDate = ({ date }) => {
 
   return (
     <Wrapper>
       <StyledLink to="calendar">
-        <DateTitle>{format(today, 'dd MM yyyy')}</DateTitle>
+        <DateTitle>{date}</DateTitle>
         <CalendarIcon className=" w-6 h-6 " aria-hidden="true" />
       </StyledLink>
     </Wrapper>

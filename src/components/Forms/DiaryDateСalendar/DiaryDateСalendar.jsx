@@ -20,8 +20,10 @@ import {
   startOfToday,
 } from 'date-fns';
 import { Fragment, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { BackLink } from './DiaryDateCalendarDate/DiaryDateCalendarDate.styled';
+import { dateSetAction } from 'Redux/ProductSearch/productsSearchOperations';
 
 const products = [
   {
@@ -41,6 +43,9 @@ function classNames(...classes) {
 const CalendarApp = () => {
   let today = startOfToday();
   let [selectedDay, setSelectedDay] = useState(today);
+
+  const dispatch = useDispatch();
+
   let [currentMonth, setCurrentMonth] = useState(format(today, 'MMM-yyyy'));
   let firstDayCurrentMonth = parse(currentMonth, 'MMM-yyyy', new Date());
 
@@ -116,7 +121,10 @@ const CalendarApp = () => {
                   >
                     <button
                       type="button"
-                      onClick={() => setSelectedDay(day)}
+                      onClick={() => {
+                        setSelectedDay(day);
+                        dispatch(dateSetAction(day));
+                      }}
                       className={classNames(
                         isEqual(day, selectedDay) && 'text-white',
                         !isEqual(day, selectedDay) &&

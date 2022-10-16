@@ -20,16 +20,25 @@ import { getEatenProducts } from '../../Redux/ProductSearch/productsSearchSelect
 import { Mobile } from '../../components/Forms/DiaryAddProductForm/DiaryAddProductForm.styled';
 import { ButtonOpen } from '../../components/Buttons/ButtonOpen/ButtonOpen';
 import { Form } from '../../components/Forms/DiaryAddProductForm/MobileForm';
+import { getDate } from '../../Redux/ProductSearch/productsSearchSelector';
 
 const DailyPage = () => {
   const dispatch = useDispatch();
 
+  const fetchDate = useSelector(getDate);
+  console.log(fetchDate);
+
   let today = startOfToday();
-  let date = format(today, 'yyyy-MM-dd');
+
+  let todayFormated = format(today, 'yyyy-MM-dd');
+
+  const date = fetchDate === null ? todayFormated : fetchDate;
 
   useEffect(() => {
     dispatch(dayInfo({ date }));
   }, [dispatch, date]);
+
+  //sadasd///
 
   const eatenProducts = useSelector(getEatenProducts);
 
@@ -52,7 +61,7 @@ const DailyPage = () => {
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 1, delay: 0.3 }}
         >
-          <DiaryDateCalendarDate />
+          <DiaryDateCalendarDate date={date} />
           <Wrapper>
             <Container>
               <DiaryAddProductForm date={date} onClose={onToggleModal} />
@@ -73,7 +82,7 @@ const DailyPage = () => {
         transition={{ duration: 1.5, delay: 0 }}
       >
         <SidebarWrap>
-          <RightSideBar />
+          <RightSideBar date={date} />
         </SidebarWrap>
       </motion.div>
     </Thumb>
