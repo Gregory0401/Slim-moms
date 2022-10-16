@@ -73,8 +73,7 @@ const DailyCaloriesForm = () => {
     );
   };
   const validationSchema = Yup.object({
-    height: Yup.number('')
-      .typeError('Значение должно быть цифрой')
+    height: Yup.number()
       .min(100, 'Минимальное значение : 100см.')
       .max(250, 'Максимальное значение : 250см.')
       .required('Обязательное поле')
