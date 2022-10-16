@@ -92,7 +92,7 @@ height: 100vh;
 }
 #root{
   width:100%;
-  height: 100%;
+  height: 100vh;
   display: flex;
 flex-direction: column;
 justify-content: space-between;

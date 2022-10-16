@@ -13,7 +13,7 @@ export const Wrapper = styled.div`
   }
   @media ${breakpoints.desktop} {
     padding-top: 163px;
-    padding-bottom: 200px;
+    padding-bottom: 179px;
   }
 `;
 export const Title = styled.h2`
