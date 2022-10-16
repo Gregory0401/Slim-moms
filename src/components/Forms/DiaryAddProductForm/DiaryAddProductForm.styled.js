@@ -71,10 +71,16 @@ export const StyledInput = styled.input`
 `;
 
 export const StyledInput2 = styled.input`
+  background-color: ${({ theme }) => theme.body};
+  /* border-radius: 15px; */
+  border: none;
+  @media screen and (min-width: 320px){
+    margin-top: 20px;
+  }
   @media ${breakpoints.minTablet} {
     display: inline;
     display: flex;
-
+    margin-top: 0;
     font: inherit;
     font-size: 0.8em;
     outline: none;
@@ -99,7 +105,7 @@ export const LabelSearch = styled.label`
   display: block;
   width: 240px;
   margin-right: 50px;
-  position: relative;
+  background-color: ${({ theme }) => theme.input};
 
   &::placeholder {
     font-size: 14px;
@@ -171,4 +177,6 @@ export const ErrorWeight = styled.div`
 
 export const WrrapenInput = styled.div`
   position: relative;
+  background-color: ${({ theme }) => theme.input};
+  margin-right: 30px;
 `;

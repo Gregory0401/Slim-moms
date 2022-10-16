@@ -8,6 +8,10 @@ import Layout from './Layout';
 import { fetchCurrentUser } from 'Redux/Auth/authOperation';
 import { userInfo } from '../Redux/ProductSearch/productsSearchOperations';
 import DiaryDateСalendar from './Forms/DiaryDateСalendar';
+import {GlobalStyles} from '../components/DarkTheme/GlobalStyles'
+import { lightTheme, darkTheme } from '../components/DarkTheme/Theme'
+import { ThemeProvider } from 'styled-components';
+import {useDarkMode} from '../components/DarkTheme/useDarkMode'
 // const PageNotFound = lazy(() => import('../Pages/PageNotFound/PageNotFound'));
 import { PageNotFound } from 'Pages/PageNotFound/PageNotFound';
 
@@ -18,10 +22,24 @@ const DailyPage = lazy(() => import('../Pages/DailyPage/DailyPage'));
 const CalculatorPage = lazy(() => import('../Pages/CalculatorPage'));
 
 // import RightSideBar from './RightSideBar/RightSideBar';
-
 // import BurgerMenu from '../components/Modal/BurgerMenu/BurgerMenu'
 
+
+
+
+
 export const App = () => {
+  // темная тема
+// const [theme, setTheme] = useState('light');
+// const themeToggler = () => {
+// theme === 'light' ? setTheme('dark') : setTheme('light')
+// }
+
+const [theme, themeToggler] = useDarkMode();
+const themeMode = theme === 'light' ? lightTheme : darkTheme;
+
+
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -30,10 +48,13 @@ export const App = () => {
   }, [dispatch]);
 
   return (
+    <ThemeProvider theme={themeMode}>
     <>
-      {/* <BurgerMenu /> */}
+    <GlobalStyles />
+   
+     {/* <Toggle toggleTheme={themeToggler} /> */}
       <Routes>
-        <Route path="/" element={<Layout />}>
+        <Route path="/" element={<Layout theme={theme} toggleTheme={themeToggler}/>}>
           <Route
             index
             element={
@@ -74,6 +95,8 @@ export const App = () => {
         </Route>
         <Route path="*" element={<PageNotFound />} />
       </Routes>
+      
     </>
+    </ThemeProvider>
   );
 };

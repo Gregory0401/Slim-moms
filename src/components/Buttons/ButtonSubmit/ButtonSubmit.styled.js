@@ -3,6 +3,7 @@ import bgimg from '../../../img/Vector.png';
 import { breakpoints } from '../../../Utils/size';
 
 export const Button = styled.button`
+color:white;
   @media ${breakpoints.mobile} {
     width: 48px;
     height: 48px;

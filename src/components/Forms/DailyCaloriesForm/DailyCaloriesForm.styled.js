@@ -45,7 +45,7 @@ export const Label = styled.label`
   display: block;
   font-weight: 700;
   font-size: 14px;
-  color: var(--secondary-text-color);
+  /* color: var(--secondary-text-color); */
 `;
 
 export const Input = styled(Field)`
@@ -56,7 +56,7 @@ export const Input = styled(Field)`
   font-family: inherit;
   font-size: 14px;
   line-height: 1.5;
-  color: #212529;
+  /* color: #212529; */
   background-color: transparent;
   background-clip: padding-box;
   border-bottom: 1px solid var(--border-color);

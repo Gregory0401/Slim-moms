@@ -57,9 +57,9 @@ export const Wrapper = styled.div`
   }
 `;
 export const SecondWrapper = styled.div`
-  ${ContainerStyled};
-  /* @media ${breakpoints.maxMobile} {
-  border-bottom: 2px solid var(--border-color);} */
+  /* ${ContainerStyled}; */
+  @media ${breakpoints.mobile} {
+  border-bottom: 2px solid var(--border-color);}
   display: flex;
   justify-content: space-between;
   align-items: center;

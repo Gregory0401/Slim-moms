@@ -22,7 +22,7 @@ export const PopupText = styled.p`
   font-size: 14px;
   line-height: 1.21;
   letter-spacing: 0.04em;
-  color: #212121;
+  /* color: #212121; */
 
   &:hover {
     text-decoration: underline;

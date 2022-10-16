@@ -15,11 +15,17 @@ import {
   Div,
 } from './DailyPage.styled';
 import { format, startOfToday } from 'date-fns';
+import {Mobile  } from '../../components/Forms/DiaryAddProductForm/DiaryAddProductForm.styled'
+// import { useState } from 'react';
+import  {ButtonOpen}  from '../../components/Buttons/ButtonOpen/ButtonOpen';
+import {Form} from '../../components/Forms/DiaryAddProductForm/MobileForm'
+
+
 import { dayInfo } from '../../Redux/ProductSearch/productsSearchOperations';
 import { getEatenProducts } from '../../Redux/ProductSearch/productsSearchSelector';
-import { Mobile } from '../../components/Forms/DiaryAddProductForm/DiaryAddProductForm.styled';
-import { ButtonOpen } from '../../components/Buttons/ButtonOpen/ButtonOpen';
-import { Form } from '../../components/Forms/DiaryAddProductForm/MobileForm';
+// import { Mobile } from '../../components/Forms/DiaryAddProductForm/DiaryAddProductForm.styled';
+// import { ButtonOpen } from '../../components/Buttons/ButtonOpen/ButtonOpen';
+// import { Form } from '../../components/Forms/DiaryAddProductForm/MobileForm';
 
 const DailyPage = () => {
   const dispatch = useDispatch();
@@ -27,6 +33,28 @@ const DailyPage = () => {
   let today = startOfToday();
   let date = format(today, 'yyyy-MM-dd');
 
+ 
+  
+  //   const [showModal, setShowModal] = useState(false);
+  //   const onToggleModal = () => {
+  //     setShowModal(prevState => !prevState);
+  // };
+
+  // return (
+    
+  //     <Thumb>
+  //         <DiaryDateCalendarDate />
+  //         <Wrapper> 
+  //           <Container><DiaryAddProductForm date={date} onClose={onToggleModal}/></Container>           
+  //         <Mobile><ButtonOpen onClick={onToggleModal}/></Mobile>
+  //         {showModal && <Form onClose={onToggleModal}/>}
+  //           <ProductsList date={date} />
+  //         </Wrapper>
+  //       <SidebarWrap>
+  //         <RightSideBar />
+  //       </SidebarWrap>
+  //     </Thumb>   
+   
   useEffect(() => {
     dispatch(dayInfo({ date }));
   }, [dispatch, date]);
