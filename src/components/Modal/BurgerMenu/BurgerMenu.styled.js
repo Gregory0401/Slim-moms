@@ -9,7 +9,8 @@ export const Backdrop = styled.div`
       width: 100vw;
       margin: 0 auto;
     }
-    background-color: rgba(38, 64, 97, 1);
+    /* background-color: rgba(38, 64, 97, 1); */
+    background-color: ${({ theme }) => theme.burger};
     z-index: 100;
   }
 `;

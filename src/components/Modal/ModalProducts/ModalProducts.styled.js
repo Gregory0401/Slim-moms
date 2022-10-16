@@ -9,12 +9,13 @@ export const Backdrop = styled.div`
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
+  
   z-index: 9000;
 }
 `;
 
 export const Modal = styled.div`
-  background-color: #ffffff;
+  background-color: ${({ theme }) => theme.body};
   max-height: 573px;
   overflow-y: auto;
   @media screen and (min-width: 320px){
@@ -124,6 +125,7 @@ export const Products = styled.ol`
   
 `;
 export const ButtonMain = styled.div`
+
 @media screen and (min-width: 320px){
       margin-left: 49px;
   }

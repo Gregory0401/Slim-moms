@@ -9,9 +9,6 @@ const BurgerMenu = ({onToggleModal}) => {
             onToggleModal();
         }
       };
-const onClose = (e) => {
-    onToggleModal();
-}
 
     return (
 <Backdrop onClick={handleBackdropClick}>

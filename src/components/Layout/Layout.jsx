@@ -8,7 +8,9 @@ import { useSelector } from 'react-redux';
 import { selectIsLoggedIn } from 'Redux/Auth/authSelectors';
 import { motion } from 'framer-motion';
 
-const Layout = () => {
+const Layout = ({toggleTheme, theme}) => {
+
+  
   const isLoggedIn = useSelector(selectIsLoggedIn);
   return isLoggedIn ? (
     <>
@@ -17,7 +19,7 @@ const Layout = () => {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 1.7, delay: 0 }}
       >
-        <AppBar />
+        <AppBar theme={theme} themeTogg={toggleTheme}/>
         <main>
           {/* <Main> */}
           <Suspense fallback={<Loader />}>

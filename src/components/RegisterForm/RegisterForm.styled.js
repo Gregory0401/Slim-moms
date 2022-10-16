@@ -6,7 +6,7 @@ export const StyledForm = styled.div`
   display: flex;
   flex-direction: column;
   gap: 40px;
-
+  background-color: ${({ theme }) => theme.body};
   @media ${breakpoints.mobile} {
     padding: 0 20px;
   }
@@ -42,8 +42,8 @@ export const Input = styled(Field)`
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #212529;
-  background-color: #fff;
+  /* color: #212529; */
+  background-color: ${({ theme }) => theme.body};
   background-clip: padding-box;
   border: none;
   border-bottom: 1px solid var(--border-color);
@@ -89,6 +89,7 @@ export const BtnR = styled.button`
 `;
 export const StyledNavLink = styled(NavLink)`
   background: #ffffff;
+  /* background-color: ${({ theme }) => theme.body}; */
   border: 2px solid #fc842d;
   border-radius: 30px;
   width: 182px;

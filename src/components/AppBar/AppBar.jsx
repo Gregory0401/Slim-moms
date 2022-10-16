@@ -16,14 +16,22 @@ import { ButtonBurger } from '../Buttons/ButtonBurger/ButtonBurger';
 import { useState } from 'react';
 import BurgerMenu from 'components/Modal/BurgerMenu/BurgerMenu';
 import { Burger } from '../UserAuthMenu/UserAuthMenu.styled';
+import Toggle from '../DarkTheme/Toggler'
+// import {useDarkMode} from '../DarkTheme/useDarkMode'
+// import { lightTheme, darkTheme } from '../DarkTheme/Theme'
 
-export const AppBar = () => {
+export const AppBar = ({themeTogg, theme}) => {
+
+  // const [theme, themeToggler] = useDarkMode();
+  // const themeMode = theme === 'light' ? lightTheme : darkTheme;
+
   const [showModal, setShowModal] = useState(false);
   const isWide = useMedia('(max-width: 767px)');
 
   const onToggleModal = () => {
     setShowModal(prevState => !prevState);
   };
+  
 
   const isLoggedIn = useSelector(selectIsLoggedIn);
   return (
@@ -32,6 +40,7 @@ export const AppBar = () => {
         <>
           <Wrapper>
             <Navigation />
+            <Toggle theme={theme} toggleTheme={themeTogg} />
             {!isLoggedIn && <AuthNavigation />}
             {isLoggedIn && (
               <Burger>
@@ -45,14 +54,14 @@ export const AppBar = () => {
         <>
           <SecondWrapper>
             <Navigation />
-
+            <Toggle theme={theme} toggleTheme={themeTogg} />
             {!isLoggedIn && <AuthNavigation />}
 
 
             {isLoggedIn && (
               <WrapperBurger>
                 <UserAuthMenu />
-
+                {/* <Toggle toggleTheme={themeTogg} /> */}
                 <Burger>
                   <ButtonBurger onClick={onToggleModal} />
                 </Burger>

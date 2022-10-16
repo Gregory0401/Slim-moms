@@ -7,6 +7,11 @@ import RestrictedRoute from 'Routes/RestrictedRoute';
 import Layout from './Layout';
 import { fetchCurrentUser } from 'Redux/Auth/authOperation';
 import DiaryDateСalendar from './Forms/DiaryDateСalendar';
+import {GlobalStyles} from '../components/DarkTheme/GlobalStyles'
+import { lightTheme, darkTheme } from '../components/DarkTheme/Theme'
+import { ThemeProvider } from 'styled-components';
+import {useDarkMode} from '../components/DarkTheme/useDarkMode'
+
 const HomePage = lazy(() => import('../Pages/HomePage/HomePage'));
 const LoginPage = lazy(() => import('../Pages/LoginPage/LoginPage'));
 const RegisterPage = lazy(() => import('../Pages/RegisterPage/RegisterPage'));
@@ -14,20 +19,37 @@ const DailyPage = lazy(() => import('../Pages/DailyPage/DailyPage'));
 const CalculatorPage = lazy(() => import('../Pages/CalculatorPage'));
 
 // import RightSideBar from './RightSideBar/RightSideBar';
-
 // import BurgerMenu from '../components/Modal/BurgerMenu/BurgerMenu'
 
+
+
+
+
 export const App = () => {
+  // темная тема
+// const [theme, setTheme] = useState('light');
+// const themeToggler = () => {
+// theme === 'light' ? setTheme('dark') : setTheme('light')
+// }
+
+const [theme, themeToggler] = useDarkMode();
+const themeMode = theme === 'light' ? lightTheme : darkTheme;
+
+
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchCurrentUser());
   }, [dispatch]);
   return (
+    <ThemeProvider theme={themeMode}>
     <>
-      {/* <BurgerMenu /> */}
+    <GlobalStyles />
+   
+     {/* <Toggle toggleTheme={themeToggler} /> */}
       <Routes>
-        <Route path="/" element={<Layout />}>
+        <Route path="/" element={<Layout theme={theme} toggleTheme={themeToggler}/>}>
           <Route
             index
             element={
@@ -69,6 +91,8 @@ export const App = () => {
 
         <Route path="*" element={<Navigate to="/login" replace />} />
       </Routes>
+      
     </>
+    </ThemeProvider>
   );
 };

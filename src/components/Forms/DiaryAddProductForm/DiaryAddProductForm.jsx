@@ -14,7 +14,7 @@ import {
   StyledForm,
   StyledInput2,
   Button,
-  ButtonMod,
+  ButtonMod
 } from './DiaryAddProductForm.styled.js';
 import DebounceInput from 'react-debounce-input';
 import Popup from 'components/Popup/Popup';
@@ -100,6 +100,7 @@ const DiaryAddProductForm = ({ date, onClose }) => {
       <StyledForm onSubmit={handleSubmit} >
         <Wrrapen>
           <LabelSearch>
+           
             <DebounceInput
               type="text"
               name="title"
@@ -112,8 +113,10 @@ const DiaryAddProductForm = ({ date, onClose }) => {
                 outline: 'none',
                 paddingBottom: 20,
                 borderBottom: '1px solid #E0E0E0',
+                zIndex: 0
               }}
             />
+           
           </LabelSearch>
           {showPopup && items.length > 1 && title.length > 1 && (
             <Popup data={items} onClick={handleClick} />
@@ -130,9 +133,9 @@ const DiaryAddProductForm = ({ date, onClose }) => {
               width: 105,
               outline: 'none',
               paddingBottom: 20,
-              borderBottom: '1px solid #E0E0E0',
               marginRight: 60,
-              
+              border: 'none',
+              borderBottom: '1px solid #E0E0E0',
             }}
           />
         </label>
