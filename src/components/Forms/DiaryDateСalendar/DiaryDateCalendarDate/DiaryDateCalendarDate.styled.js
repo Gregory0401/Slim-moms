@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
 export const StyledLink = styled(Link)`
   display: flex;
   align-items: center;
-  /* color: #9b9faa; */
+  color: #9b9faa;
 
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
   &:hover,
@@ -28,7 +28,7 @@ export const DateTitle = styled.p`
   line-height: 41px;
   margin-right: 20px;
 
-  /* color: var(--orange-color); */
+  color: #212121;
 `;
 
 export const BackLink = styled(Link)`

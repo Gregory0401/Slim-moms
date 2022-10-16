@@ -44,5 +44,5 @@ export const Title = styled.h2`
     margin-top: 150px;
   }
 
-  /* color: var(--primary-text-color); */
+  color: var(--primary-text-color);
 `;

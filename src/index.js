@@ -12,14 +12,12 @@ import './index.css';
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
-    
       <PersistGate loading={null} persistor={persistor}>
         <GlobalStyle />
         <BrowserRouter basename="/Slim-moms">
           <App />
         </BrowserRouter>
       </PersistGate>
-     
     </Provider>
   </React.StrictMode>
 );

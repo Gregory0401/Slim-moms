@@ -11,19 +11,11 @@ import RightSideBar from '../../components/RightSideBar/RightSideBar';
 import { SidebarWrap, Thumb } from '../DailyPage/DailyPage.styled';
 import { motion } from 'framer-motion';
 
-
-
-
 const CalculatorPage = () => {
-
-  
-
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
 
   return (
-
-
     <Thumb>
       <motion.div
         initial={{ scale: 0, opacity: 0 }}
@@ -55,9 +47,6 @@ const CalculatorPage = () => {
         </SidebarWrap>
       </motion.div>
     </Thumb>
-    
-   
-    
   );
 };
 

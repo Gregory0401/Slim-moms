@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 import { breakpoints } from 'Utils/size';
 
-
-
 export const Wrapper = styled.div`
   @media ${breakpoints.maxMobile} {
     padding-bottom: 77px;
@@ -47,5 +45,5 @@ export const Title = styled.h2`
     margin-top: 150px;
   }
 
-  /* color: var(--primary-text-color); */
+  color: var(--primary-text-color);
 `;

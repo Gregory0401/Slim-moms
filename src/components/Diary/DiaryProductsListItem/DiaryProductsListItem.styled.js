@@ -18,7 +18,7 @@ font-size: 14px;
 line-height: 17px;
 letter-spacing: 0.04em;
 
-/* color: #212121; */
+color: #212121;
 ` 
 
 
@@ -33,7 +33,7 @@ letter-spacing: 0.04em;
 
 text-align:right;
 
-/* color: #212121; */
+color: #212121;
 
 
 `
