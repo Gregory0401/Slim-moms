@@ -21,9 +21,7 @@ export const register = createAsyncThunk(
       if (e.response.status === 409) {
         return rejectWithValue('Такой пользователь уже зарегистрирован');
       } else {
-
-        return rejectWithValue('Что-то пошло не так...');
-
+        return rejectWithValue('Что-то пошло не так... ');
       }
     }
   }
@@ -39,7 +37,7 @@ export const logIn = createAsyncThunk(
     } catch (e) {
       return e.response.status === 403
         ? rejectWithValue('Некорректная электронная почта или пароль')
-        : rejectWithValue('Что-то пошло не так...');
+        : rejectWithValue('Что-то пошло не так... ');
     }
   }
 );
@@ -51,7 +49,7 @@ export const logOut = createAsyncThunk(
       await axios.post('auth/logout');
       token.unset();
     } catch (e) {
-      return rejectWithValue('Что-то пошло не так...');
+      return rejectWithValue('Что-то пошло не так... ');
     }
   }
 );
@@ -61,7 +59,6 @@ export const fetchCurrentUser = createAsyncThunk(
   async (_, { getState, rejectWithValue }) => {
     const state = getState();
     const persistedToken = state.auth.accessToken;
-
     if (persistedToken === null) {
       return rejectWithValue();
     }
@@ -70,7 +67,7 @@ export const fetchCurrentUser = createAsyncThunk(
       const { data } = await axios.get('user');
       return data;
     } catch (e) {
-      return rejectWithValue('Что-то пошло не так...');
+      return rejectWithValue();
     }
   }
 );
