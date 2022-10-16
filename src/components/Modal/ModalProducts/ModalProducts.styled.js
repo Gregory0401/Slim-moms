@@ -2,19 +2,6 @@ import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Backdrop = styled.div`
-<<<<<<< HEAD
-@media screen and (min-width: 320px){
-  overflow: auto;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  
-  z-index: 9000;
-}
-=======
   @media screen and (min-width: 320px) {
     overflow: auto;
     position: absolute;
@@ -25,11 +12,10 @@ export const Backdrop = styled.div`
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 9000;
   }
->>>>>>> e441c939e4bfab53e7db6c9d62ee624916da27bb
 `;
 
 export const Modal = styled.div`
-  background-color: ${({ theme }) => theme.body};
+  background-color: #ffffff;
   max-height: 573px;
   overflow-y: auto;
   @media screen and (min-width: 320px) {
@@ -133,14 +119,8 @@ export const Products = styled.ol`
   }
 `;
 export const ButtonMain = styled.div`
-<<<<<<< HEAD
-
-@media screen and (min-width: 320px){
-      margin-left: 49px;
-=======
   @media screen and (min-width: 320px) {
     margin-left: 49px;
->>>>>>> e441c939e4bfab53e7db6c9d62ee624916da27bb
   }
   @media screen and (min-width: 768px) {
     margin-left: 164px;

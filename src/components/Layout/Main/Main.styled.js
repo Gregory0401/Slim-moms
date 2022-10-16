@@ -7,7 +7,6 @@ export const ContainerStyled = css`
     padding: 0 20px;
     height: 100%;
     margin: 0 auto;
-
   }
 
   @media ${breakpoints.minTablet} {

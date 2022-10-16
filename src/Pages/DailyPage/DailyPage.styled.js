@@ -32,7 +32,7 @@ export const Thumb = styled.div`
 export const SidebarWrap = styled.div`
   @media ${breakpoints.desktop} {
     height: 100%;
-    background-color: ${({ theme }) => theme.rightBar};
+    background-color: var(--secondary-background-color);
   }
 `;
 

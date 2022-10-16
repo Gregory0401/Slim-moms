@@ -5,7 +5,6 @@ import bgDesk from '../../img/leaves-side-desktop.png';
 import bgTablet from '../../img/leaves-side-tablet.png';
 // import { ContainerStyled } from '../Layout/Main/Main.styled';
 
-
 export const RightBar = styled.div`
   width: 100%;
   height: 100%;
@@ -15,7 +14,7 @@ export const RightBar = styled.div`
   gap: 40px;
   padding-top: 40px;
   padding-bottom: 24px;
-  background-color: ${({ theme }) => theme.rightBar};
+  background: var(--secondary-background-color);
   @media ${breakpoints.minTablet} {
     flex-direction: row;
     justify-content: center;

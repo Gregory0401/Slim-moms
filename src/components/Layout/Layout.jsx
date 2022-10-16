@@ -11,9 +11,7 @@ import Leaf2 from '../Background/Leaf2/Leaf2';
 import { motion } from 'framer-motion';
 import Footer from 'components/Footer/Footer';
 
-const Layout = ({toggleTheme, theme}) => {
-
-  
+const Layout = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   return isLoggedIn ? (
     <>
@@ -22,7 +20,7 @@ const Layout = ({toggleTheme, theme}) => {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 1.7, delay: 0 }}
       >
-        <AppBar theme={theme} themeTogg={toggleTheme}/>
+        <AppBar />
         <Leaf2 />
         <main>
           {/* <Main> */}

@@ -104,7 +104,6 @@ const DiaryAddProductForm = ({ date, onClose }) => {
       <StyledForm onSubmit={formik.handleSubmit}>
         <Wrrapen>
           <LabelSearch>
-           
             <DebounceInput
               type="text"
               name="title"
@@ -118,10 +117,8 @@ const DiaryAddProductForm = ({ date, onClose }) => {
                 outline: 'none',
                 paddingBottom: 20,
                 borderBottom: '1px solid #E0E0E0',
-                zIndex: 0
               }}
             />
-           
           </LabelSearch>
           {}
           {formik.errors.title && formik.touched.title && (
@@ -144,9 +141,9 @@ const DiaryAddProductForm = ({ date, onClose }) => {
               width: 105,
               outline: 'none',
               paddingBottom: 20,
-              marginRight: 60,
-              border: 'none',
               borderBottom: '1px solid #E0E0E0',
+              marginRight: 60,
+              textAlign: 'right',
             }}
           />
           {formik.errors.weight &&

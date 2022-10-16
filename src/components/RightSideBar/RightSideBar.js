@@ -47,7 +47,6 @@ const RightSideBar = () => {
   // console.log(daySummary[0].daySummary.kcalConsumed);
   // console.log(daySummary[0].daySummary.percentsOfDailyRate);
 
-  
   return (
     <RightBar>
       {daySummary && (

@@ -14,7 +14,7 @@ export const Wrapper = styled.div`
   
   @media ${breakpoints.maxMobile} {
     ${ContainerStyled};
-    background-color: ${({ theme }) => theme.authMenu};
+    background-color: var(--secondary-background-color);
     width: 100%;
     height: 40px;
     justify-content: flex-end;
@@ -42,9 +42,8 @@ export const Name = styled.p`
   line-height: 0.93;
   text-align: right;
   letter-spacing: 0.04em;
-  color: ${({ theme }) => theme.text};
 
-  
+  color: var(--primary-text-color);
 `;
 export const Logout = styled.button`
   display: flex;
