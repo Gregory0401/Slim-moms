@@ -18,7 +18,7 @@ import { useState } from 'react';
 
 export const AppBar = () => {
   const [showModal, setShowModal] = useState(false);
-  const isWide = useMedia('(max-width: 767px)');
+  const isMob = useMedia('(max-width: 767px)');
 
   const onToggleModal = () => {
     setShowModal(prevState => !prevState);
@@ -27,7 +27,7 @@ export const AppBar = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   return (
     <Header>
-      {isWide ? (
+      {isMob ? (
         <>
           <Wrapper>
             <Navigation />

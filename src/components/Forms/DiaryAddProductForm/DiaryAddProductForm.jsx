@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import DebounceInput from 'react-debounce-input';
 import { useFormik } from 'formik';
 import { toast } from 'react-toastify';
+import { useMedia } from 'react-use';
 import {
   addProduct,
   eatenProduct,
@@ -29,6 +30,7 @@ const DiaryAddProductForm = ({ date, onClose }) => {
   const [productId, setProductId] = useState('');
   const [click, setClick] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
+  const isMob = useMedia('(max-width: 767px)');
 
   const formik = useFormik({
     initialValues: {
@@ -88,6 +90,7 @@ const DiaryAddProductForm = ({ date, onClose }) => {
     dispatch(eatenProduct(eatenDate));
 
     formik.resetForm();
+    isMob && onClose();
   }
 
   return (
@@ -135,14 +138,13 @@ const DiaryAddProductForm = ({ date, onClose }) => {
           }}
         />
         {formik.errors.weight && formik.touched.weight && formik.errors.weight}
-        <ButtonSubmit disabled={formik.isSubmitting} />
-
-        <Button>
-          <ButtonSubmit />
-        </Button>
-        <ButtonMod type="submit" onClick={onClose}>
-          Добавить
-        </ButtonMod>
+        {isMob ? (
+          <ButtonMod type="submit">Добавить</ButtonMod>
+        ) : (
+          <Button>
+            <ButtonSubmit disabled={formik.isSubmitting} />
+          </Button>
+        )}
       </StyledForm>
     </>
   );
