@@ -23,7 +23,8 @@ export const TeamContainer = styled.div `
 export const ModalTeam = styled.div`
   padding: 40px;
   background-color: #e2eff97d;
-  box-shadow: 1px 1px 15px 5px rebeccapurple;
+  box-shadow: 1px 1px 15px 5px #FC842D;
+;
   border-radius: 8px;
   /* transition: transform var(--transition); */
   width:50vw    ;
@@ -32,3 +33,16 @@ export const ModalTeam = styled.div`
   top: 50%;
  left: 50%;
  transform: translate(-50%, -50%);`
+
+
+export const CloseFooterButton = styled.div`
+position: absolute;
+  right: 8px;
+  top: 8px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;`

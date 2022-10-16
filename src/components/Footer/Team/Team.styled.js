@@ -34,3 +34,15 @@ export const TeamContainer = styled.div `
   list-style: none;
   margin-left: auto;
   margin-right: auto;`
+
+
+  export const IconWrapper = styled.div`
+  position:absolute;
+  left:0;
+  right:0;
+  `
+
+  export const TeamTitle = styled.div `
+font-size:0.9rem;
+font-family: inherit;
+  `

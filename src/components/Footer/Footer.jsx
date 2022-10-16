@@ -3,6 +3,8 @@ import { StyledDiv, StyledButton } from './Footer.styled';
 import FooterModal from './FooterModal';
 
 
+
+
 const Footer = () => {
 const [show, setShow] = useState(false)
   return (
@@ -11,7 +13,7 @@ const [show, setShow] = useState(false)
         <p>©2022 COCKTAILS | ALL RIGHTS RESERVED |</p>
         <StyledButton onClick={() => setShow(true)}> Proudly created by GoIT Group #2</StyledButton>
       </StyledDiv>
-      <FooterModal show={show}/>
+      <FooterModal show={show} onClose={() => setShow(false)}/>
     </>
   );
 };

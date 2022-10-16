@@ -4,8 +4,10 @@ import { Wrapper } from './DiaryDateCalendarDate.styled';
 import { StyledLink } from './DiaryDateCalendarDate.styled';
 import { DateTitle } from './DiaryDateCalendarDate.styled';
 
+
 const DiaryDateCalendarDate = () => {
   let today = startOfToday();
+  
 
   return (
     <Wrapper>
