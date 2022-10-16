@@ -28,7 +28,7 @@ offset-distance: 100%;
 export const Set = styled.div`
   @media screen and (min-width: 768px) {
     position: absolute;
-    z-index: 1;
+    z-index: -1;
   }
   @media screen and (min-width: 1280px) {
   }
