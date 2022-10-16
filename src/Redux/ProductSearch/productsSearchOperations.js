@@ -1,7 +1,6 @@
 import axios from 'axios';
-import { createAsyncThunk } from '@reduxjs/toolkit';
+import { createAsyncThunk, createAction } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
-
 axios.defaults.baseURL = 'https://slimmom-backend.goit.global';
 
 export const addProduct = createAsyncThunk(
@@ -16,7 +15,7 @@ export const addProduct = createAsyncThunk(
           toast.error('Для начала узнай свою суточную норму калорий')
         );
       }
-      return rejectWithValue(toast.error('Произошла ошибка'));
+      return rejectWithValue(toast.error('addProduct Произошла ошибка'));
     }
   }
 );
@@ -28,7 +27,7 @@ export const eatenProduct = createAsyncThunk(
       const { data } = await axios.post('/day', credentials);
       return data;
     } catch (error) {
-      return rejectWithValue(toast.error('Произошла ошибка'));
+      return rejectWithValue(toast.error('eatenProduct : Произошла ошибка'));
     }
   }
 );
@@ -40,7 +39,7 @@ export const dayInfo = createAsyncThunk(
       const { data } = await axios.post('/day/info', credentials);
       return data;
     } catch (error) {
-      return rejectWithValue(toast.error('Произошла ошибка'));
+      return rejectWithValue(toast.error('dayInfo : Произошла ошибка'));
     }
   }
 );
@@ -52,7 +51,7 @@ export const userInfo = createAsyncThunk(
       const { data } = await axios.get('/user');
       return data;
     } catch (error) {
-      return rejectWithValue(toast.error('Произошла ошибка'));
+      return rejectWithValue(toast.error('userInfo : Произошла ошибка'));
     }
   }
 );
@@ -66,7 +65,21 @@ export const deleteEatenProduct = createAsyncThunk(
       });
       return data;
     } catch (error) {
-      return rejectWithValue(toast.error('Произошла ошибка'));
+      return rejectWithValue(
+        toast.error('deleteEatenProduct : Произошла ошибка')
+      );
     }
   }
 );
+
+export const formateDate = startDate => {
+  const day = startDate.getDate();
+  const month = startDate.getMonth() + 1;
+  const year = startDate.getFullYear();
+  const chosenDate = `${year}-${month > 9 ? month : `0` + month}-${
+    day > 9 ? day : `0` + day
+  }`;
+  return { payload: chosenDate };
+};
+
+export const dateSetAction = createAction('date/set', formateDate);
