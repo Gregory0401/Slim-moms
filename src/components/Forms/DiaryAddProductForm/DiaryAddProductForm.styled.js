@@ -99,6 +99,7 @@ export const LabelSearch = styled.label`
   display: block;
   width: 240px;
   margin-right: 50px;
+  position: relative;
 
   &::placeholder {
     font-size: 14px;
@@ -160,4 +161,14 @@ export const ButtonClose = styled.button`
   @media screen and (min-width: 767px) {
     display: none;
   }
+`;
+
+export const ErrorWeight = styled.div`
+  position: absolute;
+  color: var(--orange-color);
+  font-size: 14px;
+`;
+
+export const WrrapenInput = styled.div`
+  position: relative;
 `;

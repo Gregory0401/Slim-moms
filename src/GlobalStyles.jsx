@@ -60,7 +60,17 @@ html {
   font-family: 'Verdana', 'Gotham Pro, sans-serif';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  
+  -webkit-scrollbar {
+  width: 12px;               
+}
+-webkit-scrollbar-track {
+  background: orange;       
+}
+-webkit-scrollbar-thumb {
+  background-color: blue;    /* цвет бегунка */
+  border-radius: 20px;       /* округлось бегунка */
+  border: 3px solid orange;  /* отступ вокруг бегунка */
+}
   }
   img {
   width: 100%;
