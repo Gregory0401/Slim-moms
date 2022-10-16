@@ -14,6 +14,10 @@ export const addProduct = createAsyncThunk(
         return rejectWithValue(
           toast.error('Для начала узнай свою суточную норму калорий')
         );
+      } else if (error.response.status === 400) {
+        return rejectWithValue(
+          toast.error('По этому запросу не найдено разрешенных продуктов')
+        );
       }
       return rejectWithValue(toast.error('addProduct Произошла ошибка'));
     }

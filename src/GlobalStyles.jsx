@@ -43,6 +43,36 @@ const GlobalStyle = createGlobalStyle`
 
 
 
+html {
+    box-sizing: border-box;
+    width: 100vw;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    
+  }
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
+  body {
+    margin: auto;
+  font-family: 'Verdana', 'Gotham Pro, sans-serif';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-scrollbar {
+  width: 12px;               
+}
+-webkit-scrollbar-track {
+  background: orange;       
+}
+-webkit-scrollbar-thumb {
+  background-color: blue;    /* цвет бегунка */
+  border-radius: 20px;       /* округлось бегунка */
+  border: 3px solid orange;  /* отступ вокруг бегунка */
+}
+  }
+
 *,
 *::before,
 *::after {
@@ -62,7 +92,7 @@ height: 100vh;
 }
 #root{
   width:100%;
-  height: 100%;
+  height: 100vh;
   display: flex;
 flex-direction: column;
 justify-content: space-between;

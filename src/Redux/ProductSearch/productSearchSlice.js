@@ -32,7 +32,7 @@ const productSlice = createSlice({
       state.isLoading = true;
     },
     [addProduct.fulfilled]: (state, { payload }) => {
-      state.id = payload[0]._id; //змінив id на productId
+      state.id = payload[0]._id;
       state.items = payload;
       state.isLoading = false;
       state.product = payload;
@@ -50,7 +50,7 @@ const productSlice = createSlice({
       state.eatenProducts = [payload.day];
       state.daySummary = payload.daySummary;
       state.isLoading = false;
-      state.dayId = payload.day.id;
+      state.dayId = payload.day?.id;
       state.eatenProductId = payload.eatenProduct.id;
     },
     [eatenProduct.rejected]: (state, { payload }) => {
@@ -80,7 +80,8 @@ const productSlice = createSlice({
       state.isLoading = false;
       state.notAllowedProducts = payload.userData.notAllowedProducts;
       state.userId = payload.id;
-      state.eatenProduct = payload.days.filter(
+      console.log('деньАйди', state.dayId);
+      state.eatenProducts = payload?.days.filter(
         item => item._id === state.dayId
       );
       state.eatenProducts = payload.days;
@@ -96,9 +97,9 @@ const productSlice = createSlice({
       isLoading: true,
     }),
     [deleteEatenProduct.fulfilled]: (state, { payload }) => {
-      state.eatenProduct = state.eatenProduct.filter(
-        item => item.id !== payload.eatenProductId
-      );
+      state.eatenProducts = state.eatenProducts
+        .flatMap(item => item.eatenProducts)
+        .filter(item => item.id !== payload.eatenProductId);
       state.isLoading = false;
     },
     [deleteEatenProduct.rejected]: (state, { payload }) => {
