@@ -38,6 +38,8 @@ const DailyPage = () => {
     dispatch(dayInfo({ date }));
   }, [dispatch, date]);
 
+  //sadasd///
+
   const eatenProducts = useSelector(getEatenProducts);
 
   const findDayByDate =
