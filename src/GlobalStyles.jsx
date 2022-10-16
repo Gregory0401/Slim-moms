@@ -48,6 +48,7 @@ html {
     width: 100vw;
     overflow-x: hidden;
     scroll-behavior: smooth;
+    
   }
   *,
   *::before,
@@ -59,46 +60,75 @@ html {
   font-family: 'Verdana', 'Gotham Pro, sans-serif';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -webkit-scrollbar {
+  width: 12px;               
+}
+-webkit-scrollbar-track {
+  background: orange;       
+}
+-webkit-scrollbar-thumb {
+  background-color: blue;    /* цвет бегунка */
+  border-radius: 20px;       /* округлось бегунка */
+  border: 3px solid orange;  /* отступ вокруг бегунка */
+}
   }
-  img {
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+body {
   width: 100%;
-  display: block;
-  height: auto;
-  }
-  ul {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-  }
-  li {
+height: 100vh;
+  scroll-behavior: smooth;
+  font-family: 'Verdana';
+  font-style: normal;  
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  color: var(--main-text-color);
+}
+#root{
+  width:100%;
+  height: 100%;
+  display: flex;
+flex-direction: column;
+justify-content: space-between;
+}
+body,
+h1,
+h2,
+h3,
+p,
+ul,
+li
+ {
+  margin: 0;
+}
+ul{
   list-style: none;
+    padding: 0;
 }
 a {
   text-decoration: none;
+  color: inherit;
 }
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  p {
-    margin: 0;
-    padding: 0;
-  }
-  input::-webkit-outer-spin-button,
-  input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-    }
-
-    
-    input::-webkit-outer-spin-button,
+input,
+button {
+  font: inherit;
+  background-color: inherit;
+  padding: 0;
+  margin: 0;
+}
+input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
-  
-`;
+input[type=number]{
+    -moz-appearance: textfield;
+}`;
 
 export default GlobalStyle;

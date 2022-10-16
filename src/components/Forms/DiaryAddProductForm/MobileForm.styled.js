@@ -14,7 +14,7 @@ left: 0;
 `
 export const BtnClose = styled.div`
 position: absolute;
-top: -32px;
+top: -28px;
 left: 10px;
 z-index: 100;
 `

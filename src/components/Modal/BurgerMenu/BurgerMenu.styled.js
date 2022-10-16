@@ -40,11 +40,11 @@ export const StyledNavLink = styled(NavLink)`
   line-height: 1.2;
   text-transform: uppercase;
   height: 32px;
-margin-bottom: 20px;
-  color: rgba(255, 255, 255, 1);
+  margin-bottom: 20px;
+  color: rgba(155, 159, 170, 1);
 
   text-decoration: none;
   &.active {
-    color: rgba(155, 159, 170, 1);
+    color: rgba(255, 255, 255, 1);
   }
 `;

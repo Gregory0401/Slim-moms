@@ -6,6 +6,8 @@ import { Background } from '../Background/Background';
 import Loader from 'components/Loader';
 import { useSelector } from 'react-redux';
 import { selectIsLoggedIn } from 'Redux/Auth/authSelectors';
+import Leaf2 from '../Background/Leaf2/Leaf2';
+
 import { motion } from 'framer-motion';
 
 const Layout = ({toggleTheme, theme}) => {
@@ -20,6 +22,7 @@ const Layout = ({toggleTheme, theme}) => {
         transition={{ duration: 1.7, delay: 0 }}
       >
         <AppBar theme={theme} themeTogg={toggleTheme}/>
+        <Leaf2 />
         <main>
           {/* <Main> */}
           <Suspense fallback={<Loader />}>

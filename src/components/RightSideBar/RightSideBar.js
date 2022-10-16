@@ -72,7 +72,7 @@ const RightSideBar = () => {
                 <span>{Math.round(kcalConsumed)} ккал</span>
               </Text>
               <Text>
-                <span>Дневная норма</span>{' '}
+                <span>Дневная норма </span>{' '}
                 <span>{Math.round(dailyRate)} ккал</span>
               </Text>
               <Text>

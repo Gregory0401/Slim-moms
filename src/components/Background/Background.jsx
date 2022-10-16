@@ -1,5 +1,6 @@
 import { BackgroundStyled } from './Background.styled';
 import { motion } from 'framer-motion';
+import Leaf from './Leaf/Leaf';
 
 export const Background = ({ children }) => {
   return (
@@ -9,6 +10,7 @@ export const Background = ({ children }) => {
       animate={{ scale: 1, opacity: 1 }}
       transition={{ duration: 1.7, delay: 0.6 }}
     >
+      <Leaf />
       {children}
     </BackgroundStyled>
   );

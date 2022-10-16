@@ -1,19 +1,35 @@
 import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { toast } from 'react-toastify';
 import {
-  getEatenProduct,
   getDayId,
+  getLoading,
+  getError,
 } from '../../Redux/ProductSearch/productsSearchSelector';
 import {
   deleteEatenProduct,
-  dayInfo,
+  userInfo,
 } from '../../Redux/ProductSearch/productsSearchOperations';
 import { ButtonClose } from '../Buttons/ButtonClose/ButtonClose';
 import { Text, TextDiscription, List, Item } from './ProductList.styled.js';
+import Loader from 'components/Loader';
 
-const ProductsList = ({ date }) => {
-  const eatenProd = useSelector(getEatenProduct);
+const ProductsList = ({ eatenProducts }) => {
   const dayId = useSelector(getDayId);
+  const isLoading = useSelector(getLoading);
+  const error = useSelector(getError);
+
+  const multidimensionalArray = eatenProducts.flatMap(
+    item => item.eatenProducts
+  );
+
+  console.log('eatenProducts', eatenProducts);
+
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(userInfo());
+  }, [dispatch]);
 
   const deleteProduct = id => {
     const deleteData = {
@@ -21,19 +37,17 @@ const ProductsList = ({ date }) => {
       eatenProductId: id,
     };
 
-    const dateInfo = {
-      date,
-    };
-
+    dispatch(userInfo());
     dispatch(deleteEatenProduct(deleteData));
-    dispatch(dayInfo(dateInfo));
   };
 
   return (
     <>
-      <List>
-        {eatenProd &&
-          eatenProd.map(({ id, title, weight, kcal }) => {
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <List>
+          {multidimensionalArray.map(({ id, title, weight, kcal }) => {
             return (
               <Item
                 onClick={() => deleteProduct(id)}
@@ -53,7 +67,9 @@ const ProductsList = ({ date }) => {
               </Item>
             );
           })}
-      </List>
+        </List>
+      )}
+      {error && <p>{toast.error}</p>}
     </>
   );
 };

@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { lazy } from 'react';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
@@ -6,11 +6,14 @@ import PrivateRoute from 'Routes/PrivateRoute';
 import RestrictedRoute from 'Routes/RestrictedRoute';
 import Layout from './Layout';
 import { fetchCurrentUser } from 'Redux/Auth/authOperation';
+import { userInfo } from '../Redux/ProductSearch/productsSearchOperations';
 import DiaryDateСalendar from './Forms/DiaryDateСalendar';
 import {GlobalStyles} from '../components/DarkTheme/GlobalStyles'
 import { lightTheme, darkTheme } from '../components/DarkTheme/Theme'
 import { ThemeProvider } from 'styled-components';
 import {useDarkMode} from '../components/DarkTheme/useDarkMode'
+// const PageNotFound = lazy(() => import('../Pages/PageNotFound/PageNotFound'));
+import { PageNotFound } from 'Pages/PageNotFound/PageNotFound';
 
 const HomePage = lazy(() => import('../Pages/HomePage/HomePage'));
 const LoginPage = lazy(() => import('../Pages/LoginPage/LoginPage'));
@@ -41,7 +44,9 @@ const themeMode = theme === 'light' ? lightTheme : darkTheme;
 
   useEffect(() => {
     dispatch(fetchCurrentUser());
+    dispatch(userInfo());
   }, [dispatch]);
+
   return (
     <ThemeProvider theme={themeMode}>
     <>
@@ -88,8 +93,7 @@ const themeMode = theme === 'light' ? lightTheme : darkTheme;
             }
           />
         </Route>
-
-        <Route path="*" element={<Navigate to="/login" replace />} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
       
     </>

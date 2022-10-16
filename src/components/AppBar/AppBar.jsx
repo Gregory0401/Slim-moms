@@ -1,8 +1,9 @@
+import BurgerMenu from '../../components/Modal/BurgerMenu/BurgerMenu';
 import { Navigation } from '../Navigation/Navigation';
 import { UserAuthMenu } from '../UserAuthMenu/UserAuthMenu';
 import { AuthNavigation } from '../AuthNavigation/AuthNavigation';
 import { useMedia } from 'react-use';
-
+import { Burger } from '../UserAuthMenu/UserAuthMenu.styled';
 import { useSelector } from 'react-redux';
 import { selectIsLoggedIn } from '../../Redux/Auth/authSelectors';
 import {
@@ -14,8 +15,8 @@ import {
 } from './AppBar.styled';
 import { ButtonBurger } from '../Buttons/ButtonBurger/ButtonBurger';
 import { useState } from 'react';
-import BurgerMenu from 'components/Modal/BurgerMenu/BurgerMenu';
-import { Burger } from '../UserAuthMenu/UserAuthMenu.styled';
+// import BurgerMenu from 'components/Modal/BurgerMenu/BurgerMenu';
+// import { Burger } from '../UserAuthMenu/UserAuthMenu.styled';
 import Toggle from '../DarkTheme/Toggler'
 // import {useDarkMode} from '../DarkTheme/useDarkMode'
 // import { lightTheme, darkTheme } from '../DarkTheme/Theme'
@@ -57,11 +58,9 @@ export const AppBar = ({themeTogg, theme}) => {
             <Toggle theme={theme} toggleTheme={themeTogg} />
             {!isLoggedIn && <AuthNavigation />}
 
-
             {isLoggedIn && (
               <WrapperBurger>
                 <UserAuthMenu />
-                {/* <Toggle toggleTheme={themeTogg} /> */}
                 <Burger>
                   <ButtonBurger onClick={onToggleModal} />
                 </Burger>
@@ -73,7 +72,7 @@ export const AppBar = ({themeTogg, theme}) => {
 
       {showModal && (
         <Menu>
-          <BurgerMenu />
+          <BurgerMenu onToggleModal={onToggleModal} />
         </Menu>
       )}
     </Header>

@@ -42,7 +42,6 @@ export const ErrorText = styled.p`
 `;
 
 export const Label = styled.label`
-  /* width: 240px; */
   display: block;
   font-weight: 700;
   font-size: 14px;
@@ -76,7 +75,6 @@ export const Button = styled.button`
   color: var(--white);
   box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
   cursor: pointer;
-  /* margin-bottom: 77px; */
 
   @media ${breakpoints.desktop} {
     margin-left: 339px;

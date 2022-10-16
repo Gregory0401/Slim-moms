@@ -1,9 +1,8 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 
 axios.defaults.baseURL = 'https://slimmom-backend.goit.global';
-
-// vova1@gmail.com
 
 export const addProduct = createAsyncThunk(
   'product/addProduct',
@@ -12,7 +11,16 @@ export const addProduct = createAsyncThunk(
       const { data } = await axios.get(`/product/?search=${title}`);
       return data;
     } catch (error) {
-      return rejectWithValue(error.message);
+      if (error.response.status === 403) {
+        return rejectWithValue(
+          toast.error('Для начала узнай свою суточную норму калорий')
+        );
+      } else if (error.response.status === 400) {
+        return rejectWithValue(
+          toast.error('По этому запросу не найдено разрешенных продуктов')
+        );
+      }
+      return rejectWithValue(toast.error('Произошла ошибка'));
     }
   }
 );
@@ -22,10 +30,9 @@ export const eatenProduct = createAsyncThunk(
   async (credentials, { rejectWithValue }) => {
     try {
       const { data } = await axios.post('/day', credentials);
-      // console.log('eatenProduct', data);
       return data;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return rejectWithValue(toast.error('Произошла ошибка'));
     }
   }
 );
@@ -33,12 +40,11 @@ export const eatenProduct = createAsyncThunk(
 export const dayInfo = createAsyncThunk(
   'product/dayInfo',
   async (credentials, { rejectWithValue }) => {
-    console.log(credentials);
     try {
       const { data } = await axios.post('/day/info', credentials);
       return data;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return rejectWithValue(toast.error('Произошла ошибка'));
     }
   }
 );
@@ -46,12 +52,11 @@ export const dayInfo = createAsyncThunk(
 export const userInfo = createAsyncThunk(
   'product/userInfo',
   async (_, { rejectWithValue }) => {
-    // console.log(credentials);
     try {
       const { data } = await axios.get('/user');
       return data;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return rejectWithValue(toast.error('Произошла ошибка'));
     }
   }
 );
@@ -65,24 +70,7 @@ export const deleteEatenProduct = createAsyncThunk(
       });
       return data;
     } catch (error) {
-      return rejectWithValue('error');
+      return rejectWithValue(toast.error('Произошла ошибка'));
     }
   }
 );
-
-// export const productSearch = createAsyncThunk(
-//   'product/get',
-//   async (search, { rejectWithValue }) => {
-//     try {
-//       const { data } = await axios.get('/product', {
-//         params: {
-//           search,
-//         },
-//       });
-
-//       return data;
-//     } catch (error) {
-//       return rejectWithValue(error.message);
-//     }
-//   }
-// );

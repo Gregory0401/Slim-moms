@@ -2,18 +2,17 @@ import styled from 'styled-components';
 
 import { breakpoints } from '../../Utils/size';
 
-
 export const Container = styled.div`
-@media screen and (min-width: 320px){
-  display:none;
-}
-@media screen and (min-width: 768px){
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  width: 100%;
-}
-`
+  @media screen and (min-width: 320px) {
+    display: none;
+  }
+  @media screen and (min-width: 768px) {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+  }
+`;
 
 export const Thumb = styled.div`
   display: flex;

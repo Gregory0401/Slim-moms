@@ -10,7 +10,7 @@ import {
 const productSlice = createSlice({
   name: 'product',
   initialState: {
-    eatenProduct: null,
+    eatenProducts: [],
     daySummary: null,
     items: [],
     productId: null,
@@ -22,13 +22,15 @@ const productSlice = createSlice({
     eatenProductId: null,
     product: [],
     notAllowedProducts: [],
+    userId: null,
+    userDaySummary: null,
   },
   extraReducers: {
     [addProduct.pending]: state => {
       state.isLoading = true;
     },
     [addProduct.fulfilled]: (state, { payload }) => {
-      state.id = payload[0]._id; //змінив id на productId
+      state.id = payload[0]._id;
       state.items = payload;
       state.isLoading = false;
       state.product = payload;
@@ -43,10 +45,10 @@ const productSlice = createSlice({
     },
     [eatenProduct.fulfilled]: (state, { payload }) => {
       state.weight = payload.eatenProduct.weight;
-      state.eatenProduct = payload.day.eatenProducts;
-      state.daySummary = payload.daySummary; //скільки ми захавали
+      state.eatenProducts = [payload.day];
+      state.daySummary = payload.daySummary;
       state.isLoading = false;
-      state.dayId = payload.day.id;
+      state.dayId = payload.day?.id;
       state.eatenProductId = payload.eatenProduct.id;
     },
     [eatenProduct.rejected]: (state, { payload }) => {
@@ -60,7 +62,6 @@ const productSlice = createSlice({
     },
     [dayInfo.fulfilled]: (state, { payload }) => {
       state.isLoading = false;
-      // state.date = payload.day.date;//???????????????????????
       state.daySummary = payload.daySummary;
     },
     [dayInfo.rejected]: (state, { payload }) => {
@@ -76,10 +77,12 @@ const productSlice = createSlice({
     [userInfo.fulfilled]: (state, { payload }) => {
       state.isLoading = false;
       state.notAllowedProducts = payload.userData.notAllowedProducts;
-      // state.daySummary = payload.days.daySummary;
-      state.daySummary = payload.days.filter(item => item._id === state.dayId);
-      console.log(state.dayId);
-      console.log(state.daySummary[0]);
+      state.userId = payload.id;
+      console.log('деньАйди', state.dayId);
+      state.eatenProducts = payload?.days.filter(
+        item => item._id === state.dayId
+      );
+      state.eatenProducts = payload.days;
     },
     [userInfo.rejected]: (state, { payload }) => {
       state.isLoading = false;
@@ -92,9 +95,9 @@ const productSlice = createSlice({
       isLoading: true,
     }),
     [deleteEatenProduct.fulfilled]: (state, { payload }) => {
-      state.eatenProduct = state.eatenProduct.filter(
-        item => item.id !== payload.eatenProductId
-      );
+      state.eatenProducts = state.eatenProducts
+        .flatMap(item => item.eatenProducts)
+        .filter(item => item.id !== payload.eatenProductId);
       state.isLoading = false;
     },
     [deleteEatenProduct.rejected]: (state, { payload }) => {

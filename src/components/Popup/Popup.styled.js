@@ -8,8 +8,10 @@ export const PopupWrapper = styled.div`
   align-items: flex-start;
   width: 100%;
   z-index: 100;
-  height: 300px;
+  height: 350px;
   overflow: auto;
+  position: absolute;
+  background-color: white;
 `;
 
 export const PopupText = styled.p`
