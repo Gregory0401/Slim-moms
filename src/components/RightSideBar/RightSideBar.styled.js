@@ -18,8 +18,8 @@ export const RightBar = styled.div`
   @media ${breakpoints.minTablet} {
     flex-direction: row;
     justify-content: center;
-    /* justify-content: space-between; */
-    /* align-items: flex-start; */
+    /* justify-content: space-between;
+    align-items: flex-start; */
     gap: 80px;
     padding-top: 80px;
     padding-bottom: 80px;
@@ -34,8 +34,8 @@ export const RightBar = styled.div`
     flex-direction: column;
     justify-content: flex-start;
     gap: 60px;
-    padding: 280px 95px 110px 95px;
-    height: calc(100% - 150px);
+    padding: 280px 95px 92px 95px;
+    height: calc(100vh - 150px);
     background-image: url(${bgDesk});
   }
 `;
