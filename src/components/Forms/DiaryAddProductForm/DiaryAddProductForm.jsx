@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import DebounceInput from 'react-debounce-input';
 import { useFormik } from 'formik';
-import { toast } from 'react-toastify';
+import * as Yup from 'yup';
 import {
   addProduct,
   eatenProduct,
@@ -20,6 +20,8 @@ import {
   StyledForm,
   Button,
   ButtonMod,
+  ErrorWeight,
+  WrrapenInput,
 } from './DiaryAddProductForm.styled.js';
 import Popup from 'components/Popup/Popup';
 
@@ -35,7 +37,17 @@ const DiaryAddProductForm = ({ date, onClose }) => {
       title: '',
       weight: '',
     },
-
+    validationSchema: Yup.object({
+      title: Yup.string()
+        .min(3, 'Должно быть не менее 3 символов')
+        .required('Обязательное поле')
+        .typeError('Значение должно быть текстом'),
+      weight: Yup.number()
+        .min(1, 'Минимальное значение : 1г')
+        .max(50000, 'Максимальное значение : 50000г')
+        .required('Обязательное поле')
+        .typeError('Значение должно быть цифрой'),
+    }),
     onSubmit: handleSubmit,
   });
 
@@ -65,8 +77,8 @@ const DiaryAddProductForm = ({ date, onClose }) => {
     }
   }
 
-  const handleClick = ({ target: { textContent } }, id) => {
-    formik.setFieldValue('title', textContent);
+  const handleClick = (event, id) => {
+    formik.setFieldValue('title', event.target.textContent);
     setProductId(id);
     setShowPopup(false);
     setClick(true);
@@ -78,13 +90,7 @@ const DiaryAddProductForm = ({ date, onClose }) => {
       productId,
       weight: values.weight,
     };
-    if (
-      formik.values.weight.trim() === '' ||
-      formik.values.title.trim() === ''
-    ) {
-      toast.error('Пожалуйста введите данные!!');
-      return;
-    }
+
     dispatch(eatenProduct(eatenDate));
 
     formik.resetForm();
@@ -112,33 +118,39 @@ const DiaryAddProductForm = ({ date, onClose }) => {
             />
           </LabelSearch>
           {}
-          {formik.errors.title && formik.touched.title}
+          {formik.errors.title && formik.touched.title && (
+            <ErrorWeight>{formik.errors.title}</ErrorWeight>
+          )}
+
           {showPopup && items.length > 1 && formik.values.title.length > 2 && (
             <Popup data={items} onClick={handleClick} />
           )}
         </Wrrapen>
-
-        <input
-          type="number"
-          name="weight"
-          placeholder="Граммы"
-          onChange={e => handleChange(e, formik.setFieldValue)}
-          onBlur={formik.handleBlur}
-          value={formik.values.weight}
-          style={{
-            width: 105,
-            outline: 'none',
-            paddingBottom: 20,
-            borderBottom: '1px solid #E0E0E0',
-            marginRight: 60,
-            textAlign: 'right',
-          }}
-        />
-        {formik.errors.weight && formik.touched.weight && formik.errors.weight}
-        <ButtonSubmit disabled={formik.isSubmitting} />
-
+        <WrrapenInput>
+          <input
+            type="number"
+            name="weight"
+            placeholder="Граммы"
+            onChange={e => handleChange(e, formik.setFieldValue)}
+            onBlur={formik.handleBlur}
+            value={formik.values.weight}
+            style={{
+              width: 105,
+              outline: 'none',
+              paddingBottom: 20,
+              borderBottom: '1px solid #E0E0E0',
+              marginRight: 60,
+              textAlign: 'right',
+            }}
+          />
+          {formik.errors.weight &&
+            formik.touched.weight &&
+            formik.errors.weight && (
+              <ErrorWeight>{formik.errors.weight}</ErrorWeight>
+            )}
+        </WrrapenInput>
         <Button>
-          <ButtonSubmit />
+          <ButtonSubmit disabled={formik.isSubmitting} />
         </Button>
         <ButtonMod type="submit" onClick={onClose}>
           Добавить
