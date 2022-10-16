@@ -27,7 +27,7 @@ export const AppBar = ({themeTogg, theme}) => {
   // const themeMode = theme === 'light' ? lightTheme : darkTheme;
 
   const [showModal, setShowModal] = useState(false);
-  const isWide = useMedia('(max-width: 767px)');
+  const isMob = useMedia('(max-width: 767px)');
 
   const onToggleModal = () => {
     setShowModal(prevState => !prevState);
@@ -37,7 +37,7 @@ export const AppBar = ({themeTogg, theme}) => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   return (
     <Header>
-      {isWide ? (
+      {isMob ? (
         <>
           <Wrapper>
             <Navigation />

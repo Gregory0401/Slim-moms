@@ -9,6 +9,7 @@ import { selectIsLoggedIn } from 'Redux/Auth/authSelectors';
 import Leaf2 from '../Background/Leaf2/Leaf2';
 
 import { motion } from 'framer-motion';
+import Footer from 'components/Footer/Footer';
 
 const Layout = ({toggleTheme, theme}) => {
 
@@ -41,6 +42,7 @@ const Layout = ({toggleTheme, theme}) => {
           <Outlet />
         </Suspense>
         {/* </Main> */}
+        <Footer/>
       </main>
     </Background>
   );

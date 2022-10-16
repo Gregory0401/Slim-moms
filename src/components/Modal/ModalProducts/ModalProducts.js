@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import {
   Backdrop,
   Modal,
@@ -10,18 +11,18 @@ import {
   ButtonMain,
   BtnClose,
   Cal,
+  StyledNavLink,
 } from './ModalProducts.styled';
 import { useEffect } from 'react';
-import { Button } from '../../Buttons/BattonMainActive/BattonMainActive.styled';
 import { ButtonClose } from '../../Buttons/ButtonClose/ButtonClose';
-import { StyledNavLink } from '../../RegisterForm/RegisterForm.styled';
-import { useSelector } from 'react-redux';
 import {
   selectDailyRate,
   selectNotAllowedProducts,
 } from '../../../Redux/DailyRate/DailyRateSelectors';
+import { selectIsLoggedIn } from 'Redux/Auth/authSelectors';
 
 const ModalProducts = ({ onClose }) => {
+  const isLoggedIn = useSelector(selectIsLoggedIn);
   useEffect(() => {
     window.addEventListener('keydown', handleEscape);
     const body = document.querySelector('body');
@@ -83,9 +84,9 @@ const ModalProducts = ({ onClose }) => {
             ))}
           </Products>
           <ButtonMain>
-            
+            {!isLoggedIn && (
               <StyledNavLink to="/daily/">Начать худеть</StyledNavLink>
-            
+            )}
           </ButtonMain>
 
           <BtnClose>
