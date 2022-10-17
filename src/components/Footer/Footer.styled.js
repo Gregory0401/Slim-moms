@@ -9,13 +9,13 @@ export const StyledDiv = styled.div`
   font-size: 0.8rem;
   color: #212121;
   align-content: flex-end;
-  margin-top: 350px;
+  margin-top: 320px;
   @media ${breakpoints.minTablet} {
-    margin-top: 350px;
+    margin-top: 270px;
     padding: 0 32px;
   }
   @media ${breakpoints.desktop} {
-    margin-top: 250px;
+    margin-top: 200px;
   }
 `;
 
