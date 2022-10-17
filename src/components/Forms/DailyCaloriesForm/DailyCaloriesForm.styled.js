@@ -32,7 +32,7 @@ export const FormWrapper = styled.div`
   @media ${breakpoints.minTablet} {
     display: flex;
     gap: 32px;
-    margin-bottom: 60px;
+    margin-bottom: 10px;
   }
 `;
 export const ErrorText = styled.p`

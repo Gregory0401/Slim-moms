@@ -9,11 +9,9 @@ export const Wrapper = styled.div`
   padding-bottom: 99px;
   @media ${breakpoints.minTablet} {
     padding-top: 160px;
-    padding-bottom: 419px;
   }
   @media ${breakpoints.desktop} {
     padding-top: 163px;
-    padding-bottom: 255px;
   }
 `;
 export const Title = styled.h2`

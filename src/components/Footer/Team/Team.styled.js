@@ -23,7 +23,7 @@ export const TeamItem = styled.li`
   background-color: #ffffff;
 `;
 
-export const TeamContainer = styled.div `
+export const TeamContainer = styled.div`
   display: grid;
   max-width: 1140px;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
@@ -33,16 +33,21 @@ export const TeamContainer = styled.div `
   padding: 0;
   list-style: none;
   margin-left: auto;
-  margin-right: auto;`
+  margin-right: auto;
+`;
 
+export const IconWrapper = styled.div`
+  position: absolute;
+  left: 0;
+  right: 0;
+`;
 
-  export const IconWrapper = styled.div`
-  position:absolute;
-  left:0;
-  right:0;
-  `
+export const TeamTitle = styled.div`
+  font-size: 0.9rem;
+  font-family: inherit;
+`;
 
-  export const TeamTitle = styled.div `
-font-size:0.9rem;
-font-family: inherit;
-  `
+export const TeamMeta = styled.p`
+  font-size: 0.8rem;
+  font-family: inherit;
+`;

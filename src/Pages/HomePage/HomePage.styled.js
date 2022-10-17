@@ -3,7 +3,7 @@ import { breakpoints } from 'Utils/size';
 
 export const Wrapper = styled.div`
   @media ${breakpoints.maxMobile} {
-    padding-bottom: 77px;
+    padding-bottom: 17px;
   }
 
   @media ${breakpoints.mobile} {
@@ -13,11 +13,9 @@ export const Wrapper = styled.div`
 
   @media ${breakpoints.minTablet} {
     padding: 0 32px;
-    padding-bottom: 397px;
   }
   @media ${breakpoints.desktop} {
     padding: 0 16px;
-    padding-bottom: 111px;
   }
 `;
 

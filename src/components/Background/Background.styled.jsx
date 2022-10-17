@@ -43,7 +43,7 @@ export const BackgroundStyled = styled.div`
 
   @media ${breakpoints.onlyTablet} {
     background-image: url(${WrapTab});
-    background-position: bottom 198px right 0;
+    background-position: bottom 0px right 0;
   }
 
   @media ${breakpoints.desktop} {

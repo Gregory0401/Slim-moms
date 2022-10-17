@@ -1,9 +1,10 @@
+// import { breakpoints } from '../../../Utils/size';
 import styled, { keyframes } from 'styled-components';
 
-import leaf1 from '../../../img/leaf-1.png';
-import leaf2 from '../../../img/leaf-2.png';
+// import leaf1 from '../../../img/leaf-1.png';
+// import leaf2 from '../../../img/leaf-2.png';
 import leaf3 from '../../../img/leaf-3.png';
-import leaf4 from '../../../img/leaf-3.png';
+// import leaf4 from '../../../img/leaf-4.png';
 import leaf5 from '../../../img/leaf-1.png';
 import leaf6 from '../../../img/leaf-1.png';
 
@@ -36,26 +37,21 @@ export const Set = styled.div`
   @media screen and (min-width: 768px) {
     display: block;
     width: 100%;
-    height: calc(100% + 170px);
     position: absolute;
     right: 0;
-    bottom: -170px;
   }
   @media screen and (min-width: 1280px) {
     top: 0;
     z-index: -1;
     height: 100%;
-    height: calc(100% + 500px);
+
     height: 100%;
     bottom: auto;
-  }
-  @media screen and (min-width: 1280px) and (max-height: 850px) {
-    height: calc(100% + 500px);
   }
 `;
 
 export const Img1 = styled.div`
-  background: url(${leaf1}) no-repeat;
+  background: url(${leaf6}) no-repeat;
   width: 35px;
   height: 45px;
   offset-path: path('M50,0 C90,200 50,200 600,0');
@@ -64,7 +60,7 @@ export const Img1 = styled.div`
 `;
 
 export const Img2 = styled.div`
-  background: url(${leaf2}) no-repeat;
+  background: url(${leaf6}) no-repeat;
   width: 35px;
   height: 45px;
 
@@ -72,7 +68,7 @@ export const Img2 = styled.div`
   left: 90vw;
   offset-path: path('M1510,0 C900,120 50,100 200,0');
   offset-rotate: 0deg;
-  animation: ${animation} 125s infinite alternate ease-in-out;
+  animation: ${animation} 95s infinite alternate ease-in-out;
 `;
 
 export const Img3 = styled.div`
@@ -86,13 +82,13 @@ export const Img3 = styled.div`
 `;
 
 export const Img4 = styled.div`
-  background: url(${leaf4}) no-repeat;
+  background: url(${leaf3}) no-repeat;
   width: 55px;
   height: 40px;
   top: 650px;
   right: 30vw;
   offset-path: path('M850,0 C700,600 960,160 300,0');
-  offset-rotate: 20deg;
+  offset-rotate: 248deg;
   animation: ${animation} 90s infinite alternate ease-in-out;
 `;
 

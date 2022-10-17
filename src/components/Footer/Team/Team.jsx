@@ -1,7 +1,15 @@
 import React from 'react';
 import robot from 'img/2555.png';
-import robot2 from 'img/robto2.png'
-import { StyledImage, TeamItem, TeamContainer,TeamTitle} from './Team.styled';
+import robot2 from 'img/robto2.png';
+import robot404 from 'img/404.png';
+import robot3 from 'img/robot.png';
+import {
+  StyledImage,
+  TeamItem,
+  TeamContainer,
+  TeamTitle,
+  TeamMeta,
+} from './Team.styled';
 
 const Team = () => {
   return (
@@ -9,18 +17,18 @@ const Team = () => {
       <TeamContainer>
         <TeamItem>
           <a
-            href="https://github.com/"
+            href="https://github.com/Gregory0401"
             target="_blank"
             rel="noreferrer nofollow noopener"
           >
-            <StyledImage src={robot} alt="" />
+            <StyledImage src={robot2} alt="" />
           </a>
-
           <TeamTitle>Григорій Шмойлов</TeamTitle>
-          <p>Team Lead</p>  </TeamItem>
+          <TeamMeta>Team Lead</TeamMeta>
+        </TeamItem>
         <TeamItem>
           <a
-            href="https://github.com/"
+            href="https://github.com/OttoCarius"
             target="_blank"
             rel="noreferrer nofollow noopener"
           >
@@ -28,23 +36,23 @@ const Team = () => {
           </a>
 
           <TeamTitle>Андрій Підлісний</TeamTitle>
-          <p>Scrum Master</p>
+          <TeamMeta>Scrum Master</TeamMeta>
         </TeamItem>
         <TeamItem>
           <a
-            href="https://github.com/"
+            href="https://github.com/DariaIliuchenko"
             target="_blank"
             rel="noreferrer nofollow noopener"
           >
-            <StyledImage src={robot} alt="team-photo" />
+            <StyledImage src={robot3} alt="team-photo" />
           </a>
 
           <TeamTitle>Дар‘я Ільюченко</TeamTitle>
-          <p>Developer</p>
+          <TeamMeta>Developer</TeamMeta>
         </TeamItem>
         <TeamItem>
           <a
-            href="https://github.com/"
+            href="https://github.com/Yana-Palam"
             target="_blank"
             rel="noreferrer nofollow noopener"
           >
@@ -53,23 +61,23 @@ const Team = () => {
           </a>
 
           <TeamTitle>Яна Паламарчук</TeamTitle>
-          <p>Developer</p>
+          <TeamMeta>Developer</TeamMeta>
         </TeamItem>
         <TeamItem>
           <a
-            href="https://github.com/"
+            href="https://github.com/Aleksandr-Alekseenko-23"
             target="_blank"
             rel="noreferrer nofollow noopener"
           >
-            <StyledImage src={robot} alt="team-photo" />
+            <StyledImage src={robot3} alt="team-photo" />
           </a>
 
           <TeamTitle>Олександр Алєксєєнко</TeamTitle>
-          <p>Developer</p>
+          <TeamMeta>Developer</TeamMeta>
         </TeamItem>
         <TeamItem>
           <a
-            href="https://github.com/"
+            href="https://github.com/Kosynskyi"
             target="_blank"
             rel="noreferrer nofollow noopener"
           >
@@ -77,36 +85,35 @@ const Team = () => {
           </a>
 
           <TeamTitle>Володимир Косинський</TeamTitle>
-          <p>Developer</p>
+          <TeamMeta>Developer</TeamMeta>
         </TeamItem>
         <TeamItem>
           <a
-            href="https://github.com/"
+            href="https://github.com/WoLfEER"
             target="_blank"
             rel="noreferrer nofollow noopener"
           >
-            <StyledImage src={robot} alt="team-photo" />
+            <StyledImage src={robot404} alt="team-photo" />
           </a>
 
           <TeamTitle>Андрій Вовк</TeamTitle>
-          <p>Developer</p>
+          <TeamMeta>Developer</TeamMeta>
         </TeamItem>
         <TeamItem>
           <a
-            href="https://github.com/"
+            href="https://github.com/AlonaHarnyk"
             target="_blank"
             rel="noreferrer nofollow noopener"
           >
-  
             <StyledImage src={robot} alt="team-photo" />
           </a>
 
           <TeamTitle>Альона Гарник</TeamTitle>
-          <p>Goddess of Code</p>
+          <TeamMeta>Goddess of Code</TeamMeta>
         </TeamItem>
         <TeamItem>
           <a
-            href="https://github.com/"
+            href="https://github.com/skripnichenko"
             target="_blank"
             rel="noreferrer nofollow noopener"
           >
@@ -114,7 +121,7 @@ const Team = () => {
           </a>
 
           <TeamTitle>Саша Срипниченко</TeamTitle>
-          <p>Princess of Code</p>   
+          <TeamMeta>Princess of Code</TeamMeta>
         </TeamItem>
       </TeamContainer>
     </div>

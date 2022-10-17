@@ -37,21 +37,16 @@ export const Set = styled.div`
   @media screen and (min-width: 768px) {
     display: block;
     width: 100%;
-    height: calc(100% + 170px);
     position: absolute;
     right: 0;
-    bottom: -170px;
   }
   @media screen and (min-width: 1280px) {
     top: 0;
     z-index: -1;
     height: 100%;
-    height: calc(100% + 500px);
+
     height: 100%;
     bottom: auto;
-  }
-  @media screen and (min-width: 1280px) and (max-height: 850px) {
-    height: calc(100% + 500px);
   }
 `;
 

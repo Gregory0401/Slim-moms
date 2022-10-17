@@ -43,92 +43,59 @@ const GlobalStyle = createGlobalStyle`
 
 
 
-html {
+* {
     box-sizing: border-box;
-    width: 100vw;
-    overflow-x: hidden;
-    scroll-behavior: smooth;
-    
-  }
-  *,
-  *::before,
-  *::after {
-    box-sizing: inherit;
   }
   body {
-    margin: auto;
-  font-family: 'Verdana', 'Gotham Pro, sans-serif';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-scrollbar {
-  width: 12px;               
-}
--webkit-scrollbar-track {
-  background: orange;       
-}
--webkit-scrollbar-thumb {
-  background-color: blue;    /* цвет бегунка */
-  border-radius: 20px;       /* округлось бегунка */
-  border: 3px solid orange;  /* отступ вокруг бегунка */
-}
-  }
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-body {
-  width: 100%;
-height: 100vh;
-  scroll-behavior: smooth;
-  font-family: 'Verdana';
-  font-style: normal;  
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 1.2;
-  letter-spacing: 0.04em;
-  color: var(--main-text-color);
-}
-#root{
-  width:100%;
-  height: 100vh;
-  display: flex;
-flex-direction: column;
-justify-content: space-between;
-}
-body,
-h1,
-h2,
-h3,
-p,
-ul,
-li
- {
-  margin: 0;
-}
-ul{
-  list-style: none;
-    padding: 0;
-}
-a {
-  text-decoration: none;
-  color: inherit;
-}
-input,
-button {
-  font: inherit;
-  background-color: inherit;
-  padding: 0;
-  margin: 0;
-}
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
     margin: 0;
-}
-input[type=number]{
-    -moz-appearance: textfield;
-}`;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+      monospace;
+  }
+  h1,h2,h3,h4,h5,h6,p {
+    margin: 0;
+  }
+  p {
+    margin: 0;
+    padding: 0;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  ul,
+  ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  address {
+    /* by default address italic */
+    font-style: normal;
+  }
+  img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+  button {
+    cursor: pointer;
+  }
+  article {
+    display: block;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    background: transparent;
+  }
+`;
 
 export default GlobalStyle;

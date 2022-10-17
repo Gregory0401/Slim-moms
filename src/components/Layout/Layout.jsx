@@ -40,8 +40,8 @@ const Layout = () => {
           <Outlet />
         </Suspense>
         {/* </Main> */}
-        <Footer/>
       </main>
+      <Footer />
     </Background>
   );
 };
