@@ -33,6 +33,6 @@ export const List = styled.ul`
 export const Item = styled.li`
   display: flex;
   align-content: center;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 `;

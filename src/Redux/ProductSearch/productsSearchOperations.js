@@ -12,7 +12,7 @@ export const addProduct = createAsyncThunk(
     } catch (error) {
       if (error.response.status === 403) {
         return rejectWithValue(
-          toast.error('Для начала узнай свою суточную норму калорий')
+          toast.info('Для начала узнай свою суточную норму калорий')
         );
       } else if (error.response.status === 400) {
         return rejectWithValue(
