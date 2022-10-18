@@ -43,62 +43,59 @@ const GlobalStyle = createGlobalStyle`
 
 
 
-html {
+* {
     box-sizing: border-box;
-    width: 100vw;
-    overflow-x: hidden;
-    scroll-behavior: smooth;
-  }
-  *,
-  *::before,
-  *::after {
-    box-sizing: inherit;
   }
   body {
-    margin: auto;
-  font-family: 'Verdana', 'Gotham Pro, sans-serif';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  }
-  img {
-  width: 100%;
-  display: block;
-  height: auto;
-  }
-  ul {
-    padding: 0;
     margin: 0;
-    list-style: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
-  li {
-  list-style: none;
-}
-a {
-  text-decoration: none;
-}
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+      monospace;
+  }
+  h1,h2,h3,h4,h5,h6,p {
+    margin: 0;
+  }
   p {
     margin: 0;
     padding: 0;
   }
-  input::-webkit-outer-spin-button,
-  input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  ul,
+  ol {
     margin: 0;
-    }
-
-    
-    input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
+    padding: 0;
+    list-style: none;
+  }
+  address {
+    /* by default address italic */
+    font-style: normal;
+  }
+  img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+  button {
+    cursor: pointer;
+  }
+  article {
+    display: block;
     margin: 0;
-}
-  
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    background: transparent;
+  }
 `;
 
 export default GlobalStyle;
