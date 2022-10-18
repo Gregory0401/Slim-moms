@@ -25,14 +25,14 @@ export const StyledForm = styled.div`
 export const Label = styled.label`
   display: flex;
   flex-direction: column;
-  font-family: 'Verdana';
+  font-family: ${p => p.theme.fonts.main};
 
   font-weight: 700;
-  font-size: 14px;
+  font-size: ${p => p.theme.fontSizes.s};
   line-height: 17px;
-  letter-spacing: 0.04em;
+  letter-spacing: ${p => p.theme.letterSpacing.l};
 
-  color: var(--secondary-text-color);
+  color: ${p => p.theme.colors.border};
 `;
 
 export const Input = styled(Field)`
@@ -43,13 +43,13 @@ export const Input = styled(Field)`
 
   font-family: inherit;
   font-size: 1rem;
-  font-weight: 400;
+  font-weight: ${p => p.theme.fontWeights.normal};
   line-height: 1.5;
   color: #212529;
-  background-color: #fff;
+  background-color: ${p => p.theme.colors.white};
   background-clip: padding-box;
   border: none;
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid ${p => p.theme.colors.border};
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -71,50 +71,50 @@ export const BtnWrapper = styled.div`
 export const BtnR = styled.button`
   width: 181px;
   height: 44px;
-  border: 2px solid #fc842d;
+  border: 2px ${p => p.theme.colors.orange};
   text-decoration: none;
 
-  background: #fc842d;
+  background: ${p => p.theme.colors.orange};
   box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
   border-radius: 30px;
-  font-family: 'Verdana';
+  font-family: ${p => p.theme.fonts.main};
 
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 1.21;
+  font-weight: ${p => p.theme.fontWeights.bold};
+  font-size: ${p => p.theme.fontSizes.s};
+  line-height: ${p => p.theme.lineHeights.text};
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  letter-spacing: 0.04em;
+  letter-spacing: ${p => p.theme.letterSpacing.l};
 
-  color: #ffffff;
+  color: ${p => p.theme.colors.white};
 `;
 export const StyledNavLink = styled(NavLink)`
-  background: #ffffff;
-  border: 2px solid #fc842d;
+  background: ${p => p.theme.colors.white};
+  border: 2px solid ${p => p.theme.colors.orange};
   border-radius: 30px;
   width: 182px;
   height: 44px;
 
-  font-family: 'Verdana';
+  font-family: ${p => p.theme.fonts.main};
 
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 1.21;
+  font-weight: ${p => p.theme.fontWeights.bold};
+  font-size: ${p => p.theme.fontSizes.s};
+  line-height: ${p => p.theme.lineHeights.text};
   display: flex;
   align-items: center;
   text-align: center;
-  letter-spacing: 0.04em;
+  letter-spacing: ${p => p.theme.letterSpacing.l};
   justify-content: center;
 
-  color: #fc842d;
+  color: ${p => p.theme.colors.orange};
 `;
 export const ErrorText = styled.p`
   position: absolute;
-  color: var(--orange-color);
-  font-size: 12px;
-  margin-top: 40px;
+  color: ${p => p.theme.colors.orange};
+  font-size: ${p => p.theme.fontSizes.xs};
+  margin-top: ${p => p.theme.space[4] + 4}px;
 `;
 export const Wrapper = styled.div`
   display: flex;

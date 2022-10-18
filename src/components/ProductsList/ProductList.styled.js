@@ -1,32 +1,32 @@
 import styled from 'styled-components';
 
 export const Text = styled.p`
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1.21;
-  margin-bottom: 16px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid #e0e0e0;
+  font-size: ${p => p.theme.fontSizes.s};
+  font-family: ${p => p.theme.fonts.main};
+  line-height: ${p => p.theme.lineHeights.text};
+  margin-bottom: ${p => p.theme.space[4]}px;
+  padding-bottom: ${p => p.theme.space[4]}px;
+  margin-right: ${p => p.theme.space[4] + 16}px;
+  border-bottom: 1px solid ${p => p.theme.colors.border};
   width: 240px;
-  margin-right: 48px;
 `;
 
 export const TextDiscription = styled.p`
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1.21;
-  margin-bottom: 16px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid #e0e0e0;
+  font-size: ${p => p.theme.fontWeights.s};
+  font-family: ${p => p.theme.fonts.main};
+  line-height: ${p => p.theme.lineHeights.text};
+  margin-bottom: ${p => p.theme.space[4]}px;
+  padding-bottom: ${p => p.theme.space[4] + 4}px;
+  border-bottom: 1px solid ${p => p.theme.colors.border};
   width: 107px;
   text-align: right;
-  margin-right: 32px;
+  margin-right: ${p => p.theme.space[4]}px;
 `;
 
 export const List = styled.ul`
-  margin-top: 60px;
+  margin-top: ${p => p.theme.space[4] - 4}px;
   height: 271px;
-  padding-right: 40px;
+  padding-right: ${p => p.theme.space[5] + 8}px;
   overflow: auto;
 `;
 

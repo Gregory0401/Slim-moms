@@ -40,10 +40,11 @@ export const BackgroundStyled = styled.div`
   position: absolute;
   background-repeat: no-repeat;
   background-size: contain;
+  z-index: -1;
 
   @media ${breakpoints.onlyTablet} {
     background-image: url(${WrapTab});
-    background-position: bottom 0px right 0;
+    background-position: top 0 right 0;
   }
 
   @media ${breakpoints.desktop} {

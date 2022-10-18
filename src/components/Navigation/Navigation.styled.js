@@ -7,12 +7,12 @@ export const StyledNavLink = styled(NavLink)`
   align-items: center;
   justify-content: center;
 
-  font-family: 'GothamPro';
+  font-family: ${p => p.theme.fonts.heading};
   font-style: normal;
-  font-weight: 700;
-  font-size: 14px;
+  font-weight: ${p => p.theme.fontWeights.bold};
+  font-size: ${p => p.theme.fontSizes.s};
   line-height: 13px;
-  letter-spacing: 0.04em;
+  letter-spacing: ${p => p.theme.letterSpacing.l};
   text-transform: uppercase;
   height: 32px;
 
@@ -20,7 +20,7 @@ export const StyledNavLink = styled(NavLink)`
 
   text-decoration: none;
   &.active {
-    color: var(--primary-text-color);
+    color: ${p => p.theme.colors.primary_text_color};
   }
 `;
 export const StyledLogo = styled(NavLink)`
@@ -34,9 +34,9 @@ export const Menu = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    border-left: 2px solid var(--border-color);
-    padding-left: 20px;
-    margin-left: 20px;
+    border-left: 2px solid ${p => p.theme.colors.primary_text_color};
+    padding-left: ${p => p.theme.space[4] + 4}px;
+    margin-left: ${p => p.theme.space[4] + 4}px;
     gap: 16px;
   }
 `;

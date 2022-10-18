@@ -4,9 +4,9 @@ import { Field } from 'formik';
 import { breakpoints } from 'Utils/size';
 
 export const StyledForm = styled.div`
-  font-family: Verdana;
-  line-height: 1.21;
-  letter-spacing: 0.04em;
+  font-family: ${p => p.theme.fonts.main};
+  line-height: ${p => p.theme.lineHeights.text};
+  letter-spacing: ${p => p.theme.letterSpacing.l};
   @media ${breakpoints.maxMobile} {
     display: flex;
     flex-direction: column;
@@ -19,33 +19,33 @@ export const Wrapper = styled.div`
   flex-direction: column;
   gap: 32px;
   @media ${breakpoints.maxMobile} {
-    margin-bottom: 32px;
+    margin-bottom: ${p => p.theme.space[5]}px;
   }
   @media ${breakpoints.minTablet} {
     gap: 40px;
-    margin-bottom: 40px;
+    margin-bottom: ${p => p.theme.space[5] + 8}px;
   }
 `;
 export const FormWrapper = styled.div`
-  margin-bottom: 40px;
+  margin-bottom: ${p => p.theme.space[5] + 8}px;
 
   @media ${breakpoints.minTablet} {
     display: flex;
     gap: 32px;
-    margin-bottom: 10px;
+    margin-bottom: ${p => p.theme.space[3]}px;
   }
 `;
 export const ErrorText = styled.p`
   position: absolute;
-  color: var(--orange-color);
-  font-size: 12px;
+  color: ${p => p.theme.colors.orange};
+  font-size: ${p => p.theme.fontSizes.xs};
 `;
 
 export const Label = styled.label`
   display: block;
-  font-weight: 700;
-  font-size: 14px;
-  color: var(--secondary-text-color);
+  font-weight: ${p => p.theme.fontWeights.bold};
+  font-size: ${p => p.theme.fontSizes.s};
+  color: ${p => p.theme.colors.secondaryTextColor};
 `;
 
 export const Input = styled(Field)`
@@ -54,25 +54,26 @@ export const Input = styled(Field)`
   height: 20px;
   outline: none;
   font-family: inherit;
-  font-size: 14px;
-  line-height: 1.5;
+  font-size: ${p => p.theme.fontSizes.s};
+  line-height: ${p => p.theme.lineHeights.body};
   color: #212529;
   background-color: transparent;
   background-clip: padding-box;
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid ${p => p.theme.colors.border};
 `;
 
 export const Button = styled.button`
-  background: var(--orange-bgc);
-  border: 2px solid var(--orange-color);
+  background: ${p => p.theme.colors.orange};
+  border: 2px ${p => p.theme.colors.orange};
   border-radius: 30px;
   padding: 12px 49px;
-  font-family: Verdana;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 1.21;
-  letter-spacing: 0.04em;
-  color: var(--white);
+  font-family: ${p => p.theme.fonts.main};
+  font-weight: ${p => p.theme.fontWeights.bold};
+  font-size: ${p => p.theme.fontSizes.s};
+  line-height: ${p => p.theme.lineHeights.text};
+  letter-spacing: ${p => p.theme.letterSpacing.l};
+
+  color: #fff;
   box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
   cursor: pointer;
 
@@ -82,17 +83,17 @@ export const Button = styled.button`
 `;
 
 export const RadioTitle = styled.h2`
-  font-weight: 700;
-  font-size: 14px;
-  color: var(--secondary-text-color);
+  font-weight: ${p => p.theme.fontWeights.bold};
+  font-size: ${p => p.theme.fontSizes.s};
+  color: ${p => p.theme.colors.secondaryTextColor};
   &::after {
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: ${p => p.theme.space[4] + 4}px;
+    margin-top: ${p => p.theme.space[4] + 4}px;
     content: '';
     display: block;
     height: 1px;
     width: 240px;
-    background-color: var(--border-color);
+    background-color: ${p => p.theme.colors.border};
   }
 `;
 
@@ -100,6 +101,7 @@ export const RadioWrapper = styled.div`
   display: flex;
   width: 240px;
   justify-content: space-between;
+  margin-top: ${p => p.theme.space[3]}px;
 `;
 
 export const RadioInput = styled(Field)`
@@ -108,13 +110,13 @@ export const RadioInput = styled(Field)`
   border-radius: 50%;
   width: 20px;
   height: 20px;
-  border: 1px solid var(--secondary-text-color);
+  border: 1px solid ${p => p.theme.colors.border};
   transition: 0.3s all linear;
 
-  color: var(--secondary-text-color);
+  color: ${p => p.theme.colors.secondaryTextColor};
 
   &:checked {
-    border: 10px solid var(--orange-color);
+    border: 10px solid ${p => p.theme.colors.orange};
   }
   :hover {
     cursor: pointer;
@@ -122,11 +124,11 @@ export const RadioInput = styled(Field)`
 `;
 
 export const RadioLabel = styled.label`
-  color: var(--secondary-text-color);
+  color: ${p => p.theme.colors.secondaryTextColor};
   display: flex;
   gap: 4px;
 
   ${RadioInput}:checked & {
-    color: var(--orange-color);
+    color: ${p => p.theme.colors.orange};
   }
 `;

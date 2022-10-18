@@ -9,7 +9,6 @@ const Footer = () => {
       <StyledDiv>
         <p>©2022 Slim MoM | ALL RIGHTS RESERVED |</p>
         <StyledButton onClick={() => setShow(true)}>
-          {' '}
           Proudly created by GoIT Group #2
         </StyledButton>
       </StyledDiv>

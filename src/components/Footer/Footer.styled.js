@@ -4,24 +4,22 @@ import { breakpoints } from 'Utils/size';
 export const StyledDiv = styled.div`
   display: flex;
   justify-content: center;
-  padding: 0 20px;
+  padding: 20px 20px 16px;
   align-items: center;
   font-size: 0.8rem;
-  color: #212121;
+  color: ${p => p.theme.colors.primary_text_color};
   align-content: flex-end;
-  margin-top: 320px;
+  margin-top: 20px;
   @media ${breakpoints.minTablet} {
-    margin-top: 270px;
-    padding: 0 32px;
+    padding: 20px 32px 16px;
   }
   @media ${breakpoints.desktop} {
-    margin-top: 200px;
   }
 `;
 
 export const StyledButton = styled.button`
-  padding: 6px;
-  border-radius: 5px;
+  padding: ${p => p.theme.space[2] + 2}px;
   box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.3);
-  margin-left: 10px;
+  margin-left: ${p => p.theme.space[3] + 2}px;
+  border-radius: 5px;
 `;

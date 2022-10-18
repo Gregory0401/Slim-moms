@@ -12,9 +12,9 @@ export const RightBar = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 40px;
-  padding-top: 40px;
-  padding-bottom: 24px;
-  background: var(--secondary-background-color);
+  padding-top: ${p => p.theme.space[5] + 8}px;
+  padding-bottom: ${p => p.theme.space[4] + 8}px;
+  background: ${p => p.theme.colors.secondaryBackground};
   @media ${breakpoints.minTablet} {
     flex-direction: row;
     justify-content: center;
@@ -57,11 +57,11 @@ export const ProdThumb = styled.div`
 `;
 
 export const Title = styled.h2`
-  font-weight: 700;
+  font-weight: ${p => p.theme.fontWeights.bold};
 `;
 
 export const List = styled.ul`
-  color: var(--secondary-text-color);
+  color: ${p => p.theme.colors.secondaryTextColor};
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -72,5 +72,5 @@ export const Text = styled.p`
   display: flex;
   justify-content: space-between;
 
-  color: var(--secondary-text-color);
+  color: ${p => p.theme.colors.secondaryTextColor};
 `;

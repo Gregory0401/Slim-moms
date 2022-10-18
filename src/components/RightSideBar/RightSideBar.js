@@ -5,7 +5,6 @@ import {
   getNotAllowedProducts,
 } from '../../Redux/ProductSearch/productsSearchSelector';
 import { userInfo } from '../../Redux/ProductSearch/productsSearchOperations';
-import { format, startOfToday } from 'date-fns';
 import { RightBar, ProdThumb, Title, Text } from './RightSideBar.styled';
 
 const RightSideBar = ({ date }) => {

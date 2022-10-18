@@ -21,7 +21,7 @@ const GlobalStyle = createGlobalStyle`
 @font-face {
   font-family: 'GothamPro';
   src: url(${GothamPro}) format('truetype');
-  font-weight: 700;
+  font-weight: 70 0;
 }
 
 

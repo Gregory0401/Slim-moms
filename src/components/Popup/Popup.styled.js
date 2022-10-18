@@ -16,13 +16,13 @@ export const PopupWrapper = styled.div`
 
 export const PopupText = styled.p`
   cursor: pointer;
-  font-family: 'Verdana';
+  font-family: ${p => p.theme.fonts.main};
   font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 1.21;
-  letter-spacing: 0.04em;
-  color: #212121;
+  font-family: ${p => p.theme.fontWeights.normal};
+  font-size: ${p => p.theme.fontWeights.s};
+  line-height: ${p => p.theme.lineHeights.text};
+  letter-spacing: ${p => p.theme.letterSpacing.l};
+  color: ${p => p.theme.colors.primary_text_color};
 
   &:hover {
     text-decoration: underline;

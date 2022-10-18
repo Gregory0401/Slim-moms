@@ -8,16 +8,20 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor } from './Redux/store';
 import GlobalStyle from './GlobalStyles';
 import './index.css';
+import { ThemeProvider } from 'styled-components';
+import { theme } from './Utils/theme';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   // <React.StrictMode>
-    <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <GlobalStyle />
-        <BrowserRouter basename="/Slim-moms">
+  <Provider store={store}>
+    <PersistGate loading={null} persistor={persistor}>
+      <GlobalStyle />
+      <BrowserRouter basename="/Slim-moms">
+        <ThemeProvider theme={theme}>
           <App />
-        </BrowserRouter>
-      </PersistGate>
-    </Provider>
+        </ThemeProvider>
+      </BrowserRouter>
+    </PersistGate>
+  </Provider>
   // </React.StrictMode>
 );

@@ -65,7 +65,7 @@ export const StyledInput = styled.input`
     border-bottom: 1px solid #e0e0e0;
 
     &:not(:last-child) {
-      margin-right: 20px;
+      margin-right: ${p => p.theme.space[4] + 4}px;
     }
   }
 `;
@@ -80,10 +80,10 @@ export const StyledInput2 = styled.input`
     outline: none;
     padding: 10px 10px;
     border: none;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid ${p => p.theme.colors.border};
 
     &:not(:last-child) {
-      margin-right: 20px;
+      margin-right: ${p => p.theme.space[4] + 4}px;
     }
   }
 `;
@@ -98,11 +98,11 @@ export const Wrrapen = styled.div`
 export const LabelSearch = styled.label`
   display: block;
   width: 240px;
-  margin-right: 50px;
+  margin-right: ${p => p.theme.space[5] + 16}px;
   position: relative;
 
   &::placeholder {
-    font-size: 14px;
+    font-size: ${p => p.theme.fontSizes.s};
   }
 `;
 
@@ -139,9 +139,9 @@ export const ButtonMod = styled.button`
   height: 44px;
   background-color: red;
   border-radius: 50%;
-  background: #fc842d;
-  border: 2px solid #fc842d;
-  color: #ffffff;
+  background: ${p => p.theme.colors.orange};
+  border: 2px solid ${p => p.theme.colors.orange};
+  color: ${p => p.theme.colors.white};
   box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
   border-radius: 30px;
   cursor: pointer;
@@ -165,8 +165,8 @@ export const ButtonClose = styled.button`
 
 export const ErrorWeight = styled.div`
   position: absolute;
-  color: var(--orange-color);
-  font-size: 14px;
+  color: ${p => p.theme.colors.orange};
+  font-size: ${p => p.theme.fontSizes.s};
 `;
 
 export const WrrapenInput = styled.div`

@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
   text-align: center;
   /* margin-left: auto; */
   margin-right: 45px;
-  
+
   @media ${breakpoints.maxMobile} {
     ${ContainerStyled};
     background-color: var(--secondary-background-color);
@@ -26,22 +26,21 @@ export const Wrapper = styled.div`
   }
 
   @media ${breakpoints.minTablet} {
-    padding: 0 ;
+    padding: 0;
   }
   @media ${breakpoints.desktop} {
     /* padding: 0 16px; */
-     margin-right: 0;
-    
+    margin-right: 0;
   }
 `;
 export const Name = styled.p`
-  font-family: 'GothamPro';
+  font-family: ${p => p.theme.fonts.heading};
   font-style: normal;
-  font-weight: 700;
-  font-size: 14px;
+  font-weight: ${p => p.theme.fontWeights.bold};
+  font-size: ${p => p.theme.fontSizes.s};
   line-height: 0.93;
   text-align: right;
-  letter-spacing: 0.04em;
+  letter-spacing: ${p => p.theme.letterSpacing.l};
 
   color: var(--primary-text-color);
 `;
@@ -50,18 +49,18 @@ export const Logout = styled.button`
   align-items: center;
   justify-content: center;
   text-align: center;
-  font-family: 'GothamPro';
+  font-family: ${p => p.theme.fonts.heading};
   border: none;
-  border-left: 2px solid var(--border-color);
+  border-left: 2px solid ${p => p.theme.colors.border};
   background-color: transparent;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 0.93;
-  letter-spacing: 0.04em;
-  padding-left: 20px;
-  padding-top: 4px;
-  padding-bottom: 4px;
+  font-weight: ${p => p.theme.fontWeights.bold};
+  font-size: ${p => p.theme.fontWeights.s};
+  line-height: ${p => p.theme.lineHeights.nav};
+  letter-spacing: ${p => p.theme.letterSpacing.l};
+  padding-left: ${p => p.theme.space[4] + 4}px;
+  padding-top: ${p => p.theme.space[2]}px;
+  padding-bottom: ${p => p.theme.space[2]}px;
   height: 32px;
-  color: var(--secondary-text-color);
+  color: ${p => p.theme.colors.secondaryTextColor};
 `;
 export const Burger = styled.div``;

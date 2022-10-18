@@ -40,12 +40,11 @@ export const Header = styled.header`
 export const Wrapper = styled.div`
   ${ContainerStyled};
   @media ${breakpoints.maxMobile} {
-    border-bottom: 2px solid var(--border-color);
+    border-bottom: 2px solid ${p => p.theme.colors.border};
   }
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* gap: 30px; */
   min-height: 80px;
   width: 100%;
 
@@ -68,7 +67,7 @@ export const SecondWrapper = styled.div`
   width: 100%;
 
   @media ${breakpoints.onlyTablet} {
-    border-bottom: 2px solid var(--border-color);
+    border-bottom: 2px solid ${p => p.theme.colors.border};
   }
 
   @media ${breakpoints.desktop} {
