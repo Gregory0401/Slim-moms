@@ -78,6 +78,7 @@ export const BtnL = styled.button`
   box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
   border-radius: 30px;
   font-family: ${p => p.theme.fonts.main};
+  color: #ffffff;
 
   font-weight: 700;
   font-size: 14px;

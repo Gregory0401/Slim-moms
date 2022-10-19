@@ -28,6 +28,6 @@ export const StyledNavLink = styled(NavLink)`
 
   color: ${p => p.theme.colors.secondaryTextColor};
   &.active {
-    ${p => p.theme.colors.primary_text_color};
+    color: ${p => p.theme.colors.primary_text_color};
   }
 `;

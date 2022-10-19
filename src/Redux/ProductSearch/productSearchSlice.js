@@ -47,8 +47,10 @@ const productSlice = createSlice({
     },
     [eatenProduct.fulfilled]: (state, { payload }) => {
       state.weight = payload.eatenProduct.weight;
-      state.eatenProducts = [payload?.newDay ? payload.newDay :  payload.day];
-      state.daySummary = payload?.newSummary ? payload?.newSummary : payload.daySummary;
+      state.eatenProducts = [payload?.newDay ? payload.newDay : payload.day];
+      state.daySummary = payload?.newSummary
+        ? payload?.newSummary
+        : payload.daySummary;
       state.isLoading = false;
 
       state.dayId = payload?.newDay ? payload?.newDay.id : payload.day?.id;
@@ -82,7 +84,6 @@ const productSlice = createSlice({
       state.isLoading = false;
       state.notAllowedProducts = payload.userData.notAllowedProducts;
       state.userId = payload.id;
-      console.log('деньАйди', state.dayId);
       state.eatenProducts = payload?.days.filter(
         item => item._id === state.dayId
       );

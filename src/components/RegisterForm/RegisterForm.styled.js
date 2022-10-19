@@ -78,6 +78,7 @@ export const BtnR = styled.button`
   box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
   border-radius: 30px;
   font-family: ${p => p.theme.fonts.main};
+  color: #fff;
 
   font-weight: ${p => p.theme.fontWeights.bold};
   font-size: ${p => p.theme.fontSizes.s};
@@ -87,8 +88,6 @@ export const BtnR = styled.button`
   justify-content: center;
   text-align: center;
   letter-spacing: ${p => p.theme.letterSpacing.l};
-
-  color: ${p => p.theme.colors.white};
 `;
 export const StyledNavLink = styled(NavLink)`
   background: ${p => p.theme.colors.white};

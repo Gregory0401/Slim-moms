@@ -39,11 +39,11 @@ export const Modal = styled.div`
   }
 `;
 export const Header = styled.h1`
-  font-family: 'Verdana';
+  font-family: ${p => p.theme.fonts.main};
   font-style: normal;
-  font-weight: 700;
-  font-size: 26px;
-  line-height: 1.2;
+  font-weight: ${p => p.theme.fontWeights.bold};
+  font-size: ${p => p.theme.fontSizes.l};
+  line-height: ${p => p.theme.lineHeights.text};
   text-align: center;
   @media screen and (min-width: 320px) {
     margin-bottom: 40px;
@@ -53,69 +53,69 @@ export const Header = styled.h1`
   }
 `;
 export const Сalories = styled.div`
-  font-family: 'Verdana';
+  font-family: ${p => p.theme.fonts.main};
   font-style: normal;
-  font-weight: 700;
-  font-size: 48px;
-  line-height: 1.2;
+  font-weight: ${p => p.theme.fontWeights.bold};
+  font-size: ${p => p.theme.fontSizes.l};
+  line-height: ${p => p.theme.lineHeights.text};
   text-align: center;
   @media screen and (min-width: 320px) {
-    margin-bottom: 32px;
+    margin-bottom: ${p => p.theme.space[5]}px;
   }
   @media screen and (min-width: 768px) {
-    margin-bottom: 32px;
+    margin-bottom: ${p => p.theme.space[5]}px;
   }
 `;
 export const Cal = styled.p`
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 1.2;
+  font-weight: ${p => p.theme.fontWeights.bold};
+  font-size: ${p => p.theme.fontSizes.m};
+  line-height: ${p => p.theme.lineHeights.text};
 `;
 
 export const Line = styled.div`
-  border: 1px solid #e0e0e0;
+  border: 1px ${p => p.theme.colors.border};
   height: 0;
   @media screen and (min-width: 320px) {
-    margin-bottom: 32px;
+    margin-bottom: ${p => p.theme.space[5]}px;
     width: 280px;
   }
   @media screen and (min-width: 768px) {
-    border: 1px solid #e0e0e0;
+    border: 1px ${p => p.theme.colors.border};
     width: 330px;
     height: 0;
-    margin-bottom: 12px;
+    margin-bottom: ${p => p.theme.space[3] + 4}px;
     margin-left: 90px;
   }
 `;
 export const Title = styled.h2`
-  font-family: 'Verdana';
+  font-family: ${p => p.theme.fonts.main};
   font-style: normal;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 1.2;
+  font-weight: ${p => p.theme.fontWeights.bold};
+  font-size: ${p => p.theme.fontSizes.s};
+  line-height: ${p => p.theme.lineHeights.text};
   @media screen and (min-width: 320px) {
-    margin-bottom: 20px;
+    margin-bottom: ${p => p.theme.space[4] + 4}px;
   }
   @media screen and (min-width: 768px) {
-    margin-bottom: 20px;
+    margin-bottom: ${p => p.theme.space[4] + 4}px;
     margin-left: 90px;
     margin-right: 90px;
   }
 `;
 
 export const Products = styled.ol`
-  font-family: 'Verdana';
+  font-family: ${p => p.theme.fonts.main};
   font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 1.2;
+  font-weight: ${p => p.theme.fontWeights.normal};
+  font-size: ${p => p.theme.fontSizes.s};
+  line-height: ${p => p.theme.lineHeights.text};
   overflow-y: auto;
   @media screen and (min-width: 320px) {
-    margin-bottom: 40px;
+    margin-bottom: ${p => p.theme.space[5] + 8}px;
   }
   @media screen and (min-width: 768px) {
     margin-left: 90px;
-    margin-bottom: 40px;
+    margin-bottom: ${p => p.theme.space[5] + 8}px;
   }
 `;
 export const ButtonMain = styled.div`
@@ -140,22 +140,22 @@ export const BtnClose = styled.div`
 export const StyledNavLink = styled(NavLink)`
   width: 181px;
   height: 44px;
-  border: 2px solid var(--orange-color);
+  border: 2px solid ${p => p.theme.colors.orange};
   text-decoration: none;
 
-  background: var(--orange-bgc);
+  background: ${p => p.theme.colors.orange};
   box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
+  font-family: ${p => p.theme.fonts.main};
   border-radius: 30px;
-  font-family: 'Verdana';
 
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 1.21;
+  font-weight: ${p => p.theme.fontWeights.bold};
+  font-size: ${p => p.theme.fontSizes.s};
+  line-height: ${p => p.theme.lineHeights.text};
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   letter-spacing: 0.04em;
 
-  color: var(--white);
+  color: ${p => p.theme.colors.white};
 `;

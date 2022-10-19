@@ -20,8 +20,6 @@ const ProductsList = ({ eatenProducts }) => {
     item => item.eatenProducts
   );
 
-  console.log('eatenProducts', eatenProducts);
-
   const dispatch = useDispatch();
 
   useEffect(() => {
