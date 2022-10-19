@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { createAsyncThunk, createAction } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
+import { format } from 'date-fns';
+
 axios.defaults.baseURL = 'https://slimmom-backend.goit.global';
 
 export const addProduct = createAsyncThunk(
@@ -82,12 +84,7 @@ export const deleteEatenProduct = createAsyncThunk(
 );
 
 export const formateDate = startDate => {
-  const day = startDate.getDate();
-  const month = startDate.getMonth() + 1;
-  const year = startDate.getFullYear();
-  const chosenDate = `${year}-${month > 9 ? month : `0` + month}-${
-    day > 9 ? day : `0` + day
-  }`;
+  const chosenDate = format(startDate, 'yyyy-MM-dd');
   return { payload: chosenDate };
 };
 

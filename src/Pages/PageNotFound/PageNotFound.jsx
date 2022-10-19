@@ -3,7 +3,7 @@ import { StyledImage, Div, StyledLink } from './PageNotFound.styled';
 
 import { ChevronLeftIcon } from '@heroicons/react/24/solid';
 
-export const PageNotFound = () => {
+const PageNotFound = () => {
   return (
     <>
       <StyledImage>
@@ -17,3 +17,5 @@ export const PageNotFound = () => {
     </>
   );
 };
+
+export default PageNotFound;
