@@ -40,9 +40,6 @@ const RightSideBar = ({ date }) => {
     dailyRate = 0,
     percentsOfDailyRate = 0,
   } = daySummary || {};
-  // console.log(daySummary[0].daySummary.kcalLeft);
-  // console.log(daySummary[0].daySummary.kcalConsumed);
-  // console.log(daySummary[0].daySummary.percentsOfDailyRate);
 
   return (
     <RightBar>

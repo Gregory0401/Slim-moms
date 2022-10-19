@@ -26,7 +26,6 @@ const DailyPage = () => {
   const dispatch = useDispatch();
 
   const fetchDate = useSelector(getDate);
-  console.log(fetchDate);
 
   let today = startOfToday();
 
@@ -37,8 +36,6 @@ const DailyPage = () => {
   useEffect(() => {
     dispatch(dayInfo({ date }));
   }, [dispatch, date]);
-
-  //sadasd///
 
   const eatenProducts = useSelector(getEatenProducts);
 

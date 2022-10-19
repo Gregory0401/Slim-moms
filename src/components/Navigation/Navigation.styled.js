@@ -20,7 +20,7 @@ export const StyledNavLink = styled(NavLink)`
 
   text-decoration: none;
   &.active {
-    color: ${p => p.theme.colors.primary_text_color};
+    color: red;
   }
 `;
 export const StyledLogo = styled(NavLink)`
