@@ -6,9 +6,9 @@ export const PopupWrapper = styled.div`
   gap: 5px;
   justify-content: flex-start;
   align-items: flex-start;
-  width: 100%;
+  width: 240px;
   z-index: 100;
-  height: 350px;
+  height: 300px;
   overflow: auto;
   position: absolute;
   background-color: white;
