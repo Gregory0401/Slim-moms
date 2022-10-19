@@ -91,7 +91,7 @@ export const StyledInput2 = styled.input`
 export const Wrrapen = styled.div`
   @media ${breakpoints.minTablet} {
     display: inline;
-    position: relative;
+    /* position: relative; */
   }
 `;
 
@@ -99,7 +99,7 @@ export const LabelSearch = styled.label`
   display: block;
   width: 240px;
   margin-right: ${p => p.theme.space[5] + 16}px;
-  position: relative;
+  /* position: relative; */
 
   &::placeholder {
     font-size: ${p => p.theme.fontSizes.s};
@@ -170,5 +170,5 @@ export const ErrorWeight = styled.div`
 `;
 
 export const WrrapenInput = styled.div`
-  position: relative;
+  /* position: relative; */
 `;

@@ -2,16 +2,21 @@ import styled from 'styled-components';
 import { breakpoints } from 'Utils/size';
 
 export const StyledDiv = styled.div`
+  width: 100%;
   display: flex;
+  flex-direction: column;
+  gap: 8px;
   justify-content: center;
   padding: 20px 20px 16px;
   align-items: center;
   font-size: 0.8rem;
   color: ${p => p.theme.colors.primary_text_color};
-  align-content: flex-end;
-  margin-top: 20px;
+
+  position: absolute;
+  bottom: 10px;
   @media ${breakpoints.minTablet} {
     padding: 20px 32px 16px;
+    flex-direction: row;
   }
   @media ${breakpoints.desktop} {
   }

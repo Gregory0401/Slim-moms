@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk, createAction } from '@reduxjs/toolkit';
-import { toast } from 'react-toastify';
+
 import { format } from 'date-fns';
 
 axios.defaults.baseURL = 'https://slimmom-backend.goit.global';
@@ -13,15 +13,13 @@ export const addProduct = createAsyncThunk(
       return data;
     } catch (error) {
       if (error.response.status === 403) {
-        return rejectWithValue(
-          toast.info('Для начала узнай свою суточную норму калорий')
-        );
+        return rejectWithValue('Для начала узнай свою суточную норму калорий');
       } else if (error.response.status === 400) {
         return rejectWithValue(
-          toast.error('По этому запросу не найдено разрешенных продуктов')
+          'По этому запросу не найдено разрешенных продуктов'
         );
       }
-      return rejectWithValue(toast.error('addProduct Произошла ошибка'));
+      return rejectWithValue('addProduct Произошла ошибка');
     }
   }
 );
@@ -33,7 +31,7 @@ export const eatenProduct = createAsyncThunk(
       const { data } = await axios.post('/day', credentials);
       return data;
     } catch (error) {
-      return rejectWithValue(toast.error('eatenProduct : Произошла ошибка'));
+      return rejectWithValue('eatenProduct : Произошла ошибка');
     }
   }
 );
@@ -46,11 +44,9 @@ export const dayInfo = createAsyncThunk(
       return data;
     } catch (error) {
       if (error.response.status === 403) {
-        return rejectWithValue(
-          toast.error('Для начала узнай свою суточную норму калорий')
-        );
+        return rejectWithValue('Для начала узнай свою суточную норму калорий');
       }
-      return rejectWithValue(toast.error('dayInfo : Произошла ошибка'));
+      return rejectWithValue('dayInfo : Произошла ошибка');
     }
   }
 );
@@ -62,7 +58,7 @@ export const userInfo = createAsyncThunk(
       const { data } = await axios.get('/user');
       return data;
     } catch (error) {
-      return rejectWithValue(toast.error('userInfo : Произошла ошибка'));
+      return rejectWithValue('userInfo : Произошла ошибка');
     }
   }
 );
@@ -76,9 +72,7 @@ export const deleteEatenProduct = createAsyncThunk(
       });
       return data;
     } catch (error) {
-      return rejectWithValue(
-        toast.error('deleteEatenProduct : Произошла ошибка')
-      );
+      return rejectWithValue('deleteEatenProduct : Произошла ошибка');
     }
   }
 );

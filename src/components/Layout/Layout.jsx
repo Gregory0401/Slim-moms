@@ -1,7 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
 import { AppBar } from 'components/AppBar/AppBar';
-// import { Main } from './Main/Main';
 import { Background } from '../Background/Background';
 import Loader from 'components/Loader';
 import { useSelector } from 'react-redux';
@@ -10,6 +9,7 @@ import Leaf2 from '../Background/Leaf2/Leaf2';
 
 import { motion } from 'framer-motion';
 import Footer from 'components/Footer/Footer';
+import { Wrapper } from './Layout.styled';
 
 const Layout = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -23,25 +23,23 @@ const Layout = () => {
         <AppBar />
         <Leaf2 />
         <main>
-          {/* <Main> */}
           <Suspense fallback={<Loader />}>
             <Outlet />
           </Suspense>
-          {/* </Main> */}
         </main>
       </motion.div>
     </>
   ) : (
     <Background>
-      <AppBar />
-      <main>
-        {/* <Main> */}
-        <Suspense fallback={<Loader />}>
-          <Outlet />
-        </Suspense>
-        {/* </Main> */}
-      </main>
-      <Footer />
+      <Wrapper>
+        <AppBar />
+        <main>
+          <Suspense fallback={<Loader />}>
+            <Outlet />
+          </Suspense>
+        </main>
+        <Footer />
+      </Wrapper>
     </Background>
   );
 };
