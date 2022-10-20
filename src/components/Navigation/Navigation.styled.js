@@ -16,11 +16,11 @@ export const StyledNavLink = styled(NavLink)`
   text-transform: uppercase;
   height: 32px;
 
-  color: var(--secondary-text-color);
+  color: ${p => p.theme.colors.secondaryTextColor};
 
   text-decoration: none;
   &.active {
-    color: red;
+    color: ${p => p.theme.colors.primary_text_color};
   }
 `;
 export const StyledLogo = styled(NavLink)`

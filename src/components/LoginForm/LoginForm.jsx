@@ -46,9 +46,9 @@ export const LoginForm = () => {
 
   return (
     <motion.div
-      initial={{ y: -50, opacity: 0 }}
+      initial={{ y: -30, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 1.5, delay: 0 }}
+      transition={{ duration: 1.2, delay: 0 }}
     >
       <Formik
         onSubmit={handleSubmit}

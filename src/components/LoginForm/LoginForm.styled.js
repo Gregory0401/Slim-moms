@@ -46,7 +46,7 @@ export const Input = styled(Field)`
   font-weight: ${p => p.theme.fontWeights.normal};
   line-height: 1.5;
   color: #212529;
-  background-color: ${p => p.theme.colors.white};
+  background-color: #fff;
   background-clip: padding-box;
   border: none;
   border-bottom: 1px solid ${p => p.theme.colors.border};
@@ -89,7 +89,7 @@ export const BtnL = styled.button`
   text-align: center;
   letter-spacing: 0.04em;
 
-  color: ${p => p.theme.colors.white};
+  color: #ffffff;
 `;
 export const StyledNavLink = styled(NavLink)`
   background: #ffffff;

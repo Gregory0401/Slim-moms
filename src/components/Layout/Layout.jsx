@@ -6,10 +6,10 @@ import Loader from 'components/Loader';
 import { useSelector } from 'react-redux';
 import { selectIsLoggedIn } from 'Redux/Auth/authSelectors';
 import Leaf2 from '../Background/Leaf2/Leaf2';
-
 import { motion } from 'framer-motion';
 import Footer from 'components/Footer/Footer';
 import { Wrapper } from './Layout.styled';
+// import Switch from 'components/Buttons/ThemeToggleButtom/switch';
 
 const Layout = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -20,6 +20,7 @@ const Layout = () => {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 1.7, delay: 0 }}
       >
+        {/* <Switch /> */}
         <AppBar />
         <Leaf2 />
         <main>
