@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { breakpoints } from '../../Utils/size';
-// import ContainerStyled from '../../components/Layout/Main/Main.styled';
 import notFound from 'img/not-found.jpg';
 
 export const StyledImage = styled.div`

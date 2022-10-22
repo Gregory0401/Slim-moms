@@ -67,8 +67,8 @@ export const darkTheme = {
     blueTextColor: '#264061',
     orange: '#FC842D',
     accent_shadow: 'rgba(252, 132, 45, 0.5)',
-    secondaryBackground: '#F0F1F3',
-    border: ' #e0e0e0',
+    secondaryBackground: '#FC842D',
+    border: ' #FC842D',
   },
   space: [0, 2, 4, 8, 16, 32, 64, 128, 256],
 

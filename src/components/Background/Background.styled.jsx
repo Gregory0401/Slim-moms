@@ -41,7 +41,8 @@ export const BackgroundStyled = styled.div`
   background-repeat: no-repeat;
   background-size: contain;
   z-index: -1;
-
+  background-color: ${p => p.theme.body};
+  transition: all ${props => props.theme.transitionTime};
   @media ${breakpoints.onlyTablet} {
     background-image: url(${WrapTab});
     background-position: top 0 right 0;
@@ -50,5 +51,24 @@ export const BackgroundStyled = styled.div`
   @media ${breakpoints.desktop} {
     background-image: url(${WrapDesk});
     background-position: top 0 right 0;
+  }
+`;
+
+export const RightBarBackground = styled.div`
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 40%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: #f0f1f3;
+  z-index: -1;
+
+  @media ${breakpoints.desktop} {
+    background-image: url(${WrapDesk});
+    width: 40%;
+    height: 100%;
+    background-position: bottom 100px right 0;
   }
 `;

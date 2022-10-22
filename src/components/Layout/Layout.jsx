@@ -9,39 +9,71 @@ import Leaf2 from '../Background/Leaf2/Leaf2';
 import { motion } from 'framer-motion';
 import Footer from 'components/Footer/Footer';
 import { Wrapper } from './Layout.styled';
-// import Switch from 'components/Buttons/ThemeToggleButtom/switch';
+import { useState } from 'react';
+import { ThemeProvider } from 'styled-components';
+import { lightTheme, darkTheme } from '..//../Utils/theme';
+import Switcher from 'components/Buttons/ThemeToggleButtom/switch';
+import GlobalStyle from 'GlobalStyles';
 
 const Layout = () => {
+  const [theme, setTheme] = useState('light');
+  const isDarkTheme = theme === 'dark';
+
+  const themeToggle = () => {
+    setTheme(isDarkTheme ? 'light' : 'dark');
+  };
+
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  return isLoggedIn ? (
-    <>
-      <motion.div
-        initial={{ y: -70, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 1.7, delay: 0 }}
+  return (
+    <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
+      <div
+        style={{
+          position: 'absolute',
+          top: 15,
+          right: 15,
+          zIndex: 2500,
+        }}
       >
-        {/* <Switch /> */}
-        <AppBar />
-        <Leaf2 />
-        <main>
-          <Suspense fallback={<Loader />}>
-            <Outlet />
-          </Suspense>
-        </main>
-      </motion.div>
-    </>
-  ) : (
-    <Background>
-      <Wrapper>
-        <AppBar />
-        <main>
-          <Suspense fallback={<Loader />}>
-            <Outlet />
-          </Suspense>
-        </main>
-        <Footer />
-      </Wrapper>
-    </Background>
+        <Switcher
+          themeToggle={themeToggle}
+          isDarkTheme={isDarkTheme}
+          style={{
+            position: 'absolute',
+          }}
+        />
+      </div>
+
+      {isLoggedIn ? (
+        <>
+          <motion.div
+            initial={{ y: -70, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 1.7, delay: 0 }}
+          >
+            <AppBar />
+            <Leaf2 />
+            <main>
+              <Suspense fallback={<Loader />}>
+                <Outlet />
+              </Suspense>
+            </main>
+          </motion.div>
+        </>
+      ) : (
+        <Background>
+          <Wrapper>
+            <AppBar />
+            <main>
+              <Suspense fallback={<Loader />}>
+                <Outlet />
+              </Suspense>
+            </main>
+            <Footer />
+          </Wrapper>
+        </Background>
+      )}
+      <GlobalStyle />
+    </ThemeProvider>
   );
 };
 

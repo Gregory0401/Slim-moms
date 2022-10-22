@@ -9,11 +9,6 @@ import { fetchCurrentUser } from 'Redux/Auth/authOperation';
 import { userInfo } from '../Redux/ProductSearch/productsSearchOperations';
 import DiaryDateСalendar from './Forms/DiaryDateСalendar';
 import { selectIsLoggedIn } from 'Redux/Auth/authSelectors';
-import { ThemeProvider } from 'styled-components';
-import { lightTheme, darkTheme } from '../Utils/theme';
-import { useState } from 'react';
-import Switcher from './Buttons/ThemeToggleButtom/switch';
-import GlobalStyle from '../GlobalStyles';
 
 const PageNotFound = lazy(() => import('../Pages/PageNotFound/PageNotFound'));
 const HomePage = lazy(() => import('../Pages/HomePage/HomePage'));
@@ -33,64 +28,50 @@ export const App = () => {
     }
   }, [dispatch, isLoggedIn]);
 
-  const [theme, setTheme] = useState('light');
-  const isDarkTheme = theme === 'dark';
-
-  const themeToggle = () => {
-    setTheme(isDarkTheme ? 'light' : 'dark');
-  };
-
   return (
     <>
-      <Switcher themeToggle={themeToggle} isDarkTheme={isDarkTheme} />
-      <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route
-              index
-              element={
-                <RestrictedRoute redirectTo="/diary" component={<HomePage />} />
-              }
-            />
-            <Route
-              path="/register"
-              element={
-                <RestrictedRoute
-                  redirectTo="/diary"
-                  component={<RegisterPage />}
-                />
-              }
-            />
-            <Route
-              path="/login"
-              element={
-                <RestrictedRoute
-                  redirectTo="/diary"
-                  component={<LoginPage />}
-                />
-              }
-            />
-            <Route
-              path="/diary"
-              element={
-                <PrivateRoute redirectTo="/login" component={<DailyPage />} />
-              }
-            />
-            <Route path="/diary/:calendar" element={<DiaryDateСalendar />} />
-            <Route
-              path="/calculator"
-              element={
-                <PrivateRoute
-                  redirectTo="/login"
-                  component={<CalculatorPage />}
-                />
-              }
-            />
-          </Route>
-          <Route path="*" element={<PageNotFound />} />
-        </Routes>
-        <GlobalStyle />
-      </ThemeProvider>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route
+            index
+            element={
+              <RestrictedRoute redirectTo="/diary" component={<HomePage />} />
+            }
+          />
+          <Route
+            path="/register"
+            element={
+              <RestrictedRoute
+                redirectTo="/diary"
+                component={<RegisterPage />}
+              />
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <RestrictedRoute redirectTo="/diary" component={<LoginPage />} />
+            }
+          />
+          <Route
+            path="/diary"
+            element={
+              <PrivateRoute redirectTo="/login" component={<DailyPage />} />
+            }
+          />
+          <Route path="/diary/:calendar" element={<DiaryDateСalendar />} />
+          <Route
+            path="/calculator"
+            element={
+              <PrivateRoute
+                redirectTo="/login"
+                component={<CalculatorPage />}
+              />
+            }
+          />
+        </Route>
+        <Route path="*" element={<PageNotFound />} />
+      </Routes>
     </>
   );
 };
