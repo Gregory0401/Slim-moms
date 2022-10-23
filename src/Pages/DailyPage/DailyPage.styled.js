@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import tab from 'img/WrapTab.png';
+// import tab from 'img/WrapTab.png';
 import desk from 'img/WrapDesk.png';
 
 import { breakpoints } from '../../Utils/size';

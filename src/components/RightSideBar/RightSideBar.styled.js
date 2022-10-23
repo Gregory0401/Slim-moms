@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 import { breakpoints } from '../../Utils/size';
-import bgDesk from '../../img/leaves-side-desktop.png';
-import bgTablet from '../../img/leaves-side-tablet.png';
+// import bgDesk from '../../img/leaves-side-desktop.png';
+// import bgTablet from '../../img/leaves-side-tablet.png';
 // import { ContainerStyled } from '../Layout/Main/Main.styled';
 
 export const RightBar = styled.div`
@@ -11,6 +11,8 @@ export const RightBar = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  padding: 16px;
 
   @media ${breakpoints.minTablet} {
     flex-direction: row;
@@ -51,7 +53,7 @@ export const Title = styled.h2`
 `;
 
 export const List = styled.ul`
-  color: ${p => p.theme.colors.secondaryTextColor};
+  color: ${p => p.theme.colors.white};
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -62,6 +64,6 @@ export const Text = styled.p`
   display: flex;
   justify-content: space-between;
 
-  color: ${p => p.theme.colors.secondaryTextColor};
+  color: ${p => p.theme.colors.secondaryToWhite};
   transition: all ${props => props.theme.transitionTime};
 `;

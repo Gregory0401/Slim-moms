@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const StyledItem = styled.li`
   display: flex;
-  justify-content: space-beetween;
+  justify-content: space-between;
   &:not(:last-child) {
     margin-bottom: 36px;
   }

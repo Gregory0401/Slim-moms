@@ -8,7 +8,7 @@ import { selectIsLoggedIn } from 'Redux/Auth/authSelectors';
 import Leaf2 from '../Background/Leaf2/Leaf2';
 import { motion } from 'framer-motion';
 import Footer from 'components/Footer/Footer';
-import { Wrapper } from './Layout.styled';
+import { Wrapper, ThemeWrapper } from './Layout.styled';
 import { useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme } from '..//../Utils/theme';
@@ -26,22 +26,9 @@ const Layout = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   return (
     <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
-      <div
-        style={{
-          position: 'absolute',
-          top: 15,
-          right: 15,
-          zIndex: 2500,
-        }}
-      >
-        <Switcher
-          themeToggle={themeToggle}
-          isDarkTheme={isDarkTheme}
-          style={{
-            position: 'absolute',
-          }}
-        />
-      </div>
+      <ThemeWrapper>
+        <Switcher themeToggle={themeToggle} isDarkTheme={isDarkTheme} />
+      </ThemeWrapper>
 
       {isLoggedIn ? (
         <>

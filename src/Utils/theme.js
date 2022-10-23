@@ -5,6 +5,7 @@ export const lightTheme = {
   colors: {
     primary_text_color: '#212121',
     secondaryTextColor: '#9B9FAA',
+    secondaryToWhite: '#9B9FAA',
     white: 'fff',
     blueTextColor: '#264061',
     orange: '#FC842D',
@@ -59,10 +60,12 @@ export const lightTheme = {
 export const darkTheme = {
   body: '#262626',
   transitionTime: '.5s',
+  invert: 'invert()',
 
   colors: {
     primary_text_color: '#fff',
     secondaryTextColor: '#9B9FAA',
+    secondaryToWhite: '#fff',
     white: '#000',
     blueTextColor: '#264061',
     orange: '#FC842D',

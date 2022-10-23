@@ -28,7 +28,8 @@ export const DateTitle = styled.p`
   line-height: 41px;
   margin-right: 20px;
 
-  color: ${p => p.theme.colors.primary_text_color};
+  color: ${p => p.theme.colors.secondaryToWhite};
+  transition: all transitionTime;
 `;
 
 export const BackLink = styled(Link)`
