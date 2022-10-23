@@ -51,12 +51,12 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   },
 }));
 
-export default function Switcher({ themeToggle, isDarkTheme }) {
-  const [isToggled, setIsToggled] = useState(isDarkTheme);
+export default function Switcher({ themeToggler, theme }) {
+  const [isToggled, setIsToggled] = useState(theme);
 
   const onToggle = () => {
     setIsToggled(!isToggled);
-    themeToggle();
+    themeToggler();
   };
 
   return (
