@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+// import tab from 'img/WrapTab.png';
+import desk from 'img/WrapDesk.png';
 
 import { breakpoints } from '../../Utils/size';
 
@@ -30,9 +32,20 @@ export const Thumb = styled.div`
 `;
 
 export const SidebarWrap = styled.div`
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 40%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: ${p => p.theme.colors.secondaryBackground};
+  z-index: -1;
   @media ${breakpoints.desktop} {
+    background-image: url(${desk});
+    width: 40%;
     height: 100%;
-    background-color: var(--secondary-background-color);
+    background-position: bottom 00px right 0;
   }
 `;
 

@@ -23,6 +23,7 @@ export const Image = styled.img`
 `;
 
 export const Text = styled.img`
+  filter: ${p => p.theme.invert};
   display: none;
   /* width: 106px; */
   /* height: 16px; */

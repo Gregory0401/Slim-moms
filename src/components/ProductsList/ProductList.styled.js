@@ -8,6 +8,7 @@ export const Text = styled.p`
   padding-bottom: ${p => p.theme.space[2]}px;
   margin-right: ${p => p.theme.space[4] + 16}px;
   border-bottom: 1px solid ${p => p.theme.colors.border};
+  color: ${p => p.theme.colors.primary_text_color};
   width: 240px;
 `;
 
@@ -21,6 +22,7 @@ export const TextDiscription = styled.p`
   width: 107px;
   text-align: right;
   margin-right: ${p => p.theme.space[4]}px;
+  color: ${p => p.theme.colors.primary_text_color};
 `;
 
 export const List = styled.ul`

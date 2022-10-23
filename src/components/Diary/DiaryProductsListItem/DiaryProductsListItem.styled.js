@@ -1,39 +1,34 @@
 import styled from 'styled-components';
 
-export const StyledItem = styled.li `
-display: flex;
-justify-content:space-beetween;
-&:not(:last-child) {
+export const StyledItem = styled.li`
+  display: flex;
+  justify-content: space-between;
+  &:not(:last-child) {
     margin-bottom: 36px;
-}
-`
+  }
+`;
 
+export const StyledTitle = styled.p`
+  border-bottom: 1px solid #e0e0e0;
+  font-family: 'Verdana';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.04em;
 
-export const StyledTitle = styled.p `
-border-bottom: 1px solid #e0e0e0;
-font-family: 'Verdana';
-font-style: normal;
-font-weight: 400;
-font-size: 14px;
-line-height: 17px;
-letter-spacing: 0.04em;
-
-color: #212121;
-` 
-
+  color: ${p => p.theme.colors.primary_text_color};
+`;
 
 export const StyledSecondaryTitle = styled.p`
+  font-family: 'Verdana';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.04em;
 
-font-family: 'Verdana';
-font-style: normal;
-font-weight: 400;
-font-size: 14px;
-line-height: 17px;
-letter-spacing: 0.04em;
+  text-align: right;
 
-text-align:right;
-
-color: #212121;
-
-
-`
+  color: ${p => p.theme.colors.primary_text_color};
+`;

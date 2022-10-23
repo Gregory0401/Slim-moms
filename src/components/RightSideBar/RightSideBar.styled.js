@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 import { breakpoints } from '../../Utils/size';
-import bgDesk from '../../img/leaves-side-desktop.png';
-import bgTablet from '../../img/leaves-side-tablet.png';
+// import bgDesk from '../../img/leaves-side-desktop.png';
+// import bgTablet from '../../img/leaves-side-tablet.png';
 // import { ContainerStyled } from '../Layout/Main/Main.styled';
 
 export const RightBar = styled.div`
@@ -11,10 +11,9 @@ export const RightBar = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 40px;
-  padding-top: ${p => p.theme.space[5] + 8}px;
-  padding-bottom: ${p => p.theme.space[4] + 8}px;
-  background: ${p => p.theme.colors.secondaryBackground};
+  justify-content: center;
+  padding: 16px;
+
   @media ${breakpoints.minTablet} {
     flex-direction: row;
     justify-content: center;
@@ -23,20 +22,13 @@ export const RightBar = styled.div`
     gap: 80px;
     padding-top: 80px;
     padding-bottom: 80px;
-    background-image: url(${bgTablet});
-    background-repeat: no-repeat;
-    background-position: bottom right;
   }
   @media ${breakpoints.desktop} {
-    position: relative;
-    top: -150px;
     min-width: 520px;
     flex-direction: column;
     justify-content: flex-start;
     gap: 60px;
     padding: 280px 95px 92px 95px;
-    height: calc(100vh - 150px);
-    background-image: url(${bgDesk});
   }
 `;
 export const ProdThumb = styled.div`
@@ -61,7 +53,7 @@ export const Title = styled.h2`
 `;
 
 export const List = styled.ul`
-  color: ${p => p.theme.colors.secondaryTextColor};
+  color: ${p => p.theme.colors.white};
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -72,5 +64,6 @@ export const Text = styled.p`
   display: flex;
   justify-content: space-between;
 
-  color: ${p => p.theme.colors.secondaryTextColor};
+  color: ${p => p.theme.colors.secondaryToWhite};
+  transition: all ${props => props.theme.transitionTime};
 `;

@@ -169,6 +169,4 @@ export const ErrorWeight = styled.div`
   font-size: ${p => p.theme.fontSizes.s};
 `;
 
-export const WrrapenInput = styled.div`
-  /* position: relative; */
-`;
+export const WrrapenInput = styled.div``;
