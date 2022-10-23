@@ -9,25 +9,29 @@ import Leaf2 from '../Background/Leaf2/Leaf2';
 import { motion } from 'framer-motion';
 import Footer from 'components/Footer/Footer';
 import { Wrapper, ThemeWrapper } from './Layout.styled';
-import { useState } from 'react';
+// import { useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme } from '..//../Utils/theme';
 import Switcher from 'components/Buttons/ThemeToggleButtom/switch';
 import GlobalStyle from 'GlobalStyles';
+import { useTheme } from 'components/Buttons/ThemeToggleButtom/useThemeHooks';
 
 const Layout = () => {
-  const [theme, setTheme] = useState('light');
-  const isDarkTheme = theme === 'dark';
+  // const [theme, setTheme] = useState('light');
+  // const isDarkTheme = theme === 'dark';
 
-  const themeToggle = () => {
-    setTheme(isDarkTheme ? 'light' : 'dark');
-  };
+  // const themeToggle = () => {
+  //   setTheme(isDarkTheme ? 'light' : 'dark');
+  // };
+
+  const [theme, themeToggler] = useTheme();
+  const themeMode = theme === 'light' ? lightTheme : darkTheme;
 
   const isLoggedIn = useSelector(selectIsLoggedIn);
   return (
-    <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
+    <ThemeProvider theme={themeMode}>
       <ThemeWrapper>
-        <Switcher themeToggle={themeToggle} isDarkTheme={isDarkTheme} />
+        <Switcher theme={theme} themeToggler={themeToggler} />
       </ThemeWrapper>
 
       {isLoggedIn ? (
