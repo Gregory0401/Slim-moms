@@ -17,8 +17,8 @@ import { useEffect } from 'react';
 import { ButtonClose } from '../../Buttons/ButtonClose/ButtonClose';
 import {
   selectDailyRate,
-  selectNotAllowedProducts,
-} from '../../../Redux/DailyRate/DailyRateSelectors';
+  getNotAllowedProducts,
+} from '../../../Redux/userData/userDataSelector';
 import { selectIsLoggedIn } from 'Redux/Auth/authSelectors';
 
 const ModalProducts = ({ onClose }) => {
@@ -55,7 +55,7 @@ const ModalProducts = ({ onClose }) => {
   };
 
   const raite = useSelector(selectDailyRate);
-  const productsNo = useSelector(selectNotAllowedProducts);
+  const productsNo = useSelector(getNotAllowedProducts);
 
   const randomProducts = () => {
     const elemProductsNum = 5;

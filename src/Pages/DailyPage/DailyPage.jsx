@@ -14,11 +14,8 @@ import {
   Div,
 } from './DailyPage.styled';
 import { format, startOfToday } from 'date-fns';
-import { dayInfo } from '../../Redux/ProductSearch/productsSearchOperations';
-import {
-  getEatenProducts,
-  getError,
-} from '../../Redux/ProductSearch/productsSearchSelector';
+import { dayInfo } from '../../Redux/userData/userDataOperations';
+import { getError } from '../../Redux/userData/userDataSelector';
 import { Mobile } from '../../components/Forms/DiaryAddProductForm/DiaryAddProductForm.styled';
 import { ButtonOpen } from '../../components/Buttons/ButtonOpen/ButtonOpen';
 import { Form } from '../../components/Forms/DiaryAddProductForm/MobileForm';
@@ -40,13 +37,6 @@ const DailyPage = () => {
   useEffect(() => {
     dispatch(dayInfo({ date }));
   }, [dispatch, date]);
-
-  const eatenProducts = useSelector(getEatenProducts);
-
-  const findDayByDate =
-    eatenProducts?.length > 0
-      ? eatenProducts?.filter(item => item.date === date)
-      : [];
 
   const [showModal, setShowModal] = useState(false);
   const onToggleModal = () => {
@@ -71,7 +61,7 @@ const DailyPage = () => {
               <ButtonOpen onClick={onToggleModal} />
             </Mobile>
             {showModal && <Form onClose={onToggleModal} />}
-            <ProductsList eatenProducts={findDayByDate} />
+            <ProductsList date={date} />
           </Wrapper>
         </motion.div>
       </Div>

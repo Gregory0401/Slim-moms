@@ -18,12 +18,9 @@ import {
 import {
   dailyRate,
   dailyRateWithUserId,
-} from 'Redux/DailyRate/DailyRateOperations';
+} from 'Redux/userData/userDataOperations';
 import ModalProducts from '../../Modal/ModalProducts/ModalProducts';
-import {
-  selectError,
-  selectIsLoading,
-} from 'Redux/DailyRate/DailyRateSelectors';
+import { getError, getLoading } from 'Redux/userData/userDataSelector';
 import { selectIsLoggedIn, selectUserId } from 'Redux/Auth/authSelectors';
 
 const changeTypeToNumber = obj => {
@@ -52,8 +49,8 @@ const userParams = [
 
 const DailyCaloriesForm = () => {
   const dispatch = useDispatch();
-  const error = useSelector(selectError);
-  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(getError);
+  const isLoading = useSelector(getLoading);
   const userId = useSelector(selectUserId);
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const initialValues = {

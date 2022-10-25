@@ -6,7 +6,7 @@ import PrivateRoute from 'Routes/PrivateRoute';
 import RestrictedRoute from 'Routes/RestrictedRoute';
 import Layout from './Layout';
 import { fetchCurrentUser } from 'Redux/Auth/authOperation';
-import { userInfo } from '../Redux/ProductSearch/productsSearchOperations';
+import { userInfo } from '../Redux/userData/userDataOperations';
 import DiaryDateСalendar from './Forms/DiaryDateСalendar';
 import { selectIsLoggedIn } from 'Redux/Auth/authSelectors';
 

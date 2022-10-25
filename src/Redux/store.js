@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { authReducer } from './Auth/authSlice';
 import { productReducer } from './ProductSearch/productSearchSlice';
-import { dailyRateReducer } from './DailyRate/DailyRateSlice';
+import { userDataReducer } from './userData/userDataSlice';
 import {
   persistStore,
   persistReducer,
@@ -22,23 +22,23 @@ const authPersistConfig = {
 const authPersistedReducer = persistReducer(authPersistConfig, authReducer);
 // =====
 
-const productPersistConfig = {
-  key: 'product',
+const userDataPersistConfig = {
+  key: 'userData',
   storage,
   whitelist: ['daySummary', 'eatenProducts'],
 };
 
-const productPersistedReducer = persistReducer(
-  productPersistConfig,
-  productReducer
+const userDataPersistedReducer = persistReducer(
+  userDataPersistConfig,
+  userDataReducer
 );
 // =====
 
 export const store = configureStore({
   reducer: {
     auth: authPersistedReducer,
-    product: productPersistedReducer,
-    dailyRate: dailyRateReducer,
+    userData: userDataPersistedReducer,
+    product: productReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
