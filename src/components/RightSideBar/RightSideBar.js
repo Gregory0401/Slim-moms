@@ -71,8 +71,7 @@ const RightSideBar = ({ date }) => {
           )}
           <div>
             <Title>Нерекомендуемые продукты</Title>
-            {console.log(notAllowedProducts)}
-            {notAllowedProducts.length > 0 ? (
+            {notAllowedProducts?.length > 0 ? (
               <ul>
                 {randomProducts().map((item, index) => (
                   <li key={index}>
