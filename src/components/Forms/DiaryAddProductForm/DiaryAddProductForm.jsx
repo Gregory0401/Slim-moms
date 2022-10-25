@@ -4,16 +4,9 @@ import DebounceInput from 'react-debounce-input';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useMedia } from 'react-use';
-import {
-  addProduct,
-  eatenProduct,
-} from '../../../Redux/ProductSearch/productsSearchOperations';
-import { getSearchItems } from '../../../Redux/ProductSearch/productsSearchSelector';
-// vova1@gmail.com
-// qweqwe123@gmail.com
-// petro-poroshenko@gmail.com
-// vasylqwe@gmail.com
-
+import { searchProduct } from '../../../Redux/ProductSearch/productsSearchOperations';
+import { eatenProduct } from '../../../Redux/userData/userDataOperations';
+import { getSearchProduct } from '../../../Redux/ProductSearch/productsSearchSelector';
 import { ButtonSubmit } from '../../Buttons/ButtonSubmit/ButtonSubmit';
 import {
   LabelSearch,
@@ -28,7 +21,7 @@ import Popup from 'components/Popup/Popup';
 
 const DiaryAddProductForm = ({ date, onClose }) => {
   const dispatch = useDispatch();
-  const items = useSelector(getSearchItems);
+  const search = useSelector(getSearchProduct);
   const [productId, setProductId] = useState('');
   const [click, setClick] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
@@ -53,16 +46,19 @@ const DiaryAddProductForm = ({ date, onClose }) => {
     onSubmit: handleSubmit,
   });
 
+  const value = formik.values.title;
+
   useEffect(() => {
     !click && setShowPopup(true);
-    if (formik.values.title.length > 2) {
+
+    if (value.length > 2) {
       dispatch(
-        addProduct({
-          title: formik.values.title,
+        searchProduct({
+          title: value,
         })
       );
     }
-  }, [click, dispatch, formik.values.title]);
+  }, [click, dispatch, value]);
 
   function handleChange({ target: { name, value } }) {
     switch (name) {
@@ -86,11 +82,11 @@ const DiaryAddProductForm = ({ date, onClose }) => {
     setClick(true);
   };
 
-  function handleSubmit(values) {
+  function handleSubmit({ weight }) {
     const eatenDate = {
       date,
       productId,
-      weight: values.weight,
+      weight,
     };
 
     dispatch(eatenProduct(eatenDate));
@@ -125,8 +121,8 @@ const DiaryAddProductForm = ({ date, onClose }) => {
             <ErrorWeight>{formik.errors.title}</ErrorWeight>
           )}
 
-          {showPopup && items.length > 1 && formik.values.title.length > 2 && (
-            <Popup data={items} onClick={handleClick} />
+          {showPopup && search.length > 1 && value.length > 2 && (
+            <Popup data={search} onClick={handleClick} />
           )}
         </Wrrapen>
         <WrrapenInput>

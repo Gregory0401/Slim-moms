@@ -1,16 +1,16 @@
 import axios from 'axios';
 import { createAsyncThunk, createAction } from '@reduxjs/toolkit';
-
 import { format } from 'date-fns';
+// import { data } from 'autoprefixer';
 
 axios.defaults.baseURL = 'https://slimmom-backend.goit.global';
 
-export const addProduct = createAsyncThunk(
-  'product/addProduct',
+export const searchProduct = createAsyncThunk(
+  'product/searchProduct',
   async ({ title }, { rejectWithValue }) => {
     try {
-      const { data } = await axios.get(`/product/?search=${title}`);
-      return data;
+      const response = await axios.get(`/product/?search=${title}`);
+      return response.data;
     } catch (error) {
       if (error.response.status === 403) {
         return rejectWithValue('Для начала узнай свою суточную норму калорий');
@@ -20,59 +20,6 @@ export const addProduct = createAsyncThunk(
         );
       }
       return rejectWithValue('addProduct Произошла ошибка');
-    }
-  }
-);
-
-export const eatenProduct = createAsyncThunk(
-  'product/eatenProduct',
-  async (credentials, { rejectWithValue }) => {
-    try {
-      const { data } = await axios.post('/day', credentials);
-      return data;
-    } catch (error) {
-      return rejectWithValue('eatenProduct : Произошла ошибка');
-    }
-  }
-);
-
-export const dayInfo = createAsyncThunk(
-  'product/dayInfo',
-  async (credentials, { rejectWithValue }) => {
-    try {
-      const { data } = await axios.post('/day/info', credentials);
-      return data;
-    } catch (error) {
-      if (error.response.status === 403) {
-        return rejectWithValue('Для начала узнай свою суточную норму калорий');
-      }
-      return rejectWithValue('dayInfo : Произошла ошибка');
-    }
-  }
-);
-
-export const userInfo = createAsyncThunk(
-  'product/userInfo',
-  async (_, { rejectWithValue }) => {
-    try {
-      const { data } = await axios.get('/user');
-      return data;
-    } catch (error) {
-      return rejectWithValue('userInfo : Произошла ошибка');
-    }
-  }
-);
-
-export const deleteEatenProduct = createAsyncThunk(
-  'day/deleteEatenProduct',
-  async (data, { rejectWithValue }) => {
-    try {
-      await axios.delete('/day', {
-        data,
-      });
-      return data;
-    } catch (error) {
-      return rejectWithValue('deleteEatenProduct : Произошла ошибка');
     }
   }
 );

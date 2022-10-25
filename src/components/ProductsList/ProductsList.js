@@ -1,30 +1,22 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { useEffect } from 'react';
 import {
   getDayId,
   getLoading,
-} from '../../Redux/ProductSearch/productsSearchSelector';
+  getEatenProducts,
+} from '../../Redux/userData/userDataSelector';
 import {
   deleteEatenProduct,
-  userInfo,
-} from '../../Redux/ProductSearch/productsSearchOperations';
+  dayInfo,
+} from '../../Redux/userData/userDataOperations';
 import { ButtonClose } from '../Buttons/ButtonClose/ButtonClose';
 import { Text, TextDiscription, List, Item } from './ProductList.styled.js';
 import Loader from 'components/Loader';
 
-const ProductsList = ({ eatenProducts }) => {
+const ProductsList = ({ date }) => {
+  const dispatch = useDispatch();
+  const eatenProducts = useSelector(getEatenProducts);
   const dayId = useSelector(getDayId);
   const isLoading = useSelector(getLoading);
-
-  const multidimensionalArray = eatenProducts.flatMap(
-    item => item.eatenProducts
-  );
-
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(userInfo());
-  }, [dispatch]);
 
   const deleteProduct = id => {
     const deleteData = {
@@ -32,8 +24,8 @@ const ProductsList = ({ eatenProducts }) => {
       eatenProductId: id,
     };
 
-    dispatch(userInfo());
     dispatch(deleteEatenProduct(deleteData));
+    dispatch(dayInfo({ date }));
   };
 
   return (
@@ -42,7 +34,7 @@ const ProductsList = ({ eatenProducts }) => {
         <Loader />
       ) : (
         <List>
-          {multidimensionalArray.map(({ id, title, weight, kcal }) => {
+          {eatenProducts?.map(({ id, title, weight, kcal }) => {
             return (
               <Item key={id} style={{ display: 'flex' }}>
                 <Text>{title}</Text>

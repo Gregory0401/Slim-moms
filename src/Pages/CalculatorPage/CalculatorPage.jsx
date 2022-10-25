@@ -1,10 +1,7 @@
 import DailyCaloriesForm from 'components/Forms/DailyCaloriesForm';
 import { Wrapper, Title } from './CalculatorPage.styled';
 import { useSelector } from 'react-redux';
-import {
-  selectIsLoading,
-  selectError,
-} from 'Redux/DailyRate/DailyRateSelectors';
+import { getLoading, getError } from 'Redux/userData/userDataSelector';
 import Loader from 'components/Loader';
 import Notification from 'components/Notification';
 import RightSideBar from '../../components/RightSideBar/RightSideBar';
@@ -12,8 +9,8 @@ import { SidebarWrap, Thumb } from '../DailyPage/DailyPage.styled';
 import { motion } from 'framer-motion';
 
 const CalculatorPage = () => {
-  const isLoading = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
+  const isLoading = useSelector(getLoading);
+  const error = useSelector(getError);
 
   return (
     <Thumb>
